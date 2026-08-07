@@ -3,7 +3,8 @@ import React from "react";
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 
-import WhoWeAre from '@/components/WhoWeAre';
+import AboutSection from '@/components/AboutSection';
+
 import Services from '@/components/Services';
 
 
@@ -28,7 +29,8 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <WhoWeAre />
+               <AboutSection />
+
         <Services />
 
        

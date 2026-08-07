@@ -6,15 +6,12 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  --light-outline: #2c2d30;
   --background: #0a0a0a;
-  --background2: #18191b;
-  --dark-outline: #d8e2f0;
+  --background2: #101111;
   --white: rgb(255 255 255);
   --foreground: #171717;
   --white:#c5fcfc;
   --green:#91ff6a;
-  --border:#91ff6a;
 }
 
 @theme inline {
@@ -112,28 +109,6 @@ body {
 }
 
 
-
-.blob {
-  pointer-events: none;
-  position: fixed;
-  z-index: 99;
-  width: 10px;
-  height: 10px;
-  background: white;
-  transition: all 450ms ease-out;
-  overflow: visible;
-  border-radius: 50%;
-  
-
-
-}
-
-
-
-.blob {
-  mix-blend-mode: screen;
-}
-
 /* .preloader.hidden .brand {
   transform: scale(0);
 } */
@@ -144,14 +119,7 @@ body {
   transition: transform 1s ease;
 }
 
-.section {
-    z-index: 20;
-    /* border-bottom: 1px solid var(--light-outline); */
-    padding-top:100px;
-    padding-bottom: 100px;
-    position: relative;
 
-}
 .gradient-border {
   border: 1px solid transparent;
   background: 
@@ -247,7 +215,6 @@ body.open main {
   display: flex;
   align-items: center;
   justify-content: center;
- /* border-right: 1px solid var(--light-outline); */
 }
 @keyframes marquee {
   0% {
@@ -278,7 +245,7 @@ body.open main {
     text-transform: uppercase;
 }
   .button-outline {
-    border: 1px solid var(--border);
+    border: 1px solid var(--green);
     background-color: var(--background);
     /* border-radius: 40px;  */
     width: 100%;
@@ -313,33 +280,41 @@ body.open main {
 .service-card:hover img{
     transform:scale(1.08);
 }
+.rotate-linear {
+  animation: spin-linear 5s linear infinite;
+  transform-origin: center; /* Ensures it rotates around its own center */
+}
 
+@keyframes spin-linear {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .growing-background {
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  background-position: center right;
+  background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
   
 }
 
-/* .growing-background.seven {
-  background-image: url("/images/web2.jpeg");
-} */
+.growing-background.seven {
+  background-image: url("https://framerusercontent.com/images/ptDGQaxCF3lUkQcVgvvLc18yLxA.jpg?width=1280&height=720");
+}
 
 .growing-background.eight {
-  background-image: url("/images/1.png");
-  opacity: .5;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 72%);
+  background-image: url("https://framerusercontent.com/images/W3hYnbLj7EEpv8Q27Hs9jL7JE.png?width=1536&height=1024");
+
 }
 
-/* .growing-background.bg-static {
-  background-image: url("/images/banner.jpeg");
-}
-  */
+
     .large-growing-images.small {
-      min-height: 40vw;
+      min-height: 35vw;
       overflow: hidden;
       /* min-height: 400px; */
       justify-content: flex-end;
@@ -405,7 +380,7 @@ body.open main {
   .triangle {
     border-style: none none solid solid;
     border-width: 1px;
-    border-color: var(--light-outline);
+    border-color: var(--green);
     min-width: 700px;
     min-height: 700px;
     margin-right: -525px;
@@ -650,6 +625,16 @@ height: 100%;
   bottom: -3px;
   right: 0px;
 }
+.hero-section:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #000000b2, #0000007e, transparent 100%);
+
+}
 @media screen and (max-width: 1024px) {
   .service-card:nth-child(2), .service-card:nth-child(5){
     margin-top: 0px;
@@ -709,13 +694,7 @@ height: 100%;
         max-width: calc(100vw - 40px);
         /* max-height: calc(100vh - 120px); */
     }
-    .section {
 
-    padding-top:50px;
-    padding-bottom: 50px;
-
-
-}
 
 
 .menu-icon span {

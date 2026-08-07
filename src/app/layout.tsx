@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { Inter } from 'next/font/google';
 
 
-import BlobCursor from '@/components/BlobCursor';
+
 
 
 const inter = Inter({
@@ -35,8 +35,6 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
 
       <body>
-        <BlobCursor />
-        {/* Preloader */}
         <div className="preloader">
           <div className="preloader-center">
             <Image

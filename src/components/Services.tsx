@@ -146,7 +146,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section id="services" className="section overflow-hidden" ref={sectionRef}>
+    <section id="services" className="py-16 lg:py-30 relative overflow-hidden " ref={sectionRef}>
 
       <div
         className="grid gap-x-20 items-center w-full "
@@ -154,15 +154,15 @@ const Services = () => {
 
         <div className="pt-10 lg:pt-0 max-w-[1360px] mx-auto px-5 gap-y-10 flex flex-col lg:flex-row w-full lg:items-end lg:justify-between  mb-8">
           <div className="lg:w-[50%]">
-           
-              <h2 ref={titleRef} className="uppercase w-fit text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">
-                Our<br />Services
-              </h2>
+
+            <h2 ref={titleRef} className="uppercase w-fit text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">
+              Our<br />Services
+            </h2>
 
           </div>
           <div className="lg:w-[50%] ml-auto  max-w-[530px] fade-up lg:mt-[-30px]">
 
-            <p ref={text1Ref} className="font-light lg:text-right text-white text-[14px] lg:text-[18px] leading-snug">At Quadbreak Studios, we bring game worlds to life with high-quality 3D art, environments, and assets tailored for AAA, indie, and mobile games. At Quadbreak Studios, we bring game worlds to life with high-quality 3D art.</p>
+            <p ref={text1Ref} className="font-[200] lg:text-right text-white text-[14px] lg:text-[18px] leading-snug">At Quadbreak Studios, we bring game worlds to life with high-quality 3D art, environments, and assets tailored for AAA, indie, and mobile games. At Quadbreak Studios, we bring game worlds to life with high-quality 3D art.</p>
             <div ref={btnRef} className="w-fit lg:ml-auto">
               <AnimatedButton href="about" label="View All Services" className="mt-5 w-fit min-w-[160px]" />
             </div>
@@ -176,6 +176,9 @@ const Services = () => {
               key={index}
               className="service-card group relative overflow-hidden border border-white/10 aspect-[1.2/1]"
             >
+              <span className="absolute top-5 right-5 w-10 h-10 p-2 flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-in-out z-99">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" color="rgb(0, 0, 0)" className="rotate-[-45deg]" style={{ width: '100%', height: '100%' }}><path fillRule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clipRule="evenodd"></path></svg>
+              </span>
               <img
                 src={service.image}
                 alt={service.title}

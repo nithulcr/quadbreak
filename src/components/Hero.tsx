@@ -89,7 +89,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative flex flex-col justify-center overflow-hidden main-hero px-5 lg:px-[4rem] pb-6 pt-15 lg:py-20 min-h-screen">
+    <section ref={sectionRef} className="hero-section relative flex flex-col justify-center overflow-hidden main-hero px-5 lg:px-[4rem] pb-6 pt-15 lg:py-20 min-h-screen">
 
         <div className="fade-up-css  hero-banner  flex flex-col justify-center max-w-[800px]  pt-20 px-5 w-full gap-5 ">
           <h1 className="text-white uppercase  max-w-5xl  text-[3rem] lg:text-[6rem]  leading-none mb-1">
@@ -118,13 +118,13 @@ export default function Hero() {
         </div>
 
 
-      <div className="absolute top-0 left-0 w-full  z-[-1]">
+      <div className="absolute top-0 left-0 w-full h-full  z-[-1]">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="opacity-40"
+          className="w-full h-full object-cover"
         >
           <source src="/images/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
