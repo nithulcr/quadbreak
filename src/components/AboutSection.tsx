@@ -35,39 +35,44 @@ const aboutsections = [
   },
 ];
 
-const aboutSections = () => {
+const AboutSections = () => {
   useEffect(() => {
+    const ctx = gsap.context(() => {
+      document
+        .querySelectorAll<HTMLElement>(".large-growing-images.small")
+        .forEach((wrapper) => {
+          const left = wrapper.querySelector<HTMLElement>(".growing-image.small");
+          const right = wrapper.querySelector<HTMLElement>(".growing-image.right");
 
-    document
-      .querySelectorAll<HTMLElement>(".large-growing-images.small")
-      .forEach((wrapper) => {
-        const left = wrapper.querySelector<HTMLElement>(".growing-image.small");
-        const right = wrapper.querySelector<HTMLElement>(".growing-image.right");
+          if (!left || !right) return;
 
-        if (!left || !right) return;
+          // Use scale instead of width to avoid layout thrashing
+          // Calculate scale factors: 80% -> 35% = 0.4375, 20% -> 65% = 3.25
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: wrapper,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+              invalidateOnRefresh: true,
+            },
+          });
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: wrapper,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
+          tl.fromTo(
+            left,
+            { scaleX: 1 },
+            { scaleX: 0.4375, ease: "none", force3D: true },
+            0
+          ).fromTo(
+            right,
+            { scaleX: 1 },
+            { scaleX: 3.25, ease: "none", force3D: true },
+            0
+          );
         });
+    });
 
-        tl.fromTo(
-          left,
-          { width: "80%" },
-          { width: "35%", ease: "none" },
-          0
-        ).fromTo(
-          right,
-          { width: "20%" },
-          { width: "65%", ease: "none" },
-          0
-        );
-      });
-
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -126,7 +131,7 @@ const aboutSections = () => {
                         {service.description}
                       </p>
                     </div>
-                    <AnimatedButton href="/aboutSections" label="More About Us" className="mt-8 w-fit" />
+                    <AnimatedButton href="/" label="More About Us" className="mt-8 w-fit" />
                   </div>
 
                   {service.reverse && (
@@ -178,4 +183,4 @@ const ServiceMedia = ({
   </div>
 );
 
-export default aboutSections;
+export default AboutSections;
