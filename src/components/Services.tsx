@@ -6,13 +6,40 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
+const services = [
+  {
+    title: "CONCEPT ART & 2D",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
+  },
+  {
+    title: "TRAINING AND SIMULATION",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
+  },
+  {
+    title: "3D ENVIRONMENT",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
+  },
+  {
+    title: "3D CHARACTERS",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
+  },
+  {
+    title: "ANIMATION & VFX",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
+  },
+  {
+    title: "TRAILERS & CINEMATICS",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
+  },
+];
 const Services = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-
+  const servicesGridRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const text1Ref = useRef<HTMLParagraphElement>(null);
   const text2Ref = useRef<HTMLParagraphElement>(null);
+  const btnRef = useRef<HTMLParagraphElement>(null);
+
 
   const card1Ref = useRef<HTMLDivElement>(null);
   const card2Ref = useRef<HTMLDivElement>(null);
@@ -31,7 +58,26 @@ const Services = () => {
           once: true,
         },
       });
-
+      gsap.from(
+        servicesGridRef.current?.children || [],
+        {
+          opacity: 0,
+          y: 60,
+          scale: 0.96,
+          duration: 0.9,
+          stagger: {
+            each: 0.12,
+            from: "start",
+          },
+          ease: "power3.out",
+          force3D: true,
+          scrollTrigger: {
+            trigger: servicesGridRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
       tl.from(titleRef.current, {
         opacity: 0,
         y: 30,
@@ -57,6 +103,16 @@ const Services = () => {
             ease: "power2.out",
           },
           "-=0.45"
+        )
+        .from(
+          btnRef.current,
+          {
+            opacity: 0,
+            y: 30,
+            duration: 0.7,
+            ease: "power2.out",
+          },
+          "-=0.45"
         );
 
       // Cards
@@ -71,7 +127,7 @@ const Services = () => {
           rotation,
           opacity: 0,
           scale: 0.96,
-          duration: 1.1,  
+          duration: 1.1,
           ease: "power3.out",
           force3D: true,
           transformOrigin: "center center",
@@ -91,85 +147,57 @@ const Services = () => {
 
   return (
     <section id="services" className="section overflow-hidden" ref={sectionRef}>
-      {/* <div className="shape3 z-[-1]"></div>
-      <div className="shape2 z-[-1]"></div> */}
-      <div className="grid-wrapper max-w-[1360px] mx-auto px-5">
-        <div className="stacked-content">
-          <div className="content-wrapper">
-            <div className="service-list grid gap-y-10 lg:gap-y-30">
 
-              <div
-                className="service-item flex flex-col lg:grid gap-x-20 items-center w-full "
-              >
+      <div
+        className="grid gap-x-20 items-center w-full "
+      >
 
-                <div className="service-info pt-10 lg:pt-0 gap-y-10">
-                  <div className="lg:w-[50%]">
-                    <div className="flex flex-col mb-8">
-                      <h2 ref={titleRef} className="uppercase  text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">
-                        Who We Are
-                      </h2>
-
-                    </div>
-                    <p ref={text1Ref} className="text-white text-[20px] lg:text-[30px] leading-snug">In 2016, we started from a single desk, driven by a deep passion for game art. With a strong foundation in the industry but limited resources, we built everything from scratch, seizing every opportunity to grow. </p>
-
-                  </div>
-                  <div className="lg:w-[50%] ml-auto mt-10 lg:mt-20 max-w-[530px] fade-up">
-
-                    <p ref={text2Ref} className="font-light text-[18px] lg:text-[20px] leading-snug ">Over time, we expanded beyond game art into VR and simulator art, delivering high-quality visuals across industries. What began as Wrinit evolved into Quadbreak Studios, carrying forward the same commitment to creativity, collaboration, and innovation. </p>
-                    <AnimatedButton href="about" label="About Us" className="mt-10 w-fit min-w-[160px]" />
-
-                  </div>
-
-                </div>
-                <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mt-20  w-full">
-
-                  <div className="flex flex-col gap-10">
-                    <div ref={card1Ref}
-                      className="bg-[#26957d] md:bg-[var(--background2)] hover:bg-[#26957d]    p-8 flex flex-col justify-between  "
-                    >
-                      <h3 className="text-7xl font-monument">5000+</h3>
-                      <p className="text-2xl font-medium uppercase leading-snug text-right tracking-wide max-w-[200px] ml-auto mt-20">
-                        3d <br></br>Assets
-                      </p>
-                    </div>
-                    <div ref={card2Ref}
-                      className=" bg-[#e5484d] md:bg-[var(--background2)] hover:bg-[#e5484d]    p-8 flex flex-col justify-between  "
-                    >
-                      <h3 className="text-7xl font-monument">50+</h3>
-                      <p className="text-2xl font-medium uppercase leading-snug text-right tracking-wide max-w-[200px] ml-auto mt-20">
-                        Clients <br></br>minds
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-10 md:mt-20">
-                    <div ref={card3Ref}
-                      className=" bg-[#6f8f10] md:bg-[var(--background2)] hover:bg-[#6f8f10]    p-8 flex flex-col justify-between  "
-                    >
-                      <h3 className="text-7xl font-monument">120+</h3>
-                      <p className="text-2xl font-medium uppercase leading-snug text-right tracking-wide max-w-[200px] ml-auto mt-20">
-                        projects<br></br>completed
-                      </p>
-                    </div>
-                    <div ref={card4Ref}
-                      className=" bg-[#348bf1] md:bg-[var(--background2)] hover:bg-[#348bf1]    p-8 flex flex-col justify-between  "
-                    >
-                      <h3 className="text-7xl font-monument">9+</h3>
-                      <p className="text-2xl font-medium uppercase leading-snug text-right tracking-wide max-w-[200px] ml-auto mt-20">
-                        years of<br></br>experience
-                      </p>
-                    </div>
-                  </div>
-
-
-                </div>
-
-
-              </div>
+        <div className="pt-10 lg:pt-0 max-w-[1360px] mx-auto px-5 gap-y-10 flex flex-col lg:flex-row w-full items-end justify-between  mb-8">
+          <div className="lg:w-[50%]">
+            <div className="flex flex-col">
+              <h2 ref={titleRef} className="uppercase  text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">
+                Our<br />Services
+              </h2>
 
             </div>
+
+
           </div>
+          <div className="lg:w-[50%] ml-auto mt-10 lg:mt-20 max-w-[530px] fade-up lg:mt-[-30px]">
+
+            <p ref={text1Ref} className="font-light lg:text-right text-white text-[14px] lg:text-[18px] leading-snug">At Quadbreak Studios, we bring game worlds to life with high-quality 3D art, environments, and assets tailored for AAA, indie, and mobile games. At Quadbreak Studios, we bring game worlds to life with high-quality 3D art.</p>
+            <div ref={btnRef} className="w-fit lg:ml-auto">
+              <AnimatedButton href="about" label="View All Services" className="mt-5 w-fit min-w-[160px]" />
+            </div>
+
+          </div>
+
         </div>
+        <div ref={servicesGridRef} className="grid md:grid-cols-3  mt-24">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="service-card group relative overflow-hidden border border-white/10 aspect-[1.2/1]"
+            >
+              <img
+                src={service.image}
+                alt={service.title}
+                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-70 transition duration-700"
+              />
+
+              <div className="absolute inset-0  group-hover:bg-black/40 transition duration-700" />
+
+              <h3 className="absolute inset-0 flex items-center justify-center text-center uppercase text-2xl font-semibold tracking-wide z-10 transition duration-500 group-hover:scale-105">
+                {service.title}
+              </h3>
+            </div>
+          ))}
+        </div>
+
+
       </div>
+
+
     </section>
   );
 };

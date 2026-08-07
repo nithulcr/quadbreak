@@ -29,10 +29,10 @@ export default function Header() {
 
                     {/* Hamburger Menu */}
                     <button
-                        className="flex gap-4 items-center justify-end z-50 w-nav-button p-2 cursor-pointer "
+                        className="flex items-center justify-end z-50 w-nav-button p-2 cursor-pointer "
                         onClick={() => setMenuOpen(!menuOpen)}
                     >
-                        <span className="uppercase hidden md:block">Menu</span>
+                        <span className="uppercase hidden md:block bg-[var(--light-outline)] text-sm py-1 pr-3 pl-2 mr-[-10px] rounded-tl-[8px] rounded-bl-[8px]">Menu</span>
                         <div className="flex items-center justify-center bg-[var(--light-outline)] w-12 h-12 rounded-full">
                             {menuOpen ? (
                                 <svg

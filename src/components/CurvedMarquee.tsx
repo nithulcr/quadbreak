@@ -10,7 +10,7 @@ const Svg = styled.svg`
   user-select: none;
 
   font-size: 8rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 5px;
   text-transform: uppercase;
   line-height: 1;
@@ -88,7 +88,7 @@ export default function CurvedMarquee({
   }, [speed, pathLength]);
 
   return (
-    <section className="py-14 md:py-20">
+    <section className="py-14 md:pb-20 bg-[var(--background2)]">
       <Svg viewBox="0 0 1440 140">
         <defs>
           <path

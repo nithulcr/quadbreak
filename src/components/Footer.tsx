@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import CurvedMarquee from '@/components/CurvedMarquee';
+
 import Link from "next/link";
 import {
   Instagram,
@@ -13,62 +15,74 @@ import {
 const socialLinks = [
   {
     href: '',
-    label: 'Instagram',
+
     Icon: Instagram,
   },
   {
     href: '',
-    label: 'WhatsApp',
+
     Icon: MessageCircleMore,
   },
 
   {
     href: '',
-    label: 'Facebook',
+
     Icon: Facebook,
   },
   {
     href: '',
-    label: 'Linkedin',
+
     Icon: Linkedin,
   },
 ];
 
 const Footer = () => (
-  <footer className=" md:pt-[60px] pt-[0px] relative ">
-    {/* Decorative shapes */}
-    {/* <div className="shape1 z-[-1]" />
-    <div className="shape2 z-[-1]" /> */}
-
+  <footer className=" md:pt-[60px] pt-[0px] relative  font-light">
+    <CurvedMarquee
+      text="Game Art ✦ Stimulator Art ✦ 3d Studio ✦  "
+      speed={1}
+      color="#b4b4b4"
+    />
     <div className="max-w-[1360px] mx-auto footer md:p-5 p-4 ">
 
-      {/* Scrolling Text */}
-      {/* <div className="scrolling-text bg-[#004a891a] backdrop-blur-[10px]">
-        <div className="scrolling-text_inner direction-left">
-          <div>
-            <div className="scrolling-text__item sm:text-[4vw] text-[5vw]">Design, Develop, Deliver.</div>
-            <div className="scrolling-text__item sm:text-[4vw] text-[5vw]">Pixel-Perfect. Code-Clean.</div>
-            <div className="scrolling-text__item sm:text-[4vw] text-[5vw]">Ideas to Interface.</div>
-            <div className="scrolling-text__item sm:text-[4vw] text-[5vw]">Design, Develop, Deliver.</div>
-            <div className="scrolling-text__item sm:text-[4vw] text-[5vw]">Pixel-Perfect. Code-Clean.</div>
-            <div className="scrolling-text__item sm:text-[4vw] text-[5vw]">Ideas to Interface.</div>
-            <div className="scrolling-text__item sm:text-[4vw] text-[5vw]">Design, Develop, Deliver.</div>
-            <div className="scrolling-text__item sm:text-[4vw] text-[5vw]">Pixel-Perfect. Code-Clean.</div>
-            <div className="scrolling-text__item sm:text-[4vw] text-[5vw]">Ideas to Interface.</div>
-          </div>
-        </div>
-      </div> */}
+
 
       {/* Footer Main Grid */}
-      <div className="middle xl:flex grid sm:grid-cols-2 grid-cols-1 py-8 border-gray-600 gap-[50px]  px-12 rounded-[40px] md:py-20 p-7 bg-[var(--background2)] backdrop-blur-[10px]">
+      <div className="middle  grid md:grid-cols-7  py-8  gap-[50px]    md:py-20">
         {/* Logo + Address Section */}
-        <div className="xl:w-1/4 content-center">
-                    <Image src="/images/logo2.png" alt="" width={230} height={50} className="w-[230px] content-center" />
+        <div className="col-span-3 content-center lg:pr-15">
+          <Image src="/images/logo.png" alt="" width={230} height={50} className="w-[230px] content-center" />
+          <p className='py-4 font-light'>All company names, brand names, trademarks, logos, illustrations, videos and any other intellectual property (Intellectual Property) published on this website are the property of their respective owners. Any non-authorized usage of Intellectual Property is strictly prohibited and any violation will be prosecuted under the law.</p>
 
+          <ul className="flex gap-4 mt-4">
+            {socialLinks.map(({ href, Icon }, index) => (
+              <li key={index} className="font-light flex items-center gap-4">
+                <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
+                  <Icon className="w-7 h-7 text-[var(--green)]" strokeWidth={1} />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Quick Links Section */}
-        <div className="xl:w-1/4 ">
+
+        <div className="col-span-2 ">
+          <h2 className="text-2xl font-medium mb-6">Quick Links</h2>
+          <ul className="flex flex-col gap-3">
+            <li><Link href="/" className="font-light text-md">Home</Link></li>
+            <li><Link href="" className="font-light text-md">About Us</Link></li>
+            <li><Link href="" className="font-light text-md">Game Art</Link></li>
+            <li><Link href="" className="font-light text-md">Simulator Art</Link></li>
+
+            <li><Link href="" className="font-light text-md">My Projects</Link></li>
+
+            <li><Link href="" className="font-light text-md">Contact Me</Link></li>
+
+
+          </ul>
+        </div>
+        <div className="col-span-2 ">
           <h2 className="text-2xl font-medium mb-6">Find Me</h2>
           <ul className="flex flex-col gap-4">
             <li className="font-light flex items-start gap-3">
@@ -84,44 +98,21 @@ const Footer = () => (
             </li>
             <li className="font-light flex items-start gap-3 ">
               <Mail className="w-5 h-5 mt-1 text-primary" strokeWidth={1} />
-              <span className="text-md">twelfth@gmail.com</span>
+              <span className="text-md">quadbreak@gmail.com</span>
             </li>
           </ul>
-          
-        </div>
-        <div className="xl:w-1/4 ">
-          <h2 className="text-2xl font-medium mb-6">Quick Links</h2>
-          <ul className="flex flex-col gap-3">
-            <li><Link href="/" className="font-light text-md">Home</Link></li>
-            <li><Link href="" className="font-light text-md">About Me</Link></li>
-            <li><Link href="" className="font-light text-md">My Projects</Link></li>
-            <li><Link href="" className="font-light text-md">Contact Me</Link></li>
-          </ul>
+
         </div>
 
         {/* Skills Section */}
 
 
-        {/* Connect with us Section */}
-        <div className="xl:w-[22%] ">
-          <h2 className="text-2xl font-medium mb-6">Connect with Me</h2>
-          <ul className="flex flex-col gap-4">
-            {socialLinks.map(({ href, label, Icon }, index) => (
-              <li key={label + index} className="font-light flex items-center gap-4">
-                <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
-                  <Icon className="w-5 h-5" strokeWidth={1} />
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
-
+      <span className="block underline-span"></span>
       {/* Bottom Copyright */}
-      <div className="bottom pt-4 text-center">
+      <div className="bottom pt-4 pb-2 text-center md:px-5 px-4 mt-2">
         <p className=" text-md text-white">
-          Copyright © 2025 TwelthOrigin. All Rights Reserved.
+          Copyright © 2026 Quadbreak. All Rights Reserved.
         </p>
       </div>
     </div>
