@@ -152,18 +152,15 @@ const Services = () => {
         className="grid gap-x-20 items-center w-full "
       >
 
-        <div className="pt-10 lg:pt-0 max-w-[1360px] mx-auto px-5 gap-y-10 flex flex-col lg:flex-row w-full items-end justify-between  mb-8">
+        <div className="pt-10 lg:pt-0 max-w-[1360px] mx-auto px-5 gap-y-10 flex flex-col lg:flex-row w-full lg:items-end lg:justify-between  mb-8">
           <div className="lg:w-[50%]">
-            <div className="flex flex-col">
+           
               <h2 ref={titleRef} className="uppercase  text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">
                 Our<br />Services
               </h2>
 
-            </div>
-
-
           </div>
-          <div className="lg:w-[50%] ml-auto mt-10 lg:mt-20 max-w-[530px] fade-up lg:mt-[-30px]">
+          <div className="lg:w-[50%] ml-auto  max-w-[530px] fade-up lg:mt-[-30px]">
 
             <p ref={text1Ref} className="font-light lg:text-right text-white text-[14px] lg:text-[18px] leading-snug">At Quadbreak Studios, we bring game worlds to life with high-quality 3D art, environments, and assets tailored for AAA, indie, and mobile games. At Quadbreak Studios, we bring game worlds to life with high-quality 3D art.</p>
             <div ref={btnRef} className="w-fit lg:ml-auto">
@@ -173,7 +170,7 @@ const Services = () => {
           </div>
 
         </div>
-        <div ref={servicesGridRef} className="grid md:grid-cols-3  mt-24">
+        <div ref={servicesGridRef} className="grid grid-cols-2 lg:grid-cols-3  mt-10 md:mt-24">
           {services.map((service, index) => (
             <div
               key={index}
@@ -187,7 +184,7 @@ const Services = () => {
 
               <div className="absolute inset-0  group-hover:bg-black/40 transition duration-700" />
 
-              <h3 className="absolute inset-0 flex items-center justify-center text-center uppercase text-2xl font-semibold tracking-wide z-10 transition duration-500 group-hover:scale-105">
+              <h3 className="absolute inset-0 flex items-center justify-center text-center uppercase md:text-2xl  tracking-wide z-10 transition duration-500 group-hover:scale-105">
                 {service.title}
               </h3>
             </div>

@@ -6,7 +6,7 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  --light-outline: #18191b;
+  --light-outline: #2c2d30;
   --background: #0a0a0a;
   --background2: #18191b;
   --dark-outline: #d8e2f0;
@@ -315,9 +315,7 @@ body.open main {
 .service-card:hover img{
     transform:scale(1.08);
 }
-.service-card:nth-child(2), .service-card:nth-child(5){
-    margin-top: -30px;
-}
+
 .growing-background {
   background-repeat: no-repeat;
   background-size: cover;
@@ -635,6 +633,9 @@ height: 100%;
 }
 
 @media screen and (max-width: 1024px) {
+  .service-card:nth-child(2), .service-card:nth-child(5){
+    margin-top: 0px;
+}
 
   .circle-link {
 

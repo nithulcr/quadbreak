@@ -109,7 +109,7 @@ export default function Hero() {
       <img src="/images/bg.png" alt="Shape 1" className="absolute top-0 left-0 w-full opacity-50 z-[-1]" />
       <div className="relative hero-banner w-full flex flex-col items-start justify-between bg-cover bg-no-repeat bg-center hero-bg-img">
         <div className="fade-up-css flex items-center flex-col justify-center max-w-[1360px] mx-auto pt-20 px-5 w-full gap-5 min-h-[calc(100vh-260px)]">
-          <h1 className="text-white uppercase  max-w-5xl text-center text-[8rem] lg:text-[6rem]  leading-none mb-1">
+          <h1 className="text-white uppercase  max-w-5xl text-center text-[3rem] lg:text-[6rem]  leading-none mb-1">
             We&rsquo;re smart
             and crazy
             with art
