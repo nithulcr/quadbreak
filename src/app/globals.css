@@ -629,7 +629,27 @@ height: 100%;
 .work-row > div:nth-child(odd){
   flex-direction: column-reverse
 }
-
+  .service-card:nth-child(2), .service-card:nth-child(5){
+    margin-top: -20px;
+}
+.heading::before{
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background-color: var(--green);
+  top: -3px;
+  left: 0px;
+}
+.heading::after{
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background-color: var(--green);
+  bottom: -3px;
+  right: 0px;
+}
 @media screen and (max-width: 1024px) {
   .service-card:nth-child(2), .service-card:nth-child(5){
     margin-top: 0px;

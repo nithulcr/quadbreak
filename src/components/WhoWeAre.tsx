@@ -117,8 +117,8 @@ const WhoWeAre = () => {
                 <div className="service-info pt-10 lg:pt-0 gap-y-10">
                   <div className="lg:w-[50%]">
                     <div className="flex flex-col mb-8">
-                      <h2 ref={titleRef} className="uppercase  text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">
-                        Who We Are
+                      <h2 ref={titleRef} className="uppercase w-fit text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">
+                        Who<br />We Are
                       </h2>
 
                     </div>

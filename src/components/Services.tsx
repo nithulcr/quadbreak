@@ -155,7 +155,7 @@ const Services = () => {
         <div className="pt-10 lg:pt-0 max-w-[1360px] mx-auto px-5 gap-y-10 flex flex-col lg:flex-row w-full lg:items-end lg:justify-between  mb-8">
           <div className="lg:w-[50%]">
            
-              <h2 ref={titleRef} className="uppercase  text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">
+              <h2 ref={titleRef} className="uppercase w-fit text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">
                 Our<br />Services
               </h2>
 

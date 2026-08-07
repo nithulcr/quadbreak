@@ -70,11 +70,15 @@ export default function Header() {
             >
                 <nav className={` min-h-screen flex flex-col justify-center duration-700 relative ${menuOpen ? "opacity-100 " : "opacity-0  scale-50"
                     }`}>
-                    <Link href="/" className="block text-white py-2 px-6 nav-link uppercase text-center text-[7vh]" onClick={handleLinkClick}>Home</Link>
-                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[7vh]" onClick={handleLinkClick}>Projects</Link>
-                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[7vh]" onClick={handleLinkClick}>My Skills</Link>
-                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[7vh]" onClick={handleLinkClick}>About</Link>
-                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[7vh]" onClick={handleLinkClick}>Contact</Link>
+                    <Link href="/" className="block py-2 px-6 nav-link uppercase text-center text-[7vh]" onClick={handleLinkClick}>Home</Link>
+                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>About Us</Link>
+                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Game Art</Link>
+                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Stimulator Art</Link>
+
+
+                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Projects</Link>
+
+                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Contact</Link>
 
                 </nav>
             </div>
