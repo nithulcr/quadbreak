@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation, Keyboard, Mousewheel } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimatedButton from "./AnimatedButton";
@@ -42,7 +43,7 @@ const aboutSlides: SlideData[] = [
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const sliderRef = useRef<any>(null);
+  const sliderRef = useRef<SwiperType | null>(null);
   const [currentSlideTitle, setCurrentSlideTitle] = useState(aboutSlides[0].title);
 
   useEffect(() => {
