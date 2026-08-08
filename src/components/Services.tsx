@@ -175,7 +175,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="service-card group relative overflow-hidden border border-white/10 aspect-[1.2/1]"
+              className="service-card group relative overflow-hidden border border-white/10 aspect-[1/1]"
             >
               <span className="absolute top-5 right-5 w-10 h-10 p-2 flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-in-out z-99">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" color="rgb(0, 0, 0)" className="rotate-[-45deg]" style={{ width: '100%', height: '100%' }}><path fillRule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clipRule="evenodd"></path></svg>
@@ -183,12 +183,12 @@ const Services = () => {
               <img
                 src={service.image}
                 alt={service.title}
-                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-70 transition duration-700"
+                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-90 transition duration-700"
               />
 
               <div className="absolute inset-0  group-hover:bg-black/40 transition duration-700" />
 
-              <h3 className="absolute inset-0 flex items-center justify-center text-center uppercase md:text-2xl  tracking-wide z-10 transition duration-500 group-hover:scale-105">
+              <h3 className="absolute inset-0 flex items-center group-hover:opacity-0 justify-center text-center uppercase md:text-2xl  tracking-wide z-10 transition duration-500 group-hover:scale-105">
                 {service.title}
               </h3>
             </div>

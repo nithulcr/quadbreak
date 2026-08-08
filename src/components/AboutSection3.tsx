@@ -198,7 +198,7 @@ const AboutSection = () => {
                 </h2>
                 {/* Paragraph */}
                 <p className="about-paragraph text-[16px] md:text-[18px] leading-snug font-[200] text-white/80">
-                 Vehicles, weapons, and environments are asset types that punish shortcuts — mechanical accuracy, panel logic, and wear patterns all show up the moment they're in-engine. It's a specific skill set, and it's the one we've built our pipeline around for nine years. 
+                                 Vehicles, weapons, and environments are asset types that punish shortcuts — mechanical accuracy, panel logic, and wear patterns all show up the moment they&apos;re in-engine. It&apos;s a specific skill set, and it&apos;s the one we&apos;ve built our pipeline around for nine years. 
                 </p>               
                 {/* CTA Button */}
                 <div className="about-cta mt-4">
