@@ -13,15 +13,15 @@ const services = [
   },
   {
     title: "TRAINING AND SIMULATION",
-    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
+    image: "/images/vehicles.png",
   },
   {
     title: "3D ENVIRONMENT",
-    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
+    image: "/images/weapons.png",
   },
   {
     title: "3D CHARACTERS",
-    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
+    image: "/images/environments.png",
   },
   {
     title: "ANIMATION & VFX",
@@ -29,7 +29,8 @@ const services = [
   },
   {
     title: "TRAILERS & CINEMATICS",
-    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
+        image: "/images/vehicles.png",
+
   },
 ];
 const Services = () => {

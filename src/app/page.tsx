@@ -4,6 +4,10 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 
 import AboutSection from '@/components/AboutSection';
+import AboutSection2 from '@/components/AboutSection2';
+import AboutSection3 from '@/components/AboutSection3';
+
+
 
 import Services from '@/components/Services';
 
@@ -30,6 +34,10 @@ export default function HomePage() {
       <main>
         <Hero />
                <AboutSection />
+               <AboutSection2 />
+               <AboutSection3 />
+
+
 
         <Services />
 
