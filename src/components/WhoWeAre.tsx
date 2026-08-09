@@ -83,7 +83,7 @@ const WhoWeAre = () => {
           rotation,
           opacity: 0,
           scale: 0.96,
-          duration: 1.1,  
+          duration: 1.1,
           ease: "power3.out",
           force3D: true,
           transformOrigin: "center center",
@@ -102,7 +102,7 @@ const WhoWeAre = () => {
   }, []);
 
   return (
-    <section id="WhoWeAre" className="section overflow-hidden" ref={sectionRef}>
+    <section id="WhoWeAre" className="section overflow-hidden py-30" ref={sectionRef}>
       {/* <div className="shape3 z-[-1]"></div>
       <div className="shape2 z-[-1]"></div> */}
       <div className="grid-wrapper max-w-[1360px] mx-auto px-5">
@@ -117,25 +117,47 @@ const WhoWeAre = () => {
                 <div className="service-info pt-10 lg:pt-0 gap-y-10">
                   <div className="lg:w-[50%]">
                     <div className="flex flex-col mb-8">
-                      <h2 ref={titleRef} className="uppercase w-fit text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">
-                        Who<br />We Are
+                      <h2 ref={titleRef} className="uppercase w-fit text-white  text-5xl lg:text-[5rem]  leading-none font-light  relative">
+                        <span className="block pl-10">Vehicles</span>
+                        <span className="flex items-center gap-2 pl-20">
+                          <svg width="80" height="80" className="rotate-linear" viewBox="0 0 24 24" fill="#91ff6a" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12C12 7.5 10 3 6 3C6 7.5 8 12 12 12Z" />
+                            <path d="M12 12C16.5 12 21 10 21 6C16.5 6 12 8 12 12Z" />
+                            <path d="M12 12C12 16.5 14 21 18 21C18 16.5 16 12 12 12Z" />
+                            <path d="M12 12C7.5 12 3 14 3 18C7.5 18 12 16 12 12Z" />
+                          </svg>
+                          Weapons
+                        </span>
+                        <span className="block">Environments </span>
                       </h2>
 
                     </div>
-                    <p ref={text1Ref} className="font-light text-white text-[18px] lg:text-[24px] leading-snug">In 2016, we started from a single desk, driven by a deep passion for game art. With a strong foundation in the industry but limited resources, we built everything from scratch, seizing every opportunity to grow. Over time, we expanded beyond game art into VR and simulator art, delivering high-quality visuals across industries.</p>
-
+                    <p ref={text1Ref} className="about-paragraph text-[16px] md:text-[20px] leading-snug font-[200] text-white/80">
+                      Vehicles, weapons, and environments are asset types that punish shortcuts — mechanical accuracy, panel logic, and wear patterns all show up the moment they&apos;re in-engine. It&apos;s a specific skill set, and it&apos;s the one we&apos;ve built our pipeline around for nine years.
+                    </p>
+                     {/* <div  ref={btnRef}>
+                      <AnimatedButton href="about" label="Learn More" className="mt-10 w-fit min-w-[160px]" />
+                    </div> */}
                   </div>
-                  <div className="lg:w-[50%] ml-auto mt-10 lg:mt-20 max-w-[530px] fade-up lg:mt-[-30px]">
-
-                    <p ref={text2Ref} className="font-light text-[18px] lg:text-[20px] leading-snug ">What began as Wrinit evolved into Quadbreak Studios, carrying forward the same commitment to creativity, collaboration, and innovation. Today, we continue to push boundaries, embracing new challenges and staying true to our core values.</p>
-                    <div  ref={btnRef}>
-                      <AnimatedButton href="about" label="About Us" className="mt-10 w-fit min-w-[160px]" />
-                    </div>
+                  <div className="lg:w-[50%] ml-auto mt-10 lg:mt-[-260px] max-w-[530px] fade-up lg:mt-[-30px]">
+                    <h2 ref={text2Ref} className="uppercase w-fit text-white/60 italic mb-10 text-[4rem]  leading-none font-light  relative">
+                      This is what we do best
+                    </h2>
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                    >
+                      <source src="https://media.room8studio.com/wp-content/uploads/2022/06/04202038/r8s.mp4" />
+                      Your browser does not support the video tag.
+                    </video>
 
                   </div>
 
                 </div>
-                <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mt-20  w-full">
+                <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10  w-full">
 
                   <div className="flex flex-col gap-10">
                     <div ref={card1Ref}

@@ -35,7 +35,7 @@ const aboutsections = [
   },
 ];
 
-const AboutSections = () => {
+const AboutSections_old = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       document
@@ -183,4 +183,4 @@ const ServiceMedia = ({
   </div>
 );
 
-export default AboutSections;
+export default AboutSections_old;
