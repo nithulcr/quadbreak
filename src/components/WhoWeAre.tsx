@@ -138,11 +138,16 @@ const WhoWeAre = () => {
                     <p ref={text1Ref} className="about-paragraph text-[16px] md:text-[20px] leading-snug font-[200] text-white/80">
                       Vehicles, weapons, and environments are asset types that punish shortcuts — mechanical accuracy, panel logic, and wear patterns all show up the moment they&apos;re in-engine. It&apos;s a specific skill set, and it&apos;s the one we&apos;ve built our pipeline around for nine years.
                     </p>
+                    <img
+                    src="/images/signature.png"
+                    alt="signature"
+                    className="w-[300px]"
+                  />
                      {/* <div  ref={btnRef}>
                       <AnimatedButton href="about" label="Learn More" className="mt-10 w-fit min-w-[160px]" />
                     </div> */}
                   </div>
-                  <div className="lg:w-[50%] ml-auto mt-10 lg:mt-[-180px] max-w-[530px] fade-up">
+                  <div className="lg:w-[50%] ml-auto mt-10 lg:mt-[-400px] max-w-[530px] fade-up">
                     <h2 ref={text2Ref} className="uppercase w-fit text-white/60  text-right italic mb-10 text-[3rem]  leading-none font-light  relative">
                      Lets Create <br />Magic Together
                     </h2>

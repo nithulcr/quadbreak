@@ -2,8 +2,11 @@
 import React from "react";
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import StatsSection from '@/components/StatsSection';
 import whoWeAre from '@/components/WhoWeAre';
 import AboutSection from '@/components/AboutSection';
+import AboutSectionn from '@/components/AboutSectionn';
+
 
 import AboutSection2 from '@/components/AboutSection2';
 import AboutSection3 from '@/components/AboutSection3';
@@ -35,8 +38,11 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <StatsSection />
                <WhoWeAre />
                <AboutSection />
+               <AboutSectionn />
+
 {/* 
                <AboutSection2 />
                <AboutSection3 /> */}

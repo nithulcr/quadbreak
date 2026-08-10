@@ -12,21 +12,21 @@ const aboutCards = [
   {
     title: "Vehicles",
     category: "service",
-    image: "/images/1.jpg",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04204130/service-trailer.jpg",
   },
   {
     title: "Weapons",
     category: "service",
-    image: "/images/2.jpg",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04204136/service-3d.jpg",
   },
   {
     title: "Environments",
     category: "service",
-    image: "/images/3.jpg",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04204134/service-animation.jpg",
   },
 ];
 
-const AboutSection = () => {
+const AboutSectionn = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -176,7 +176,7 @@ const AboutSection = () => {
                   />
                 
                   {/* Category badge */}
-                  {/* <div className="absolute top-6 left-6 z-20 transition-all duration-500 ease-out group-hover:top-[-100px]">
+                  <div className="absolute top-6 left-6 z-20 transition-all duration-500 ease-out group-hover:top-[-100px]">
                     <span className="bg-[var(--green)] text-black text-xs font-[600] uppercase tracking-wider px-4 py-2">
                       {card.title}
                     </span>
@@ -186,7 +186,7 @@ const AboutSection = () => {
                       {card.title}
                     </h5>
                     <p className="font-[200] text-[14px]  max-w-[260px]">the one we have built our pipeline around for nine years</p>
-                  </div> */}
+                  </div>
                 </div>
               ))}
             </div>
@@ -202,4 +202,4 @@ const AboutSection = () => {
   );
 };
 
-export default AboutSection;
+export default AboutSectionn;
