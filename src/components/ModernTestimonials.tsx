@@ -67,7 +67,7 @@ const ModernTestimonials = () => {
 
   return (
     <section ref={sectionRef} className="py-20 relative overflow-hidden bg-[var(--background)]">
-      <div className="max-w-[1400px] mx-auto px-5">
+      <div className="max-w-[1360px] mx-auto px-5">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-white uppercase text-4xl lg:text-6xl leading-none font-light mb-4">
@@ -79,7 +79,7 @@ const ModernTestimonials = () => {
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 auto-rows-[110px] gap-5">
           
           {/* Card 1 - Large testimonial with image - col-span-2, row-span-3 */}
-          <div className="testimonial-card lg:mb-8 col-span-1 md:col-span-2 lg:col-span-2 row-span-3 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col relative overflow-hidden">
+          <div className="testimonial-card lg:mb-8 lg:mt-6 col-span-1 md:col-span-2 lg:col-span-2 row-span-3 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col relative overflow-hidden">
            
             <div className="flex items-center gap-2 mb-3">
               <div className="w-10 h-10 relative rounded-full overflow-hidden">
@@ -104,7 +104,7 @@ const ModernTestimonials = () => {
           </div>
 
           {/* Card 2 - Rating badge - col-span-4, row-span-1 */}
-          <div className="testimonial-card col-span-1 md:col-span-3 lg:col-span-4 row-span-1 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex items-center justify-between">
+          <div className="testimonial-card lg:mr-5 lg:ml-3 lg:mt-[-15px] col-span-1 md:col-span-3 lg:col-span-4 row-span-1 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="flex gap-1">
                 {renderStars(5)}
@@ -126,7 +126,7 @@ const ModernTestimonials = () => {
               <h3 className="text-white text-lg font-semibold">Service Rating</h3>
               <span className="bg-[var(--green)] text-black text-xs font-bold px-3 py-1 rounded-full">99+</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex  flex-col gap-2">
               <div className="flex gap-1">
                 {renderStars(5)}
               </div>
@@ -135,9 +135,9 @@ const ModernTestimonials = () => {
           </div>
 
           {/* Card 4 - Quote testimonial - col-span-3, row-span-2 */}
-          <div className="testimonial-card col-span-1 md:col-span-3 lg:col-span-3 row-span-2 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col">
+          <div className="testimonial-card lg:mt-[50px] lg:mb-[-45px]  col-span-1 md:col-span-3 lg:col-span-3 row-span-2 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col">
             <p className="text-white/60 text-sm italic mb-4 flex-1">
-              "I received the product quickly and it was well packaged to ensure its safe arrival. I appreciate the care they took in packaging."
+              &ldquo;I received the product quickly and it was well packaged to ensure its safe arrival. I appreciate the care they took in packaging.&rdquo;
             </p>
             <div className="flex items-center gap-3 mt-auto">
               <div className="w-10 h-10 relative rounded-full overflow-hidden">
@@ -157,7 +157,7 @@ const ModernTestimonials = () => {
           </div>
 
           {/* Card 5 - Large testimonial with stats - col-span-5, row-span-2 */}
-          <div className="testimonial-card col-span-1 md:col-span-3 lg:col-span-5 row-span-2 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col relative overflow-hidden">
+          <div className="testimonial-card lg:ml-8 lg:mr-9 lg:mt-4 col-span-1 md:col-span-3 lg:col-span-5 row-span-2 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col relative overflow-hidden">
             <div className="flex items-start gap-4 mb-4">
               <div className="w-16 h-16 relative rounded-full overflow-hidden flex-none">
                 <Image
@@ -169,13 +169,13 @@ const ModernTestimonials = () => {
                 />
               </div>
               <div className="flex-1">
-                <h3 className="text-white text-4xl font-light mb-2">Prompt and helpful responses to my inquiry!</h3>
+                <h3 className="text-white text-xl font-light mb-2">Prompt and helpful responses to my inquiry!</h3>
                 <p className="text-white/60 text-sm">Superb quality, impressed with the results</p>
               </div>
             </div>
             <div className="mt-auto flex items-center justify-between">
               <div>
-                <p className="text-white font-semibold">Matthew Smith</p>
+                <p className="text-white">Matthew Smith</p>
                 <p className="text-white/60 text-xs">CEO of OptimaSphere Inc.</p>
               </div>
               <div className="flex gap-1">
@@ -185,7 +185,7 @@ const ModernTestimonials = () => {
           </div>
 
           {/* Card 6 - Small testimonial - col-span-2, row-span-1 */}
-          <div className="testimonial-card col-span-1 md:col-span-3 lg:col-span-2 row-span-1 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex flex-col justify-center">
+          <div className="testimonial-card lg:ml-[-15px] lg:mb-[-60px] lg:mt-4   mr-4 col-span-1 md:col-span-3 lg:col-span-2 row-span-1 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex flex-col justify-center">
             <p className="text-white text-sm mb-2">Incredible service</p>
             <p className="text-white/60 text-xs">Perfect, exceeded expectations</p>
             <div className="flex gap-1 mt-2">
@@ -194,15 +194,8 @@ const ModernTestimonials = () => {
           </div>
 
           {/* Card 7 - Large testimonial with image - col-span-3, row-span-3 */}
-          <div className="testimonial-card col-span-1 md:col-span-3 lg:col-span-3 row-span-3 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col relative overflow-hidden">
-            <div className="relative w-full h-40 mb-4 rounded-[20px] overflow-hidden">
-              <Image
-                src="/images/user.png"
-                alt="Professional working"
-                fill
-                className="object-cover rounded-[20px]"
-              />
-            </div>
+          <div className="testimonial-card lg:mr-[-60px] lg:ml-15 lg:mt-22 col-span-1 md:col-span-3 lg:col-span-4 row-span-3 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col relative overflow-hidden">
+           
             <div className="flex items-center gap-2 mb-3">
               <div className="w-10 h-10 relative rounded-full overflow-hidden">
                 <Image
@@ -226,7 +219,7 @@ const ModernTestimonials = () => {
           </div>
 
           {/* Card 8 - Feedback slider - col-span-4, row-span-1 */}
-          <div className="testimonial-card col-span-1 md:col-span-3 lg:col-span-4 row-span-1 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex items-center justify-between">
+          <div className="testimonial-card lg:mr-8 lg:ml-[-30px] lg:mt-3 col-span-1 md:col-span-3 lg:col-span-4 row-span-1 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex items-center justify-between">
             <div>
               <h3 className="text-white text-lg font-semibold mb-1">Your Feedback</h3>
               <p className="text-white/60 text-xs">We value your opinion</p>
@@ -239,7 +232,7 @@ const ModernTestimonials = () => {
           </div>
 
           {/* Card 9 - Review counter - col-span-2, row-span-1 */}
-          <div className="testimonial-card col-span-1 md:col-span-3 lg:col-span-2 row-span-1 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex flex-col justify-center">
+          <div className="testimonial-card lg:mt-8 lg:mb-[-50px] lg:mr-[-50px] lg:ml-[-20px] col-span-1 md:col-span-3 lg:col-span-3 row-span-1 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex flex-col justify-center">
             <div className="flex items-center gap-2 mb-2">
               <svg className="w-5 h-5 text-[var(--green)]" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
@@ -255,7 +248,7 @@ const ModernTestimonials = () => {
           </div>
 
           {/* Card 10 - Great offers - col-span-3, row-span-3 */}
-          <div className="testimonial-card col-span-1 md:col-span-3 lg:col-span-3 row-span-3 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col">
+          <div className="testimonial-card lg:mt-5 lg:mb-[50px] col-span-1 md:col-span-3 lg:col-span-3 row-span-3 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 relative rounded-full overflow-hidden">
                 <Image
@@ -273,7 +266,7 @@ const ModernTestimonials = () => {
             </div>
             <h3 className="text-white text-3xl font-light mb-3">Great offers</h3>
             <p className="text-white/60 text-sm mb-4 flex-1">
-              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a. Nisl suscipit adipiscing bibendum est.
+              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
             </p>
             <div className="flex items-center justify-between mt-auto">
               {renderStars(5)}
@@ -282,9 +275,9 @@ const ModernTestimonials = () => {
           </div>
 
           {/* Card 11 - Amazing product - col-span-4, row-span-1 */}
-          <div className="testimonial-card col-span-1 md:col-span-3 lg:col-span-4 row-span-1 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex items-center justify-between">
+          <div className="testimonial-card lg:mt-16 lg:mb-[-20px] lg:ml-5 col-span-1 md:col-span-3 lg:col-span-4 row-span-2 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex flex-col justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 relative rounded-full overflow-hidden">
+              <div className="w-12 h-12 relative rounded-full overflow-hidden flex-none">
                 <Image
                   src="/images/user.png"
                   alt="Michael Chen"
@@ -315,8 +308,14 @@ const ModernTestimonials = () => {
           </div>
 
           {/* Card 12 - Small testimonial - col-span-2, row-span-1 */}
-          <div className="testimonial-card col-span-1 md:col-span-3 lg:col-span-2 row-span-1 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex flex-col justify-center">
-            <p className="text-white text-sm mb-2">Id interdum velit laoreet id. Leo duis ut diam quam nulla porttitor massa.</p>
+          <div className="testimonial-card lg:mb-8 lg:ml-5 lg:mt-5 lg:mr-[-20px] col-span-1 md:col-span-3 lg:col-span-4 row-span-2 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-5 flex flex-col justify-center">
+           <div>
+             <p className="text-white font-light mb-2">Id interdum velit laoreet id. Leo duis ut diam quam nulla porttitor massa.</p>
+             <div className="flex items-center gap-2 mt-auto">
+              {renderStars(5)}
+              <span className="text-white/60 text-xs">(5.0) All Client Score</span>
+            </div>
+           </div>
             <div className="flex items-center gap-2 mt-auto">
               <div className="w-8 h-8 relative rounded-full overflow-hidden">
                 <Image
@@ -330,6 +329,7 @@ const ModernTestimonials = () => {
               <div>
                 <p className="font-semibold text-white text-xs">Elizabeth Jones</p>
                 <p className="text-xs text-gray-400">Sales Director</p>
+                
               </div>
             </div>
           </div>

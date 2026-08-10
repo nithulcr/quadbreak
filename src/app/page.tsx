@@ -54,7 +54,7 @@ export default function HomePage() {
 
         <Services />
         <Servicess />
-
+<ModernTestimonials />
 
        
 
@@ -63,7 +63,7 @@ export default function HomePage() {
         {/* <CaseStudy />
 
         <Testimonials /> */}
-        {/* <ModernTestimonials /> */}
+        
       </main>
        <Footer />
     </div>
