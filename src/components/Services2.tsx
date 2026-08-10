@@ -29,11 +29,11 @@ const services = [
   },
   {
     title: "TRAILERS & CINEMATICS",
-        image: "/images/vehicles.png",
+    image: "/images/vehicles.png",
 
   },
 ];
-const Services = () => {
+const Servicess = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const servicesGridRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -171,26 +171,31 @@ const Services = () => {
           </div>
 
         </div>
-        <div ref={servicesGridRef} className="grid grid-cols-2 lg:grid-cols-3  mt-10 md:mt-24">
+        <div ref={servicesGridRef} className="grid grid-cols-2 lg:grid-cols-3 gap-3  mt-10 md:mt-24">
           {services.map((service, index) => (
             <div
               key={index}
-              className="service-card group relative overflow-hidden border border-white/10 aspect-[1/1]"
+              className="service-cards group relative overflow-hidden border border-white/10 aspect-[1/.75] rounded-[5px]"
             >
-              <span className="absolute top-5 right-5 w-10 h-10 p-2 flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-in-out z-99">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" color="rgb(0, 0, 0)" className="rotate-[-45deg]" style={{ width: '100%', height: '100%' }}><path fillRule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clipRule="evenodd"></path></svg>
-              </span>
+
               <img
                 src={service.image}
                 alt={service.title}
-                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-90 transition duration-700"
+                className="absolute inset-0 w-full h-full object-cover  group-hover:opacity-70 group-hover:scale-105 transition duration-700"
               />
 
-              <div className="absolute inset-0  group-hover:bg-black/40 transition duration-700" />
-
-              <h3 className="absolute inset-0 flex items-center group-hover:opacity-0 justify-center text-center uppercase md:text-2xl  tracking-wide z-10 transition duration-500 group-hover:scale-105">
-                {service.title}
-              </h3>
+              <div className="absolute inset-0  bg-black/50 transition duration-700" />
+              <div className="absolute inset-0 p-10 flex flex-col justify-between gap-5">
+                <div className="flex justify-between items-center gap-3 ">
+                  <h3 className="lex items-center justify-center text-center uppercase md:text-2xl  tracking-wide z-10 transition duration-500 group-hover:scale-105">
+                    {service.title}
+                  </h3>
+                  <span className=" w-10 h-10 p-2 flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green  group-hover:scale-80 transition-all duration-500 ease-in-out z-99">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" color="rgb(0, 0, 0)" className="rotate-[-45deg]" style={{ width: '100%', height: '100%' }}><path fillRule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clipRule="evenodd"></path></svg>
+                  </span>
+                </div>
+                <p  className="font-[200]  text-white text-[15px]  leading-snug">At Quadbreak Studios, we bring game worlds to life with high-quality 3D art, environments, and assets tailored for AAA, indie, and mobile games. </p>
+              </div>
             </div>
           ))}
         </div>
@@ -205,4 +210,4 @@ const Services = () => {
 
 
 
-export default Services;
+export default Servicess;

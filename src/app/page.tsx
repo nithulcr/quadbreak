@@ -14,6 +14,8 @@ import AboutSection3 from '@/components/AboutSection3';
 
 
 import Services from '@/components/Services';
+import Servicess from '@/components/Services2';
+
 
 
 
@@ -25,6 +27,7 @@ import CaseStudy from '@/components/CaseStudy';
 
 import Footer from '@/components/Footer';
 import Testimonials from "@/components/Testimonials";
+import ModernTestimonials from "@/components/ModernTestimonials";
 import WhoWeAre from "@/components/WhoWeAre";
 
 
@@ -50,6 +53,8 @@ export default function HomePage() {
 
 
         <Services />
+        <Servicess />
+
 
        
 
@@ -58,6 +63,7 @@ export default function HomePage() {
         {/* <CaseStudy />
 
         <Testimonials /> */}
+        {/* <ModernTestimonials /> */}
       </main>
        <Footer />
     </div>
