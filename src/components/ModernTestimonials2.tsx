@@ -30,7 +30,7 @@ const ModernTestimonials2 = () => {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 1,
+            duration: 6,
             stagger: {
               each: 0.1,
               ease: "power2.inOut",
@@ -45,70 +45,26 @@ const ModernTestimonials2 = () => {
           }
         );
 
-        // Infinite floating animation for each card
+        // Infinite floating animation for each card - X axis only with 3-position swing
         cards.forEach((card, index) => {
           // Set transform origin to center
           gsap.set(card, {
             transformOrigin: "center center",
           });
 
-          // Create circular motion - each card moves in a full circle
-          const startAngle = (index * 45) * (Math.PI / 180); // Different starting angles
-          const radius = 20;
-          const duration = 4 + (index % 3);
-          
-          // Different rotation for each card (10 degrees) with varied timing and direction
-          const rotation = 4;
-          const rotationDuration = 2 + (index % 4); // Different rotation timing for each card
-          const rotationDirection = index % 2 === 0 ? 1 : -1; // Alternate rotation direction
+          const baseDuration = 0.7 + (index % 3) * 0.5; // Different timing for each card (0.6-1.1s)
+          const delay = index * 0.15; // Different delay for each card
 
-          // Animate in a circular path with rotation using keyframes
+          // Three-position animation: -20px → 0 → 20px → 0 → -20px
           gsap.to(card, {
             keyframes: [
-              { 
-                x: Math.cos(startAngle) * radius, 
-                y: Math.sin(startAngle) * radius, 
-                rotation: rotation * rotationDirection,
-                duration: duration / 4 
-              },
-              { 
-                x: Math.cos(startAngle + Math.PI / 2) * radius, 
-                y: Math.sin(startAngle + Math.PI / 2) * radius, 
-                rotation: -rotation * rotationDirection,
-                duration: duration / 4 
-              },
-              { 
-                x: Math.cos(startAngle + Math.PI) * radius, 
-                y: Math.sin(startAngle + Math.PI) * radius, 
-                rotation: rotation * rotationDirection,
-                duration: duration / 4 
-              },
-              { 
-                x: Math.cos(startAngle + Math.PI * 1.5) * radius, 
-                y: Math.sin(startAngle + Math.PI * 1.5) * radius, 
-                rotation: -rotation * rotationDirection,
-                duration: duration / 4 
-              },
-              { 
-                x: Math.cos(startAngle + Math.PI * 2) * radius, 
-                y: Math.sin(startAngle + Math.PI * 2) * radius, 
-                rotation: rotation * rotationDirection,
-                duration: 0 
-              },
+              { x: -80, duration: baseDuration, ease: "sine.inOut" },
+              { x: 0, duration: baseDuration, ease: "sine.inOut" },
+              { x: 80, duration: baseDuration, ease: "sine.inOut" },
+              { x: 0, duration: baseDuration, ease: "sine.inOut" },
             ],
-            ease: "sine.inOut",
             repeat: -1,
-            delay: index * 0.3,
-          });
-
-          // Separate rotation animation with different timing and direction
-          gsap.to(card, {
-            rotation: `+=${4 * rotationDirection}`,
-            duration: rotationDuration,
-            ease: "sine.inOut",
-            repeat: -1,
-            yoyo: true,
-            delay: index * 0.2,
+            delay: delay,
           });
         });
       }
@@ -145,9 +101,9 @@ const ModernTestimonials2 = () => {
         </div>
 
         {/* Testimonials Grid - 12 Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-10  gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-10  gap-8">
           
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -177,7 +133,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -207,7 +163,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -237,7 +193,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -267,7 +223,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -297,7 +253,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -327,7 +283,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -357,7 +313,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -387,7 +343,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -418,8 +374,6 @@ const ModernTestimonials2 = () => {
             </div>
           </div>
           
-
-
         </div>
         <div className="w-fit mx-auto mt-12">
               <AnimatedButton href="" label="Write a Review" className="w-fit" />

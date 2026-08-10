@@ -36,28 +36,20 @@ const socialLinks = [
 ];
 
 const Footer = () => (
-  <footer className=" md:pt-[60px] pt-[0px] relative  font-light">
+  <footer className="  relative bg-[var(--background2)] font-light">
    
     <div className="max-w-[1360px] mx-auto footer md:p-5 p-4 ">
 
 
 
       {/* Footer Main Grid */}
-      <div className="middle  grid md:grid-cols-7  py-8  gap-[50px]    md:py-20">
+      <div className="middle  grid md:grid-cols-9  py-8  gap-[50px]    md:pb-14 md:pt-20">
         {/* Logo + Address Section */}
-        <div className="col-span-3 content-center lg:pr-15">
+        <div className="col-span-3 content-center lg:pr-5">
           <Image src="/images/logo.png" alt="" width={230} height={50} className="w-[230px] content-center" />
           <p className='py-4 font-light'>All company names, brand names, trademarks, logos, illustrations, videos and any other intellectual property (Intellectual Property) published on this website are the property of their respective owners. Any non-authorized usage of Intellectual Property is strictly prohibited and any violation will be prosecuted under the law.</p>
 
-          <ul className="flex gap-4 mt-4">
-            {socialLinks.map(({ href, Icon }, index) => (
-              <li key={index} className="font-light flex items-center gap-4">
-                <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
-                  <Icon className="w-7 h-7 text-[var(--green)]" strokeWidth={1} />
-                </a>
-              </li>
-            ))}
-          </ul>
+          
         </div>
 
         {/* Quick Links Section */}
@@ -72,9 +64,30 @@ const Footer = () => (
 
             <li><Link href="" className="font-light text-md">My Projects</Link></li>
 
-            <li><Link href="" className="font-light text-md">Contact Me</Link></li>
+          
 
 
+          </ul>
+        </div>
+        <div className="col-span-2 ">
+          <h2 className="text-2xl font-medium mb-6">Quick Links</h2>
+          <ul className="flex flex-col gap-3">
+            <li><Link href="/" className="font-light text-md">Privacy Policy</Link></li>
+            <li><Link href="" className="font-light text-md">Terms ANd Conditions</Link></li>
+           
+            <li><Link href="" className="font-light text-md">Contact Us</Link></li>
+
+
+
+          </ul>
+          <ul className="flex gap-4 mt-4">
+            {socialLinks.map(({ href, Icon }, index) => (
+              <li key={index} className="font-light flex items-center gap-4">
+                <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
+                  <Icon className="w-7 h-7 text-[var(--green)]" strokeWidth={1} />
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="col-span-2 ">
