@@ -141,13 +141,13 @@ const WhoWeAre = () => {
                     <img
                     src="/images/signature.png"
                     alt="signature"
-                    className="w-[300px]"
+                    className="w-[300px] mt-6"
                   />
                      {/* <div  ref={btnRef}>
                       <AnimatedButton href="about" label="Learn More" className="mt-10 w-fit min-w-[160px]" />
                     </div> */}
                   </div>
-                  <div className="lg:w-[50%] ml-auto mt-10 lg:mt-[-400px] max-w-[530px] fade-up">
+                  <div className="lg:w-[50%] ml-auto mt-10 lg:mt-[-350px] max-w-[530px] fade-up">
                     <h2 ref={text2Ref} className="uppercase w-fit text-white/60  text-right italic mb-10 text-[3rem]  leading-none font-light  relative">
                      Lets Create <br />Magic Together
                     </h2>
