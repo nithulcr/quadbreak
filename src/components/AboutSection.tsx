@@ -159,33 +159,33 @@ const AboutSection = () => {
             </h2>
 {/* 
             <p className="about-paragraph text-[16px] md:text-[18px] leading-snug font-[200] text-white/80 mb-12 max-w-3xl">
-              Vehicles, weapons, and environments are asset types that punish shortcuts — mechanical accuracy, panel logic, and wear patterns all show up the moment they're in-engine. It's a specific skill set, and it's the one we've built our pipeline around for nine years. 
+              Vehicles, weapons, and environments are asset types that punish shortcuts — mechanical accuracy, panel logic, and wear patterns all show up the moment they're in-engine. It's a specific skill set, and it's the one we have built our pipeline around for nine years. 
             </p> */}
 
             {/* Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               {aboutCards.map((card, index) => (
-                <div key={index} className="about-card group relative aspect-[1/1.2] overflow-hidden bg-[var(--green)]/40">
+                <div key={index} className="about-card group relative aspect-[1/1.2] overflow-hidden  top-0 hover:top-[-10px] transition-all  duration-500 ease-out">
                   
                   <img
                     src={card.image}
                     alt={card.title}
-                    className="object-cover h-full"
+                    className="object-cover h-full group-hover:scale-108 transition-transform duration-500 ease-out"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     loading={index === 0 ? "eager" : "lazy"}
                   />
                 
                   {/* Category badge */}
                   <div className="absolute top-6 left-6 z-20 transition-all duration-500 ease-out group-hover:top-[-100px]">
-                    <span className="bg-[var(--green)] text-black text-xs font-bold uppercase tracking-wider px-4 py-2">
+                    <span className="bg-[var(--green)] text-black text-xs font-[600] uppercase tracking-wider px-4 py-2">
                       {card.title}
                     </span>
                   </div>
                   <div className="absolute bottom-[-200px] group-hover:bottom-0 left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-6">
-                    <span className="font-light text-lg uppercase tracking-wider mb-2 block">
+                    <h5 className="font-light text-xl uppercase tracking-wider  relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
                       {card.title}
-                    </span>
-                    <p className="font-[200] text-[14px]  max-w-[260px]">the one we've built our pipeline around for nine years</p>
+                    </h5>
+                    <p className="font-[200] text-[14px]  max-w-[260px]">the one we have built our pipeline around for nine years</p>
                   </div>
                 </div>
               ))}
