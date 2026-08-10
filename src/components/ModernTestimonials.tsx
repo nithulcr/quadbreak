@@ -130,7 +130,7 @@ const ModernTestimonials = () => {
               <div className="flex gap-1">
                 {renderStars(5)}
               </div>
-              <span className="text-white/60 text-sm">(5/5) from 4,119 customers</span>
+              <span className="text-white/60 text-sm">(5/5) from 4,119 customers </span>
             </div>
           </div>
 
