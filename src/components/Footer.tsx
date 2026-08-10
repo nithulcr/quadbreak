@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import CurvedMarquee from '@/components/CurvedMarquee';
 
 import Link from "next/link";
 import {
@@ -38,11 +37,7 @@ const socialLinks = [
 
 const Footer = () => (
   <footer className=" md:pt-[60px] pt-[0px] relative  font-light">
-    <CurvedMarquee
-      text="Game Art ✦ Stimulator Art ✦ 3d Studio ✦  "
-      speed={1}
-      color="#b4b4b4"
-    />
+   
     <div className="max-w-[1360px] mx-auto footer md:p-5 p-4 ">
 
 

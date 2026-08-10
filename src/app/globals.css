@@ -148,12 +148,12 @@ body {
 
 .nav-cover {
 
-  background-color: #16181c89;
+  background-color: rgb(4, 4, 4);
   height: 100%;
   position: absolute;
   inset: -100% 0% 0%;
   transition: .5s;
-  backdrop-filter: blur(20px);
+  /* backdrop-filter: blur(20px); */
 }
 
 .scroll-down .nav-cover{
@@ -254,7 +254,10 @@ body.open main {
     inset: 0%;
     transition: .3s;
   }
-
+  header .button-outline {
+    background-color: rgba(9, 9, 9, 0.47);
+    backdrop-filter: blur(20px);
+  }
 
     /* .button:hover {
      background: linear-gradient(90deg, var(--white), var(--green));

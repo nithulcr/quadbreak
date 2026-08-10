@@ -102,7 +102,7 @@ const WhoWeAre = () => {
   }, []);
 
   return (
-    <section id="WhoWeAre" className="section overflow-hidden py-30" ref={sectionRef}>
+    <section id="WhoWeAre" className="section overflow-hidden py-20" ref={sectionRef}>
       {/* <div className="shape3 z-[-1]"></div>
       <div className="shape2 z-[-1]"></div> */}
       <div className="grid-wrapper max-w-[1360px] mx-auto px-5">
