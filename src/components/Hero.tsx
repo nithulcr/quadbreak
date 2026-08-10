@@ -91,16 +91,16 @@ export default function Hero() {
   return (
     <section ref={sectionRef} className="hero-section relative flex flex-col justify-center overflow-hidden main-hero px-5 lg:px-[4rem] pb-6 pt-15 lg:py-20 min-h-screen">
 
-        <div className="fade-up-css  hero-banner  flex flex-col justify-center max-w-[800px]  pt-20 px-5 w-full gap-5 ">
-          <h1 className="text-white uppercase  max-w-5xl  text-[3rem] lg:text-[6rem]  leading-none mb-1">
-            We&rsquo;re smart
-            and crazy
-            with art
-          </h1>
-          <p className="text-white text-[16px] md:text-[18px] max-w-2xl   lg:mx-0 font-light">
-            Evolved from Wrinit, Quadbreak Studios extends your team with expertly crafted 3D assets and environments — built for games, virtual reality, and simulation projects. Creative, reliable, and production-ready
-          </p>
-          {/* <div className="md:flex items-center justify-center max-w-[1360px] mx-auto  w-full gap-5 fade-up-css">
+      <div className="fade-up-css  hero-banner z-9  flex flex-col justify-center max-w-[800px]  pt-20 px-5 w-full gap-5 ">
+        <h1 className="text-white uppercase  max-w-5xl  text-[3rem] lg:text-[6rem]  leading-none mb-1">
+          We&rsquo;re smart
+          and crazy
+          with art
+        </h1>
+        <p className="text-white text-[16px] md:text-[18px] max-w-2xl   lg:mx-0 font-light">
+          Evolved from Wrinit, Quadbreak Studios extends your team with expertly crafted 3D assets and environments — built for games, virtual reality, and simulation projects. Creative, reliable, and production-ready
+        </p>
+        {/* <div className="md:flex items-center justify-center max-w-[1360px] mx-auto  w-full gap-5 fade-up-css">
             <AnimatedButton
               href=""
               label="Explore Our Work"
@@ -112,13 +112,13 @@ export default function Hero() {
               className="w-fit"
             />
           </div> */}
-          {/* <span className="rounded-full w-7 h-7 border border-gray-300 flex items-center justify-center">
+        {/* <span className="rounded-full w-7 h-7 border border-gray-300 flex items-center justify-center">
             <ArrowDown className="w-4 h-4 text-gray-300" />
           </span> */}
-        </div>
+      </div>
 
 
-      <div className="absolute top-0 left-0 w-full h-full  z-[-1]">
+      <div className="absolute hero-section-video top-0 left-0 w-full h-full  z-[-1]">
         <video
           autoPlay
           loop
@@ -130,16 +130,16 @@ export default function Hero() {
           Your browser does not support the video tag.
         </video>
       </div>
-      <div className="absolute bottom-0 right-0 w-[120px] h-[120px] md:w-[250px] md:h-[250px] ml-auto self-end uppercase">
-          <SpinningText
-            text="Quadbreak • Gaming Art • Stimulator Art  • "
-            image="/images/favicon-t.png"
-            size={250}
-            mobileSize={180}
-            duration={15}
+      <div className="absolute bottom-0 z-9 right-0 w-[120px] h-[120px] md:w-[250px] md:h-[250px] ml-auto self-end uppercase">
+        <SpinningText
+          text="Quadbreak • Gaming Art • Stimulator Art  • "
+          image="/images/favicon-t.png"
+          size={250}
+          mobileSize={180}
+          duration={15}
 
-          />
-        </div>
+        />
+      </div>
     </section>
   );
 }

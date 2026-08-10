@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import AnimatedButton from "./AnimatedButton";
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -19,17 +20,32 @@ export default function Header() {
     return (
         <header className="fixed top-0 inset-x-0 z-50 bg-transparent flex justify-center h-24 lg:px-[4rem] z-999">
             <div className="w-full grid grid-cols-[minmax(5vw,1fr)_minmax(auto,1400px)_minmax(5vw,1fr)] z-1">
-                <div className="max-w-[1360px] px-5  col-start-2 grid grid-cols-2 gap-x-3 items-center w-full absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div className="max-w-[1360px] px-5  flex justify-between gap-x-3 items-center w-full absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
 
                     {/* Logo */}
                     <Link href="/" className=" max-w-[240px] ">
                         <Image src="/images/logo.png" alt="Logo" width={220} height={70} className="object-contain " />
                     </Link>
 
+                    {/* Desktop Navigation */}
+                    <nav className="hidden lg:flex items-center justify-end gap-6">
+                        <Link href="/" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Home</Link>
+                        <Link href="" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">About Us</Link>
+                        <Link href="" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Game Art</Link>
+                        <Link href="" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Stimulator Art</Link>
+                        <Link href="" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Projects</Link>
+                        <Link href="" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Contact</Link>
+                        <AnimatedButton
+                            href=""
+                            label="Let's Talk"
+                            className="w-fit ml-2"
+                        />
+                    </nav>
+
 
                     {/* Hamburger Menu */}
                     <button
-                        className="flex items-center justify-end z-50 w-nav-button p-2 cursor-pointer "
+                        className="flex items-center justify-end z-50 w-nav-button p-2 cursor-pointer lg:hidden"
                         onClick={() => setMenuOpen(!menuOpen)}
                     >
                         <span className="uppercase hidden md:block bg-[var(--light-outline)] text-sm py-1 pr-3 pl-2 mr-[-10px] rounded-tl-[8px] rounded-bl-[8px]">Menu</span>

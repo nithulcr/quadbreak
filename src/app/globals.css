@@ -235,7 +235,7 @@ body.open main {
     color: var(--green);
     justify-content: center;
     align-items: center;
-    padding: 18px 30px;
+    padding: 16px 32px;
     font-size: 16px;
     text-decoration: none;
     display: flex;
@@ -249,11 +249,12 @@ body.open main {
     background-color: var(--background);
     /* border-radius: 40px;  */
     width: 100%;
-    padding:  18px 30px;
+    padding:  16px 32px;
     position: absolute;
     inset: 0%;
     transition: .3s;
   }
+
 
     /* .button:hover {
      background: linear-gradient(90deg, var(--white), var(--green));
@@ -632,8 +633,20 @@ height: 100%;
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #000000b2, #0000007e, transparent 100%);
+  background: linear-gradient(90deg, #000000d2, #000000a9, #0000007e, transparent 100%);
 
+}
+.hero-section:after {
+    content: "";
+    background: linear-gradient(0deg, var(--background), rgba(0, 0, 0, 0) 100%);
+    width: 100%;
+    height:300px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+header{
+   background: linear-gradient(180deg, #000000d2, transparent);
 }
 
 /* Coverflow Carousel Styles */

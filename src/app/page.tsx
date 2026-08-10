@@ -37,9 +37,9 @@ export default function HomePage() {
         <Hero />
                <WhoWeAre />
                <AboutSection />
-
+{/* 
                <AboutSection2 />
-               <AboutSection3 />
+               <AboutSection3 /> */}
 
 
 

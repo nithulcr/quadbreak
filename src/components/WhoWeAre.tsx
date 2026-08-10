@@ -117,7 +117,7 @@ const WhoWeAre = () => {
                 <div className="service-info pt-10 lg:pt-0 gap-y-10">
                   <div className="lg:w-[50%]">
                     <div className="flex flex-col mb-8">
-                      <h2 ref={titleRef} className="uppercase w-fit text-white  text-5xl lg:text-[5rem]  leading-none font-light  relative">
+                      {/* <h2 ref={titleRef} className="uppercase w-fit text-white  text-5xl lg:text-[5rem]  leading-none font-light  relative">
                         <span className="block pl-10">Vehicles</span>
                         <span className="flex items-center gap-2 pl-20">
                           <svg width="80" height="80" className="rotate-linear" viewBox="0 0 24 24" fill="#91ff6a" xmlns="http://www.w3.org/2000/svg">
@@ -129,6 +129,9 @@ const WhoWeAre = () => {
                           Weapons
                         </span>
                         <span className="block">Environments </span>
+                      </h2> */}
+                      <h2 ref={titleRef} className="uppercase w-fit text-white  text-5xl lg:text-[5rem]  leading-none font-light  relative">
+                        This is what we do best
                       </h2>
 
                     </div>
@@ -139,9 +142,9 @@ const WhoWeAre = () => {
                       <AnimatedButton href="about" label="Learn More" className="mt-10 w-fit min-w-[160px]" />
                     </div> */}
                   </div>
-                  <div className="lg:w-[50%] ml-auto mt-10 lg:mt-[-260px] max-w-[530px] fade-up lg:mt-[-30px]">
-                    <h2 ref={text2Ref} className="uppercase w-fit text-white/60 italic mb-10 text-[4rem]  leading-none font-light  relative">
-                      This is what we do best
+                  <div className="lg:w-[50%] ml-auto mt-10 lg:mt-[-180px] max-w-[530px] fade-up">
+                    <h2 ref={text2Ref} className="uppercase w-fit text-white/60  text-right italic mb-10 text-[3rem]  leading-none font-light  relative">
+                     Lets Create <br />Magic Together
                     </h2>
                     <video
                       autoPlay
@@ -157,7 +160,7 @@ const WhoWeAre = () => {
                   </div>
 
                 </div>
-                <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10  w-full">
+                {/* <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10  w-full">
 
                   <div className="flex flex-col gap-10">
                     <div ref={card1Ref}
@@ -197,7 +200,7 @@ const WhoWeAre = () => {
                   </div>
 
 
-                </div>
+                </div> */}
 
 
               </div>
