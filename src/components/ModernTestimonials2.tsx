@@ -147,7 +147,7 @@ const ModernTestimonials2 = () => {
         {/* Testimonials Grid - 12 Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-10  gap-10">
           
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -177,7 +177,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -207,7 +207,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -237,7 +237,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -267,7 +267,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -297,7 +297,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -327,7 +327,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -357,7 +357,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -387,7 +387,7 @@ const ModernTestimonials2 = () => {
               </div>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md hover:border-[var(--green)] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(145,255,106,.15)] p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500 hover:-translate-y-2  p-6 flex flex-col gap-5">
             
            <div>
              
@@ -422,7 +422,7 @@ const ModernTestimonials2 = () => {
 
         </div>
         <div className="w-fit mx-auto mt-12">
-              <AnimatedButton href="" label="Learn More About Us" className="w-fit" />
+              <AnimatedButton href="" label="Write a Review" className="w-fit" />
             </div>
       </div>
     </section>
