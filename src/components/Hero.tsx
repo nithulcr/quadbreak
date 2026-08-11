@@ -92,12 +92,19 @@ export default function Hero() {
     <section ref={sectionRef} className="hero-section relative flex flex-col justify-center overflow-hidden main-hero px-5 lg:px-[4rem] pb-6 pt-15 lg:py-20 min-h-screen">
 
       <div className="fade-up-css  hero-banner max-w-[1360px] mx-auto z-9  flex flex-col justify-center   pt-20 px-5 w-full gap-5 ">
-        <h1 className="text-white uppercase max-w-[800px]   text-[3rem] lg:text-[6rem]  leading-none mb-1 ">
-          <span className="text-[3rem] block  mb-3 font-[200]">Welcome to</span>
-          Quadbreak Studios
-         
+        <span className="text-[3rem] block  mb-2 font-[200] uppercase">Welcome to</span>
+        <h1 className="uppercase max-w-[800px] w-min   relative flex flex-col gap-4 text-[var(--green)] text-[3rem] lg:text-[6rem]  leading-none mb-1 ">
+
+          {/* <span className="span-1"></span> */}
+          <span className="block  w-fit">Quadbreak</span> 
+          <span className="block  w-fit">Studios</span>
+
+          {/* <span className="span-2"></span> */}
+
         </h1>
-         <span className="text-[1.2rem] uppercase font-light text-[var(--green)]">worlds, Vehicles, weapons  — The Best for your Team.</span>
+        <span className="text-[1.2rem] uppercase font-light block mt-2">worlds, Vehicles, weapons  — The Best for your Team.</span>
+
+
         {/* <p className="text-white text-[16px] md:text-[18px] max-w-[700px]   lg:mx-0 font-[200]">
           From reference to render-ready, we take game art through the full production journey — modeling, texturing, and optimizing so it drops straight into your pipeline. No hand-holding, no rework loops. Just finished, engine-ready art, on schedule.
         </p> */}
