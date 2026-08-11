@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AnimatedButton from "./AnimatedButton";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -94,298 +93,287 @@ const ModernTestimonials2 = () => {
     <section ref={sectionRef} className="py-20 relative overflow-hidden bg-[var(--background)]">
       <div className="absolute hero-section-video top-0 left-0 w-full h-full opacity-15">
         <img
-                    src="/images/bg2.png"
-                    alt="bg"
-                    className="object-cover h-full"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+          src="/images/bg2.png"
+          alt="bg"
+          className="object-cover h-full"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
       </div>
       <div className="max-w-[1360px] mx-auto px-5">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-white uppercase text-4xl lg:text-6xl leading-none font-light mb-4">
-            Client Reviews
+            What Our Clients Says
           </h2>
         </div>
 
         {/* Testimonials Grid - 12 Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-10  gap-8">
-          
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/5 bg-white/5 backdrop-blur-lg  transition-all duration-500  p-6 flex flex-col gap-5">
-            
-           <div>
-             
-            <p className="text-white/70 text-sm font-light mb-4 flex-1">
-              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
-            </p>
-           </div>
-            <div className="flex items-center justify-between mt-auto">
-              <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/5 bg-black/20 backdrop-blur-lg  transition-all duration-500  p-6 flex flex-col gap-5">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 relative rounded-full overflow-hidden">
                 <Image
                   src="/images/user.png"
                   alt="John Doe"
                   fill
-                  sizes="40px"
+                  sizes="50px"
                   className="object-cover"
                 />
               </div>
-              <div>
-                <p className="font-semibold text-white text-sm">John Doe</p>
-                <p className="text-xs text-gray-400">@JohnDoe • 12h</p>
-              </div>
-            </div>
-              <div>
+              <div className="font-light">
+                <p className="font-medium text-white">John Doe</p>
+                <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
+                {/* <div>
                 {renderStars(5)}
-              <span className="text-white/60 text-xs">(5.0) All Client Score</span>
+              </div> */}
               </div>
             </div>
+
+
+            <div>
+
+              <p className="text-white/80 text-[14px] font-[200] ">
+                Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
+              </p>
+            </div>
+
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
-            
-           <div>
-             
-            <p className="text-white/70 text-sm font-light mb-4 flex-1">
-              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
-            </p>
-           </div>
-            <div className="flex items-center justify-between mt-auto">
-              <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-black/20 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
+
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 relative rounded-full overflow-hidden">
                 <Image
                   src="/images/user.png"
                   alt="John Doe"
                   fill
-                  sizes="40px"
+                  sizes="50px"
                   className="object-cover"
                 />
               </div>
-              <div>
-                <p className="font-semibold text-white text-sm">John Doe</p>
-                <p className="text-xs text-gray-400">@JohnDoe • 12h</p>
+              <div className="font-light">
+                <p className="font-medium text-white">John Doe</p>
+                <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
+                {/* <div>
+                {renderStars(5)}
+              </div> */}
               </div>
             </div>
-              <div>
-                {renderStars(5)}
-              <span className="text-white/60 text-xs">(5.0) All Client Score</span>
-              </div>
+
+
+            <div>
+
+              <p className="text-white/80 text-[14px] font-[200] ">
+                Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
+              </p>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
-            
-           <div>
-             
-            <p className="text-white/70 text-sm font-light mb-4 flex-1">
-              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
-            </p>
-           </div>
-            <div className="flex items-center justify-between mt-auto">
-              <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-black/20 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
+
+           <div className="flex items-center gap-3">
+              <div className="w-12 h-12 relative rounded-full overflow-hidden">
                 <Image
                   src="/images/user.png"
                   alt="John Doe"
                   fill
-                  sizes="40px"
+                  sizes="50px"
                   className="object-cover"
                 />
               </div>
-              <div>
-                <p className="font-semibold text-white text-sm">John Doe</p>
-                <p className="text-xs text-gray-400">@JohnDoe • 12h</p>
+              <div className="font-light">
+                <p className="font-medium text-white">John Doe</p>
+                <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
+                {/* <div>
+                {renderStars(5)}
+              </div> */}
               </div>
             </div>
-              <div>
-                {renderStars(5)}
-              <span className="text-white/60 text-xs">(5.0) All Client Score</span>
-              </div>
+
+
+            <div>
+
+              <p className="text-white/80 text-[14px] font-[200] ">
+                Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
+              </p>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
-            
-           <div>
-             
-            <p className="text-white/70 text-sm font-light mb-4 flex-1">
-              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
-            </p>
-           </div>
-            <div className="flex items-center justify-between mt-auto">
-              <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-black/20 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
+
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 relative rounded-full overflow-hidden">
                 <Image
                   src="/images/user.png"
                   alt="John Doe"
                   fill
-                  sizes="40px"
+                  sizes="50px"
                   className="object-cover"
                 />
               </div>
-              <div>
-                <p className="font-semibold text-white text-sm">John Doe</p>
-                <p className="text-xs text-gray-400">@JohnDoe • 12h</p>
+              <div className="font-light">
+                <p className="font-medium text-white">John Doe</p>
+                <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
+                {/* <div>
+                {renderStars(5)}
+              </div> */}
               </div>
             </div>
-              <div>
-                {renderStars(5)}
-              <span className="text-white/60 text-xs">(5.0) All Client Score</span>
-              </div>
+
+
+            <div>
+
+              <p className="text-white/80 text-[14px] font-[200] ">
+                Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
+              </p>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
-            
-           <div>
-             
-            <p className="text-white/70 text-sm font-light mb-4 flex-1">
-              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
-            </p>
-           </div>
-            <div className="flex items-center justify-between mt-auto">
-              <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-black/20 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
+
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 relative rounded-full overflow-hidden">
                 <Image
                   src="/images/user.png"
                   alt="John Doe"
                   fill
-                  sizes="40px"
+                  sizes="50px"
                   className="object-cover"
                 />
               </div>
-              <div>
-                <p className="font-semibold text-white text-sm">John Doe</p>
-                <p className="text-xs text-gray-400">@JohnDoe • 12h</p>
+              <div className="font-light">
+                <p className="font-medium text-white">John Doe</p>
+                <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
+                {/* <div>
+                {renderStars(5)}
+              </div> */}
               </div>
             </div>
-              <div>
-                {renderStars(5)}
-              <span className="text-white/60 text-xs">(5.0) All Client Score</span>
-              </div>
+
+
+            <div>
+
+              <p className="text-white/80 text-[14px] font-[200] ">
+                Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
+              </p>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
-            
-           <div>
-             
-            <p className="text-white/70 text-sm font-light mb-4 flex-1">
-              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
-            </p>
-           </div>
-            <div className="flex items-center justify-between mt-auto">
-              <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-black/20 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
+
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 relative rounded-full overflow-hidden">
                 <Image
                   src="/images/user.png"
                   alt="John Doe"
                   fill
-                  sizes="40px"
+                  sizes="50px"
                   className="object-cover"
                 />
               </div>
-              <div>
-                <p className="font-semibold text-white text-sm">John Doe</p>
-                <p className="text-xs text-gray-400">@JohnDoe • 12h</p>
+              <div className="font-light">
+                <p className="font-medium text-white">John Doe</p>
+                <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
+                {/* <div>
+                {renderStars(5)}
+              </div> */}
               </div>
             </div>
-              <div>
-                {renderStars(5)}
-              <span className="text-white/60 text-xs">(5.0) All Client Score</span>
-              </div>
+
+
+            <div>
+
+              <p className="text-white/80 text-[14px] font-[200] ">
+                Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
+              </p>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
-            
-           <div>
-             
-            <p className="text-white/70 text-sm font-light mb-4 flex-1">
-              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
-            </p>
-           </div>
-            <div className="flex items-center justify-between mt-auto">
-              <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-black/20 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
+
+           <div className="flex items-center gap-3">
+              <div className="w-12 h-12 relative rounded-full overflow-hidden">
                 <Image
                   src="/images/user.png"
                   alt="John Doe"
                   fill
-                  sizes="40px"
+                  sizes="50px"
                   className="object-cover"
                 />
               </div>
-              <div>
-                <p className="font-semibold text-white text-sm">John Doe</p>
-                <p className="text-xs text-gray-400">@JohnDoe • 12h</p>
+              <div className="font-light">
+                <p className="font-medium text-white">John Doe</p>
+                <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
+                {/* <div>
+                {renderStars(5)}
+              </div> */}
               </div>
             </div>
-              <div>
-                {renderStars(5)}
-              <span className="text-white/60 text-xs">(5.0) All Client Score</span>
-              </div>
+
+
+            <div>
+
+              <p className="text-white/80 text-[14px] font-[200] ">
+                Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
+              </p>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
-            
-           <div>
-             
-            <p className="text-white/70 text-sm font-light mb-4 flex-1">
-              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
-            </p>
-           </div>
-            <div className="flex items-center justify-between mt-auto">
-              <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-black/20 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
+
+           <div className="flex items-center gap-3">
+              <div className="w-12 h-12 relative rounded-full overflow-hidden">
                 <Image
                   src="/images/user.png"
                   alt="John Doe"
                   fill
-                  sizes="40px"
+                  sizes="50px"
                   className="object-cover"
                 />
               </div>
-              <div>
-                <p className="font-semibold text-white text-sm">John Doe</p>
-                <p className="text-xs text-gray-400">@JohnDoe • 12h</p>
+              <div className="font-light">
+                <p className="font-medium text-white">John Doe</p>
+                <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
+                {/* <div>
+                {renderStars(5)}
+              </div> */}
               </div>
             </div>
-              <div>
-                {renderStars(5)}
-              <span className="text-white/60 text-xs">(5.0) All Client Score</span>
-              </div>
+
+
+            <div>
+
+              <p className="text-white/80 text-[14px] font-[200] ">
+                Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
+              </p>
             </div>
           </div>
-          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
-            
-           <div>
-             
-            <p className="text-white/70 text-sm font-light mb-4 flex-1">
-              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
-            </p>
-           </div>
-            <div className="flex items-center justify-between mt-auto">
-              <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+          <div className="testimonial-card  col-span-1 md:col-span-4  rounded-[28px] border border-white/10 bg-black/20 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
+
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 relative rounded-full overflow-hidden">
                 <Image
                   src="/images/user.png"
                   alt="John Doe"
                   fill
-                  sizes="40px"
+                  sizes="50px"
                   className="object-cover"
                 />
               </div>
-              <div>
-                <p className="font-semibold text-white text-sm">John Doe</p>
-                <p className="text-xs text-gray-400">@JohnDoe • 12h</p>
+              <div className="font-light">
+                <p className="font-medium text-white">John Doe</p>
+                <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
+                {/* <div>
+                {renderStars(5)}
+              </div> */}
               </div>
             </div>
-              <div>
-                {renderStars(5)}
-              <span className="text-white/60 text-xs">(5.0) All Client Score</span>
-              </div>
+
+
+            <div>
+
+              <p className="text-white/80 text-[14px] font-[200] ">
+                Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
+              </p>
             </div>
           </div>
-          
+
         </div>
-        <div className="w-fit mx-auto mt-12">
-              <AnimatedButton href="" label="Write a Review" className="w-fit" />
-            </div>
+       
       </div>
     </section>
   );

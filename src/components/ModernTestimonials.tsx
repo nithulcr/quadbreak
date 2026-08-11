@@ -71,7 +71,7 @@ const ModernTestimonials = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-white uppercase text-4xl lg:text-6xl leading-none font-light mb-4">
-            Client Reviews
+            What Our Clients Says
           </h2>
         </div>
 

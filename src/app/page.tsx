@@ -53,7 +53,7 @@ export default function HomePage() {
 
 
 
-        <Services />
+        {/* <Services /> */}
         <Servicess />
                <AboutSection />
 
