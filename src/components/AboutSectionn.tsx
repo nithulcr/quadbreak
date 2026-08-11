@@ -171,7 +171,7 @@ const AboutSectionn = () => {
 
             {/* Heading */}
             <h2 className="about-heading uppercase text-center text-white text-3xl lg:text-[4rem] leading-none font-light mb-10">
-              Our Services
+             recent works
             </h2>
 {/* 
             <p className="about-paragraph text-[16px] md:text-[18px] leading-snug font-[200] text-white/80 mb-12 max-w-3xl">

@@ -78,7 +78,7 @@ const ModernTestimonials2 = () => {
         {[...Array(5)].map((_, i) => (
           <svg
             key={i}
-            className={`w-4 h-4 ${i < count ? 'text-yellow-400' : 'text-gray-500'}`}
+            className={`w-4 h-4 ${i < count ? 'text-[#91ff6a]' : 'text-gray-500'}`}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -124,9 +124,9 @@ const ModernTestimonials2 = () => {
               <div className="font-light">
                 <p className="font-medium text-white">John Doe</p>
                 <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
-                {/* <div>
+                <div className="mt-2">
                 {renderStars(5)}
-              </div> */}
+              </div>
               </div>
             </div>
 
@@ -154,9 +154,9 @@ const ModernTestimonials2 = () => {
               <div className="font-light">
                 <p className="font-medium text-white">John Doe</p>
                 <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
-                {/* <div>
+                <div className="mt-2">
                 {renderStars(5)}
-              </div> */}
+              </div>
               </div>
             </div>
 
@@ -183,9 +183,9 @@ const ModernTestimonials2 = () => {
               <div className="font-light">
                 <p className="font-medium text-white">John Doe</p>
                 <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
-                {/* <div>
+                <div className="mt-2">
                 {renderStars(5)}
-              </div> */}
+              </div>
               </div>
             </div>
 
@@ -212,9 +212,9 @@ const ModernTestimonials2 = () => {
               <div className="font-light">
                 <p className="font-medium text-white">John Doe</p>
                 <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
-                {/* <div>
+                <div className="mt-2">
                 {renderStars(5)}
-              </div> */}
+              </div>
               </div>
             </div>
 
@@ -241,9 +241,9 @@ const ModernTestimonials2 = () => {
               <div className="font-light">
                 <p className="font-medium text-white">John Doe</p>
                 <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
-                {/* <div>
+                <div className="mt-2">
                 {renderStars(5)}
-              </div> */}
+              </div>
               </div>
             </div>
 
@@ -270,9 +270,9 @@ const ModernTestimonials2 = () => {
               <div className="font-light">
                 <p className="font-medium text-white">John Doe</p>
                 <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
-                {/* <div>
+                <div className="mt-2">
                 {renderStars(5)}
-              </div> */}
+              </div>
               </div>
             </div>
 
@@ -299,9 +299,9 @@ const ModernTestimonials2 = () => {
               <div className="font-light">
                 <p className="font-medium text-white">John Doe</p>
                 <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
-                {/* <div>
+                <div className="mt-2">
                 {renderStars(5)}
-              </div> */}
+              </div>
               </div>
             </div>
 
@@ -328,9 +328,9 @@ const ModernTestimonials2 = () => {
               <div className="font-light">
                 <p className="font-medium text-white">John Doe</p>
                 <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
-                {/* <div>
+                <div className="mt-2">
                 {renderStars(5)}
-              </div> */}
+              </div>
               </div>
             </div>
 
@@ -357,9 +357,9 @@ const ModernTestimonials2 = () => {
               <div className="font-light">
                 <p className="font-medium text-white">John Doe</p>
                 <p className="text-sm flex flex-wrap gap-2 pt-[2px]"><span className="text-gray-400">CEO</span> Quadbreak Studio</p>
-                {/* <div>
+                <div className="mt-2">
                 {renderStars(5)}
-              </div> */}
+              </div>
               </div>
             </div>
 
