@@ -91,14 +91,15 @@ export default function Hero() {
   return (
     <section ref={sectionRef} className="hero-section relative flex flex-col justify-center overflow-hidden main-hero px-5 lg:px-[4rem] pb-6 pt-15 lg:py-20 min-h-screen">
 
-      <div className="fade-up-css  hero-banner z-9  flex flex-col justify-center max-w-[800px]  pt-20 px-5 w-full gap-5 ">
-        <h1 className="text-white uppercase  max-w-5xl  text-[3rem] lg:text-[6rem]  leading-none mb-1">
-          We&rsquo;re smart
-          and crazy
-          with art
+      <div className="fade-up-css  hero-banner max-w-[1360px] mx-auto z-9  flex flex-col justify-center   pt-20 px-5 w-full gap-5 ">
+        <h1 className="text-white uppercase max-w-[800px]   text-[3rem] lg:text-[5.6rem]  leading-none mb-1">
+          Welcome to
+          Quadbreak Studios
+         
         </h1>
-        <p className="text-white text-[16px] md:text-[18px] max-w-2xl   lg:mx-0 font-light">
-          Evolved from Wrinit, Quadbreak Studios extends your team with expertly crafted 3D assets and environments — built for games, virtual reality, and simulation projects. Creative, reliable, and production-ready
+         <span className="text-[1.2rem] uppercase font-light text-[var(--green)]">Vehicles, weapons, worlds — built for your engine.</span>
+        <p className="text-white text-[16px] md:text-[18px] max-w-3xl   lg:mx-0 font-[200]">
+          From reference to render-ready, we take game art through the full production journey — modeling, texturing, and optimizing so it drops straight into your pipeline. No hand-holding, no rework loops. Just finished, engine-ready art, on schedule.
         </p>
         {/* <div className="md:flex items-center justify-center max-w-[1360px] mx-auto  w-full gap-5 fade-up-css">
             <AnimatedButton

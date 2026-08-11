@@ -63,38 +63,6 @@ const StatsSection = () => {
         );
       }
 
-      // Number animation with counting effect
-      const numbers = section.querySelectorAll(".stat-number");
-      numbers.forEach((number) => {
-        const target = number.getAttribute("data-target");
-        if (target) {
-          gsap.fromTo(number,
-            { textContent: 0 },
-            {
-              textContent: target,
-              duration: 2,
-              ease: "power2.out",
-              snap: { textContent: 1 },
-              scrollTrigger: {
-                trigger: number,
-                start: "top 85%",
-                once: true,
-                invalidateOnRefresh: true,
-              },
-              onUpdate: function() {
-                const current = Math.round(this.targets()[0].textContent);
-                if (target.includes("+")) {
-                  number.textContent = String(current) + "+";
-                } else if (target.includes("%")) {
-                  number.textContent = String(current) + "%";
-                } else {
-                  number.textContent = String(current);
-                }
-              }
-            }
-          );
-        }
-      });
     }, sectionRef);
 
     return () => ctx.revert();

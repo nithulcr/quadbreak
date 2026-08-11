@@ -45,7 +45,6 @@ export default function HomePage() {
         <Hero />
         <StatsSection />
                <WhoWeAre />
-               <AboutSection />
                <AboutSectionn />
 
 {/* 
@@ -56,6 +55,8 @@ export default function HomePage() {
 
         <Services />
         <Servicess />
+               <AboutSection />
+
 <ModernTestimonials />
 <ModernTestimonials2 />
 

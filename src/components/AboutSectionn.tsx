@@ -24,6 +24,22 @@ const aboutCards = [
     category: "service",
     image: "https://media.room8studio.com/wp-content/uploads/2022/01/04204134/service-animation.jpg",
   },
+   {
+    title: "Environments",
+    category: "service",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04204134/service-animation.jpg",
+  },
+  {
+    title: "Vehicles",
+    category: "service",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04204130/service-trailer.jpg",
+  },
+  {
+    title: "Weapons",
+    category: "service",
+    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04204136/service-3d.jpg",
+  },
+ 
 ];
 
 const AboutSectionn = () => {
@@ -155,7 +171,7 @@ const AboutSectionn = () => {
 
             {/* Heading */}
             <h2 className="about-heading uppercase text-center text-white text-3xl lg:text-[4rem] leading-none font-light mb-10">
-               This is what we do best
+              Our Services
             </h2>
 {/* 
             <p className="about-paragraph text-[16px] md:text-[18px] leading-snug font-[200] text-white/80 mb-12 max-w-3xl">

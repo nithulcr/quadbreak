@@ -92,6 +92,14 @@ const ModernTestimonials2 = () => {
 
   return (
     <section ref={sectionRef} className="py-20 relative overflow-hidden bg-[var(--background)]">
+      <div className="absolute hero-section-video top-0 left-0 w-full h-full opacity-15">
+        <img
+                    src="/images/bg2.png"
+                    alt="bg"
+                    className="object-cover h-full"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+      </div>
       <div className="max-w-[1360px] mx-auto px-5">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -103,11 +111,11 @@ const ModernTestimonials2 = () => {
         {/* Testimonials Grid - 12 Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-10  gap-8">
           
-          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md  transition-all duration-500  p-6 flex flex-col gap-5">
+          <div className="testimonial-card  col-span-1 md:col-span-3  rounded-[28px] border border-white/5 bg-white/5 backdrop-blur-lg  transition-all duration-500  p-6 flex flex-col gap-5">
             
            <div>
              
-            <p className="text-white/60 text-sm mb-4 flex-1">
+            <p className="text-white/70 text-sm font-light mb-4 flex-1">
               Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
             </p>
            </div>
@@ -137,7 +145,7 @@ const ModernTestimonials2 = () => {
             
            <div>
              
-            <p className="text-white/60 text-sm mb-4 flex-1">
+            <p className="text-white/70 text-sm font-light mb-4 flex-1">
               Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
             </p>
            </div>
@@ -167,7 +175,7 @@ const ModernTestimonials2 = () => {
             
            <div>
              
-            <p className="text-white/60 text-sm mb-4 flex-1">
+            <p className="text-white/70 text-sm font-light mb-4 flex-1">
               Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
             </p>
            </div>
@@ -197,7 +205,7 @@ const ModernTestimonials2 = () => {
             
            <div>
              
-            <p className="text-white/60 text-sm mb-4 flex-1">
+            <p className="text-white/70 text-sm font-light mb-4 flex-1">
               Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
             </p>
            </div>
@@ -227,7 +235,7 @@ const ModernTestimonials2 = () => {
             
            <div>
              
-            <p className="text-white/60 text-sm mb-4 flex-1">
+            <p className="text-white/70 text-sm font-light mb-4 flex-1">
               Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
             </p>
            </div>
@@ -257,7 +265,7 @@ const ModernTestimonials2 = () => {
             
            <div>
              
-            <p className="text-white/60 text-sm mb-4 flex-1">
+            <p className="text-white/70 text-sm font-light mb-4 flex-1">
               Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
             </p>
            </div>
@@ -287,7 +295,7 @@ const ModernTestimonials2 = () => {
             
            <div>
              
-            <p className="text-white/60 text-sm mb-4 flex-1">
+            <p className="text-white/70 text-sm font-light mb-4 flex-1">
               Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
             </p>
            </div>
@@ -317,7 +325,7 @@ const ModernTestimonials2 = () => {
             
            <div>
              
-            <p className="text-white/60 text-sm mb-4 flex-1">
+            <p className="text-white/70 text-sm font-light mb-4 flex-1">
               Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
             </p>
            </div>
@@ -347,7 +355,7 @@ const ModernTestimonials2 = () => {
             
            <div>
              
-            <p className="text-white/60 text-sm mb-4 flex-1">
+            <p className="text-white/70 text-sm font-light mb-4 flex-1">
               Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Hendrerit dolor magna, eget est lorem ipsum a.
             </p>
            </div>

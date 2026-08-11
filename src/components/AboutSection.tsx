@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AnimatedButton from "./AnimatedButton";
+import AnimatedButton from "./AnimatedButton"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -155,7 +155,7 @@ const AboutSection = () => {
 
             {/* Heading */}
             <h2 className="about-heading uppercase text-center text-white text-3xl lg:text-[4rem] leading-none font-light mb-10">
-               This is what we do best
+               Our Best Works
             </h2>
 {/* 
             <p className="about-paragraph text-[16px] md:text-[18px] leading-snug font-[200] text-white/80 mb-12 max-w-3xl">
@@ -165,7 +165,7 @@ const AboutSection = () => {
             {/* Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               {aboutCards.map((card, index) => (
-                <div key={index} className="about-card group relative aspect-[1/1.2] overflow-hidden border border-[var(--green)]/50 top-0 hover:top-[-10px] transition-all  duration-500 ease-out">
+                <div key={index} className="about-card group relative aspect-[1/1.2] overflow-hidden border border-transparent hover:border-[var(--green)]/50 top-0 hover:top-[-10px] transition-all  duration-500 ease-out">
                   
                   <img
                     src={card.image}
@@ -193,9 +193,9 @@ const AboutSection = () => {
             </div>
 
   
-            {/* <div className="about-cta">
-              <AnimatedButton href="" label="Learn More About Us" className="w-fit" />
-            </div> */}
+            <div className="mx-auto w-fit pt-5">
+              <AnimatedButton href="" label="View All Works" className="w-fit" />
+            </div>
           </div>
         </div>
       </div>

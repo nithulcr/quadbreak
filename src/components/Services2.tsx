@@ -7,29 +7,30 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 const services = [
-  {
-    title: "CONCEPT ART & 2D",
-    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
+    {
+    title: "Vehicles",
+      image: "/images/works/3.png",
   },
   {
-    title: "TRAINING AND SIMULATION",
-    image: "/images/vehicles.png",
+    title: "Weapons",
+    image: "/images/works/1.png",
+  },
+
+  {
+    title: "Environments",
+      image: "/images/works/6.jpeg",
   },
   {
-    title: "3D ENVIRONMENT",
-    image: "/images/weapons.png",
+    title: "Vegetations",
+      image: "/images/works/4.png",
   },
   {
-    title: "3D CHARACTERS",
-    image: "/images/environments.png",
+    title: "Props",
+      image: "/images/works/5.png",
   },
   {
-    title: "ANIMATION & VFX",
-    image: "https://media.room8studio.com/wp-content/uploads/2022/01/04201751/service-ca-min.jpg",
-  },
-  {
-    title: "TRAILERS & CINEMATICS",
-    image: "/images/vehicles.png",
+    title: "Stylized",
+    image: "/images/works/2.png",
 
   },
 ];
@@ -184,10 +185,10 @@ const Servicess = () => {
                 className="absolute inset-0 w-full h-full object-cover  group-hover:opacity-70 group-hover:scale-105 transition duration-700"
               />
 
-              <div className="absolute inset-0  bg-gradient-to-t from-black/90 via-black/60 to-via-black/20 transition duration-700" />
+              <div className="absolute inset-0  bg-gradient-to-t from-black/90 via-black/60 to-black/30 transition duration-700" />
               <div className="absolute inset-0 p-8 flex flex-col justify-between gap-5">
                 <div className="flex justify-between items-center gap-3 ">
-                  <h3 className="lex items-center justify-center   md:text-2xl  tracking-wide z-10 transition duration-500 group-hover:scale-105">
+                  <h3 className="uppercase md:text-2xl  tracking-wide z-10 transition duration-500 group-hover:scale-105">
                     {service.title}
                   </h3>
                   <span className=" w-10 h-10 p-2 flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green  group-hover:scale-80 transition-all duration-500 ease-in-out z-99">

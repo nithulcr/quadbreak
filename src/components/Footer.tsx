@@ -36,8 +36,8 @@ const socialLinks = [
 ];
 
 const Footer = () => (
-  <footer className="  relative bg-[var(--background2)] font-light">
-   
+  <footer className="  relative  font-light">
+   <span className="block underline-span"></span>
     <div className="max-w-[1360px] mx-auto footer md:p-5 p-4 ">
 
 
