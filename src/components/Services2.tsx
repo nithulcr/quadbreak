@@ -151,10 +151,10 @@ const Servicess = () => {
     <section id="services" className="py-16 lg:py-30 relative overflow-hidden " ref={sectionRef}>
 
       <div
-        className="grid gap-x-20 max-w-[1420px] mx-auto items-center w-full "
+        className="grid gap-x-20 max-w-[1360px] mx-auto px-5 items-center w-full "
       >
 
-        <div className="pt-10 lg:pt-0 max-w-[1360px] mx-auto px-5 gap-y-10 flex flex-col lg:flex-row w-full lg:items-end lg:justify-between  mb-8">
+        <div className="pt-10 lg:pt-0  gap-y-10 flex flex-col lg:flex-row w-full lg:items-end lg:justify-between  mb-8">
           <div className="lg:w-[50%]">
 
             <h2 ref={titleRef} className="uppercase w-fit text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">
