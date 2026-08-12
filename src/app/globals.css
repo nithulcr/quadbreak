@@ -650,6 +650,30 @@ height: 100%;
     bottom: 0;
     left: 0;
 }
+.footer-heading:before {
+    content: "";
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 5%, #000 50%);
+    mask-image: linear-gradient(270deg, rgb(0 0 0 / 0%) 5%, #00000082 50%);
+    background: var(--background);
+    z-index: 9;
+}
+.footer-heading:after {
+    content: "";
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    -webkit-mask-image: linear-gradient(270deg, rgba(0, 0, 0, 0) 5%, #000 50%);
+    mask-image: linear-gradient(90deg, rgb(0 0 0 / 0%) 5%, #00000082 50%);
+
+    background: var(--background);
+}
 header{
    background: linear-gradient(180deg, #000000d2, transparent);
 }

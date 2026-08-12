@@ -26,6 +26,7 @@ import CaseStudy from '@/components/CaseStudy';
 
 
 import Footer from '@/components/Footer';
+import ClientsLogoSlider from '@/components/ClientsLogoSlider';
 import Testimonials from "@/components/Testimonials";
 import ModernTestimonials from "@/components/ModernTestimonials";
 import ModernTestimonials2 from "@/components/ModernTestimonials2";
@@ -70,6 +71,7 @@ export default function HomePage() {
         <Testimonials /> */}
         
       </main>
+       <ClientsLogoSlider />
        <Footer />
     </div>
   );
