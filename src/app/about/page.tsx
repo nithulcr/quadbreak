@@ -3,8 +3,7 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import StatsSection from '@/components/StatsSection';
-import WhoWeAre from "@/components/WhoWeAre";
+import OurStory from "@/components/OurStory";
 import Banner from '@/components/Banner';
 
 export default function AboutPage() {
@@ -13,8 +12,8 @@ export default function AboutPage() {
       <Header />
       <main>
          <Banner title="About Us" backgroundImage="/images/bg-banner.jpg" />
-          <StatsSection />
-               <WhoWeAre />
+               <OurStory />
+
 
       </main>
       <Footer />

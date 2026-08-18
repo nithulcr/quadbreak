@@ -14,7 +14,7 @@ export default function Banner({ title, backgroundImage }: BannerProps) {
       }}
     >
       <div className="absolute inset-0 bg-black/40 backdrop-blur-[50px]" />
-      <h1 className="relative text-4xl font-bold font-monument tracking-[4px] uppercase z-10 pt-40 pb-24">
+      <h1 className="relative text-4xl md:text-5xl font-bold font-monument tracking-[4px] uppercase z-10 pt-50 pb-34">
         {title}
       </h1>
     </div>
