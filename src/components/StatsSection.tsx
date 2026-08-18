@@ -10,87 +10,97 @@ const stats = [
   {
     number: "9",
     label: "Years of Experience",
-    description: "Building game art excellence"
+    description: "Building game art excellence",
   },
   {
     number: "500",
     label: "Projects Delivered",
-    description: "Across games, VR & simulations"
+    description: "Across games, VR & simulations",
   },
   {
     number: "50",
     label: "Expert Artists",
-    description: "Specialized 3D professionals"
+    description: "Specialized 3D professionals",
   },
   {
     number: "500",
     label: "Client Satisfaction",
-    description: "Trusted by industry leaders"
-  }
+    description: "Trusted by industry leaders",
+  },
 ];
 
 const StatsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
     const ctx = gsap.context(() => {
-      const section = sectionRef.current;
-      if (!section) return;
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%",
+          once: true,
+        },
+      });
 
-      // Stats counter animation
-      const statItems = section.querySelectorAll(".stat-item");
-      if (statItems.length > 0) {
-        gsap.fromTo(statItems,
-          {
-            opacity: 0,
-            y: 30,
-            scale: 0.9,
+
+
+      gsap.from(
+        gridRef.current?.children || [],
+        {
+          opacity: 0,
+          y: 60,
+          scale: 0.96,
+          duration: 0.9,
+          stagger: {
+            each: 0.12,
+            from: "start",
           },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: statItems[0],
-              start: "top 85%",
-              once: true,
-              invalidateOnRefresh: true,
-            },
-          }
-        );
-      }
-
-    }, sectionRef);
+          ease: "power3.out",
+          force3D: true,
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
+    }, section);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="pb-20 pt-36 relative overflow-hidden bg-[var(--background)]">
-      <div className="max-w-[1360px] mx-auto px-5">
-       
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden bg-[var(--background)] py-14 md:pb-20 md:pt-36"
+    >
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="mx-auto max-w-[1360px] px-5">
+        <div ref={gridRef} className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="stat-item group relative  border border-white/10 p-8 text-center top-0 hover:top-[-6px]  ease-out  transition-all duration-500 hover:shadow-[0_0_20px_rgba(145,255,106,0.2)]"
+             className="stat-item group relative top-0 border border-white/10 p-8 text-center transition-[top,box-shadow] duration-500 hover:top-[-6px] hover:shadow-[0_0_20px_rgba(145,255,106,0.2)]"
             >
-              {/* Number */}
-              <div className="stat-number text-5xl lg:text-6xl font-bold text-[var(--green)] mb-4" data-target={stat.number.replace(/[^0-9]/g, '')}>
+              <div
+                className="stat-number mb-4 text-5xl font-bold text-[var(--green)] lg:text-6xl"
+                data-target={stat.number}
+              >
                 {stat.number}+
               </div>
-<span className="block underline-span my-4"></span>
-              {/* Label */}
-              <h3 className="text-white text-lg font-light mb-2 uppercase tracking-wider">
+
+              <span className="underline-span my-4 block"></span>
+
+              <h3 className="mb-2 text-lg font-light uppercase tracking-wider text-white">
                 {stat.label}
               </h3>
 
-             
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[var(--green)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute left-0 top-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[var(--green)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             </div>
           ))}
         </div>

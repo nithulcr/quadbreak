@@ -97,7 +97,7 @@ const AboutSections_old = () => {
                     />
                   )}
 
-                  <div className="max-w-[600px] pt-10 lg:pt-0 gap-y-10">
+                  <div className="max-w-[600px]  gap-y-10">
                     <div className="overflow-hidden">
                       <div className="mb-6">
                         <div className="font-light text-[14px] tracking-[2px] uppercase text-white mb-6 flex items-center gap-2">

@@ -1,9 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { ArrowDown } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AnimatedButton from "./AnimatedButton";
 import SpinningText from "./spinningText";
 
 
@@ -11,122 +9,100 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const welcomeRef = useRef<HTMLSpanElement>(null);
+  const title1Ref = useRef<HTMLSpanElement>(null);
+  const title2Ref = useRef<HTMLSpanElement>(null);
+  const subtitleRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    let cleanup: (() => void) | undefined;
+    const section = sectionRef.current;
+    if (!section) return;
 
-    const initAnimations = () => {
-      const section = sectionRef.current;
-      if (!section) return;
-
-      const ctx = gsap.context(() => {
-        const heroBanner = section.querySelector(".hero-banner");
-
-        // Scroll-linked scale animation for hero banner
-        if (heroBanner) {
-          gsap.fromTo(
-            heroBanner,
-            { scale: 1 },
-            {
-              scale: 1.15,
-              ease: "none",
-              scrollTrigger: {
-                trigger: heroBanner,
-                start: "top top",
-                end: "bottom top",
-                scrub: true,
-                invalidateOnRefresh: true,
-              },
-            }
-          );
-        }
-
-
-
-        // Individual fade-up animations for each element
-        const fadeUpElements = gsap.utils.toArray<Element>(section.querySelectorAll(".fade-up"));
-        fadeUpElements.forEach((element) => {
-          gsap.from(element, {
-            opacity: 0,
-            y: 30,
-            duration: 1,
-            ease: "expo.out",
+    const ctx = gsap.context(() => {
+      // Scroll-linked scale animation for hero banner
+      if (bannerRef.current) {
+        gsap.fromTo(
+          bannerRef.current,
+          { scale: 1 },
+          {
+            scale: 1.15,
+            ease: "none",
             scrollTrigger: {
-              trigger: element,
-              start: "top 88%",
-              once: true,
+              trigger: bannerRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
               invalidateOnRefresh: true,
             },
-            force3D: true,
-            clearProps: "transform",
-          });
-        });
-      }, section);
+          }
+        );
+      }
 
-      cleanup = () => ctx.revert();
-
-      // Refresh ScrollTrigger after all animations are created
-      ScrollTrigger.refresh();
-    };
-
-    // Use multiple requestAnimationFrames to ensure DOM is fully laid out
-    let rafId2: number | undefined;
-    const rafId1 = requestAnimationFrame(() => {
-      rafId2 = requestAnimationFrame(() => {
-        initAnimations();
+      // Timeline for hero content
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%",
+          once: true,
+        },
       });
-    });
 
-    return () => {
-      cancelAnimationFrame(rafId1);
-      if (rafId2) {
-        cancelAnimationFrame(rafId2);
-      }
-      if (cleanup) {
-        cleanup();
-      }
-    };
+      tl.from(welcomeRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.7,
+        ease: "power2.out",
+      })
+        .from(
+          title1Ref.current,
+          {
+            opacity: 0,
+            y: 30,
+            duration: 0.7,
+            ease: "power2.out",
+          },
+          "-=0.45"
+        )
+        .from(
+          title2Ref.current,
+          {
+            opacity: 0,
+            y: 30,
+            duration: 0.7,
+            ease: "power2.out",
+          },
+          "-=0.45"
+        )
+        .from(
+          subtitleRef.current,
+          {
+            opacity: 0,
+            y: 30,
+            duration: 0.7,
+            ease: "power2.out",
+          },
+          "-=0.45"
+        );
+    }, section);
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <section ref={sectionRef} className="hero-section relative flex flex-col justify-center overflow-hidden main-hero px-5 lg:px-[4rem] pb-6 pt-15 lg:py-20 min-h-screen">
 
-      <div className="fade-up-css  hero-banner max-w-[1360px] mx-auto z-9  flex flex-col justify-center   pt-20 px-5 w-full gap-5 ">
-        <span className="text-[3rem] block   font-[200] uppercase">Welcome to</span>
-        <h1 className="uppercase max-w-[800px] w-min   relative flex flex-col gap-4 text-[var(--green)] text-[3rem] lg:text-[6rem]  leading-none mb-1 ">
-
-          {/* <span className="span-1"></span> */}
-          <span className="block  w-fit">Quadbreak</span> 
-          <span className="block  w-fit">Studios</span>
-
-          {/* <span className="span-2"></span> */}
-
+      <div ref={bannerRef} className="hero-banner max-w-[1360px] mx-auto z-9 flex flex-col justify-center pt-20 px-5 w-full gap-5">
+        <span ref={welcomeRef} className="text-[2rem] md:text-[3rem] block font-[200] uppercase">Welcome to</span>
+        <h1 className="uppercase max-w-[800px] w-min relative flex flex-col gap-4 text-[var(--green)] text-[3rem] lg:text-[6rem] leading-none mb-1">
+          <span ref={title1Ref} className="block w-fit">Quadbreak</span> 
+          <span ref={title2Ref} className="block w-fit">Studios</span>
         </h1>
-        <span className="text-[1.2rem] uppercase font-light block mt-2">worlds, Vehicles, weapons  — The Best for your Team.</span>
-
-
-        {/* <p className="text-white text-[16px] md:text-[18px] max-w-[700px]   lg:mx-0 font-[200]">
-          From reference to render-ready, we take game art through the full production journey — modeling, texturing, and optimizing so it drops straight into your pipeline. No hand-holding, no rework loops. Just finished, engine-ready art, on schedule.
-        </p> */}
-        {/* <div className="md:flex items-center justify-center max-w-[1360px] mx-auto  w-full gap-5 fade-up-css">
-            <AnimatedButton
-              href=""
-              label="Explore Our Work"
-              className="w-fit"
-            />
-            <AnimatedButton
-              href="s"
-              label="Get in Touch"
-              className="w-fit"
-            />
-          </div> */}
-        {/* <span className="rounded-full w-7 h-7 border border-gray-300 flex items-center justify-center">
-            <ArrowDown className="w-4 h-4 text-gray-300" />
-          </span> */}
+        <span ref={subtitleRef} className="text-[1.2rem] uppercase font-light block mt-2">worlds, Vehicles, weapons  — The Best for your Team.</span>
       </div>
 
 
-      <div className="absolute hero-section-video top-0 left-0 w-full h-full  z-[-1]">
+      <div className="absolute hero-section-video top-0 left-0 w-full h-full z-[-1]">
         <video
           autoPlay
           loop
@@ -138,12 +114,12 @@ export default function Hero() {
           Your browser does not support the video tag.
         </video>
       </div>
-      <div className="absolute bottom-0 z-9 right-0 w-[120px] h-[120px] md:w-[250px] md:h-[250px] ml-auto self-end uppercase">
+      <div className="absolute bottom-0 z-9 right-0 w-[140px] h-[140px] md:w-[250px] md:h-[250px] ml-auto self-end uppercase">
         <SpinningText
           text="Quadbreak • Gaming Art • Stimulator Art  • "
           image="/images/favicon-t.png"
           size={250}
-          mobileSize={180}
+          mobileSize={140}
           duration={15}
 
         />

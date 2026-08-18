@@ -41,17 +41,11 @@ const Services = () => {
   const text2Ref = useRef<HTMLParagraphElement>(null);
   const btnRef = useRef<HTMLParagraphElement>(null);
 
-
-  const card1Ref = useRef<HTMLDivElement>(null);
-  const card2Ref = useRef<HTMLDivElement>(null);
-  const card3Ref = useRef<HTMLDivElement>(null);
-  const card4Ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
 
-      // Timeline for heading/content
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -116,30 +110,6 @@ const Services = () => {
           "-=0.45"
         );
 
-      // Cards
-      [
-        { ref: card1Ref, x: -40, rotation: -6 },
-        { ref: card2Ref, x: -40, rotation: -6 },
-        { ref: card3Ref, x: 40, rotation: 6 },
-        { ref: card4Ref, x: 40, rotation: 6 },
-      ].forEach(({ ref, x, rotation }) => {
-        gsap.from(ref.current, {
-          x,
-          rotation,
-          opacity: 0,
-          scale: 0.96,
-          duration: 1.1,
-          ease: "power3.out",
-          force3D: true,
-          transformOrigin: "center center",
-          scrollTrigger: {
-            trigger: ref.current,
-            start: "top 85%",
-            once: true,
-          },
-        });
-      });
-
     }, sectionRef);
 
     return () => ctx.revert();
@@ -153,7 +123,7 @@ const Services = () => {
         className="grid gap-x-20 max-w-[1860px] mx-auto items-center w-full "
       >
 
-        <div className="pt-10 lg:pt-0 max-w-[1360px] mx-auto px-5 gap-y-10 flex flex-col lg:flex-row w-full lg:items-end lg:justify-between  mb-8">
+        <div className=" max-w-[1360px] mx-auto px-5 gap-y-10 flex flex-col lg:flex-row w-full lg:items-end lg:justify-between  mb-8">
           <div className="lg:w-[50%]">
 
             <h2 ref={titleRef} className="uppercase w-fit text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">

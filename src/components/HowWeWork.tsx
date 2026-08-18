@@ -1,6 +1,10 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 
 interface WorkStep {
   id: number;
@@ -119,13 +123,61 @@ const steps: WorkStep[] = [
 ];
 
 const HowWeWork = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+          once: true,
+        },
+      });
+
+      tl.from(titleRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.7,
+        ease: "power2.out",
+      });
+
+      gsap.from(
+        cardsRef.current?.children || [],
+        {
+          opacity: 0,
+          y: 60,
+          scale: 0.96,
+          duration: 0.9,
+          stagger: {
+            each: 0.12,
+            from: "start",
+          },
+          ease: "power3.out",
+          force3D: true,
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="max-w-[1360px] mx-auto py-20 px-5 flex flex-col items-center relative howWeWork">
-      <div className="uppercase text-[11px] tracking-[4px] mb-16 text-center">
+    <section ref={sectionRef} className="max-w-[1360px] mx-auto py-20 px-5 flex flex-col items-center relative howWeWork">
+      <div ref={titleRef} className="uppercase text-[11px] tracking-[4px] mb-16 text-center">
         Areas of expertise
       </div>
 
-      <div className="flex flex-col gap-10">
+      <div ref={cardsRef} className="flex flex-col gap-10">
         {steps.map((step) => (
           <div
             key={step.id}

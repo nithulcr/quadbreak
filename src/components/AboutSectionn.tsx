@@ -54,7 +54,6 @@ const AboutSectionn = () => {
       const badge = section.querySelector(".about-badge");
       if (badge) {
         gsap.from(badge, {
-          opacity: 0,
           y: 40,
           duration: 0.8,
           ease: "power2.out",
@@ -71,7 +70,6 @@ const AboutSectionn = () => {
       const heading = section.querySelector(".about-heading");
       if (heading) {
         gsap.from(heading, {
-          opacity: 0,
           y: 40,
           duration: 0.8,
           ease: "power2.out",
@@ -88,7 +86,6 @@ const AboutSectionn = () => {
       const paragraph = section.querySelector(".about-paragraph");
       if (paragraph) {
         gsap.from(paragraph, {
-          opacity: 0,
           y: 40,
           duration: 0.8,
           ease: "power2.out",
@@ -103,32 +100,32 @@ const AboutSectionn = () => {
 
       // Cards animation with stagger
       const cards = section.querySelectorAll(".about-card");
-      if (cards.length > 0) {
-        gsap.fromTo(cards, 
-          {
-            opacity: 0,
-            y: 80,
-            scale: 0.85,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1.5,
-            stagger: {
-              each: 0.2,
-              ease: "power2.inOut",
-            },
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: cards[0],
-              start: "top 85%",
-              once: true,
-              invalidateOnRefresh: true,
-            },
-          }
-        );
-      }
+
+if (cards.length > 0) {
+  gsap.fromTo(
+    cards,
+    {
+
+      y: 30,
+      scale: 0.85,
+    },
+    {
+
+      y: 0,
+      scale: 1,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none none",
+        once: true,
+        invalidateOnRefresh: true,
+      },
+    }
+  );
+}
 
       // CTA Button animation
       const ctaButton = section.querySelector(".about-cta");
@@ -181,12 +178,12 @@ const AboutSectionn = () => {
             {/* Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               {aboutCards.map((card, index) => (
-                <div key={index} className="about-card group relative aspect-[1/1.2] overflow-hidden  top-0 hover:top-[-10px] transition-all  duration-500 ease-out">
+                <div key={index} className="about-card group relative top-0 aspect-[1/1.2] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px]">
                   
                   <img
                     src={card.image}
                     alt={card.title}
-                    className="object-cover h-full group-hover:scale-108 transition-transform duration-500 ease-out"
+                   className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     loading={index === 0 ? "eager" : "lazy"}
                   />

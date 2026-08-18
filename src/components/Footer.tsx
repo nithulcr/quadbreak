@@ -30,7 +30,7 @@ export default function Footer() {
           {text.split("").map((char, i) => (
             <span
               key={i}
-              className={`inline-block transition-transform duration-300 ${
+              className={`inline-block transition-transform text-[var(--green)] duration-300 ${
                 i % 2 === 0
                   ? "-translate-y-4 -rotate-3"
                   : "translate-y-4 rotate-3"
@@ -88,8 +88,8 @@ export default function Footer() {
             <ul className="flex gap-4 mt-6">
               {socialLinks.map(({ href, Icon }, index) => (
                 <li key={index} className="font-light flex items-center">
-                  <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center hover:opacity-80 transition-opacity">
-                    <Icon className="w-6 h-6 text-[var(--green)]" strokeWidth={1.5} />
+                  <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center hover:opacity-40 bg-[var(--green)] p-1 rounded transition-opacity">
+                    <Icon className="w-6 h-6 text-black" strokeWidth={1.5} />
                   </a>
                 </li>
               ))}
@@ -100,19 +100,19 @@ export default function Footer() {
           <div className="col-span-2">
             <h2 className="text-2xl font-medium mb-6">Find Me</h2>
             <ul className="flex flex-col gap-4">
-              <li className="font-light flex items-start gap-3">
-                <MapPin className="w-5 h-5 mt-1 text-[var(--green)] flex-none" strokeWidth={1.5} />
+              <li className="font-light flex items-center gap-3">
+                <span className='flex items-center justify-center bg-[var(--green)] flex-none w-8 h-8 p-1 rounded'><MapPin className="w-5 h-5 mt-1 text-black flex-none" strokeWidth={1.5} /></span>
                 <span className="leading-[26px] text-md">Kannur, Kerala, India</span>
               </li>
               <li className="font-light flex items-start gap-3">
-                <Phone className="w-5 h-5 mt-1 text-[var(--green)] flex-none" strokeWidth={1.5} />
+                <span className='flex items-center justify-center bg-[var(--green)] flex-none w-8 h-8 p-1 rounded'><Phone className="w-5 h-5 mt-1 text-black flex-none" strokeWidth={1.5} /></span>
                 <div className="flex flex-col gap-1 text-md">
                   <span>+91 99 99 9999 99</span>
                   <span>+91 85 999 999 99</span>
                 </div>
               </li>
-              <li className="font-light flex items-start gap-3">
-                <Mail className="w-5 h-5 mt-1 text-[var(--green)] flex-none" strokeWidth={1.5} />
+              <li className="font-light flex items-center gap-3">
+                <span className='flex items-center justify-center bg-[var(--green)] flex-none w-8 h-8 p-1 rounded'><Mail className="w-5 h-5 mt-1 text-black flex-none" strokeWidth={1.5} /></span>
                 <span className="text-md">quadbreak@gmail.com</span>
               </li>
             </ul>

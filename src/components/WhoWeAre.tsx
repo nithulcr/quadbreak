@@ -13,6 +13,8 @@ const WhoWeAre = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const text1Ref = useRef<HTMLParagraphElement>(null);
   const text2Ref = useRef<HTMLParagraphElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+
   const btnRef = useRef<HTMLParagraphElement>(null);
 
 
@@ -20,89 +22,65 @@ const WhoWeAre = () => {
   const card2Ref = useRef<HTMLDivElement>(null);
   const card3Ref = useRef<HTMLDivElement>(null);
   const card4Ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!sectionRef.current) return;
+ useEffect(() => {
+  const section = sectionRef.current;
 
-    const ctx = gsap.context(() => {
+  if (!section) return;
 
-      // Timeline for heading/content
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          once: true,
-        },
-      });
+  const ctx = gsap.context(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 75%",
+        toggleActions: "play none none none",
+        once: true,
+        invalidateOnRefresh: true,
+      },
+    });
 
-      tl.from(titleRef.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.7,
-        ease: "power2.out",
-      })
-        .from(
-          text1Ref.current,
-          {
-            opacity: 0,
-            y: 30,
-            duration: 0.7,
-            ease: "power2.out",
-          },
-          "-=0.45"
-        )
-        .from(
-          text2Ref.current,
-          {
-            opacity: 0,
-            y: 30,
-            duration: 0.7,
-            ease: "power2.out",
-          },
-          "-=0.45"
-        )
-        .from(
-          btnRef.current,
-          {
-            opacity: 0,
-            y: 30,
-            duration: 0.7,
-            ease: "power2.out",
-          },
-          "-=0.45"
-        );
-
-      // Cards
-      [
-        { ref: card1Ref, x: -40, rotation: -6 },
-        { ref: card2Ref, x: -40, rotation: -6 },
-        { ref: card3Ref, x: 40, rotation: 6 },
-        { ref: card4Ref, x: 40, rotation: 6 },
-      ].forEach(({ ref, x, rotation }) => {
-        gsap.from(ref.current, {
-          x,
-          rotation,
+    tl.from(titleRef.current, {
+      opacity: 0,
+      y: 30,
+      duration: 0.7,
+      ease: "power2.out",
+    })
+      .from(
+        text1Ref.current,
+        {
           opacity: 0,
-          scale: 0.96,
-          duration: 1.1,
-          ease: "power3.out",
-          force3D: true,
-          transformOrigin: "center center",
-          scrollTrigger: {
-            trigger: ref.current,
-            start: "top 85%",
-            once: true,
-          },
-        });
-      });
+          y: 30,
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "-=0.45"
+      )
+      .from(
+        text2Ref.current,
+        {
+          opacity: 0,
+          y: 30,
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "-=0.45"
+      )
+      .from(
+        imgRef.current,
+        {
+          opacity: 0,
+          y: 30,
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "-=0.45"
+      );
+  }, section);
 
-    }, sectionRef);
-
-    return () => ctx.revert();
-
-  }, []);
+  return () => ctx.revert();
+}, []);
 
   return (
-    <section id="WhoWeAre" className="section overflow-hidden py-20" ref={sectionRef}>
+    <section id="WhoWeAre" className="section overflow-hidden py-14 md:py-20" ref={sectionRef}>
       {/* <div className="shape3 z-[-1]"></div>
       <div className="shape2 z-[-1]"></div> */}
       <div className="grid-wrapper max-w-[1360px] mx-auto px-5">
@@ -114,7 +92,7 @@ const WhoWeAre = () => {
                 className="service-item flex flex-col lg:grid gap-x-20 items-center w-full "
               >
 
-                <div className="service-info pt-10 lg:pt-0 gap-y-10">
+                <div className="service-info  gap-y-10">
                   <div className="lg:w-[50%]">
                     <div className="flex flex-col mb-8">
                       {/* <h2 ref={titleRef} className="uppercase w-fit text-white  text-5xl lg:text-[5rem]  leading-none font-light  relative">
@@ -138,7 +116,7 @@ const WhoWeAre = () => {
                     <p ref={text1Ref} className="about-paragraph text-[16px] md:text-[20px] leading-snug font-[200] text-white/80">
                       Vehicles, weapons, and environments are asset types that punish shortcuts — mechanical accuracy, panel logic, and wear patterns all show up the moment they&apos;re in-engine. It&apos;s a specific skill set, and it&apos;s the one we&apos;ve built our pipeline around for nine years.
                     </p>
-                    <img
+                    <img ref={imgRef} 
                     src="/images/signature.png"
                     alt="signature"
                     className="w-[300px] mt-6"
@@ -165,47 +143,7 @@ const WhoWeAre = () => {
                   </div>
 
                 </div>
-                {/* <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10  w-full">
-
-                  <div className="flex flex-col gap-10">
-                    <div ref={card1Ref}
-                      className="bg-[#26957d] md:bg-[var(--background2)] hover:bg-[#26957d]    p-8 flex flex-col justify-between  "
-                    >
-                      <h3 className="text-7xl font-monument">5000+</h3>
-                      <p className="text-2xl font-medium uppercase leading-snug text-right tracking-wide max-w-[200px] ml-auto mt-20">
-                        3d <br></br>Assets
-                      </p>
-                    </div>
-                    <div ref={card2Ref}
-                      className=" bg-[#e5484d] md:bg-[var(--background2)] hover:bg-[#e5484d]    p-8 flex flex-col justify-between  "
-                    >
-                      <h3 className="text-7xl font-monument">50+</h3>
-                      <p className="text-2xl font-medium uppercase leading-snug text-right tracking-wide max-w-[200px] ml-auto mt-20">
-                        Clients <br></br>minds
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-10 md:mt-20">
-                    <div ref={card3Ref}
-                      className=" bg-[#6f8f10] md:bg-[var(--background2)] hover:bg-[#6f8f10]    p-8 flex flex-col justify-between  "
-                    >
-                      <h3 className="text-7xl font-monument">120+</h3>
-                      <p className="text-2xl font-medium uppercase leading-snug text-right tracking-wide max-w-[200px] ml-auto mt-20">
-                        projects<br></br>completed
-                      </p>
-                    </div>
-                    <div ref={card4Ref}
-                      className=" bg-[#348bf1] md:bg-[var(--background2)] hover:bg-[#348bf1]    p-8 flex flex-col justify-between  "
-                    >
-                      <h3 className="text-7xl font-monument">9+</h3>
-                      <p className="text-2xl font-medium uppercase leading-snug text-right tracking-wide max-w-[200px] ml-auto mt-20">
-                        years of<br></br>experience
-                      </p>
-                    </div>
-                  </div>
-
-
-                </div> */}
+                
 
 
               </div>

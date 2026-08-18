@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import AnimatedButton from "@/components/AnimatedButton";
 import { makeMediaUrl } from "@/utlis/media";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ImageData {
   url: string;
@@ -30,9 +34,12 @@ interface WorksProps {
 
 const Works = ({ limit }: WorksProps) => {
   const [projects, setProjects] = useState<Project[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const fetchProjects = async () => {
+    const loadProjects = async () => {
       try {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/projects?populate=*`
@@ -45,17 +52,61 @@ const Works = ({ limit }: WorksProps) => {
       }
     };
 
-    fetchProjects();
+    loadProjects();
   }, []);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+          once: true,
+        },
+      });
+
+      tl.from(headerRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.7,
+        ease: "power2.out",
+      });
+
+      gsap.from(
+        gridRef.current?.children || [],
+        {
+          opacity: 0,
+          y: 60,
+          scale: 0.96,
+          duration: 0.9,
+          stagger: {
+            each: 0.12,
+            from: "start",
+          },
+          ease: "power3.out",
+          force3D: true,
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [projects]);
 
   const displayedProjects = limit ? projects.slice(0, limit) : projects;
 
   return (
-    <div id="works" className="section">
+    <div ref={sectionRef} id="works" className="section">
       <div className="shape1 z-[-1]"></div>
       <div className="shape2 z-[-1]"></div>
       <div className="max-w-[1360px] mx-auto px-5">
-        <div className="mb-10 sm:mb-20 sm:flex  gap-8 justify-between w-full items-center">
+        <div ref={headerRef} className="mb-10 sm:mb-20 sm:flex  gap-8 justify-between w-full items-center">
           <div>
             <div className="subtitle text-[11px] tracking-[4px] uppercase text-white">
               Best Websites
@@ -73,6 +124,7 @@ const Works = ({ limit }: WorksProps) => {
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="w-full">
             <div
+              ref={gridRef}
               className={`grid gap-x-8 gap-y-14 sm:grid-cols-3 md:grid-cols-4 w-full ${limit ? " pb-10" : ""
                 }`}
             >

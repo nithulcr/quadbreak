@@ -1,201 +1,164 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AnimatedButton from "./AnimatedButton"
+import AnimatedButton from "./AnimatedButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const aboutCards = [
   {
     title: "No hasi - China Town",
-    category: "service",
     image: "/images/1.jpg",
   },
   {
     title: "Earth Revival",
-    category: "service",
     image: "/images/2.jpg",
   },
   {
     title: "No hasi - 110",
-    category: "service",
     image: "/images/3.jpg",
   },
 ];
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
     const ctx = gsap.context(() => {
-      const section = sectionRef.current;
-      if (!section) return;
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%",
+          once: true,
+        },
+      });
 
-      // Badge animation
-      const badge = section.querySelector(".about-badge");
-      if (badge) {
-        gsap.from(badge, {
+      tl.from(titleRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.7,
+        ease: "power2.out",
+      });
+
+      gsap.from(
+        gridRef.current?.children || [],
+        {
           opacity: 0,
-          y: 40,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: badge,
-            start: "top 75%",
-            once: true,
-            invalidateOnRefresh: true,
+          y: 60,
+          scale: 0.96,
+          duration: 0.9,
+          stagger: {
+            each: 0.12,
+            from: "start",
           },
-        });
-      }
+          ease: "power3.out",
+          force3D: true,
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
 
-      // Heading animation
-      const heading = section.querySelector(".about-heading");
-      if (heading) {
-        gsap.from(heading, {
+      tl.from(
+        ctaRef.current,
+        {
           opacity: 0,
-          y: 40,
-          duration: 0.8,
+          y: 30,
+          duration: 0.7,
           ease: "power2.out",
-          scrollTrigger: {
-            trigger: heading,
-            start: "top 75%",
-            once: true,
-            invalidateOnRefresh: true,
-          },
-        });
-      }
-
-      // Paragraph animation
-      const paragraph = section.querySelector(".about-paragraph");
-      if (paragraph) {
-        gsap.from(paragraph, {
-          opacity: 0,
-          y: 40,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: paragraph,
-            start: "top 75%",
-            once: true,
-            invalidateOnRefresh: true,
-          },
-        });
-      }
-
-      // Cards animation with stagger
-      const cards = section.querySelectorAll(".about-card");
-      if (cards.length > 0) {
-        gsap.fromTo(cards, 
-          {
-            opacity: 0,
-            y: 80,
-            scale: 0.85,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1.5,
-            stagger: {
-              each: 0.2,
-              ease: "power2.inOut",
-            },
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: cards[0],
-              start: "top 85%",
-              once: true,
-              invalidateOnRefresh: true,
-            },
-          }
-        );
-      }
-
-      // CTA Button animation
-      const ctaButton = section.querySelector(".about-cta");
-      if (ctaButton) {
-        gsap.from(ctaButton, {
-          opacity: 0,
-          y: 40,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ctaButton,
-            start: "top 75%",
-            once: true,
-            invalidateOnRefresh: true,
-          },
-        });
-      }
-    }, sectionRef);
+        },
+        "-=0.45"
+      );
+    }, section);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-16 lg:py-16 relative overflow-hidden">
-      <div className="grid-wrapper max-w-[1200px] mx-auto px-5">
+    <section
+      ref={sectionRef}
+      id="about"
+      className="relative overflow-hidden py-16 lg:py-16"
+    >
+      <div className="grid-wrapper mx-auto max-w-[1200px] px-5">
         <div className="stacked-content">
           <div className="content-wrapper">
-            {/* Badge */}
-            {/* <div className="about-badge mb-6">
-              <div className="font-light mx-auto w-fit text-[14px] tracking-[2px] uppercase text-white flex items-center gap-2">
-                <svg width="30" height="30" className="rotate-linear" viewBox="0 0 24 24" fill="#91ff6a" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 12C12 7.5 10 3 6 3C6 7.5 8 12 12 12Z" />
-                  <path d="M12 12C16.5 12 21 10 21 6C16.5 6 12 8 12 12Z" />
-                  <path d="M12 12C12 16.5 14 21 18 21C18 16.5 16 12 12 12Z" />
-                  <path d="M12 12C7.5 12 3 14 3 18C7.5 18 12 16 12 12Z" />
-                </svg>
-               Expertise
-              </div>
-            </div> */}
 
             {/* Heading */}
-            <h2 className="about-heading uppercase text-center text-white text-3xl lg:text-[4rem] leading-none font-light mb-10">
-               Our Best Works
+            <h2 ref={titleRef} className="about-heading mb-10 text-center text-3xl font-light leading-none uppercase text-white lg:text-[4rem]">
+              Our Best Works
             </h2>
-{/* 
-            <p className="about-paragraph text-[16px] md:text-[18px] leading-snug font-[200] text-white/80 mb-12 max-w-3xl">
-              Vehicles, weapons, and environments are asset types that punish shortcuts — mechanical accuracy, panel logic, and wear patterns all show up the moment they're in-engine. It's a specific skill set, and it's the one we have built our pipeline around for nine years. 
-            </p> */}
 
-            {/* Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {/* Cards */}
+            <div ref={gridRef} className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-3">
               {aboutCards.map((card, index) => (
-                <div key={index} className="about-card group relative aspect-[1/1.2] overflow-hidden border border-transparent hover:border-[var(--green)]/50 top-0 hover:top-[-10px] transition-all  duration-500 ease-out">
-                  
+                <div
+                  key={index}
+                  className="
+                    about-card
+                    group
+                    relative
+                    top-0
+                    aspect-[1/1.2]
+                    overflow-hidden
+                    border
+                    border-transparent
+                    transition-[top,border-color,box-shadow]
+                    duration-500
+                    ease-out
+                    hover:top-[-10px]
+                    hover:border-[var(--green)]/50
+                  "
+                >
                   <img
                     src={card.image}
                     alt={card.title}
-                    className="object-cover h-full group-hover:scale-108 transition-transform duration-500 ease-out"
+                    className="
+                      h-full
+                      w-full
+                      object-cover
+                      transition-transform
+                      duration-500
+                      ease-out
+                      group-hover:scale-[1.08]
+                    "
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     loading={index === 0 ? "eager" : "lazy"}
                   />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
-                 <div className="absolute top-6 left-6 z-20 transition-all duration-500 ease-out group-hover:top-4 group-hover:left-4">
-                    <span className="bg-[var(--green)] text-black text-xs font-[600] uppercase tracking-wider px-4 py-2">
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+                  {/* Title */}
+                  <div className="absolute left-6 top-6 z-20 transition-[top,left] duration-500 ease-out group-hover:left-4 group-hover:top-4">
+                    <span className="bg-[var(--green)] px-4 py-2 text-xs font-[600] uppercase tracking-wider text-black">
                       {card.title}
                     </span>
                   </div>
-  
-                  {/*
-                  <div className="absolute bottom-[-200px] group-hover:bottom-0 left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-6">
-                    <h5 className="font-light text-xl uppercase tracking-wider  relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
-                      {card.title}
-                    </h5>
-                    <p className="font-[200] text-[14px]  max-w-[260px]">the one we have built our pipeline around for nine years</p>
-                  </div> */}
                 </div>
               ))}
             </div>
 
-  
-            <div className="mx-auto w-fit pt-5">
-              <AnimatedButton href="" label="View All Works" className="w-fit" />
+            {/* CTA */}
+            <div ref={ctaRef} className="about-cta mx-auto w-fit pt-5">
+              <AnimatedButton
+                href=""
+                label="View All Works"
+                className="w-fit"
+              />
             </div>
+
           </div>
         </div>
       </div>
