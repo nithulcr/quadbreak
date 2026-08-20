@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import AnimatedButton from "./AnimatedButton";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import StatsSection2 from '@/components/StatsSection2';
@@ -15,13 +14,6 @@ const OurStory = () => {
   const text1Ref = useRef<HTMLParagraphElement>(null);
   const text2Ref = useRef<HTMLParagraphElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
-
-  const btnRef = useRef<HTMLParagraphElement>(null);
-
-  const card1Ref = useRef<HTMLDivElement>(null);
-  const card2Ref = useRef<HTMLDivElement>(null);
-  const card3Ref = useRef<HTMLDivElement>(null);
-  const card4Ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const section = sectionRef.current;
 
@@ -116,7 +108,7 @@ const OurStory = () => {
                       ref={text2Ref}
                       className="uppercase w-fit text-white/60  text-right italic mb-10 text-[3rem]  leading-none font-light  relative"
                     >
-                     Since <span className="text-[var(--green)]">2026</span> It's been a <span className="text-[var(--green)]">cool journey,</span> and <span className="text-[var(--green)]">we're</span> not <span className="text-[var(--green)]">turning back!</span>
+                     Since <span className="text-[var(--green)]">2026</span> It&apos;s been a <span className="text-[var(--green)]">cool journey,</span> and <span className="text-[var(--green)]">we&apos;re</span> not <span className="text-[var(--green)]">turning back!</span>
                     </h2>
                     <p
                       ref={text1Ref}
