@@ -127,16 +127,14 @@ const PortfolioGrid = ({ limit }: PortfolioGridProps) => {
 
   return (
     <div ref={sectionRef} className="py-16 lg:py-30">
-      <div className="max-w-[1200px] mx-auto px-5">
-        <div ref={headerRef} className="mb-10 sm:mb-16 flex flex-col sm:flex-row gap-8 justify-between w-full items-start sm:items-center">
-          <div>
-            <h2 className="uppercase w-fit text-white heading text-5xl lg:text-[6rem] leading-none font-light">
+      <div className="max-w-[1400px] mx-auto px-5">
+        <div ref={headerRef} className="pt-30 pb-20  w-full">
+       
+            <h2 className="uppercase w-fit text-white heading text-5xl lg:text-[6rem] leading-none font-light relative">
               Portfolio
             </h2>
-          </div>
-          <p className="text-white/80 text-[14px] lg:text-[18px] leading-snug font-[200] max-w-[530px] lg:text-right">
-            A selection of projects showcasing our expertise in 3D art, environments, and assets for games, VR, and simulations.
-          </p>
+    
+         
         </div>
 
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -146,7 +144,7 @@ const PortfolioGrid = ({ limit }: PortfolioGridProps) => {
             const projectLink = slug ? `/projects/${slug}` : null;
 
             const CardInner = (
-              <div className="about-card group relative top-0 aspect-[1/1.2] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px]">
+              <div className="about-card group relative top-0 aspect-[1/1.2] border border-white/10 rounded-xl overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px]">
                 <img
                   src={imageUrl}
                   alt={project.title}
@@ -155,12 +153,8 @@ const PortfolioGrid = ({ limit }: PortfolioGridProps) => {
                   loading={index < 3 ? "eager" : "lazy"}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10" />
-                <div className="absolute top-6 left-6 z-20 transition-all duration-500 ease-out group-hover:top-[-100px]">
-                  <span className="bg-[var(--green)] text-black text-xs font-[600] uppercase tracking-wider px-4 py-2">
-                    {project.title}
-                  </span>
-                </div>
-                <div className="absolute bottom-[-200px] group-hover:bottom-0 left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-6">
+               
+                <div className="absolute bottom-[0px]  left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-6">
                   <h5 className="font-light text-xl uppercase tracking-wider relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
                     {project.title}
                   </h5>
