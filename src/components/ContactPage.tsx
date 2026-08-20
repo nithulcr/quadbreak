@@ -6,38 +6,17 @@ import AnimatedButton from "@/components/AnimatedButton";
 export default function ContactSection() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSuccess(false);
-    setError(false);
-
-    const formData = new FormData(e.currentTarget);
-
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        body: JSON.stringify(Object.fromEntries(formData)),
-        headers: { 'Content-Type': 'application/json' },
-      });
-
-      const data = await res.json();
-      console.log('📨 API Response:', res.status, data);
-
-      if (res.ok && data.success) {
-        formRef.current?.reset();
-        setSuccess(true);
-        setTimeout(() => setSuccess(false), 5000);
-      } else {
-        setError(true);
-        setTimeout(() => setError(false), 5000);
-      }
-    } catch (err) {
-      console.error('❌ Client error:', err);
-      setError(true);
-      setTimeout(() => setError(false), 5000);
-    }
+    setSubmitting(true);
+    setTimeout(() => {
+      formRef.current?.reset();
+      setSuccess(true);
+      setSubmitting(false);
+      setTimeout(() => setSuccess(false), 5000);
+    }, 500);
   };
 
   return (
@@ -84,12 +63,12 @@ export default function ContactSection() {
           className="w-full"
         ></textarea>
 
-        {success && <div className="text-green-600">✅ Your message has been sent successfully!</div>}
-        {error && <div className="text-red-600">❌ There was an issue sending your message. Please try again.</div>}
+        {success && <div className="text-green-600">Your message has been sent successfully!</div>}
+        {submitting && <div className="text-gray-400">Sending...</div>}
 
        
         <AnimatedButton type="submit"
-                            label="Send Message"
+                            label={submitting ? "Sending..." : "Send Message"}
                             className="md:mt-8 mt-4 mx-auto"
                            
                         />

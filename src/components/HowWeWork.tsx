@@ -172,7 +172,7 @@ const HowWeWork = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="max-w-[1360px] mx-auto py-20 px-5 flex flex-col items-center relative howWeWork">
+    <section ref={sectionRef} className="max-w-[1400px] mx-auto py-20 px-5 flex flex-col items-center relative howWeWork">
       <div ref={titleRef} className="uppercase text-[11px] tracking-[4px] mb-16 text-center">
         Areas of expertise
       </div>

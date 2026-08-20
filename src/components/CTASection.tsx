@@ -66,7 +66,7 @@ const CTASection = () => {
       ref={sectionRef}
       className="relative overflow-hidden pt-10 lg:pt-24  bg-[#0b1014]"
     >
-      <div className="mx-auto max-w-[1360px] px-5">
+      <div className="mx-auto max-w-[1400px] px-5">
         <div
           className="
             relative

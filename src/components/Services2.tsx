@@ -121,7 +121,7 @@ const Servicess = () => {
     <section id="services" className="py-16 lg:py-30 relative overflow-hidden " ref={sectionRef}>
 
       <div
-        className="grid gap-x-20 max-w-[1360px] mx-auto px-5 items-center w-full "
+        className="grid gap-x-20 max-w-[1400px] mx-auto px-5 items-center w-full "
       >
 
         <div className="  gap-y-10 flex flex-col lg:flex-row w-full lg:items-end lg:justify-between  mb-8">

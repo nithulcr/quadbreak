@@ -67,7 +67,7 @@ const ModernTestimonials = () => {
 
   return (
     <section ref={sectionRef} className="py-20 relative overflow-hidden bg-[var(--background)]">
-      <div className="max-w-[1360px] mx-auto px-5">
+      <div className="max-w-[1400px] mx-auto px-5">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-white uppercase text-4xl lg:text-6xl leading-none font-light mb-4">

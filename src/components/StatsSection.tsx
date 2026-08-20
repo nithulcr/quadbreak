@@ -80,7 +80,7 @@ const StatsSection = () => {
       className="relative overflow-hidden bg-[var(--background)] py-14 md:pb-20 md:pt-36"
     >
 
-      <div className="mx-auto max-w-[1360px] px-5">
+      <div className="mx-auto max-w-[1400px] px-5">
         <div ref={gridRef} className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div

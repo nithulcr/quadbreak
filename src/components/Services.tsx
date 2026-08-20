@@ -123,7 +123,7 @@ const Services = () => {
         className="grid gap-x-20 max-w-[1860px] mx-auto items-center w-full "
       >
 
-        <div className=" max-w-[1360px] mx-auto px-5 gap-y-10 flex flex-col lg:flex-row w-full lg:items-end lg:justify-between  mb-8">
+        <div className=" max-w-[1400px] mx-auto px-5 gap-y-10 flex flex-col lg:flex-row w-full lg:items-end lg:justify-between  mb-8">
           <div className="lg:w-[50%]">
 
             <h2 ref={titleRef} className="uppercase w-fit text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative">

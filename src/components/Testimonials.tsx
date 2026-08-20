@@ -1,13 +1,12 @@
 'use client';
 
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import AnimatedButton from "@/components/AnimatedButton";
-import { makeMediaUrl } from '@/utlis/media';
 import type { Swiper as SwiperClass } from 'swiper';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -25,38 +24,58 @@ interface Testimonial {
   photoUrl: string | null;
 }
 
-interface StrapiPhotoFormatsSize {
-  url?: string;
-}
-interface StrapiPhotoFormats {
-  small?: StrapiPhotoFormatsSize;
-  thumbnail?: StrapiPhotoFormatsSize;
-  [key: string]: StrapiPhotoFormatsSize | undefined;
-}
-interface StrapiPhotoAttr {
-  url?: string;
-  formats?: StrapiPhotoFormats;
-}
-interface StrapiPhotoData {
-  attributes?: StrapiPhotoAttr;
-}
-
-interface StrapiPhoto {
-  url?: string;              // flat form
-  formats?: StrapiPhotoFormats;
-  data?: StrapiPhotoData;    // nested form
-}
-
-interface RawStrapiItem {
-  id: number;
-  name?: string;
-  designation?: string;
-  message?: string;
-  rating?: number;
-  publishedDate?: string | null;
-  createdAt?: string;
-  photo?: StrapiPhoto | null;
-}
+const staticTestimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: "Sarah Mitchell",
+    designation: "Game Director, Vertex Studios",
+    message: "QuadBreak delivered an incredible set of 3D environments that exceeded our expectations. The attention to detail and optimization was outstanding.",
+    rating: 5,
+    publishedDate: "2025-11-15",
+    createdAt: "2025-11-15T10:00:00Z",
+    photoUrl: "/images/user.png",
+  },
+  {
+    id: 2,
+    name: "James Rodriguez",
+    designation: "Lead Artist, Pixel Forge",
+    message: "Working with QuadBreak was a fantastic experience. They understood our vision for the cyberpunk weapon set and delivered assets that fit perfectly into our pipeline.",
+    rating: 5,
+    publishedDate: "2025-10-20",
+    createdAt: "2025-10-20T10:00:00Z",
+    photoUrl: "/images/user.png",
+  },
+  {
+    id: 3,
+    name: "Emily Chen",
+    designation: "Technical Director, Apex VR",
+    message: "The VR training module assets were delivered on time and performed beautifully. QuadBreak's understanding of real-time constraints is impressive.",
+    rating: 4,
+    publishedDate: "2025-09-05",
+    createdAt: "2025-09-05T10:00:00Z",
+    photoUrl: "/images/user.png",
+  },
+  {
+    id: 4,
+    name: "Marcus Okafor",
+    designation: "Creative Director, Horizon Games",
+    message: "QuadBreak's stylized environment art brought our mobile RPG to life. Their hand-painted textures are top quality.",
+    rating: 5,
+    publishedDate: "2025-08-12",
+    createdAt: "2025-08-12T10:00:00Z",
+    photoUrl: "/images/user.png",
+  },
+  {
+    id: 5,
+    name: "Anya Petrov",
+    designation: "Producer, Stellar Simulation",
+    message: "The architectural visualization for our project was delivered with precision and speed. Highly recommended.",
+    rating: 5,
+    publishedDate: "2025-07-28",
+    createdAt: "2025-07-28T10:00:00Z",
+    photoUrl: "/images/user.png",
+  },
+];
 
 export default function Testimonials() {
   const [expanded, setExpanded] = useState<{ [id: number]: boolean }>({});
@@ -65,144 +84,14 @@ export default function Testimonials() {
     setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [testimonials] = useState<Testimonial[]>(staticTestimonials);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [form, setForm] = useState({
-    name: '',
-    designation: '',
-    rating: 5,
-    message: '',
-  });
-  const [photo, setPhoto] = useState<File | null>(null);
-  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   const swiperRef = useRef<SwiperClass | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-
-
-  /**
-   * Extract best available image URL from the many shapes Strapi can return.
-   * Priority: small -> top-level -> nested attributes.
-   */
-  const extractPhotoPath = useCallback((p?: StrapiPhoto | null): string | null => {
-    if (!p) return null;
-
-    // flat w/ formats
-    if (p.formats?.small?.url) return p.formats.small.url;
-    if (p.url) return p.url;
-
-    // nested data.attributes
-    const nested = p.data?.attributes;
-    if (nested?.formats?.small?.url) return nested.formats.small.url;
-    if (nested?.url) return nested.url;
-
-    return null;
-  }, []);
-
-  const unwrap = useCallback((t: RawStrapiItem): Testimonial => {
-    const rawPath = extractPhotoPath(t.photo);
-    const fullPhotoUrl = makeMediaUrl(rawPath);
-
-    return {
-      id: t.id,
-      name: t.name ?? 'Anonymous',
-      designation: t.designation ?? 'Client',
-      message: t.message ?? '',
-      rating: t.rating ?? 0,
-      publishedDate: t.publishedDate ?? null,
-      createdAt: t.createdAt ?? new Date().toISOString(),
-      photoUrl: fullPhotoUrl,
-    };
-  }, [extractPhotoPath]);
-
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/testimonials?populate=photo`
-        );
-        if (!res.ok) {
-          console.error('Fetch testimonials failed:', res.status, res.statusText);
-          return;
-        }
-        const json = await res.json();
-        const raw: RawStrapiItem[] = json.data ?? [];
-        setTestimonials(raw.map(unwrap));
-      } catch (err) {
-        console.error('Testimonials fetch error:', err);
-      }
-    };
-    load();
-  }, [unwrap]);
-
-  // Form handlers
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm((f) => ({ ...f, [name]: name === 'rating' ? +value : value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    try {
-      let uploadedPhotoId: number | null = null;
-
-      if (photo) {
-        const formData = new FormData();
-        formData.append('files', photo);
-
-        const uploadRes = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/upload`,
-          {
-            method: 'POST',
-            body: formData,
-          }
-        );
-
-        const uploadJson = await uploadRes.json();
-        if (uploadRes.ok && Array.isArray(uploadJson) && uploadJson[0]?.id) {
-          uploadedPhotoId = uploadJson[0].id;
-        } else {
-          console.error('Upload failed:', uploadJson);
-          throw new Error('Image upload failed');
-        }
-      }
-
-      const submitRes = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/testimonials`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            data: {
-              ...form,
-              photo: uploadedPhotoId, // may be null
-            },
-          }),
-        }
-      );
-
-      const submitJson = await submitRes.json();
-      if (!submitRes.ok || !submitJson.data) {
-        console.error('Create testimonial failed:', submitJson);
-        throw new Error(submitJson.error?.message || 'Submit failed');
-      }
-
-      const newItem = unwrap(submitJson.data);
-      setTestimonials((prev) => [newItem, ...prev]);
-      setForm({ name: '', designation: '', rating: 5, message: '' });
-      setPhoto(null);
-      setIsModalOpen(false);
-    } catch (err) {
-      console.error('Submit error:', err);
-    } finally {
-      setSubmitting(false);
-    }
-  };
 
   const renderStars = (count = 0) => (
     <div className="flex gap-1 mt-2">
@@ -229,7 +118,6 @@ export default function Testimonials() {
   useEffect(() => {
     let cleanup: (() => void) | undefined;
 
-    // Wait for multiple animation frames to ensure DOM is fully laid out
     const initAnimations = () => {
       const section = sectionRef.current;
       if (!section) return;
@@ -250,7 +138,6 @@ export default function Testimonials() {
       cleanup = () => ctx.revert();
     };
 
-    // Use multiple requestAnimationFrames to ensure DOM is fully laid out
     let rafId2: number | undefined;
     const rafId1 = requestAnimationFrame(() => {
       rafId2 = requestAnimationFrame(() => {
@@ -269,9 +156,18 @@ export default function Testimonials() {
     };
   }, []);
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setIsModalOpen(false);
+    }, 2000);
+  };
+
   return (
     <section ref={sectionRef} className=" testimonials relative" id="testimonials">
-      <div className="py-20 md:py-24 max-w-[1360px] mx-auto px-5 relative">
+      <div className="py-20 md:py-24 max-w-[1400px] mx-auto px-5 relative">
 
         <div className="flex flex-col  justify-between items-center  mb-6 md:mb-14 gap-3">
           <div className="sm:flex  gap-8 justify-between w-full items-center">
@@ -393,12 +289,6 @@ export default function Testimonials() {
         </Swiper>
 
         <div className="text-center mt-8">
-          {/* <button
-          onClick={() => setIsModalOpen(true)}
-          className="px-8 py-3 border border-[var(--white)] text-white hover:opacity-90 cursor-pointer"
-        >
-          Write a Review
-        </button> */}
           <AnimatedButton
             label=" Write a Review"
             className="md:mt-8 mt-4 mx-auto w-fit"
@@ -408,77 +298,58 @@ export default function Testimonials() {
 
         {isModalOpen && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-9999 p-3">
-            <form
-              onSubmit={handleSubmit}
-              className="bg-gray-800 p-8 max-w-lg w-full space-y-4"
-            >
-              <h3 className="md:text-xl text-lg font-semibold pb-3">Submit Your Review</h3>
-              <input
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Your Name"
-                required
-                className="w-full border px-3 py-2"
-              />
-              <input
-                name="designation"
-                value={form.designation}
-                onChange={handleChange}
-                placeholder="Your Role / Company"
-                required
-                className="w-full border px-3 py-2"
-              />
-              <select
-                name="rating"
-                value={form.rating}
-                onChange={handleChange}
-                className="w-full border px-3 py-2 bg-gray-800"
-              >
-                {[5, 4, 3, 2, 1].map((n) => (
-                  <option key={n} value={n}>
-                    {n} star{n > 1 && 's'}
-                  </option>
-                ))}
-              </select>
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                rows={4}
-                placeholder="Your feedback..."
-                required
-                className="w-full border px-3 py-2 rounded"
-              />
-              <div className="w-full">
-                <label className="block mb-1 text-sm text-white">Upload Photo</label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => setPhoto(e.target.files?.[0] || null)}
-                  className="w-full border px-3 py-2 bg-gray-800 text-white rounded"
-                />
-                <p className="text-sm text-gray-400 mt-1">
-                  {photo ? `Selected: ${photo.name}` : 'Choose an image (optional)'}
-                </p>
-              </div>
-              <div className="flex justify-end gap-2 mt-4">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 border cursor-pointer"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="px-4 py-2 bg-[var(--white)] text-white disabled:opacity-50 cursor-pointer"
-                >
-                  {submitting ? 'Saving...' : 'Submit'}
-                </button>
-              </div>
-            </form>
+            <div className="bg-gray-800 p-8 max-w-lg w-full space-y-4">
+              {submitted ? (
+                <div className="text-center py-8">
+                  <p className="text-green-400 text-xl mb-2">Review submitted!</p>
+                  <p className="text-gray-400 text-sm">Thank you for your feedback.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <h3 className="md:text-xl text-lg font-semibold pb-3">Submit Your Review</h3>
+                  <input
+                    placeholder="Your Name"
+                    required
+                    className="w-full border px-3 py-2"
+                  />
+                  <input
+                    placeholder="Your Role / Company"
+                    required
+                    className="w-full border px-3 py-2"
+                  />
+                  <select
+                    className="w-full border px-3 py-2 bg-gray-800"
+                  >
+                    {[5, 4, 3, 2, 1].map((n) => (
+                      <option key={n} value={n}>
+                        {n} star{n > 1 && 's'}
+                      </option>
+                    ))}
+                  </select>
+                  <textarea
+                    rows={4}
+                    placeholder="Your feedback..."
+                    required
+                    className="w-full border px-3 py-2 rounded"
+                  />
+                  <div className="flex justify-end gap-2 mt-4">
+                    <button
+                      type="button"
+                      onClick={() => setIsModalOpen(false)}
+                      className="px-4 py-2 border cursor-pointer"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className="px-4 py-2 bg-[var(--white)] text-white cursor-pointer"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
           </div>
         )}
       </div>

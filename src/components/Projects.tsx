@@ -1,59 +1,91 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import AnimatedButton from "@/components/AnimatedButton";
-import { makeMediaUrl } from "@/utlis/media";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
-interface ImageData {
-  url: string;
-}
 
 interface Project {
   id: number;
   title: string;
   category: string;
   tech: string;
+  description?: string;
   slug?: string;
   url?: string;
-  image?: {
-    data?: {
-      attributes: ImageData;
-    };
-    url?: string;
-  };
+  image?: { url?: string };
 }
+
+const staticProjects: Project[] = [
+  {
+    id: 1,
+    title: "Desert Storm",
+    category: "3D Vehicles",
+    tech: "Blender, Substance Painter, Unreal Engine",
+    description: "High-poly military vehicle modeled and textured for a AAA desert combat game.",
+    slug: "desert-storm",
+    image: { url: "/images/works/1.png" },
+  },
+  {
+    id: 2,
+    title: "Neon Arsenal",
+    category: "Weapons",
+    tech: "Maya, ZBrush, Quixel Mixer",
+    description: "Sci-fi weapon set created for a cyberpunk FPS title.",
+    slug: "neon-arsenal",
+    image: { url: "/images/works/2.png" },
+  },
+  {
+    id: 3,
+    title: "Arctic Outpost",
+    category: "3D Environment",
+    tech: "Unreal Engine 5, SpeedTree, Substance",
+    description: "Full environment build for a survival game set in the Arctic.",
+    slug: "arctic-outpost",
+    image: { url: "/images/works/3.png" },
+  },
+  {
+    id: 4,
+    title: "Jungle Canopy",
+    category: "Vegetation",
+    tech: "SpeedTree, Blender, UE5",
+    description: "Dense jungle vegetation pack for an open-world adventure game.",
+    slug: "jungle-canopy",
+    image: { url: "/images/works/4.png" },
+  },
+  {
+    id: 5,
+    title: "Rust & Ruin",
+    category: "Props",
+    tech: "Blender, Substance Painter",
+    description: "Post-apocalyptic prop collection for an indie horror game.",
+    slug: "rust-ruin",
+    image: { url: "/images/works/5.png" },
+  },
+  {
+    id: 6,
+    title: "Fantasy Realm",
+    category: "Stylized Art",
+    tech: "Blender, Photoshop, Unity",
+    description: "Stylized environment and props for a mobile RPG.",
+    slug: "fantasy-realm",
+    image: { url: "/images/works/6.jpeg" },
+  },
+];
 
 interface WorksProps {
   limit?: number;
 }
 
 const Works = ({ limit }: WorksProps) => {
-  const [projects, setProjects] = useState<Project[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const loadProjects = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/projects?populate=*`
-        );
-        const data = await res.json();
-        console.log("✅ Raw Projects:", data.data);
-        setProjects(data.data);
-      } catch (err) {
-        console.error("Error fetching projects:", err);
-      }
-    };
-
-    loadProjects();
-  }, []);
+  const projects = limit ? staticProjects.slice(0, limit) : staticProjects;
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -74,39 +106,31 @@ const Works = ({ limit }: WorksProps) => {
         ease: "power2.out",
       });
 
-      gsap.from(
-        gridRef.current?.children || [],
-        {
-          opacity: 0,
-          y: 60,
-          scale: 0.96,
-          duration: 0.9,
-          stagger: {
-            each: 0.12,
-            from: "start",
-          },
-          ease: "power3.out",
-          force3D: true,
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: "top 80%",
-            once: true,
-          },
-        }
-      );
+      gsap.from(gridRef.current?.children || [], {
+        opacity: 0,
+        y: 60,
+        scale: 0.96,
+        duration: 0.9,
+        stagger: { each: 0.12, from: "start" },
+        ease: "power3.out",
+        force3D: true,
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [projects]);
-
-  const displayedProjects = limit ? projects.slice(0, limit) : projects;
+  }, []);
 
   return (
     <div ref={sectionRef} id="works" className="section">
       <div className="shape1 z-[-1]"></div>
       <div className="shape2 z-[-1]"></div>
-      <div className="max-w-[1360px] mx-auto px-5">
-        <div ref={headerRef} className="mb-10 sm:mb-20 sm:flex  gap-8 justify-between w-full items-center">
+      <div className="max-w-[1400px] mx-auto px-5">
+        <div ref={headerRef} className="mb-10 sm:mb-20 sm:flex gap-8 justify-between w-full items-center">
           <div>
             <div className="subtitle text-[11px] tracking-[4px] uppercase text-white">
               Best Websites
@@ -115,9 +139,8 @@ const Works = ({ limit }: WorksProps) => {
               My Latest Works
             </h2>
           </div>
-
           <p className="text-white/80 text-[17px] leading-relaxed lg:text-right max-w-[650px]">
-            A selection of recent projects showcasing my expertise in responsive design, modern UI/UX, and seamless user interactions. Each project reflects a strong focus on performance, accessibility, and client goals.
+            A selection of recent projects showcasing my expertise in responsive design, modern UI/UX, and seamless user interactions.
           </p>
         </div>
 
@@ -125,40 +148,13 @@ const Works = ({ limit }: WorksProps) => {
           <div className="w-full">
             <div
               ref={gridRef}
-              className={`grid gap-x-8 gap-y-14 sm:grid-cols-3 md:grid-cols-4 w-full ${limit ? " pb-10" : ""
-                }`}
+              className={`grid gap-x-8 gap-y-14 sm:grid-cols-3 md:grid-cols-4 w-full ${limit ? "pb-10" : ""}`}
             >
-              {displayedProjects.map((project) => {
-                /* ---------- Resolve image ---------- */
-                const rawImageUrl =
-                  project.image?.data?.attributes?.url || project.image?.url;
-                const imageUrl = makeMediaUrl(rawImageUrl) || "/images/seo.jpg";
-
-                /* ---------- Resolve link ---------- */
-                /* ---------- Resolve link safely ---------- */
+              {projects.map((project) => {
+                const imageUrl = project.image?.url || "/images/seo.jpg";
                 const slug = project.slug?.trim();
-                const externalUrl = project.url?.trim();
+                const projectLink = slug ? `/projects/${slug}` : null;
 
-                // Detect external URLs (absolute links)
-                const isAbsolute = typeof externalUrl === "string" && /^https?:\/\//i.test(externalUrl);
-
-                let projectLink: string | null = null;
-                let isExternal = false;
-
-                if (isAbsolute) {
-                  // Use the given external link directly
-                  projectLink = externalUrl;
-                  isExternal = true;
-                } else if (slug) {
-                  // Build internal link only if slug is present and not an absolute URL
-                  const isSlugAbsolute = /^https?:\/\//i.test(slug);
-                  projectLink = isSlugAbsolute ? slug : `/projects/${slug.replace(/^\/+/, "")}`;
-                  isExternal = isSlugAbsolute;
-                }
-
-
-
-                /* ---------- Card content ---------- */
                 const CardInner = (
                   <div className="relative">
                     <div className="aspect-[.85/1] w-full overflow-hidden relative">
@@ -174,24 +170,15 @@ const Works = ({ limit }: WorksProps) => {
                         {project.title}
                       </h3>
                       <div className="text-sm">{project.tech}</div>
-                      {/* <div className="grid grid-cols-3 gap-2 justify-center items-center text-sm text-gray-200">
-                        <div>{project.category}</div>
-                        <div className="h-[1px] bg-gray-500 w-12 mx-auto" />
-                        <div>{project.tech}</div>
-                      </div> */}
-
                     </div>
                   </div>
                 );
 
-                /* ---------- Conditional wrapper ---------- */
                 if (projectLink) {
                   return (
                     <a
                       key={project.id}
                       href={projectLink}
-                      target={"_blank"}
-                      rel={isExternal ? "noopener noreferrer" : undefined}
                       className="grid gap-4 text-white w-full group collection-item"
                     >
                       {CardInner}
@@ -215,7 +202,6 @@ const Works = ({ limit }: WorksProps) => {
                 label="View More Projects? "
                 className="w-fit ml-auto mr-auto mt-8 md:mt-16"
                 href="/projects"
-                
               />
             )}
           </div>

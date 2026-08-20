@@ -20,7 +20,7 @@ export default function Header() {
     return (
         <header className="fixed top-0 inset-x-0 z-50 bg-transparent flex justify-center h-24 lg:px-[4rem] z-999">
             <div className="w-full grid grid-cols-[minmax(5vw,1fr)_minmax(auto,1400px)_minmax(5vw,1fr)] z-1">
-                <div className="max-w-[1360px] px-5  flex justify-between gap-x-3 items-center w-full absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div className="max-w-[1400px] px-5  flex justify-between gap-x-3 items-center w-full absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
 
                     {/* Logo */}
                     <Link href="/" className=" max-w-[240px] ">
@@ -33,8 +33,8 @@ export default function Header() {
                         <Link href="/about" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">About Us</Link>
                         <Link href="" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Game Art</Link>
                         <Link href="" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Stimulator Art</Link>
-                        <Link href="" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Projects</Link>
-                        <Link href="" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Contact</Link>
+                        <Link href="/projects" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Portfolio</Link>
+                        <Link href="/contact" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Contact</Link>
                         <AnimatedButton
                             href=""
                             label="Let's Talk"
@@ -92,9 +92,9 @@ export default function Header() {
                     <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Stimulator Art</Link>
 
 
-                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Projects</Link>
+                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Portfolio</Link>
 
-                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Contact</Link>
+                    <Link href="/contact" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Contact</Link>
 
                 </nav>
             </div>
