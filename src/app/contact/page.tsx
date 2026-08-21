@@ -15,13 +15,13 @@ import {
   Linkedin,
   Facebook,
   MapPin,
-} from 'lucide-react';
+} from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 const socialLinks = [
-  { href: '#', Icon: Instagram },
-  { href: '#', Icon: MessageCircleMore },
-  { href: '#', Icon: Facebook },
-  { href: '#', Icon: Linkedin },
+  { href: "#", Icon: Instagram },
+  { href: "#", Icon: MessageCircleMore },
+  { href: "#", Icon: Facebook },
+  { href: "#", Icon: Linkedin },
 ];
 
 function TopContactSection() {
@@ -40,15 +40,19 @@ function TopContactSection() {
   };
 
   return (
-    <section className="py-16 lg:py-30">
+    <section className="pt-16 lg:pt-30 pb-14 lg:pb-24">
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10 pt-30 pb-20  w-full">
         <h2 className="uppercase w-fit text-white heading text-5xl lg:text-[6rem] leading-none font-light relative">
           Contact Us
         </h2>
+        <p className="text-white/80 text-[14px] lg:text-[16px] leading-relaxed font-[300] max-w-[420px] mt-6">
+          Interested in joining our 3D world? Drop us a line and tell us what
+          you need and more.
+        </p>
       </div>
-      <div className="max-w-[1450px] mx-auto px-5 lg:px-10 pt-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-30">
-        <div className="flex-1 min-w-0 bg-white/5 p-7 lg:p-10 rounded-xl">
-          <h1 className="uppercase text-white  text-4xl lg:text-[3.2rem]   mb-6">
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="flex-1 min-w-0 bg-white/3 p-7 lg:p-9 rounded-xl border border-white/10">
+          <h1 className="uppercase text-white  text-4xl md:text-5xl    mb-6">
             Email Us a<br />
             Digital <span className="text-[var(--green)]">Note</span>
           </h1>
@@ -56,24 +60,24 @@ function TopContactSection() {
             Interested in joining our 3D world? Drop us a line and tell us what
             you need and more.
           </p>
-           <div className="py-8">
-            <h4 className="text-white/40 text-xs uppercase tracking-[3px] mb-3">
+          <div className="py-8">
+            <h4 className="text-[var(--green)] uppercase  uppercase tracking-[3px] mb-2 text-[14px]">
               Headquarters
             </h4>
-            <p className="text-white text-[13px] font-medium uppercase tracking-[2px] leading-relaxed">
-              KOCHI, KERALA, INDIA
+            <p className="text-white">
+              Kochi, Kerala, India
               <span className="text-white/40 font-normal text-[11px] tracking-[2px] block mt-1">
                 QUADBREAK STUDIO
               </span>
             </p>
           </div>
           <div className="pb-8">
-
-            <p className="text-white text-[13px] font-medium uppercase tracking-[2px] leading-relaxed">
-              <span className="text-white/40 font-normal text-[11px] tracking-[2px] block my-1">
-                QUADBREAK STUDIO
+            <p className="text-white ">
+              <span className="text-[var(--green)] uppercase font-normal  tracking-[2px] block mb-2 text-[14px]">
+                Operating Studio
               </span>
-              2nd Floor, City Center, Iritty, <br />Kannur Kerala - 670703
+              2nd Floor, City Center, Iritty, <br />
+              Kannur Kerala - 670703
             </p>
           </div>
           <div>
@@ -83,74 +87,78 @@ function TopContactSection() {
             <ul className="flex gap-4">
               {socialLinks.map(({ href, Icon }, index) => (
                 <li key={index} className="font-light flex items-center">
-                  <a href={href} target="_blank" rel="noopener noreferrer" className="w-8 h-8 flex items-center justify-center border border-white/10 rounded transition-all hover:border-[var(--green)]/30 hover:bg-[var(--green)]/10">
-                    <Icon className="text-white/40 p-1 text-[10px] font-medium transition-colors hover:text-[var(--green)]" strokeWidth={1.5} />
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center border border-[var(--green)] rounded transition-all hover:border-[var(--green)]/30 hover:bg-[var(--green)]/10"
+                  >
+                    <Icon
+                      className="p-1 text-[10px] font-medium transition-colors text-[var(--green)]"
+                      strokeWidth={1.5}
+                    />
                   </a>
                 </li>
               ))}
             </ul>
-            
           </div>
         </div>
 
         <div className="flex-[0_0_650px] max-lg:flex-none max-lg:w-full">
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-10"
-          >
+          <form onSubmit={handleSubmit} className="flex flex-col gap-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3">
                 <label className="text-white/40 text-xs uppercase tracking-[3px]">
                   Name
                 </label>
                 <input
                   type="text"
                   placeholder="Your name"
-                  className="border-b border-white/10 py-3 focus:px-4 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
+                  className="bg-white/3 border border-white/10 p-3 focus:px-5 rounded text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
                 />
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3">
                 <label className="text-white/40 text-xs uppercase tracking-[3px]">
                   Email
                 </label>
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="border-b border-white/10 py-3 focus:px-4 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
+                  className="bg-white/3 border border-white/10 p-3 focus:px-5 rounded text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
                 />
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3">
                 <label className="text-white/40 text-xs uppercase tracking-[3px]">
                   Contact Number
                 </label>
                 <input
                   type="text"
                   placeholder="ph. Number"
-                  className="border-b border-white/10 py-3 focus:px-4 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
+                  className="bg-white/3 border border-white/10 p-3 focus:px-5 rounded text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
                 />
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3">
                 <label className="text-white/40 text-xs uppercase tracking-[3px]">
                   Company Name
                 </label>
                 <input
                   type="text"
                   placeholder="Company name"
-                  className="border-b border-white/10 py-3 focus:px-4 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
+                  className="bg-white/3 border border-white/10 p-3 focus:px-5 rounded text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
                 />
               </div>
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               <label className="text-white/40 text-xs uppercase tracking-[3px]">
                 Your message here
               </label>
               <textarea
-                rows={4}
+                rows={5}
                 placeholder="Tell us about your project..."
-                className="border-b border-white/10 py-3 focus:px-4 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200] resize-vertical min-h-[100px]"
+                className="bg-white/3 border border-white/10 p-3 focus:px-5 rounded text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200] resize-vertical min-h-[100px]"
               />
             </div>
             <AnimatedButton
@@ -172,11 +180,13 @@ function TopContactSection() {
 
 function FreeArtTestHeader() {
   return (
-    <section className="pt-20 pb-0">
+    <section className="">
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10 flex items-end justify-between gap-10">
-        <h2 className="uppercase text-white  text-5xl lg:text-[4rem] leading-none tracking-[4px]">
-          <span className="block text-white/50 font-light">
-            EXPERIENCE<br />OUR QUALITY
+        <h2 className="uppercase text-white  text-5xl lg:text-[4rem] ">
+          <span className="block text-white/50 ">
+            EXPERIENCE
+            <br />
+            OUR QUALITY
           </span>
           <span className="block">
             <span className="text-[var(--green)]">FREE</span> ART TEST
@@ -206,43 +216,43 @@ function FreeArtTestBody() {
     <section className="pt-12 pb-0">
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
         <form onSubmit={handleSubmit} className="grid lg:grid-cols-2 gap-8">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             <label className="text-white/40 text-xs uppercase tracking-[3px]">
               Name
             </label>
             <input
               type="text"
               placeholder="Your name"
-              className="border-b border-white/10 py-3 focus:px-4 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
+              className="bg-white/3 border border-white/10 p-3 focus:px-5 rounded text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
             />
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             <label className="text-white/40 text-xs uppercase tracking-[3px]">
               Email
             </label>
             <input
               type="email"
               placeholder="Your email"
-              className="border-b border-white/10 py-3 focus:px-4 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
+              className="bg-white/3 border border-white/10 p-3 focus:px-5 rounded text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
             />
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             <label className="text-white/40 text-xs uppercase tracking-[3px]">
               Company Name
             </label>
             <input
               type="text"
               placeholder="Company name"
-              className="border-b border-white/10 py-3 focus:px-4 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
+              className="bg-white/3 border border-white/10 p-3 focus:px-5 rounded text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200]"
             />
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             <label className="text-white/40 text-xs uppercase tracking-[3px]">
               Select a Service
             </label>
             <select
               defaultValue=""
-              className="border-b border-white/10 py-3 focus:px-4 text-white/40 text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] appearance-none cursor-pointer"
+              className="bg-white/3 border border-white/10 p-3 focus:px-5 rounded text-white/40 text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] appearance-none cursor-pointer"
               style={{
                 backgroundImage:
                   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23ffffff40'/%3E%3C/svg%3E\")",
@@ -262,14 +272,14 @@ function FreeArtTestBody() {
               <option>Concept Art</option>
             </select>
           </div>
-          <div className="flex flex-col gap-2 col-span-2">
+          <div className="flex flex-col gap-3 col-span-2">
             <label className="text-white/40 text-xs uppercase tracking-[3px]">
               Project Details
             </label>
             <textarea
               rows={6}
               placeholder="Tell us about your project, art style, technical requirements..."
-              className="border-b border-white/10 py-3 focus:px-4 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200] resize-vertical min-h-[120px]"
+              className="bg-white/3 border border-white/10 p-3 focus:px-5 rounded text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/20 placeholder:font-[200] resize-vertical min-h-[120px]"
             />
           </div>
           <AnimatedButton
@@ -299,7 +309,7 @@ function FreeArtTestBody() {
           <h4 className="uppercase text-white text-lg font-light tracking-[2px] mb-4">
             Why Choose Our Free Art Test?
           </h4>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-3 max-w-[550px]">
             {[
               "Quality You Can See — Get a production-ready, real-time optimized asset tailored to your needs.",
               "Seamless Collaboration — Experience our clear communication and structured workflow.",
@@ -323,51 +333,53 @@ function FreeArtTestBody() {
 
 function BottomInfo() {
   return (
-    <section className="py-16 lg:py-24">
-      <div className="max-w-[1450px] mx-auto px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-        <div>
-          <h3 className="uppercase text-white text-lg font-light tracking-[2px] mb-5">
-            How It Works
-          </h3>
-          <ol className="flex flex-col gap-4 list-none">
-            {[
-              "Submit Your Request — Fill out our quick form with project details.",
-              "We Create a Test Asset — Await our high-quality 3D model or texture.",
-              "Review & Feedback — See how our work fits your project's needs.",
-              "Decide with Confidence — If you like it, let's move forward with your project.",
-            ].map((text, i) => (
-              <li
-                key={i}
-                className="relative pl-8 text-white/50 text-[14px] leading-relaxed font-[200]"
-              >
-                <span className="absolute left-0 top-0 w-5 h-5 border border-[var(--green)]/30 rounded  text-[11px] text-[var(--green)] flex items-center justify-center">
-                  {i + 1}
-                </span>
-                {text}
-              </li>
-            ))}
-          </ol>
-        </div>
+    <section className="py-14 md:pb-24 md:pt-20">
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10  ">
+        <div className="bg-white/3 border border-white/10 rounded-xl p-8 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          <div className="">
+            <h3 className="uppercase text-white text-lg font-light tracking-[2px] mb-5">
+              How It Works
+            </h3>
+            <ol className="flex flex-col gap-4 list-none">
+              {[
+                "Submit Your Request — Fill out our quick form with project details.",
+                "We Create a Test Asset — Await our high-quality 3D model or texture.",
+                "Review & Feedback — See how our work fits your project's needs.",
+                "Decide with Confidence — If you like it, let's move forward with your project.",
+              ].map((text, i) => (
+                <li
+                  key={i}
+                  className="relative pl-8 text-white/50 text-[14px] leading-relaxed font-[200]"
+                >
+                  <span className="absolute left-0 top-0 w-6 h-6 border border-[var(--green)]/30 rounded  text-[11px] text-[var(--green)] flex items-center justify-center">
+                    0{i + 1}
+                  </span>
+                  {text}
+                </li>
+              ))}
+            </ol>
+          </div>
 
-        <div>
-          <h3 className="uppercase text-white text-lg font-light tracking-[2px] mb-5">
-            General Requirements for Our Test Eligibility
-          </h3>
-          <ul className="flex flex-col gap-3 list-none">
-            {[
-              "Game Studios — Looking for long-term outsourcing partnerships.",
-              "Indie Developers — Needing high-quality art on a budget.",
-              "VR/Simulation Companies — Requiring real-time optimized assets.",
-            ].map((text, i) => (
-              <li
-                key={i}
-                className="relative pl-5 text-white/50 text-[14px] leading-relaxed font-[200]"
-              >
-                <span className="absolute left-0 top-[9px] w-[5px] h-[5px] bg-[var(--green)] rotate-45 opacity-60" />
-                {text}
-              </li>
-            ))}
-          </ul>
+          <div>
+            <h3 className="uppercase text-white text-lg font-light tracking-[2px] mb-5">
+              General Requirements for Our Test Eligibility
+            </h3>
+            <ul className="flex flex-col gap-3 list-none">
+              {[
+                "Game Studios — Looking for long-term outsourcing partnerships.",
+                "Indie Developers — Needing high-quality art on a budget.",
+                "VR/Simulation Companies — Requiring real-time optimized assets.",
+              ].map((text, i) => (
+                <li
+                  key={i}
+                  className="relative pl-5 text-white/50 text-[14px] leading-relaxed font-[200]"
+                >
+                  <span className="absolute left-0 top-[9px] w-[5px] h-[5px] bg-[var(--green)] rotate-45 opacity-60" />
+                  {text}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

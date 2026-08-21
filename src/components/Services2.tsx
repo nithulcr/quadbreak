@@ -118,7 +118,7 @@ const Servicess = () => {
   }, []);
 
   return (
-    <section id="services" className="py-16 lg:py-30 relative overflow-hidden " ref={sectionRef}>
+    <section id="services" className="py-10 lg:py-20 relative overflow-hidden " ref={sectionRef}>
 
       <div
         className="grid gap-x-20 max-w-[1450px] mx-auto px-5 lg:px-10 items-center w-full "
@@ -142,7 +142,7 @@ const Servicess = () => {
           </div>
 
         </div>
-        <div ref={servicesGridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-4  mt-10 md:mt-24">
+        <div ref={servicesGridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-4  mt-10 md:mt-16">
           {services.map((service, index) => (
             <div
               key={index}

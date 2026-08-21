@@ -54,6 +54,7 @@ const AboutSectionn = () => {
       const badge = section.querySelector(".about-badge");
       if (badge) {
         gsap.from(badge, {
+          opacity: 0,
           y: 40,
           duration: 0.8,
           ease: "power2.out",
@@ -61,7 +62,6 @@ const AboutSectionn = () => {
             trigger: badge,
             start: "top 75%",
             once: true,
-            invalidateOnRefresh: true,
           },
         });
       }
@@ -70,6 +70,7 @@ const AboutSectionn = () => {
       const heading = section.querySelector(".about-heading");
       if (heading) {
         gsap.from(heading, {
+          opacity: 0,
           y: 40,
           duration: 0.8,
           ease: "power2.out",
@@ -77,7 +78,6 @@ const AboutSectionn = () => {
             trigger: heading,
             start: "top 75%",
             once: true,
-            invalidateOnRefresh: true,
           },
         });
       }
@@ -86,6 +86,7 @@ const AboutSectionn = () => {
       const paragraph = section.querySelector(".about-paragraph");
       if (paragraph) {
         gsap.from(paragraph, {
+          opacity: 0,
           y: 40,
           duration: 0.8,
           ease: "power2.out",
@@ -93,7 +94,6 @@ const AboutSectionn = () => {
             trigger: paragraph,
             start: "top 75%",
             once: true,
-            invalidateOnRefresh: true,
           },
         });
       }
@@ -101,31 +101,25 @@ const AboutSectionn = () => {
       // Cards animation with stagger
       const cards = section.querySelectorAll(".about-card");
 
-if (cards.length > 0) {
-  gsap.fromTo(
-    cards,
-    {
-
-      y: 30,
-      scale: 0.85,
-    },
-    {
-
-      y: 0,
-      scale: 1,
-      duration: 1,
-      stagger: 0.15,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: section,
-        start: "top 80%",
-        toggleActions: "play none none none",
-        once: true,
-        invalidateOnRefresh: true,
-      },
-    }
-  );
-}
+      if (cards.length > 0) {
+        gsap.from(cards, {
+          opacity: 0,
+          y: 60,
+          scale: 0.96,
+          duration: 0.9,
+          stagger: {
+            each: 0.12,
+            from: "start",
+          },
+          ease: "power3.out",
+          force3D: true,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            once: true,
+          },
+        });
+      }
 
       // CTA Button animation
       const ctaButton = section.querySelector(".about-cta");
@@ -139,7 +133,6 @@ if (cards.length > 0) {
             trigger: ctaButton,
             start: "top 75%",
             once: true,
-            invalidateOnRefresh: true,
           },
         });
       }
@@ -150,7 +143,7 @@ if (cards.length > 0) {
 
   return (
     <section ref={sectionRef} id="about" className="py-16 lg:py-16 relative overflow-hidden">
-      <div className="grid-wrapper max-w-[1200px] mx-auto px-5 lg:px-10">
+      <div className="grid-wrapper max-w-[1450px] mx-auto px-5 lg:px-10">
         <div className="stacked-content">
           <div className="content-wrapper">
             {/* Badge */}
@@ -197,7 +190,7 @@ if (cards.length > 0) {
                   </div>
                   
                   <div className="absolute bottom-[-200px] group-hover:bottom-0 left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-6">
-                    <h5 className="font-light text-xl uppercase tracking-wider  relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
+                    <h5 className="font-light text-[var(--green)] text-xl md:text-2xl uppercase tracking-wider  relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
                       {card.title}
                     </h5>
                     <p className="font-[200] text-[14px]  max-w-[260px]">the one we have built our pipeline around for nine years</p>

@@ -90,7 +90,7 @@ const ModernTestimonials2 = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-20 relative overflow-hidden bg-[var(--background)]">
+    <section ref={sectionRef} className="py-14 md:py-24 relative overflow-hidden bg-[var(--background)]">
       <div className="absolute hero-section-video top-0 left-0 w-full h-full opacity-15">
         <img
           src="/images/bg2.png"

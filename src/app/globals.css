@@ -251,6 +251,7 @@ body.open main {
     cursor: pointer;
     /* background: var(--green); */
     text-transform: uppercase;
+    min-width: 160px;
 }
   .button-outline {
     border: 1px solid var(--green);

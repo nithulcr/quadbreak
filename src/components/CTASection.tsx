@@ -64,7 +64,7 @@ const CTASection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden pt-10 lg:pt-24  bg-[#0b1014]"
+      className="relative overflow-hidden   bg-white/3"
     >
       <div className="mx-auto max-w-[1450px] px-5">
         <div
@@ -88,7 +88,7 @@ const CTASection = () => {
               max-w-[600px]
               flex-col
               justify-center 
-              py-10
+              pt-14  pb-6 
             "
           >
           
@@ -156,7 +156,7 @@ const CTASection = () => {
                
                 h-full
                 w-full
-                object-contain
+                object-contain pt-14 md:pt-24
               "
             />
 

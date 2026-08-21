@@ -77,7 +77,7 @@ const StatsSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[var(--background)] py-14 md:pb-20 md:pt-36"
+      className="relative overflow-hidden bg-[var(--background)] pt-14 pb-10 md:pt-36"
     >
 
       <div className="mx-auto max-w-[1450px] px-5">
