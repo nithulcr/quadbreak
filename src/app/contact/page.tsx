@@ -49,8 +49,8 @@ function TopContactSection() {
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10 pt-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-30">
         <div className="flex-1 min-w-0 bg-white/5 p-7 lg:p-10 rounded-xl">
           <h1 className="uppercase text-white  text-4xl lg:text-[3.2rem]   mb-6">
-            EMAIL US A<br />
-            DIGITAL <span className="text-[var(--green)]">NOTE</span>
+            Email Us a<br />
+            Digital <span className="text-[var(--green)]">Note</span>
           </h1>
           <p className="text-white/50 text-[14px] lg:text-[16px] leading-relaxed font-[200] max-w-[360px]">
             Interested in joining our 3D world? Drop us a line and tell us what
@@ -173,10 +173,10 @@ function TopContactSection() {
 function FreeArtTestHeader() {
   return (
     <section className="pt-20 pb-0">
-      <div className="max-w-[1360px] mx-auto px-5 lg:px-10 flex items-end justify-between gap-10">
-        <h2 className="uppercase text-white  text-5xl lg:text-[5rem] leading-none tracking-[4px]">
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10 flex items-end justify-between gap-10">
+        <h2 className="uppercase text-white  text-5xl lg:text-[4rem] leading-none tracking-[4px]">
           <span className="block text-white/50 font-light">
-            EXPERIENCE OUR QUALITY
+            EXPERIENCE<br />OUR QUALITY
           </span>
           <span className="block">
             <span className="text-[var(--green)]">FREE</span> ART TEST
@@ -204,8 +204,8 @@ function FreeArtTestBody() {
 
   return (
     <section className="pt-12 pb-0">
-      <div className="max-w-[1360px] mx-auto px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <form onSubmit={handleSubmit} className="grid lg:grid-cols-2 gap-8">
           <div className="flex flex-col gap-2">
             <label className="text-white/40 text-xs uppercase tracking-[3px]">
               Name
@@ -262,7 +262,7 @@ function FreeArtTestBody() {
               <option>Concept Art</option>
             </select>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 col-span-2">
             <label className="text-white/40 text-xs uppercase tracking-[3px]">
               Project Details
             </label>
@@ -284,8 +284,8 @@ function FreeArtTestBody() {
           )}
         </form>
 
-        <div>
-          <h3 className="uppercase text-white text-3xl lg:text-[2rem] leading-none font-light mb-5">
+        <div className="lg:mt-[-100px]">
+          <h3 className="uppercase text-3xl lg:text-[2rem] leading-none font-light mb-5 text-[var(--green)]">
             Try Before You Commit
           </h3>
           <p className="text-white/80 text-[14px] lg:text-[16px] leading-relaxed font-[200] max-w-[520px] mb-8">
@@ -324,7 +324,7 @@ function FreeArtTestBody() {
 function BottomInfo() {
   return (
     <section className="py-16 lg:py-24">
-      <div className="max-w-[1360px] mx-auto px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         <div>
           <h3 className="uppercase text-white text-lg font-light tracking-[2px] mb-5">
             How It Works

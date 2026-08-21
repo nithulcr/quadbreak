@@ -20,7 +20,7 @@ export default function Header() {
     return (
         <header className="fixed top-0 inset-x-0 z-50 bg-transparent flex justify-center h-24 lg:px-[4rem] z-999">
             <div className="w-full grid grid-cols-[minmax(5vw,1fr)_minmax(auto,1450px)_minmax(5vw,1fr)] z-1">
-                <div className="max-w-[1450px] px-5  flex justify-between gap-x-3 items-center w-full absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div className="max-w-[1450px] px-5 lg:px-10  flex justify-between gap-x-3 items-center w-full absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
 
                     {/* Logo */}
                     <Link href="/" className=" max-w-[240px] ">

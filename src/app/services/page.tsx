@@ -9,7 +9,7 @@ export default function ServicesPage() {
     <div>
       <Header />
       <main>
-        <Banner title="My Skills" backgroundImage="/images/bg-banner.jpg" />
+      
         <HowWeWork />
 
       </main>
