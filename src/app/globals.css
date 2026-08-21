@@ -640,6 +640,16 @@ height: 100%;
   bottom: -3px;
   right: 0px;
 }
+
+.footer-head::after{
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 1.2px;
+  background-color: var(--green);
+  bottom: -6px;
+  left: 0px;
+}
 .hero-section:before{
   content: '';
   position: absolute;
