@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuadBreak Studio — Contact / Free Art Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0b0d0f;
+  --bg-lighter:#12151a;
+  --bg-input:#161a20;
+  --green:#91ff6a;
+  --green-dim:rgba(145,255,106,.15);
+  --green-border:rgba(145,255,106,.3);
+  --white:#ffffff;
+  --gray:#8a8f98;
+  --gray-light:#b0b5be;
+  --border:#1e2228;
+  --border-light:#2a2f36;
+  --radius:6px;
+  --max-w:1060px;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:13px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{text-decoration:none;color:inherit}
+
+/* ─── UTILITIES ─── */
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+.section-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:10px;font-weight:600;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gray);
+  margin-bottom:8px;
+}
+
+/* ─── REVEAL ANIMATION ─── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ═══════════════════════════════════════════
+   1. TOP CONTACT AREA
+   ═══════════════════════════════════════════ */
+.top-contact{
+  min-height:460px;
+  display:flex;align-items:center;
+  padding:80px 0 40px;
+}
+.top-contact .container{
+  display:flex;align-items:center;justify-content:space-between;gap:60px;
+  width:100%;
+}
+.top-left{flex:1;min-width:0}
+.top-left h1{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:clamp(36px,5vw,58px);
+  line-height:.92;letter-spacing:-2px;
+  text-transform:uppercase;margin-bottom:20px;
+}
+.top-left h1 .green{color:var(--green)}
+.top-left p{
+  color:var(--gray);font-size:13px;line-height:1.7;
+  max-width:340px;font-weight:300;
+}
+
+.camera-illust{
+  margin-top:30px;
+  width:120px;height:100px;
+  position:relative;
+}
+.camera-illust .cam-body{
+  width:100px;height:68px;
+  background:linear-gradient(135deg,#1a1e24,#22282f);
+  border:1px solid var(--border-light);
+  border-radius:4px;
+  position:absolute;bottom:0;left:10px;
+}
+.camera-illust .cam-lens{
+  width:36px;height:36px;
+  border-radius:50%;
+  border:2px solid var(--border-light);
+  background:radial-gradient(circle at 40% 40%,#2a3038,#151920);
+  position:absolute;bottom:16px;left:42px;
+}
+.camera-illust .cam-lens::after{
+  content:'';width:14px;height:14px;border-radius:50%;
+  background:radial-gradient(circle,#1e2430,#0d1016);
+  border:1px solid #2a3038;
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.camera-illust .cam-top{
+  width:40px;height:10px;
+  background:#1a1e24;border:1px solid var(--border-light);
+  border-bottom:none;border-radius:3px 3px 0 0;
+  position:absolute;bottom:68px;left:30px;
+}
+.camera-illust .cam-flash{
+  width:10px;height:8px;
+  background:var(--green-dim);
+  border:1px solid var(--green-border);
+  border-radius:2px;
+  position:absolute;bottom:78px;left:80px;
+}
+.camera-email{
+  font-family:'Rajdhani',sans-serif;
+  font-size:11px;color:var(--gray);
+  letter-spacing:1px;margin-top:8px;
+  font-style:italic;
+}
+
+.top-right{flex:0 0 420px}
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:4px}
+.form-group label{
+  font-size:9px;font-weight:600;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--gray);
+}
+.form-group input,.form-group textarea,.form-group select{
+  background:var(--bg-input);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:10px 14px;
+  color:var(--white);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:13px;
+  outline:none;
+  transition:border-color .3s,box-shadow .3s;
+}
+.form-group input::placeholder,.form-group textarea::placeholder{
+  color:#3a3f46;font-size:12px;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{
+  border-color:var(--green-border);
+  box-shadow:0 0 0 2px var(--green-dim);
+}
+.form-group select{
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%233a3f46'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  cursor:pointer;
+}
+.form-group select option{background:var(--bg-input);color:var(--white)}
+.btn-submit{
+  align-self:flex-start;
+  background:transparent;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius);
+  padding:10px 32px;
+  color:var(--white);
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:12px;
+  letter-spacing:3px;text-transform:uppercase;
+  cursor:pointer;
+  transition:all .3s ease;
+  margin-top:4px;
+}
+.btn-submit:hover{
+  background:var(--green);
+  color:#0b0d0f;
+  border-color:var(--green);
+}
+.btn-submit.green-btn{
+  background:var(--green);
+  color:#0b0d0f;
+  border-color:var(--green);
+}
+.btn-submit.green-btn:hover{
+  background:#a8ff85;
+  border-color:#a8ff85;
+}
+
+/* ═══════════════════════════════════════════
+   2. CONTACT INFORMATION BAR
+   ═══════════════════════════════════════════ */
+.info-bar{
+  margin:40px auto 0;
+  padding:0 24px;
+}
+.info-bar-inner{
+  max-width:860px;margin:0 auto;
+  border:1px solid var(--green-border);
+  border-radius:8px;
+  background:var(--bg-lighter);
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  align-items:center;
+  padding:24px 36px;
+  gap:24px;
+}
+.info-bar .bar-section h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:10px;font-weight:600;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--gray);
+  margin-bottom:10px;
+}
+.info-bar .social-icons{display:flex;gap:12px}
+.social-icons a{
+  width:32px;height:32px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);
+  border-radius:4px;
+  transition:border-color .3s,background .3s;
+}
+.social-icons a:hover{border-color:var(--green-border);background:var(--green-dim)}
+.social-icons svg{width:14px;height:14px;fill:var(--gray);transition:fill .3s}
+.social-icons a:hover svg{fill:var(--green)}
+
+.info-bar .hq-text{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:12px;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;color:var(--white);
+  line-height:1.8;
+}
+.info-bar .hq-text span{color:var(--gray);font-weight:400;font-size:11px;letter-spacing:2px;display:block}
+
+.brand-mark{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:28px;
+  color:var(--green);letter-spacing:-1px;
+  border:1px solid var(--green-border);
+  padding:8px 14px;border-radius:4px;
+  line-height:1;
+}
+
+/* ═══════════════════════════════════════════
+   3. FREE ART TEST SECTION — HEADING
+   ═══════════════════════════════════════════ */
+.art-test-header{
+  padding:80px 0 0;
+  position:relative;
+}
+.art-test-header .container{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:40px;
+}
+.art-test-header h2{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;
+  font-size:clamp(32px,4.5vw,52px);
+  line-height:.92;letter-spacing:-2px;
+  text-transform:uppercase;
+}
+.art-test-header h2 .line{display:block}
+.art-test-header h2 .dim{color:var(--gray-light)}
+.art-test-header h2 .green{color:var(--green)}
+
+.jet-illust{
+  width:180px;height:80px;flex-shrink:0;position:relative;
+}
+.jet-illust .jet-body{
+  width:130px;height:30px;
+  background:linear-gradient(90deg,#1a1e24 0%,#222a32 50%,transparent 100%);
+  border:1px solid var(--border-light);
+  border-radius:14px 14px 6px 6px;
+  position:absolute;top:25px;left:0;
+}
+.jet-illust .jet-wing{
+  width:0;height:0;
+  border-left:30px solid transparent;
+  border-right:10px solid transparent;
+  border-bottom:24px solid #1e2428;
+  position:absolute;top:1px;left:30px;
+}
+.jet-illust .jet-wing-bottom{
+  width:0;height:0;
+  border-left:20px solid transparent;
+  border-right:8px solid transparent;
+  border-top:18px solid #1e2428;
+  position:absolute;bottom:4px;left:36px;
+}
+.jet-illust .jet-tail{
+  width:20px;height:22px;
+  background:#1a1e24;border:1px solid var(--border-light);
+  border-radius:0 0 0 4px;
+  position:absolute;top:5px;left:0;
+  clip-path:polygon(100% 0,100% 100%,0 60%);
+}
+.jet-illust .jet-nose{
+  width:50px;height:14px;
+  background:linear-gradient(90deg,#222a32,#1a1e24);
+  border:1px solid var(--border-light);
+  border-left:none;
+  border-radius:0 8px 8px 0;
+  position:absolute;top:33px;left:128px;
+}
+.jet-illust .jet-glow{
+  width:30px;height:6px;
+  background:var(--green);
+  border-radius:3px;
+  position:absolute;top:36px;left:150px;
+  opacity:.6;
+  box-shadow:0 0 14px var(--green),0 0 30px rgba(145,255,106,.3);
+  animation:pulse-glow 2s ease-in-out infinite;
+}
+@keyframes pulse-glow{
+  0%,100%{opacity:.4;transform:scaleX(1)}
+  50%{opacity:.8;transform:scaleX(1.2)}
+}
+
+/* ═══════════════════════════════════════════
+   4. FREE ART TEST FORM + CONTENT
+   ═══════════════════════════════════════════ */
+.art-test-body{padding:40px 0 0}
+.art-test-body .container{
+  display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;
+}
+.at-form{display:flex;flex-direction:column;gap:14px}
+.at-form .form-group textarea{resize:vertical;min-height:110px}
+
+.at-content h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:18px;
+  letter-spacing:.5px;margin-bottom:14px;
+  color:var(--white);
+}
+.at-content .lead{
+  font-size:13px;color:var(--gray-light);
+  line-height:1.75;margin-bottom:28px;font-weight:300;
+}
+.at-content h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:15px;
+  letter-spacing:.5px;color:var(--white);
+  margin-bottom:14px;
+}
+.at-content ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.at-content li{
+  position:relative;padding-left:16px;
+  font-size:12px;color:var(--gray);line-height:1.65;font-weight:300;
+}
+.at-content li::before{
+  content:'';position:absolute;left:0;top:7px;
+  width:6px;height:6px;
+  border:1px solid var(--green-border);
+  border-radius:1px;
+  transform:rotate(45deg);
+}
+
+/* ═══════════════════════════════════════════
+   5. BOTTOM INFORMATION
+   ═══════════════════════════════════════════ */
+.bottom-info{padding:60px 0 80px}
+.bottom-info .container{
+  display:grid;grid-template-columns:1fr 1fr;gap:50px;
+}
+.bottom-info h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:16px;
+  letter-spacing:1px;text-transform:uppercase;
+  color:var(--white);margin-bottom:18px;
+}
+.bottom-info ol{
+  list-style:none;counter-reset:step;
+  display:flex;flex-direction:column;gap:12px;
+}
+.bottom-info ol li{
+  counter-increment:step;
+  font-size:12px;color:var(--gray);line-height:1.65;font-weight:300;
+  padding-left:30px;position:relative;
+}
+.bottom-info ol li::before{
+  content:counter(step);
+  position:absolute;left:0;top:0;
+  width:20px;height:20px;
+  border:1px solid var(--green-border);
+  border-radius:3px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:11px;
+  color:var(--green);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--green-dim);
+}
+.bottom-info .req-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:0}
+.bottom-info .req-list li{
+  font-size:12px;color:var(--gray);line-height:1.65;font-weight:300;
+  padding-left:16px;position:relative;
+}
+.bottom-info .req-list li::before{
+  content:'';position:absolute;left:0;top:7px;
+  width:6px;height:6px;
+  border:1px solid var(--green-border);
+  border-radius:1px;
+  transform:rotate(45deg);
+}
+
+/* ═══════════════════════════════════════════
+   DIVIDERS
+   ═══════════════════════════════════════════ */
+.divider{
+  width:60px;height:1px;
+  background:var(--border-light);
+  margin:0 0 20px;
+}
+.divider.green{background:var(--green-border);width:40px}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+.site-footer{
+  border-top:1px solid var(--border);
+  padding:30px 0;
+  text-align:center;
+  font-size:11px;color:#3a3f46;
+  letter-spacing:1px;
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE
+   ═══════════════════════════════════════════ */
+@media(max-width:860px){
+  .top-contact .container{flex-direction:column;gap:40px}
+  .top-right{flex:none;width:100%}
+  .form-row{grid-template-columns:1fr}
+  .info-bar-inner{grid-template-columns:1fr;gap:20px;text-align:center;padding:24px 20px}
+  .info-bar .social-icons{justify-content:center}
+  .brand-mark{margin:0 auto}
+  .art-test-header .container{flex-direction:column;align-items:flex-start}
+  .jet-illust{width:120px;height:60px}
+  .art-test-body .container{grid-template-columns:1fr}
+  .bottom-info .container{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .top-left h1{font-size:32px}
+  .art-test-header h2{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     1. TOP CONTACT AREA
+     ═══════════════════════════════════════════ -->
+<section class="top-contact">
+  <div class="container">
+    <div class="top-left reveal">
+      <h1>
+        EMAIL US A<br>
+        DIGITAL<br>
+        <span class="green">NOTE</span>
+      </h1>
+      <p>Interested in joining our 3D world? Drop us a line and tell us what you need and more.</p>
+      <div class="camera-illust">
+        <div class="cam-top"></div>
+        <div class="cam-flash"></div>
+        <div class="cam-body">
+          <div class="cam-lens"></div>
+        </div>
+      </div>
+      <div class="camera-email">hello@quadbreakstudio.com</div>
+    </div>
+    <div class="top-right reveal">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Your email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" placeholder="Company name">
+        </div>
+        <div class="form-group">
+          <label>Your message here</label>
+          <textarea rows="4" placeholder="Tell us about your project..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">SUBMIT</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     2. CONTACT INFORMATION BAR
+     ═══════════════════════════════════════════ -->
+<div class="info-bar reveal">
+  <div class="info-bar-inner">
+    <div class="bar-section">
+      <h4>Follow Social Media</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
+        </a>
+        <a href="#" aria-label="ArtStation">
+          <svg viewBox="0 0 24 24"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 002.164 1.333h13.457l-2.792-4.838H0zm24-1.052L18.983 4.17a.416.416 0 00-.357-.203H14.36l6.88 11.917h2.76zm-8.543 0L8.9 4.17a.416.416 0 00-.357-.203H2.04l6.88 11.917h6.537z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="bar-section" style="text-align:center">
+      <h4>Headquarters</h4>
+      <div class="hq-text">
+        KOCHI, KERALA, INDIA
+        <span>QUADBREAK STUDIO</span>
+      </div>
+    </div>
+    <div class="bar-section" style="text-align:right">
+      <div class="brand-mark">QB</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     3. FREE ART TEST HEADING
+     ═══════════════════════════════════════════ -->
+<section class="art-test-header">
+  <div class="container reveal">
+    <h2>
+      <span class="line dim">EXPERIENCE OUR QUALITY</span>
+      <span class="line"><span class="green">FREE</span> ART TEST</span>
+    </h2>
+    <div class="jet-illust">
+      <div class="jet-tail"></div>
+      <div class="jet-body"></div>
+      <div class="jet-wing"></div>
+      <div class="jet-wing-bottom"></div>
+      <div class="jet-nose"></div>
+      <div class="jet-glow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     4. FREE ART TEST FORM + CONTENT
+     ═══════════════════════════════════════════ -->
+<section class="art-test-body">
+  <div class="container">
+    <div class="reveal">
+      <form class="at-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="Your email">
+        </div>
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" placeholder="Company name">
+        </div>
+        <div class="form-group">
+          <label>Select a Service</label>
+          <select>
+            <option value="" disabled selected>Choose a service</option>
+            <option>3D Modeling</option>
+            <option>Texturing</option>
+            <option>Environment Art</option>
+            <option>Character Art</option>
+            <option>Hard Surface</option>
+            <option>Props &amp; Weapons</option>
+            <option>Concept Art</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project Details</label>
+          <textarea rows="6" placeholder="Tell us about your project, art style, technical requirements..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit green-btn">SUBMIT</button>
+      </form>
+    </div>
+    <div class="at-content reveal">
+      <h3>Try Before You Commit — Get a Free Art Test</h3>
+      <div class="divider green"></div>
+      <p class="lead">At QuadBreak Studio, we believe in earning your trust through results. That's why we offer a free art test for select projects. Whether you're a new client or an established studio, we'll work on a small sample to demonstrate our quality, attention to detail, and ability to match your project's requirements.</p>
+      <h4>Why Choose Our Free Art Test?</h4>
+      <ul>
+        <li>Quality You Can See — Get a production-ready, real-time optimized asset tailored to your needs.</li>
+        <li>Seamless Collaboration — Experience our clear communication and structured workflow.</li>
+        <li>Tailored to Your Project — Whether you're an indie studio, AAA developer, or animation company, we'll build an asset that fits your vision and pipeline.</li>
+        <li>No Risk, All Reward — There's no commitment or cost, and you get to see exactly what we can do.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     5. BOTTOM INFORMATION
+     ═══════════════════════════════════════════ -->
+<section class="bottom-info">
+  <div class="container">
+    <div class="reveal">
+      <h3>How It Works</h3>
+      <div class="divider"></div>
+      <ol>
+        <li>Submit Your Request — Fill out our quick form with project details.</li>
+        <li>We Create a Test Asset — Await our high-quality 3D model or texture.</li>
+        <li>Review &amp; Feedback — See how our work fits your project's needs.</li>
+        <li>Decide with Confidence — If you like it, let's move forward with your project.</li>
+      </ol>
+    </div>
+    <div class="reveal">
+      <h3>General Requirements for Our Test Eligibility</h3>
+      <div class="divider"></div>
+      <ul class="req-list">
+        <li>Game Studios — Looking for long-term outsourcing partnerships.</li>
+        <li>Indie Developers — Needing high-quality art on a budget.</li>
+        <li>VR/Simulation Companies — Requiring real-time optimized assets.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container">&copy; 2026 QuadBreak Studio. All rights reserved.</div>
+</footer>
+
+<script>
+/* ─── Scroll Reveal ─── */
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
+  })
+},{threshold:.15});
+reveals.forEach(r=>obs.observe(r));
+
+/* ─── Form Handler ─── */
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('.btn-submit');
+  const orig=btn.textContent;
+  btn.textContent='SENT ✓';
+  btn.style.pointerEvents='none';
+  setTimeout(()=>{btn.textContent=orig;btn.style.pointerEvents='';e.target.reset()},2500);
+}
+</script>
+</body>
+</html>

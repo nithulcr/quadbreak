@@ -92,7 +92,7 @@ export default function Hero() {
   return (
     <section ref={sectionRef} className="hero-section relative flex flex-col justify-center overflow-hidden main-hero px-5 lg:px-[4rem] pb-6 pt-15 lg:py-20 min-h-screen">
 
-      <div ref={bannerRef} className="hero-banner max-w-[1400px] mx-auto z-9 flex flex-col justify-center pt-20 px-5 w-full gap-5">
+      <div ref={bannerRef} className="hero-banner max-w-[1450px] mx-auto z-9 flex flex-col justify-center pt-20 px-5 w-full gap-5">
         <span ref={welcomeRef} className="text-[2rem] md:text-[3rem] block font-[200] uppercase">Welcome to</span>
         <h1 className="uppercase max-w-[800px] w-min relative flex flex-col gap-4 text-[var(--green)] text-[3rem] lg:text-[6rem] leading-none mb-1">
           <span ref={title1Ref} className="block w-fit">Quadbreak</span> 

@@ -99,7 +99,7 @@ const ModernTestimonials2 = () => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-      <div className="max-w-[1400px] mx-auto px-5">
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-white uppercase text-4xl lg:text-6xl leading-none font-light mb-4">

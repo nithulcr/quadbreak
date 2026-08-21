@@ -219,7 +219,7 @@ export default function ProjectDetail() {
                 />
                 <div className="absolute inset-0 bg-black/40" />
               </div>
-              <div className="max-w-[1400px] mx-auto px-5 w-full absolute bottom-0 left-0 right-0 pb-12 lg:pb-20">
+              <div className="max-w-[1450px] mx-auto px-5 lg:px-10 w-full absolute bottom-0 left-0 right-0 pb-12 lg:pb-20">
                 <h1 className="uppercase text-white text-4xl lg:text-[5rem] leading-none font-light mb-6">
                   {project.title}
                 </h1>
@@ -230,7 +230,7 @@ export default function ProjectDetail() {
             </div>
 
             {/* Project Info */}
-            <div ref={infoRef} className="max-w-[1400px] mx-auto px-5 py-14 lg:py-24 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-20">
+            <div ref={infoRef} className="max-w-[1450px] mx-auto px-5 lg:px-10 py-14 lg:py-24 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-20">
               <div className="lg:col-span-2">
                 <h2 className="uppercase text-white text-3xl lg:text-[3rem] leading-none font-light mb-6">
                   About This Project
@@ -259,7 +259,7 @@ export default function ProjectDetail() {
             </div>
 
             {/* Gallery Images */}
-            <div ref={galleryRef} className="max-w-[1400px] mx-auto px-5 pb-12 lg:pb-20 grid md:grid-cols-2 lg:grid-cols-2 gap-6 ">
+            <div ref={galleryRef} className="max-w-[1450px] mx-auto px-5 lg:px-10 pb-12 lg:pb-20 grid md:grid-cols-2 lg:grid-cols-2 gap-6 ">
               {project.image?.url && (
                 <div className="w-full aspect-[1/.8] relative overflow-hidden border border-white/10 rounded-xl">
                   <Image
@@ -287,7 +287,7 @@ export default function ProjectDetail() {
         {/* Related Projects */}
         {relatedProjects.length > 0 && (
           <section className="py-16 lg:py-24">
-            <div className="max-w-[1400px] mx-auto px-5">
+            <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
               <div ref={relatedHeaderRef} className="mb-10 lg:mb-16 w-fit">
                 <h2 className="uppercase text-white heading text-5xl lg:text-[5rem] leading-none font-light">
                   More Works
@@ -301,7 +301,7 @@ export default function ProjectDetail() {
                     href={`/projects/${rp.slug}`}
                     className="text-white block"
                   >
-                    <div className="about-card group relative border border-white/10 rounded-xl top-0 aspect-[1/1.2] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px]">
+                    <div className="about-card group relative border border-white/10 rounded-xl top-0 aspect-[1/1.08] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px]">
                       <img
                         src={rp.image?.url || "/images/seo.jpg"}
                         alt={rp.title}

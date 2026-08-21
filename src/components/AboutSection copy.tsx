@@ -161,7 +161,7 @@ const AboutSection = () => {
 
   return (
     <section ref={sectionRef} id="about" className="py-16 lg:py-30 relative overflow-hidden">
-      <div className="grid-wrapper max-w-[1100px] mx-auto px-5">
+      <div className="grid-wrapper max-w-[1100px] mx-auto px-5 lg:px-10">
         <div className="stacked-content">
           <div className="content-wrapper">
             <div className="flex flex-col lg:grid lg:grid-cols-2 items-center">

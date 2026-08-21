@@ -32,7 +32,7 @@ const ClientsLogoSlider = () => {
   return (
     <section className="relative overflow-hidden py-14 md:py-30">
       {/* Heading */}
-      <div className="max-w-[1400px] mx-auto px-5 mb-14">
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10 mb-14">
         <h2 className="uppercase py-2 w-fit text-white heading text-3xl md:text-[4rem] leading-none font-light relative">
           Our Clients
         </h2>

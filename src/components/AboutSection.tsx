@@ -110,7 +110,7 @@ const AboutSection = () => {
                     group
                     relative
                     top-0
-                    aspect-[1/1.2]
+                    aspect-[1/1.08]
                     overflow-hidden
                     border
                     border-transparent

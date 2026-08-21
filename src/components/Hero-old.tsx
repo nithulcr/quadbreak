@@ -108,7 +108,7 @@ export default function Hero() {
     <section ref={sectionRef} className="relative flex flex-col overflow-hidden main-hero px-5 lg:px-[4rem] pb-6 pt-15 lg:py-20 ">
       <img src="/images/bg.png" alt="Shape 1" className="absolute top-0 left-0 w-full opacity-50 z-[-1]" />
       <div className="relative hero-banner w-full flex flex-col items-start justify-between bg-cover bg-no-repeat bg-center hero-bg-img">
-        <div className="fade-up-css flex items-center flex-col justify-center max-w-[1400px] mx-auto pt-20 px-5 w-full gap-5 min-h-[calc(100vh-260px)]">
+        <div className="fade-up-css flex items-center flex-col justify-center max-w-[1450px] mx-auto pt-20 px-5 w-full gap-5 min-h-[calc(100vh-260px)]">
           <h1 className="text-white uppercase  max-w-5xl text-center text-[3rem] lg:text-[6rem]  leading-none mb-1">
             We&rsquo;re smart
             and crazy
@@ -122,7 +122,7 @@ export default function Hero() {
           </span>
         </div>
         
-        <div className="md:flex items-center hidden justify-between max-w-[1400px] mx-auto pt-10 lg:pt-15 w-full gap-5 fade-up-css">
+        <div className="md:flex items-center hidden justify-between max-w-[1450px] mx-auto pt-10 lg:pt-15 w-full gap-5 fade-up-css">
           <AnimatedButton
             href=""
             label="Explore Our Work"

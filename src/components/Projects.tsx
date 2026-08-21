@@ -129,7 +129,7 @@ const Works = ({ limit }: WorksProps) => {
     <div ref={sectionRef} id="works" className="section">
       <div className="shape1 z-[-1]"></div>
       <div className="shape2 z-[-1]"></div>
-      <div className="max-w-[1400px] mx-auto px-5">
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
         <div ref={headerRef} className="mb-10 sm:mb-20 sm:flex gap-8 justify-between w-full items-center">
           <div>
             <div className="subtitle text-[11px] tracking-[4px] uppercase text-white">

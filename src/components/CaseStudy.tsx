@@ -123,7 +123,7 @@ const CaseStudy = () => {
     <section id="services" className="section overflow-hidden">
       {/* <div className="shape3 z-[-1]"></div>
       <div className="shape2 z-[-1]"></div> */}
-      <div className="grid-wrapper max-w-[1400px] mx-auto px-5">
+      <div className="grid-wrapper max-w-[1450px] mx-auto px-5 lg:px-10">
         <div className="stacked-content">
           <div className="content-wrapper">
             <div className="service-list grid gap-y-10 lg:gap-y-30">

@@ -127,7 +127,7 @@ const PortfolioGrid = ({ limit }: PortfolioGridProps) => {
 
   return (
     <div ref={sectionRef} className="py-16 lg:py-30">
-      <div className="max-w-[1400px] mx-auto px-5">
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
         <div ref={headerRef} className="pt-30 pb-20  w-full">
        
             <h2 className="uppercase w-fit text-white heading text-5xl lg:text-[6rem] leading-none font-light relative">
@@ -137,14 +137,14 @@ const PortfolioGrid = ({ limit }: PortfolioGridProps) => {
          
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
           {projects.map((project, index) => {
             const imageUrl = project.image?.url || "/images/seo.jpg";
             const slug = project.slug?.trim();
             const projectLink = slug ? `/projects/${slug}` : null;
 
             const CardInner = (
-              <div className="about-card group relative top-0 aspect-[1/1.2] border border-white/10 rounded-xl overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px]">
+              <div className="about-card group relative top-0 aspect-[1/1.08] border border-white/10 rounded-2xl overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px]">
                 <img
                   src={imageUrl}
                   alt={project.title}
@@ -152,10 +152,10 @@ const PortfolioGrid = ({ limit }: PortfolioGridProps) => {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   loading={index < 3 ? "eager" : "lazy"}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
                
                 <div className="absolute bottom-[0px]  left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-6">
-                  <h5 className="font-light text-xl uppercase tracking-wider relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
+                  <h5 className="font-light text-xl lg:text-2xl pb-1 text-[var(--green)] relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
                     {project.title}
                   </h5>
                   <p className="font-[200] text-[14px] max-w-[260px]">

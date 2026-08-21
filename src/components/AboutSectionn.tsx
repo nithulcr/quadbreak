@@ -150,7 +150,7 @@ if (cards.length > 0) {
 
   return (
     <section ref={sectionRef} id="about" className="py-16 lg:py-16 relative overflow-hidden">
-      <div className="grid-wrapper max-w-[1200px] mx-auto px-5">
+      <div className="grid-wrapper max-w-[1200px] mx-auto px-5 lg:px-10">
         <div className="stacked-content">
           <div className="content-wrapper">
             {/* Badge */}
@@ -178,7 +178,7 @@ if (cards.length > 0) {
             {/* Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               {aboutCards.map((card, index) => (
-                <div key={index} className="about-card group relative top-0 aspect-[1/1.2] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px]">
+                <div key={index} className="about-card group relative top-0 aspect-[1/1.08] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px]">
                   
                   <img
                     src={card.image}
