@@ -298,6 +298,51 @@ body.open main {
   transform-origin: center; /* Ensures it rotates around its own center */
 }
 
+
+
+
+.side-image::before {
+  content: '';
+  position: absolute;
+  background: #0c0c0c;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  border-radius: 24px;
+}
+
+
+.side-image .span1 {
+  bottom: 12px;
+  flex: none;
+  height: 53px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  width: 50%;
+  z-index: 1;
+  background-color: #91ff6a;
+  filter: blur(40px);
+  border-radius: 100%;
+  opacity: .5;
+
+}
+
+.side-image .span2 {
+  bottom: -.5px;
+  height: 1.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  width: 50%;
+  z-index: 9;
+  background: linear-gradient(90deg, rgba(0, 85, 255, 0) 0%, #91ff6a 50%, rgba(0, 85, 255, 0) 100%);
+  border-radius: 100%;
+
+
+}
+
 @keyframes spin-linear {
   from {
     transform: rotate(0deg);
