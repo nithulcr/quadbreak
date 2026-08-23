@@ -4,6 +4,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import OurStory from "@/components/OurStory";
+import CTASection from '@/components/CTASection';
 
 
 export default function AboutPage() {
@@ -13,6 +14,8 @@ export default function AboutPage() {
       <main>
         
                <OurStory />
+               <CTASection />
+
 
 
       </main>
