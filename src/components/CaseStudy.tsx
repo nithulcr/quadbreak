@@ -161,7 +161,7 @@ const CaseStudy = () => {
 
                     <p className="text-[#7ac4b4] text-[20px] leading-snug max-w-[500px]">We roar with creativity, staying updated with the latest tech to make your brand a formidable force in the digital wilderness and deliver exceptional website and app experiences.</p>
                     <div className="hidden md:block">
-                      <AnimatedButton href="about" label="View All" className=" w-fit min-w-[160px]" />
+                      <AnimatedButton href="/about" label="View All" className=" w-fit min-w-[160px]" />
                     </div>
 
                   </div>
@@ -179,7 +179,7 @@ const CaseStudy = () => {
                       UI Design, UX, Wireframe
                     </p>
                     <div className="hidden md:block">
-                    <AnimatedButton href="about" label="View Project" className="mt-10 w-fit min-w-[160px] " />
+                    <AnimatedButton href="/about" label="View Project" className="mt-10 w-fit min-w-[160px] " />
                     </div>
                   </div>
                   <div
@@ -219,7 +219,7 @@ const CaseStudy = () => {
                       UI Design, UX, Wireframe
                     </p>
                      <div className="hidden md:block">
-                    <AnimatedButton href="about" label="View Project" className="mt-10 w-fit min-w-[160px] " />
+                    <AnimatedButton href="/about" label="View Project" className="mt-10 w-fit min-w-[160px] " />
                     </div>
                   </div>
 
@@ -237,7 +237,7 @@ const CaseStudy = () => {
                       UI Design, UX, Wireframe
                     </p>
                      <div className="hidden md:block">
-                    <AnimatedButton href="about" label="View Project" className="mt-10 w-fit min-w-[160px] " />
+                    <AnimatedButton href="/about" label="View Project" className="mt-10 w-fit min-w-[160px] " />
                     </div>
                   </div>
                   <div
@@ -258,7 +258,7 @@ const CaseStudy = () => {
                 </div>
 
                 <div className="md:hidden mt-10">
-                  <AnimatedButton href="about" label="View All" className=" w-fit min-w-[160px]" />
+                  <AnimatedButton href="/about" label="View All" className=" w-fit min-w-[160px]" />
                 </div>
 
 

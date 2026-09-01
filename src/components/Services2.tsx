@@ -136,7 +136,7 @@ const Servicess = () => {
 
             <p ref={text1Ref} className="font-[200] lg:text-right text-white text-[14px] lg:text-[18px] leading-snug">At Quadbreak Studios, we bring game worlds to life with high-quality 3D art, environments, and assets tailored for AAA, indie, and mobile games. At Quadbreak Studios, we bring game worlds to life with high-quality 3D art.</p>
             <div ref={btnRef} className="w-fit lg:ml-auto">
-              <AnimatedButton href="about" label="View All Services" className="mt-5 w-fit min-w-[160px]" />
+              <AnimatedButton href="/about" label="View All Services" className="mt-5 w-fit min-w-[160px]" />
             </div>
 
           </div>

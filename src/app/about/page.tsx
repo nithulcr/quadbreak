@@ -4,7 +4,9 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import OurStory from "@/components/OurStory";
-import CTASection from '@/components/CTASection';
+import TeamSection from '@/components/TeamSection';
+import Categories from '@/components/Categories';
+import Categories2 from '@/components/Categories2';
 
 
 export default function AboutPage() {
@@ -14,7 +16,11 @@ export default function AboutPage() {
       <main>
         
                <OurStory />
-               <CTASection />
+               <Categories />
+               <Categories2 />
+
+               <TeamSection />
+
 
 
 

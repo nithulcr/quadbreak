@@ -122,7 +122,7 @@ const WhoWeAre = () => {
                     className="w-[300px] mt-6"
                   />
                      {/* <div  ref={btnRef}>
-                      <AnimatedButton href="about" label="Learn More" className="mt-10 w-fit min-w-[160px]" />
+                      <AnimatedButton href="/about" label="Learn More" className="mt-10 w-fit min-w-[160px]" />
                     </div> */}
                   </div>
                   <div className="lg:w-[50%] ml-auto mt-10 lg:mt-[-350px] max-w-[530px] fade-up">

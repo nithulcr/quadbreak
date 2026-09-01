@@ -31,12 +31,14 @@ export default function Header() {
                     <nav className="hidden lg:flex items-center justify-end gap-6">
                         <Link href="/" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Home</Link>
                         <Link href="/about" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">About Us</Link>
+                        <Link href="/culture" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Culture</Link>
                         <Link href="" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Game Art</Link>
                         <Link href="" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Stimulator Art</Link>
+
                         <Link href="/projects" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Portfolio</Link>
                         <Link href="/contact" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Contact</Link>
                         <AnimatedButton
-                            href=""
+                            href="/contact"
                             label="Let's Talk"
                             className="w-fit ml-2"
                         />
@@ -87,12 +89,12 @@ export default function Header() {
                 <nav className={` min-h-screen flex flex-col justify-center duration-700 relative ${menuOpen ? "opacity-100 " : "opacity-0  scale-50"
                     }`}>
                     <Link href="/" className="block py-2 px-6 nav-link uppercase text-center text-[7vh]" onClick={handleLinkClick}>Home</Link>
-                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>About Us</Link>
-                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Game Art</Link>
-                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Stimulator Art</Link>
+                    <Link href="/about" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>About Us</Link>
+                    <Link href="/culture" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Culture</Link>
+                    <Link href="/services" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Services</Link>
 
 
-                    <Link href="" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Portfolio</Link>
+                    <Link href="/projects" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Portfolio</Link>
 
                     <Link href="/contact" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Contact</Link>
 

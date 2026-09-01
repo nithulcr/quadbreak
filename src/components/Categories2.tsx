@@ -406,10 +406,9 @@ export default function Categories2() {
 
       const card = (
         <div className={mobile ? "cat2-mcard" : "cat2-card"}>
-          <span className={`cat2-num ${animClass}`}>{cat.number}</span>
           <h3 className={`cat2-s-title ${animClass}`}>{cat.title}</h3>
           <p className={`cat2-s-sub ${animClass}`}>{cat.subtitle}</p>
-          <p className={`cat2-s-desc ${animClass}`}>{cat.description}</p>
+         
           <div
             ref={(el) => {
               (mobile ? mImageRefs : imageRefs).current[i] = el;
@@ -429,14 +428,15 @@ export default function Categories2() {
               aria-hidden="true"
             />
           </div>
-          <ul className={`cat2-s-services ${animClass}`}>
+          {/* <ul className={`cat2-s-services ${animClass}`}>
             {cat.services.map((s) => (
               <li key={s}>{s}</li>
             ))}
           </ul>
           <div className={`cat2-s-cta ${animClass}`}>
             <AnimatedButton href={cat.href} label={cat.cta} />
-          </div>
+          </div> */}
+           <p className={`cat2-s-desc ${animClass}`}>{cat.description}</p>
         </div>
       );
 
@@ -479,13 +479,7 @@ export default function Categories2() {
           >
             {cat.number}
           </span>
-          <span
-            ref={(el) => {
-              connectorRefs.current[i] = el;
-            }}
-            className={`cat2-connector cat2-connector--${side}`}
-            aria-hidden="true"
-          />
+          
           <div
             ref={(el) => {
               contentRefs.current[i] = el;
@@ -505,10 +499,10 @@ export default function Categories2() {
       className="categories2 relative overflow-hidden"
       data-reduced={reduced}
     >
-      <div className="mx-auto max-w-[1360px] px-5 lg:px-10">
+      <div className="mx-auto max-w-[1260px] px-5 lg:px-10">
         <div className="cat2-intro">
           <p ref={eyebrowRef} className="cat2-eyebrow">
-            Our World
+            What We Do
           </p>
           <h2 ref={titleRef} className="cat2-title">
             Three Worlds.
