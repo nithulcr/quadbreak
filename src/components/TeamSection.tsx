@@ -68,7 +68,7 @@ const TeamSection = () => {
   return (
     <section className="relative overflow-hidden bg-white/3">
       <div className="mx-auto max-w-[1424px] px-5 py-20 md:py-24">
-        <div className="mb-6 flex flex-col justify-between gap-8 md:mb-14">
+        <div className="mb-6 flex flex-col justify-between gap-8 md:mb-24">
           <div className="flex flex-col text-center mx-auto">
             <p className="text-sm uppercase tracking-[0.3em] text-[var(--green)] mb-4">
               The Team
@@ -145,12 +145,12 @@ const TeamSection = () => {
                 </div>
 
                 {/* Member info */}
-                <div className="absolute bottom-3 left-3 right-3 rounded-xl bg-white px-4 py-3">
-                  <h3 className="text-base font-medium text-black">
+                <div className="absolute bottom-3 left-3 right-3 rounded-xl bg-[var(--foreground)] px-4 py-3">
+                  <h3 className="text-base font-medium">
                     {member.name}
                   </h3>
 
-                  <p className="mt-0.5 text-xs text-black/50">{member.role}</p>
+                  <p className="mt-0.5 text-xs text-white/50">{member.role}</p>
                 </div>
               </div>
             </SwiperSlide>
