@@ -7,6 +7,9 @@ import OurStory from "@/components/OurStory";
 import TeamSection from '@/components/TeamSection';
 import Categories from '@/components/Categories';
 import Categories2 from '@/components/Categories2';
+import Categories3 from '@/components/Categories3';
+
+
 
 
 export default function AboutPage() {
@@ -18,6 +21,8 @@ export default function AboutPage() {
                <OurStory />
                <Categories />
                <Categories2 />
+               <Categories3 />
+
 
                <TeamSection />
 

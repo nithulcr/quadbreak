@@ -1,0 +1,289 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedButton from "@/components/AnimatedButton";
+import { ArrowUpRight } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+interface Category {
+  number: string;
+  category: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  services: string[];
+  href: string;
+  cta: string;
+}
+
+const categories: Category[] = [
+  {
+    number: "01",
+    category: "Studio",
+    title: "QuadBreak Studio",
+    subtitle: "Game Art & Production",
+    description:
+      "QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
+    image: "/images/environments.png",
+    services: [
+      "3D Environment",
+      "3D Characters",
+      "Concept Art & 2D",
+      "Animation & VFX",
+      "Trailers & Cinematics",
+    ],
+    href: "/services",
+    cta: "Explore Studio",
+  },
+  {
+    number: "02",
+    category: "Simulations",
+    title: "QuadBreak Simulations",
+    subtitle: "VR • Training • Simulation",
+    description:
+      "QuadBreak Simulations creates immersive digital environments, training experiences and interactive visual solutions for VR, simulation and specialized applications.",
+    image: "/images/works/2.png",
+    services: [
+      "VR Experiences",
+      "Training Simulation",
+      "Simulator Environments",
+      "Interactive 3D",
+      "Visualization",
+      "Digital Twins",
+    ],
+    href: "/services",
+    cta: "Explore Simulations",
+  },
+  {
+    number: "03",
+    category: "Academy",
+    title: "QuadBreak Academy",
+    subtitle: "Learn • Create • Build",
+    description:
+      "QuadBreak Academy focuses on practical, production-oriented education designed to help aspiring artists develop real-world 3D and game-art skills.",
+    image: "/images/works/3.png",
+    services: [
+      "3D Art Training",
+      "Game Art Courses",
+      "Mentorship",
+      "Workshops",
+      "Portfolio Development",
+      "Industry Training",
+    ],
+    href: "/services",
+    cta: "Explore Academy",
+  },
+];
+
+export default function Categories3() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    const ctx = gsap.context(() => {
+      if (reduceMotion) {
+        gsap.set(cardsRef.current?.children || [], {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+        });
+        return;
+      }
+
+      const mm = gsap.matchMedia();
+
+      // Header reveal
+      gsap.from(
+        headerRef.current?.children || [],
+        {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "power3.out",
+          force3D: true,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            once: true,
+          },
+        },
+      );
+
+      // Cards reveal — desktop (3 columns)
+      mm.add("(min-width: 1024px)", () => {
+        gsap.from(
+          cardsRef.current?.children || [],
+          {
+            opacity: 0,
+            y: 60,
+            scale: 0.96,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: "power3.out",
+            force3D: true,
+            scrollTrigger: {
+              trigger: cardsRef.current,
+              start: "top 80%",
+              once: true,
+            },
+          },
+        );
+      });
+
+      // Cards reveal — mobile / tablet (stacked, simpler fade-up)
+      mm.add("(max-width: 1023.98px)", () => {
+        gsap.from(
+          cardsRef.current?.children || [],
+          {
+            opacity: 0,
+            y: 40,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: "power2.out",
+            force3D: true,
+            scrollTrigger: {
+              trigger: cardsRef.current,
+              start: "top 85%",
+              once: true,
+            },
+          },
+        );
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      id="categories3"
+      className="relative overflow-hidden py-20 md:py-28"
+    >
+      <div className="mx-auto max-w-[1400px] px-5">
+        {/* Section header */}
+        <div ref={headerRef} className="mb-14 md:mb-20">
+          <p className="cat2-eyebrow mb-4 text-xs uppercase tracking-[0.32em] text-[var(--green)]">
+           Waht We Do
+          </p>
+          <h2 className="cat3-title text-3xl font-light uppercase leading-[1.02] tracking-tight text-white md:text-5xl lg:text-[3.4rem]">
+            Three Worlds.
+            <br />
+            <span className="text-[var(--green)]">One Creative Vision.</span>
+          </h2>
+          <p className="mt-6 max-w-[520px] text-sm font-light leading-relaxed text-white/60 md:text-base">
+            QuadBreak brings together game art, immersive simulation and
+            industry-focused education under one creative ecosystem.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div ref={cardsRef} className="cat3-cards grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {categories.map((cat, i) => {
+            const isCenter = i === 1;
+            return (
+              <article
+                key={cat.number}
+                className={`cat3-card group relative flex flex-col overflow-hidden rounded-[26px] border p-7 transition-transform duration-500 ease-out md:p-8 ${
+                  isCenter
+                    ? "border-[var(--green)]/25 bg-[linear-gradient(180deg,rgba(145,255,106,0.12),rgba(10,10,10,0.4)_45%)] shadow-[0_20px_80px_rgba(145,255,106,0.08)]"
+                    : "border-white/10 bg-[var(--background2)]"
+                }`}
+              >
+                {/* Header row: badge + arrow */}
+                <div className="mb-6 flex items-start justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex h-9 min-w-9 items-center justify-center rounded-full border border-[var(--green)]/40 px-2.5 text-xs font-medium text-[var(--green)]">
+                      {cat.number}
+                    </span>
+                    <span
+                      className={`text-xs uppercase tracking-[0.2em] ${
+                        isCenter ? "text-[var(--green)]" : "text-white/50"
+                      }`}
+                    >
+                      {cat.category}
+                    </span>
+                  </div>
+
+                  <Link
+                    href={cat.href}
+                    aria-label={`Go to ${cat.title}`}
+                    className={`group/arrow inline-flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-300 ${
+                      isCenter
+                        ? "border-[var(--green)]/50 text-[var(--green)] hover:bg-[var(--green)] hover:text-[#0a0a0a]"
+                        : "border-white/15 text-white/70 hover:border-[var(--green)] hover:text-[var(--green)]"
+                    }`}
+                  >
+                    <ArrowUpRight
+                      className="h-5 w-5 transition-transform duration-300 group-hover/arrow:translate-x-[3px] group-hover/arrow:-translate-y-[3px]"
+                      strokeWidth={1.5}
+                    />
+                  </Link>
+                </div>
+
+               <div>
+                 {/* Title */}
+                <h3 className="cat3-card-title text-2xl font-medium uppercase  tracking-tight text-white md:text-2xl">
+                  {cat.title}
+                </h3>
+                <p
+                  className={`mt-2 text-[0.72rem] uppercase tracking-[0.2em] ${
+                    isCenter ? "text-[var(--green)]" : "text-white/40"
+                  }`}
+                >
+                  {cat.subtitle}
+                </p>
+               </div>
+
+                
+
+                {/* Image */}
+                <div className="cat3-img relative mt-6 aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-[#141414]">
+                  <Image
+                    src={cat.image}
+                    alt={`${cat.title} — ${cat.subtitle}`}
+                    fill
+                    sizes="(max-width: 640px) 92vw, (max-width: 1023px) 50vw, (min-width: 1024px) 40vw"
+                    className="object-cover transition-transform duration-[0.8s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/40 via-transparent to-transparent"
+                    aria-hidden="true"
+                  />
+                </div>
+{/* Description */}
+                <p className="mt-4 text-sm font-light leading-relaxed text-white/60">
+                  {cat.description}
+                </p>
+               
+                {/* CTA */}
+                <div className="mt-auto pt-7">
+                  <AnimatedButton
+                    href={cat.href}
+                    label={cat.cta}
+                    className="w-fit min-w-[170px]"
+                  />
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

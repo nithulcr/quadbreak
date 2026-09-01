@@ -21,42 +21,42 @@ const staticTeam: TeamMember[] = [
     name: "Alex Carter",
     role: "Founder & Art Director",
 
-    photoUrl: "/images/member1.jpg",
+    photoUrl: "/images/member1.png",
   },
   {
     id: 2,
     name: "Maya Lopez",
     role: "Lead 3D Character Artist",
 
-    photoUrl: "/images/member1.jpg",
+    photoUrl: "/images/member1.png",
   },
   {
     id: 3,
     name: "Daniel Kim",
     role: "Environment Artist",
 
-    photoUrl: "/images/member1.jpg",
+    photoUrl: "/images/member1.png",
   },
   {
     id: 4,
     name: "Priya Sharma",
     role: "Technical Artist",
 
-    photoUrl: "/images/member1.jpg",
+    photoUrl: "/images/member1.png",
   },
   {
     id: 5,
     name: "Omar Farouk",
     role: "3D Generalist",
 
-    photoUrl: "/images/member1.jpg",
+    photoUrl: "/images/member1.png",
   },
   {
     id: 6,
     name: "Lena Novak",
     role: "Texture & Lookdev Artist",
 
-    photoUrl: "/images/member1.jpg",
+    photoUrl: "/images/member1.png",
   },
 ];
 
@@ -79,77 +79,99 @@ const TeamSection = () => {
               <span className="text-[var(--green)]">Creators</span>
             </h2>
           </div>
-
-          
         </div>
 
         <Swiper
           modules={[Navigation, Autoplay]}
-          spaceBetween={30}
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 4 },
+          centeredSlides={true}
+          slidesPerView="auto"
+          spaceBetween={40}
+          loop={true}
+          loopAdditionalSlides={6}
+          loopPreventsSliding={false}
+          watchSlidesProgress={true}
+          speed={1000}
+          autoplay={{
+            delay: 3500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          speed={1500}
-          loop
           navigation={{
-            prevEl: prevRef.current!,
-            nextEl: nextRef.current!,
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
           }}
           onBeforeInit={(swiper) => {
             swiperRef.current = swiper;
-            // @ts-expect-error assigning navigation refs
+
+            // @ts-expect-error Swiper navigation refs
             swiper.params.navigation.prevEl = prevRef.current;
-            // @ts-expect-error assigning navigation refs
+
+            // @ts-expect-error Swiper navigation refs
             swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
           }}
           onSwiper={(swiper) => {
+            setTimeout(() => {
+              swiper.navigation.init();
+              swiper.navigation.update();
+            });
+
             const el = swiper.el;
-            el.addEventListener("mouseenter", () => swiper.autoplay?.stop());
-            el.addEventListener("mouseleave", () => swiper.autoplay?.start());
+
+            el.addEventListener("mouseenter", () => {
+              swiper.autoplay?.stop();
+            });
+
+            el.addEventListener("mouseleave", () => {
+              swiper.autoplay?.start();
+            });
           }}
+          className="team-swiper !overflow-visible"
         >
           {staticTeam.map((member) => (
-            <SwiperSlide key={member.id}>
-              <div className="group flex h-full flex-col overflow-hidden shadow-md transition-all duration-300 cursor-grab">
-                <div className="relative aspect-[4/5] w-full overflow-hidden">
+            <SwiperSlide key={member.id} className="!w-[350px]">
+              <div className="team-card group relative overflow-hidden rounded-2xl">
+                {/* Image */}
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
                   <Image
                     src={member.photoUrl}
                     alt={member.name}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="350px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+
+                  {/* Dark overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
-                <div className="flex flex-1 flex-col pt-4">
-                  <h3 className="text-xl font-medium text-white">{member.name}</h3>
-                  <p className="mt-1 text-sm font-light text-[var(--green)]">{member.role}</p>
-                  
+
+                {/* Member info */}
+                <div className="absolute bottom-3 left-3 right-3 rounded-xl bg-white px-4 py-3">
+                  <h3 className="text-base font-medium text-black">
+                    {member.name}
+                  </h3>
+
+                  <p className="mt-0.5 text-xs text-black/50">{member.role}</p>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
         <div className="hidden gap-2 md:flex justify-center mt-14">
-            <button
-              ref={prevRef}
-              aria-label="Previous team members"
-              className="cursor-pointer rounded-lg border border-white/15 px-4 py-2 text-[24px] leading-none text-[var(--white)] transition-colors hover:border-[var(--green)] hover:text-[var(--green)]"
-            >
-              ←
-            </button>
-            <button
-              ref={nextRef}
-              aria-label="Next team members"
-              className="cursor-pointer rounded-lg border border-white/15 px-4 py-2 text-[24px] leading-none text-[var(--white)] transition-colors hover:border-[var(--green)] hover:text-[var(--green)]"
-            >
-              →
-            </button>
-          </div>
+          <button
+            ref={prevRef}
+            aria-label="Previous team members"
+            className="cursor-pointer rounded-lg border border-white/15 px-4 py-2 text-[24px] leading-none text-[var(--white)] transition-colors hover:border-[var(--green)] hover:text-[var(--green)]"
+          >
+            ←
+          </button>
+          <button
+            ref={nextRef}
+            aria-label="Next team members"
+            className="cursor-pointer rounded-lg border border-white/15 px-4 py-2 text-[24px] leading-none text-[var(--white)] transition-colors hover:border-[var(--green)] hover:text-[var(--green)]"
+          >
+            →
+          </button>
+        </div>
       </div>
     </section>
   );
