@@ -89,7 +89,7 @@ const TeamSection = () => {
           modules={[Navigation, Autoplay]}
           centeredSlides={true}
           slidesPerView="auto"
-          spaceBetween={30}
+          spaceBetween={20}
           loop={true}
           loopAdditionalSlides={6}
           loopPreventsSliding={false}
