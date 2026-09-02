@@ -95,12 +95,10 @@ export default function Categories3() {
     ).matches;
 
     const ctx = gsap.context(() => {
+      const cards = Array.from(cardsRef.current?.children || []);
+
       if (reduceMotion) {
-        gsap.set(cardsRef.current?.children || [], {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-        });
+        gsap.set(cards, { opacity: 1, y: 0, scale: 1 });
         return;
       }
 
@@ -124,45 +122,86 @@ export default function Categories3() {
         },
       );
 
-      // Cards reveal — desktop (3 columns)
+      // Desktop — center card sits higher; entrance + GSAP-driven hover lift
       mm.add("(min-width: 1024px)", () => {
-        gsap.from(
-          cardsRef.current?.children || [],
-          {
-            opacity: 0,
-            y: 60,
-            scale: 0.96,
-            duration: 0.9,
-            stagger: 0.12,
-            ease: "power3.out",
-            force3D: true,
-            scrollTrigger: {
-              trigger: cardsRef.current,
-              start: "top 80%",
-              once: true,
-            },
+        const baseY = [0, -10, 0];
+        cards.forEach((card, i) => {
+          gsap.set(card, { y: baseY[i] ?? 0, scale: 1, opacity: 1 });
+        });
+
+        gsap.from(cards, {
+          opacity: 0,
+          y: 60,
+          scale: 0.96,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: "power3.out",
+          force3D: true,
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 80%",
+            once: true,
           },
-        );
+        });
+
+        const handlers: Array<{
+          el: Element;
+          enter: EventListener;
+          leave: EventListener;
+        }> = [];
+
+        cards.forEach((card, i) => {
+          const base = baseY[i] ?? 0;
+          const enter: EventListener = () => {
+            gsap.to(card, {
+              y: base - 6,
+              duration: 0.5,
+              ease: "power2.out",
+              overwrite: "auto",
+              force3D: true,
+            });
+          };
+          const leave: EventListener = () => {
+            gsap.to(card, {
+              y: base,
+              duration: 0.5,
+              ease: "power2.out",
+              overwrite: "auto",
+              force3D: true,
+            });
+          };
+          card.addEventListener("mouseenter", enter);
+          card.addEventListener("mouseleave", leave);
+          handlers.push({ el: card, enter, leave });
+        });
+
+        return () => {
+          handlers.forEach(({ el, enter, leave }) => {
+            el.removeEventListener("mouseenter", enter);
+            el.removeEventListener("mouseleave", leave);
+          });
+        };
       });
 
       // Cards reveal — mobile / tablet (stacked, simpler fade-up)
       mm.add("(max-width: 1023.98px)", () => {
-        gsap.from(
-          cardsRef.current?.children || [],
-          {
-            opacity: 0,
-            y: 40,
-            duration: 0.7,
-            stagger: 0.1,
-            ease: "power2.out",
-            force3D: true,
-            scrollTrigger: {
-              trigger: cardsRef.current,
-              start: "top 85%",
-              once: true,
-            },
+        cards.forEach((card) => {
+          gsap.set(card, { y: 0, scale: 1, opacity: 1 });
+        });
+
+        gsap.from(cards, {
+          opacity: 0,
+          y: 40,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: "power2.out",
+          force3D: true,
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 85%",
+            once: true,
           },
-        );
+        });
       });
     }, section);
 
@@ -193,13 +232,13 @@ export default function Categories3() {
         </div>
 
         {/* Cards */}
-        <div ref={cardsRef} className="cat3-cards grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <div ref={cardsRef} className="cat3-cards grid gap-4  md:grid-cols-2 lg:grid-cols-3 ">
           {categories.map((cat, i) => {
             const isCenter = i === 1;
             return (
               <article
                 key={cat.number}
-                className={`cat3-card group relative flex flex-col overflow-hidden rounded-[26px] border p-7 transition-transform duration-500 ease-out md:p-8 ${
+                className={`cat3-card group relative flex flex-col overflow-hidden rounded-[26px] border p-7 md:p-8 ${
                   isCenter
                     ? "border-[var(--green)]/25 bg-[linear-gradient(180deg,rgba(145,255,106,0.12),rgba(10,10,10,0.4)_45%)] shadow-[0_20px_80px_rgba(145,255,106,0.08)]"
                     : "border-white/10 bg-[var(--background2)]"
@@ -236,7 +275,7 @@ export default function Categories3() {
                   </Link>
                 </div>
 
-               <div>
+               <div className="cat3-content">
                  {/* Title */}
                 <h3 className="cat3-card-title text-2xl font-medium uppercase  tracking-tight text-white md:text-2xl">
                   {cat.title}
@@ -247,6 +286,10 @@ export default function Categories3() {
                   }`}
                 >
                   {cat.subtitle}
+                </p>
+                {/* Description */}
+                <p className="mt-4 text-sm font-light leading-relaxed text-white/60">
+                  {cat.description}
                 </p>
                </div>
 
@@ -266,13 +309,10 @@ export default function Categories3() {
                     aria-hidden="true"
                   />
                 </div>
-{/* Description */}
-                <p className="mt-4 text-sm font-light leading-relaxed text-white/60">
-                  {cat.description}
-                </p>
+
                
                 {/* CTA */}
-                <div className="mt-auto pt-7">
+                <div className="cat3-btn mt-auto pt-7">
                   <AnimatedButton
                     href={cat.href}
                     label={cat.cta}

@@ -65,6 +65,10 @@ const TeamSection = () => {
   const nextRef = useRef<HTMLButtonElement>(null);
   const swiperRef = useRef<SwiperClass | null>(null);
 
+  // Duplicate the team so Swiper's loop always has enough real slides
+  // to cycle seamlessly (slidesPerView "auto" + loop is flaky with few slides).
+  const loopTeam: TeamMember[] = [...staticTeam, ...staticTeam];
+
   return (
     <section className="relative overflow-hidden bg-white/3">
       <div className="mx-auto max-w-[1424px] px-5 py-20 md:py-24">
@@ -85,7 +89,7 @@ const TeamSection = () => {
           modules={[Navigation, Autoplay]}
           centeredSlides={true}
           slidesPerView="auto"
-          spaceBetween={40}
+          spaceBetween={30}
           loop={true}
           loopAdditionalSlides={6}
           loopPreventsSliding={false}
@@ -127,8 +131,11 @@ const TeamSection = () => {
           }}
           className="team-swiper !overflow-visible"
         >
-          {staticTeam.map((member) => (
-            <SwiperSlide key={member.id} className="!w-[350px]">
+          {loopTeam.map((member, index) => (
+            <SwiperSlide
+              key={`${member.id}-${index}`}
+              className="!w-[350px]"
+            >
               <div className="team-card group relative overflow-hidden rounded-2xl">
                 {/* Image */}
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">

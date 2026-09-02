@@ -1371,29 +1371,6 @@ header{
 
 .cat3-card {
   will-change: transform;
-  transform: translateY(0);
-}
-
-.cat3-card:hover {
-  transform: translateY(-6px);
-}
-
-/* Center card sits slightly higher for emphasis */
-.cat3-card:nth-child(2) {
-  transform: translateY(-10px);
-}
-
-.cat3-card:nth-child(2):hover {
-  transform: translateY(-16px);
-}
-
-@media screen and (max-width: 1023.98px) {
-  .cat3-card:nth-child(2) {
-    transform: none;
-  }
-  .cat3-card:nth-child(2):hover {
-    transform: translateY(-6px);
-  }
 }
 
 
@@ -1420,7 +1397,16 @@ header{
 .team-swiper .swiper-slide-active .team-card {
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
 }
-
+.cat3-card:nth-child(2) .cat3-content {
+ order: 1;
+}
+.cat3-card:nth-child(2) .cat3-img  {
+margin-top: 0px;
+margin-bottom: 30px;
+}
+.cat3-card:nth-child(2) .cat3-btn{
+  order: 2;
+}
 @media (max-width: 768px) {
   .team-swiper .swiper-slide {
     transform: scale(0.78);
