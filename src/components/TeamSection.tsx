@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperClass } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-import type { Swiper as SwiperClass } from "swiper";
 
 interface TeamMember {
   id: number;
@@ -20,43 +20,37 @@ const staticTeam: TeamMember[] = [
     id: 1,
     name: "Alex Carter",
     role: "Founder & Art Director",
-
     photoUrl: "/images/member1.png",
   },
   {
     id: 2,
     name: "Maya Lopez",
     role: "Lead 3D Character Artist",
-
-    photoUrl: "/images/member1.png",
+    photoUrl: "/images/member2.jpg",
   },
   {
     id: 3,
     name: "Daniel Kim",
     role: "Environment Artist",
-
     photoUrl: "/images/member1.png",
   },
   {
     id: 4,
     name: "Priya Sharma",
     role: "Technical Artist",
-
-    photoUrl: "/images/member1.png",
+    photoUrl: "/images/member2.jpg",
   },
   {
     id: 5,
     name: "Omar Farouk",
     role: "3D Generalist",
-
     photoUrl: "/images/member1.png",
   },
   {
     id: 6,
     name: "Lena Novak",
     role: "Texture & Lookdev Artist",
-
-    photoUrl: "/images/member1.png",
+    photoUrl: "/images/member2.jpg",
   },
 ];
 
@@ -65,104 +59,69 @@ const TeamSection = () => {
   const nextRef = useRef<HTMLButtonElement>(null);
   const swiperRef = useRef<SwiperClass | null>(null);
 
-  // Duplicate the team so Swiper's loop always has enough real slides
-  // to cycle seamlessly (slidesPerView "auto" + loop is flaky with few slides).
-  const loopTeam: TeamMember[] = [...staticTeam, ...staticTeam];
-
   return (
     <section className="relative overflow-hidden">
       <div className="mx-auto max-w-[1424px] px-5 py-12 md:py-20">
         <div className="mb-6 flex flex-col justify-between gap-8 md:mb-16">
           <div className="flex flex-col text-center mx-auto">
-            <p className="text-sm uppercase tracking-[0.3em] text-[var(--green)] mb-4">
-              The Team
-            </p>
+           
             <h2 className="font-monument text-5xl font-medium leading-none uppercase text-white md:text-7xl">
-              Meet Our
-              <br />
-              <span className="text-[var(--green)]">Creators</span>
+              Meet Our 
+             
+              <span className="text-[var(--green)] pl-4">Team</span>
             </h2>
+             <p className="text-xl  tracking-[0.2em] font-light mt-5">
+             Executeive Leadership
+            </p>
           </div>
         </div>
 
         <Swiper
-          modules={[Navigation, Autoplay]}
-          centeredSlides={true}
-          slidesPerView="auto"
+          modules={[Navigation]}
+          slidesPerView={1}
           spaceBetween={20}
           loop={true}
           loopAdditionalSlides={6}
-          loopPreventsSliding={false}
-          watchSlidesProgress={true}
-          speed={1000}
-          autoplay={{
-            delay: 3500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current,
           }}
+          breakpoints={{
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1280: { slidesPerView: 4 },
+          }}
           onBeforeInit={(swiper) => {
             swiperRef.current = swiper;
-
             // @ts-expect-error Swiper navigation refs
             swiper.params.navigation.prevEl = prevRef.current;
-
             // @ts-expect-error Swiper navigation refs
             swiper.params.navigation.nextEl = nextRef.current;
           }}
-          onSwiper={(swiper) => {
-            setTimeout(() => {
-              swiper.navigation.init();
-              swiper.navigation.update();
-            });
-
-            const el = swiper.el;
-
-            el.addEventListener("mouseenter", () => {
-              swiper.autoplay?.stop();
-            });
-
-            el.addEventListener("mouseleave", () => {
-              swiper.autoplay?.start();
-            });
-          }}
-          className="team-swiper !overflow-visible"
+          className="team-swiper cursor-grab"
         >
-          {loopTeam.map((member, index) => (
-            <SwiperSlide
-              key={`${member.id}-${index}`}
-              className="!w-[350px]"
-            >
-              <div className="team-card group relative">
-                {/* Image */}
-                <div className="relative aspect-[4/5] w-full overflow-hidden border-5 border border-white/10">
+          {staticTeam.map((member) => (
+            <SwiperSlide key={member.id}>
+              <div className="group relative">
+                <div className="relative aspect-[1/1.1] w-full overflow-hidden border-5 border border-[#101010]">
                   <Image
                     src={member.photoUrl}
                     alt={member.name}
                     fill
-                    sizes="350px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 25vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-
-                  {/* Dark overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
-
-                {/* Member info */}
-                <div className=" text-center px-4 py-3">
-                  <h3 className="text-2xl ">
-                    {member.name}
-                  </h3>
-
-                  <p className="mt-1  text-white/50">{member.role}</p>
+                <div className="text-center px-4 py-3">
+                  <h3 className="text-2xl font-[200]">{member.name}</h3>
+                  <p className="mt-1 font-light text-white/50">{member.role}</p>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+{/* 
         <div className="hidden gap-2 md:flex justify-center mt-14">
           <button
             ref={prevRef}
@@ -178,7 +137,7 @@ const TeamSection = () => {
           >
             →
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
