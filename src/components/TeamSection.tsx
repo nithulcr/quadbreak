@@ -70,9 +70,9 @@ const TeamSection = () => {
   const loopTeam: TeamMember[] = [...staticTeam, ...staticTeam];
 
   return (
-    <section className="relative overflow-hidden bg-white/3">
-      <div className="mx-auto max-w-[1424px] px-5 py-20 md:py-24">
-        <div className="mb-6 flex flex-col justify-between gap-8 md:mb-24">
+    <section className="relative overflow-hidden">
+      <div className="mx-auto max-w-[1424px] px-5 py-12 md:py-20">
+        <div className="mb-6 flex flex-col justify-between gap-8 md:mb-16">
           <div className="flex flex-col text-center mx-auto">
             <p className="text-sm uppercase tracking-[0.3em] text-[var(--green)] mb-4">
               The Team
@@ -136,9 +136,9 @@ const TeamSection = () => {
               key={`${member.id}-${index}`}
               className="!w-[350px]"
             >
-              <div className="team-card group relative overflow-hidden rounded-2xl">
+              <div className="team-card group relative">
                 {/* Image */}
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+                <div className="relative aspect-[4/5] w-full overflow-hidden border-5 border border-white/10">
                   <Image
                     src={member.photoUrl}
                     alt={member.name}
@@ -152,12 +152,12 @@ const TeamSection = () => {
                 </div>
 
                 {/* Member info */}
-                <div className="absolute bottom-3 left-3 right-3 rounded-xl bg-[var(--foreground)] px-4 py-3">
-                  <h3 className="text-base font-medium">
+                <div className=" text-center px-4 py-3">
+                  <h3 className="text-2xl ">
                     {member.name}
                   </h3>
 
-                  <p className="mt-0.5 text-xs text-white/50">{member.role}</p>
+                  <p className="mt-1  text-white/50">{member.role}</p>
                 </div>
               </div>
             </SwiperSlide>

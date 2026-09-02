@@ -1374,35 +1374,8 @@ header{
 }
 
 
-.team-swiper .swiper-slide {
-  transform: scale(0.85);
-  opacity: 0.45;
-  transition:
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
 
-.team-swiper .swiper-slide-active {
-  transform: scale(1.1)!important;
-  opacity: 1;
-  z-index: 5;
-}
 
-.team-swiper .swiper-slide-prev,
-.team-swiper .swiper-slide-next {
-  opacity: 0.65;
-  transform: scale(0.94);
-}
-.team-swiper .swiper-slide-prev {
-transform-origin: left center;
-}
-.team-swiper .swiper-slide-next {
- transform-origin: right center;
-
-}
-.team-swiper .swiper-slide-active .team-card {
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
-}
 .cat3-card:nth-child(2) .cat3-content {
  order: 1;
 }
