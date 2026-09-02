@@ -218,7 +218,7 @@ export default function Categories3() {
         {/* Section header */}
         <div ref={headerRef} className="mb-14 md:mb-20">
           <p className="cat2-eyebrow mb-4 text-xs uppercase tracking-[0.32em] text-[var(--green)]">
-           Waht We Do
+           What We Do
           </p>
           <h2 className="cat3-title text-3xl font-light uppercase leading-[1.02] tracking-tight text-white md:text-5xl lg:text-[3.4rem]">
             Three Worlds.
@@ -311,14 +311,7 @@ export default function Categories3() {
                 </div>
 
                
-                {/* CTA */}
-                <div className="cat3-btn mt-auto pt-7">
-                  <AnimatedButton
-                    href={cat.href}
-                    label={cat.cta}
-                    className="w-fit min-w-[170px]"
-                  />
-                </div>
+                
               </article>
             );
           })}
