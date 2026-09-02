@@ -126,16 +126,12 @@ export default function CategoriesSection() {
 
     tl.to(prevContent, { opacity: 0, duration: 0.2, ease: "power2.in" }, 0);
 
-    tl.to(
-      prevPanel,
-      { flexBasis: "20%", duration: 0.8, ease: "power3.inOut" },
-      0.08,
-    );
-    tl.to(
-      nextPanel,
-      { flexBasis: "60%", duration: 0.8, ease: "power3.inOut" },
-      0.08,
-    );
+    // Reset EVERY panel to the collapsed flex-basis so the idle panel
+    // doesn't get squeezed into a tiny sliver by flex-grow distribution.
+    panels.forEach((p, i) => {
+      const target = i === nextIdx ? "60%" : "20%";
+      tl.to(p, { flexBasis: target, duration: 0.8, ease: "power3.inOut" }, 0.08);
+    });
 
     tl.to(prevTab, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.35);
     tl.to(nextTab, { opacity: 0, duration: 0.3, ease: "power2.in" }, 0.35);

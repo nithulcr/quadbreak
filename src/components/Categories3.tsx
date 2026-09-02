@@ -238,7 +238,7 @@ export default function Categories3() {
             return (
               <article
                 key={cat.number}
-                className={`cat3-card group relative flex flex-col overflow-hidden rounded-[26px] border p-7 md:p-8 ${
+                className={`cat3-card group relative flex flex-col overflow-hidden rounded-[26px] border p-5 md:p-7 ${
                   isCenter
                     ? "border-[var(--green)]/25 bg-[linear-gradient(180deg,rgba(145,255,106,0.12),rgba(10,10,10,0.4)_45%)] shadow-[0_20px_80px_rgba(145,255,106,0.08)]"
                     : "border-white/10 bg-[var(--background2)]"
