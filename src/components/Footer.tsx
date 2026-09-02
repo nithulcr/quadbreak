@@ -32,9 +32,9 @@ export default function Footer() {
               key={i}
               className={`inline-block transition-transform text-[var(--green)] duration-300 ${
                 i % 2 === 0
-                  ? "-translate-y-4 -rotate-3"
-                  : "translate-y-4 rotate-3"
-              }`}
+                  ? "-translate-y-2 md:-translate-y-4 -rotate-3"
+                  : "md:translate-y-4 rotate-3"
+              }`} 
             >
               {char}
             </span>
@@ -48,10 +48,10 @@ export default function Footer() {
 
       <div className="max-w-[1450px] mx-auto footer px-5 lg:px-10 md:py-10 py-4">
         {/* Footer Main Grid */}
-        <div className="middle grid md:grid-cols-9 py-8 gap-[60px] md:pb-14 md:pt-12">
+        <div className="middle grid md:grid-cols-2 xl:grid-cols-9 py-8 gap-[40px] md:gap-[60px] md:pb-14 md:pt-12">
           
           {/* Logo + Legal Disclaimer */}
-          <div className="col-span-3 content-center lg:pr-5">
+          <div className="md:col-span-1 xl:col-span-3 content-center lg:pr-5">
             <Image
               src="/images/logo.png"
               alt="Quadbreak Logo"
@@ -75,7 +75,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links Column 1 */}
-          <div className="col-span-2">
+          <div className="md:col-span-1 xl:col-span-2">
             <h2 className="text-xl font-medium mb-8 footer-head relative uppercase relative uppercase">Quick Links</h2>
             <ul className="flex flex-col gap-3">
               <li><Link href="/" className="font-light text-md hover:text-[var(--green)] transition-colors">Home</Link></li>
@@ -88,7 +88,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links Column 2 + Social Icons */}
-          <div className="col-span-2">
+          <div className="md:col-span-1 xl:col-span-2">
             <h2 className="text-xl font-medium mb-8 footer-head relative uppercase relative uppercase">Legal</h2>
             <ul className="flex flex-col gap-3">
               <li><Link href="/privacy-policy" className="font-light text-md hover:text-[var(--green)] transition-colors">Privacy Policy</Link></li>
@@ -100,7 +100,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Details */}
-          <div className="col-span-2">
+          <div className="md:col-span-1 xl:col-span-2">
             <h2 className="text-xl font-medium mb-8 footer-head relative uppercase relative uppercase">Location</h2>
             <ul className="flex flex-col gap-5">
               <li className="font-light flex items-center gap-3">

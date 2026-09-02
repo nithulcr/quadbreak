@@ -67,10 +67,10 @@ export default function Header() {
                             ) : (
 
                                 <div className="menu-icon">
-                                    {/* <Image src="/images/hamburger.svg" alt="Open menu" width={30} height={30} className="menu-icon" /> */}
+                                    
                                     <span></span>
                                     <span></span>
-                                    {/* <span></span> */}
+                 
                                 </div>
                             )}
                         </div>

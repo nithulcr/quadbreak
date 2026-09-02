@@ -182,7 +182,7 @@ body.open main {
 .menu-icon{
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 9px;
 }
 .menu-icon span{
   width: 24px;
@@ -1027,14 +1027,12 @@ header{
     width: 24px;
 }
 .menu-icon span:nth-child(1){
-  width: 15px;
+  width: 24px;
 }
 .menu-icon {
     gap: 5px;
 }
-.menu-icon span:nth-child(3){
-  width: 15px;
-}
+
 }
 
 /* ============================================================
