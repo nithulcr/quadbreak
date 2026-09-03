@@ -1,7 +1,9 @@
 
-import serviceGrid from '@/components/serviceGrid';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ServiceGrid from '@/components/serviceGrid';
+
 
 
 export default function ServicesPage() {
@@ -10,7 +12,7 @@ export default function ServicesPage() {
       <Header />
       <main>
       
-        <serviceGrid />
+      <ServiceGrid />
 
       </main>
       <Footer />

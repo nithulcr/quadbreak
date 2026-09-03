@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import StatsSection2 from "@/components/StatsSection2";
-import AnimatedButton from "./AnimatedButton";
+
 
 gsap.registerPlugin(ScrollTrigger);
 

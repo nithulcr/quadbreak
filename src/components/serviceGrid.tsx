@@ -6,123 +6,67 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface WorkStep {
+interface ServiceItem {
   id: number;
   title: string;
   description: string;
   image: string;
 }
 
-const steps: WorkStep[] = [
+const services: ServiceItem[] = [
   {
     id: 1,
     title: "Custom Website Development",
     description:
       "Fully responsive and interactive websites built with modern technologies (HTML5, CSS3, JavaScript, React/Next.js, Shopify, Wordpress).",
-    image: "/images/work7.png",
+    image: "/images/1.jpg",
   },
   {
     id: 2,
     title: "Landing Page Design",
     description:
       "High-converting, fast-loading landing pages tailored for marketing, product launches, or campaigns.",
-    image: "/images/app.png",
+ image: "/images/2.jpg",
   },
   {
     id: 3,
     title: "UI/UX Implementation",
     description:
       "Bring Figma/Adobe XD/Sketch designs to life with pixel-perfect accuracy and smooth animations.",
-    image: "/images/figma.jpg",
+   image: "/images/3.jpg",
   },
   {
     id: 4,
     title: "Website Optimization",
     description:
       "Speed, SEO, and performance optimization (Lighthouse audit fixes, lazy loading, code minification, etc.)",
-    image: "/images/ecommerce.jpg",
+   image: "/images/1.jpg",
   },
   {
     id: 5,
-    title: "E-commerce Frontend",
+    title: "Portfolio Websites",
     description:
       "Build personal or agency portfolios with creative animations and responsive layouts.",
-    image: "/images/seo.jpg",
+   image: "/images/2.jpg",
   },
   {
     id: 6,
     title: "E-commerce Frontend",
     description:
       "Custom storefronts, Shopify/WooCommerce themes, and frontend integration for e-commerce platforms.",
-    image: "/images/cloud.jpg",
+   image: "/images/3.jpg",
   },
   {
     id: 7,
-    title: "CMS Integration (Frontend)",
+    title: "CMS Integration",
     description:
       "Frontend development for CMS platforms like Strapi, Sanity, WordPress REST API, or Contentful.",
-    image: "/images/brand1.jpg",
+   image: "/images/1.jpg",
   },
-  {
-    id: 8,
-    title: "Animations & Microinteractions",
-    description:
-      "GSAP, ScrollTrigger, Framer Motion, and other modern animation libraries for engaging UI effects.",
-    image: "/images/brand2.jpg",
-  },
-  {
-    id: 9,
-    title: "Single Page Applications (SPA)",
-    description:
-      "React, Next.js or Vue-based SPAs with smooth routing and API integrations.",
-    image: "/images/video-editing.jpg",
-  },
-  {
-    id: 10,
-    title: "Mobile-Responsive Design",
-    description:
-      "Full mobile-first development to ensure your site looks and works great on all devices.",
-    image: "/images/video-editing.jpg",
-  },
-  {
-    id: 11,
-    title: "Frontend Bug Fixing / Maintenance",
-    description:
-      "Fix layout issues, JavaScript bugs, or broken responsiveness on existing websites.",
-    image: "/images/video-editing.jpg",
-  },
-  {
-    id: 12,
-    title: "Code Refactoring / Migration",
-    description:
-      "Convert legacy code (HTML/JS/CSS) to modern stack (React, Tailwind CSS, Next.js, etc.).",
-    image: "/images/video-editing.jpg",
-  },
-  {
-    id: 13,
-    title: "WordPress Frontend Development",
-    description:
-      "Custom WordPress themes (from scratch or based on starter themes like Underscores or Hello Elementor)",
-    image: "/images/video-editing.jpg",
-  },
-  {
-    id: 14,
-    title: "Domain Setup and Hosting",
-    description:
-      "Free Hosting Setup (Render, Vercel, Netlify, Railway — based on project stack), Domain Setup & Connection (GoDaddy, Namecheap, etc.)",
-    image: "/images/video-editing.jpg",
-  },
-  {
-    id: 15,
-    title: "Graphic Designing",
-    description:
-      "Custom logo design, Poster Design, etc... that reflects your company values and creates a strong first impression.",
-    image: "/images/logo-design.jpg",
-  },
-  
+ 
 ];
 
-const serviceGrid = () => {
+const ServiceGrid = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
@@ -172,45 +116,67 @@ const serviceGrid = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="max-w-[1450px] mx-auto py-20 px-5 flex flex-col items-center relative serviceGrid">
-      <div ref={titleRef} className="uppercase text-[11px] tracking-[4px] mb-16 text-center">
-        Areas of expertise
-      </div>
+    <section ref={sectionRef} className="py-14 lg:py-24 relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-5 lg:px-6 pt-30">
+        <div ref={titleRef} className="mb-8">
+          <h2 className="uppercase text-white text-5xl lg:text-[6rem] leading-none font-light">
+            Areas of
+            <br />
+            Expertise
+          </h2>
+        </div>
 
-      <div ref={cardsRef} className="flex flex-col gap-10">
-        {steps.map((step) => (
-          <div
-            key={step.id}
-            className="grid  items-center gap-8 backdrop-blur-[10px] bg-[linear-gradient(90deg,#ff000814,#004a891a)] rounded-[30px] sm:p-10 p-5 card"
-          >
-            <div className="d-flex flex-column content-end lg:col-span-2">
-              <div className="flex items-center gap-5">
-                <span className="md:text-7xl sm:text-4xl text-3xl font-bold text-[var(--white)] mb-4">
-                {step.id}
-              </span>
-              <h5 className="md:text-3xl text-2xl font-semibold mb-4 mt-3">
-                {step.title}
-              </h5>
-                </div>
-              <p className="sm:text-md text-sm text-gray-400 sm:leading-[24px]">
-                {step.description}
-              </p>
-            </div>
-
-            {/* <div>
-              <Image
-                src={step.image}
-                alt={step.title}
-                width={640}
-                height={360}
-                className="rounded-[20px] aspect-video object-cover"
+        <div
+          ref={cardsRef}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 md:mt-16"
+        >
+          {services.map((service) => (
+            <div
+              key={service.id}
+              className="group relative  border border-white/20 aspect-[1/.75] rounded-[8px]"
+            >
+              <div className=" overflow-hidden">
+                <img
+                src={service.image}
+                alt={service.title}
+                className=" w-full h-full object-cover group-hover:opacity-70 group-hover:scale-105 transition duration-700"
               />
-            </div> */}
-          </div>
-        ))}
+                </div>
+
+              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 transition duration-700" /> */}
+              <div className="p-5 sm:p-8 flex flex-col justify-between gap-2">
+                <div className="flex justify-between items-center gap-3">
+                  <h3 className="uppercase md:text-2xl tracking-wide z-10 transition duration-500 group-hover:scale-105">
+                    {service.title}
+                  </h3>
+                  <span className="absolute top-[20px] right-[20px] w-10 h-10 p-2 flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green group-hover:scale-80 transition-all duration-500 ease-in-out z-99 shrink-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                      color="rgb(0, 0, 0)"
+                      className="rotate-[-45deg]"
+                      style={{ width: "100%", height: "100%" }}
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  </span>
+                </div>
+                <p className="font-[200] text-white text-[14px] leading-snug">
+                  {service.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
-export default serviceGrid;
+export default ServiceGrid;
