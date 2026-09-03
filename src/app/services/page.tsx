@@ -1,5 +1,5 @@
 
-import HowWeWork from '@/components/HowWeWork';
+import serviceGrid from '@/components/serviceGrid';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -10,7 +10,7 @@ export default function ServicesPage() {
       <Header />
       <main>
       
-        <HowWeWork />
+        <serviceGrid />
 
       </main>
       <Footer />
