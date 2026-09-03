@@ -7,12 +7,12 @@ import WorksSection from '@/components/WorksSection';
 import CTASection from '@/components/CTASection';
 
 
-import Servicess from '@/components/Services2';
+import Services from '@/components/Services';
 
 
 import Footer from '@/components/Footer';
 import ClientsLogoSlider from '@/components/ClientsLogoSlider';
-import ModernTestimonials2 from "@/components/ModernTestimonials2";
+import Testimonials from "@/components/Testimonials";
 
 import WhoWeAre from "@/components/WhoWeAre";
 
@@ -30,24 +30,19 @@ export default function HomePage() {
         <StatsSection />
                <WhoWeAre />
 
-{/* 
-            
-        {/* <Services /> */}
-        <Servicess />
+        <Services />
                <WorksSection />
 
                <CTASection />
 
-<ModernTestimonials2 />
+<Testimonials />
 
 
        
 
 
 
-        {/* <CaseStudy />
-
-        <Testimonials /> */}
+        
         <ClientsLogoSlider />
         
       </main>
