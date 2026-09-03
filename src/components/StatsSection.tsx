@@ -81,14 +81,14 @@ const StatsSection = () => {
     >
 
       <div className="mx-auto max-w-[1450px] px-5">
-        <div ref={gridRef} className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div ref={gridRef} className="grid  gap-4 md:gap-8 grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div
               key={index}
-             className="stat-item group relative top-0 border border-white/10 p-8 text-center transition-[top,box-shadow] duration-500 hover:top-[-6px] hover:shadow-[0_0_20px_rgba(145,255,106,0.2)]"
+             className="stat-item group relative top-0 border border-white/10 p-5 md:p-8 text-center transition-[top,box-shadow] duration-500 hover:top-[-6px] hover:shadow-[0_0_20px_rgba(145,255,106,0.2)]"
             >
               <div
-                className="stat-number mb-4 text-5xl font-bold text-[var(--green)] lg:text-6xl"
+                className="stat-number mb-4 text-4xl md:text-5xl font-bold text-[var(--green)] lg:text-6xl"
                 data-target={stat.number}
               >
                 {stat.number}+
@@ -96,7 +96,7 @@ const StatsSection = () => {
 
               <span className="underline-span my-4 block"></span>
 
-              <h3 className="mb-2 text-lg font-light uppercase tracking-wider text-white">
+              <h3 className="mb-2 md:text-lg font-light uppercase tracking-wider text-white">
                 {stat.label}
               </h3>
 

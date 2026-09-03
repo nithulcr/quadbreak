@@ -3,7 +3,7 @@ import React from "react";
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import StatsSection from '@/components/StatsSection';
-import AboutSectionn from '@/components/AboutSectionn';
+import WorksSection from '@/components/WorksSection';
 import CTASection from '@/components/CTASection';
 
 
@@ -34,7 +34,7 @@ export default function HomePage() {
             
         {/* <Services /> */}
         <Servicess />
-               <AboutSectionn />
+               <WorksSection />
 
                <CTASection />
 

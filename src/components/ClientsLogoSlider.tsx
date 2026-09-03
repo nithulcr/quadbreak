@@ -47,7 +47,7 @@ const ClientsLogoSlider = () => {
         <div
           ref={trackRef}
           className="flex w-max animate-marquee items-center"
-          style={{ animationDuration: "30s" }}
+          style={{ animationDuration: "50s" }}
         >
           {clients.map((client, index) => (
             <div

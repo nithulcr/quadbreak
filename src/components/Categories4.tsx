@@ -234,12 +234,12 @@ export default function Categories4() {
             return (
               <article
                 key={cat.number}
-                className={` group relative grid md:grid-cols-2 overflow-hidden rounded-[26px] gap-10 border p-5 md:p-7 border-[var(--green)]/70 `}
+                className={` group relative grid md:grid-cols-2 overflow-hidden  gap-10 border p-5 md:p-7 border-[var(--green)]/70 `}
               >
 
                
                 {/* Image */}
-                <div className="cat4-img relative  aspect-[16/9] w-full overflow-hidden rounded-[18px] bg-[#141414]">
+                <div className="cat4-img relative  aspect-[16/9] w-full overflow-hidden  bg-[#141414]">
                   <Image
                     src={cat.image}
                     alt={`${cat.title} — ${cat.subtitle}`}

@@ -23,7 +23,7 @@ export default function Header() {
                 <div className="max-w-[1450px] px-5 lg:px-10  flex justify-between gap-x-3 items-center w-full absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
 
                     {/* Logo */}
-                    <Link href="/" className=" max-w-[240px] ">
+                    <Link href="/" className="max-w-[170px]  md:max-w-[240px] ">
                         <Image src="/images/logo.png" alt="Logo" width={220} height={70} className="object-contain " />
                     </Link>
 
