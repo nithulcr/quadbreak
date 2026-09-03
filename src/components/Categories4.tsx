@@ -212,15 +212,15 @@ export default function Categories4() {
     <section
       ref={sectionRef}
       id="Categories4"
-      className="relative overflow-hidden py-20 md:py-28"
+      className="relative overflow-hidden py-14 md:py-20"
     >
       <div className="mx-auto max-w-[1400px] px-5">
         {/* Section header */}
-        <div ref={headerRef} className="mb-8 md:mb-14 text-center">
-          <p className="cat2-eyebrow mb-4 text-xs uppercase tracking-[0.32em] text-[var(--green)]">
+        <div ref={headerRef} className="mb-8 md:mb-14">
+          {/* <p className="cat2-eyebrow mb-4 text-xs uppercase tracking-[0.32em] text-[var(--green)]">
            What We Do
-          </p>
-          <h2 className="cat4-title text-3xl font-light uppercase leading-[1.02] tracking-tight text-white md:text-5xl lg:text-[3.4rem]">
+          </p> */}
+          <h2 className="text-3xl font-light uppercase leading-[1.02] tracking-tight text-white md:text-5xl lg:text-[3.4rem]">
             Three Worlds.
             <br />
             <span className="text-[var(--green)]">One Creative Vision.</span>
@@ -229,7 +229,7 @@ export default function Categories4() {
         </div>
 
         {/* Cards */}
-        <div ref={cardsRef} className="max-w-[1000px] mx-auto grid gap-8  ">
+        <div ref={cardsRef} className="max-w-[1400px] mx-auto grid gap-8  ">
           {categories.map((cat, i) => {
             return (
               <article
@@ -277,16 +277,16 @@ export default function Categories4() {
                   </Link>
                 </div>
                  {/* Title */}
-                <h3 className="cat4-card-title text-2xl font-medium uppercase  tracking-tight text-white md:text-2xl">
+                <h3 className="cat4-card-title text-2xl  uppercase   text-white md:text-2xl">
                   {cat.title}
                 </h3>
                 <p
-                  className={`mt-2 text-[0.72rem] uppercase tracking-[0.2em] `}
+                  className={`mt-2 text-xs uppercase tracking-[0.2em] `}
                 >
                   {cat.subtitle}
                 </p>
                 {/* Description */}
-                <p className="mt-4 text-sm font-light leading-relaxed text-white/60">
+                <p className="mt-4  font-light leading-relaxed text-white/60">
                   {cat.description}
                 </p>
                </div>
