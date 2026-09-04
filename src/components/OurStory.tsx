@@ -84,14 +84,14 @@ const OurStory = () => {
         <div className="stacked-content">
           <div className="content-wrapper pt-30">
             <div className="service-list grid gap-y-10 lg:gap-y-30">
-              <div className="service-item flex flex-col lg:grid lg:grid-cols-2 gap-x-20 items-start w-full ">
+              <div className="service-item flex flex-col lg:grid lg:grid-cols-2 gap-x-18 items-start w-full ">
                 <div className="">
                   <div className="flex flex-col mb-8">
                     <h2
                       ref={titleRef}
-                      className="uppercase w-fit text-white  text-5xl lg:text-[5rem]  leading-none font-light  relative"
+                      className="uppercase heading w-fit text-white  text-5xl lg:text-[4rem]  leading-none font-light  relative"
                     >
-                      Our Story
+                    Quadbreak Studio
                     </h2>
                   </div>
                   <p
