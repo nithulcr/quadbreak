@@ -191,7 +191,7 @@ export default function Categories4() {
     >
       <div className="mx-auto max-w-[1400px] px-5">
         {/* Section header */}
-        <div ref={headerRef} className="mb-8 md:mb-14">
+        <div ref={headerRef} className="mb-12 md:mb-20">
           {/* <p className="cat2-eyebrow mb-4 text-xs uppercase tracking-[0.32em] text-[var(--green)]">
            What We Do
           </p> */}
@@ -233,12 +233,12 @@ export default function Categories4() {
                       <h3 className="cat4-card-title text-2xl  uppercase   text-white md:text-3xl">
                         {cat.title}
                       </h3>
-                      <span className={`text-xs uppercase tracking-[0.2em] mt-2 block`}>
+                      <span className={`text-xs uppercase tracking-[0.2em] mt-2 font-[200] block`}>
                         {cat.subtitle}
                       </span>
 
                       {/* Description */}
-                      <p className="mt-4  font-light leading-relaxed text-white/60 max-w-[90%]">
+                      <p className="mt-4  font-light text-medium md:text-lg  max-w-[90%]">
                         {cat.description}
                       </p>
                     </div>
@@ -246,11 +246,11 @@ export default function Categories4() {
                     <Link
                       href={cat.href}
                       aria-label={`Go to ${cat.title}`}
-                      className={`group/arrow inline-flex flex-none h-11 w-11 items-center justify-center rounded-full border transition-all duration-300 `}
+                      className={`group/arrow inline-flex flex-none h-12 w-12 items-center justify-center rounded-full border transition-all duration-300 `}
                     >
                       <ArrowUpRight
-                        className="h-5 w-5 transition-transform duration-300 group-hover/arrow:translate-x-[3px] group-hover/arrow:-translate-y-[3px]"
-                        strokeWidth={1.5}
+                        className="h-8 w-8 transition-transform duration-300 group-hover/arrow:translate-x-[3px] group-hover/arrow:-translate-y-[3px]"
+                        strokeWidth={1}
                       />
                     </Link>
                   </div>
