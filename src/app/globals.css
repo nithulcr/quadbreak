@@ -1060,15 +1060,16 @@ header{
 
 
 
-.categories4-border > *:before{
+.categories4-border > *:not(:last-child)::before {
   content: '';
   position: absolute;
   bottom:0px;
   height: 1px;
-  width: 60%;
+  width: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--green);
+  background:rgb(151, 151, 151);
+
 
 }
 @media (max-width: 768px) {

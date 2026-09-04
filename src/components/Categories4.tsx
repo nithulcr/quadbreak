@@ -18,46 +18,44 @@ interface Category {
   image: string;
   href: string;
   cta: string;
-
 }
 
 const categories: Category[] = [
   {
     number: "01",
- 
+
     title: "QuadBreak Studio",
     subtitle: "Game Art & Production",
     description:
       "QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content. QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
     image: "/images/environments.png",
-  
+
     href: "/services",
-        cta: "Explore Studio",
+    cta: "Explore Studio",
   },
   {
     number: "02",
-   
+
     title: "QuadBreak Simulations",
     subtitle: "VR • Training • Simulation",
     description:
       "QuadBreak Simulations creates immersive digital environments, training experiences and interactive visual solutions for VR, simulation and specialized applications. QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
     image: "/images/works/2.png",
-  
-    href: "/services",
-        cta: "Explore Simulations",
 
+    href: "/services",
+    cta: "Explore Simulations",
   },
   {
     number: "03",
-   
+
     title: "QuadBreak Academy",
     subtitle: "Learn • Create • Build",
     description:
       "QuadBreak Academy focuses on practical, production-oriented education designed to help aspiring artists develop real-world 3D and game-art skills. QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
     image: "/images/works/3.png",
-  
+
     href: "/services",
-        cta: "Explore Academy",
+    cta: "Explore Academy",
   },
 ];
 
@@ -85,22 +83,19 @@ export default function Categories4() {
       const mm = gsap.matchMedia();
 
       // Header reveal
-      gsap.from(
-        headerRef.current?.children || [],
-        {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: "power3.out",
-          force3D: true,
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            once: true,
-          },
+      gsap.from(headerRef.current?.children || [], {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: "power3.out",
+        force3D: true,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          once: true,
         },
-      );
+      });
 
       // Desktop — center card sits higher; entrance + GSAP-driven hover lift
       mm.add("(min-width: 1024px)", () => {
@@ -205,21 +200,21 @@ export default function Categories4() {
             <br />
             <span className="text-[var(--green)]">One Creative Vision.</span>
           </h2>
-       
         </div>
 
         {/* Cards */}
-        <div ref={cardsRef} className="max-w-[1400px] mx-auto grid gap-16  categories4-border">
+        <div
+          ref={cardsRef}
+          className="max-w-[1400px] mx-auto grid gap-14  categories4-border"
+        >
           {categories.map((cat, i) => {
             return (
               <article
                 key={cat.number}
-                className={` group relative grid md:grid-cols-2 overflow-hidden  gap-10 pb-16`}
+                className={` group relative grid md:grid-cols-5 overflow-hidden  gap-15 pb-12`}
               >
-
-               
                 {/* Image */}
-                <div className="cat4-img relative  aspect-[16/9] w-full overflow-hidden  bg-[#141414]">
+                <div className="col-span-2 cat4-img relative  aspect-[16/9] w-full overflow-hidden  bg-[#141414]">
                   <Image
                     src={cat.image}
                     alt={`${cat.title} — ${cat.subtitle}`}
@@ -232,50 +227,43 @@ export default function Categories4() {
                     aria-hidden="true"
                   />
                 </div>
-               <div className="">
-                 <div className="mb-6 flex items-start justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="inline-flex h-9 min-w-9 items-center justify-center rounded-full border border-[var(--green)]/40 px-2.5 text-xs font-medium text-[var(--green)]">
-                      {cat.number}
-                    </span>
-                    <span
-                      className={`text-xs uppercase tracking-[0.2em] `}
+                <div className="col-span-3">
+                  <div className="mb-2 flex items-start justify-between">
+                    <div>
+                      <h3 className="cat4-card-title text-2xl  uppercase   text-white md:text-3xl">
+                        {cat.title}
+                      </h3>
+                      <span className={`text-xs uppercase tracking-[0.2em] mt-2 block`}>
+                        {cat.subtitle}
+                      </span>
+
+                      {/* Description */}
+                      <p className="mt-4  font-light leading-relaxed text-white/60 max-w-[90%]">
+                        {cat.description}
+                      </p>
+                    </div>
+
+                    <Link
+                      href={cat.href}
+                      aria-label={`Go to ${cat.title}`}
+                      className={`group/arrow inline-flex flex-none h-11 w-11 items-center justify-center rounded-full border transition-all duration-300 `}
                     >
-                      {cat.subtitle}
-                    </span>
+                      <ArrowUpRight
+                        className="h-5 w-5 transition-transform duration-300 group-hover/arrow:translate-x-[3px] group-hover/arrow:-translate-y-[3px]"
+                        strokeWidth={1.5}
+                      />
+                    </Link>
                   </div>
+                  {/* Title */}
 
-                  <Link
-                    href={cat.href}
-                    aria-label={`Go to ${cat.title}`}
-                    className={`group/arrow inline-flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-300 `}
-                  >
-                    <ArrowUpRight
-                      className="h-5 w-5 transition-transform duration-300 group-hover/arrow:translate-x-[3px] group-hover/arrow:-translate-y-[3px]"
-                      strokeWidth={1.5}
+                  <div className="cat-cta">
+                    <AnimatedButton
+                      label={cat.cta}
+                      href={cat.href}
+                      className="w-fit"
                     />
-                  </Link>
+                  </div>
                 </div>
-                 {/* Title */}
-                <h3 className="cat4-card-title text-2xl  uppercase   text-white md:text-2xl">
-                  {cat.title}
-                </h3>
-               
-                {/* Description */}
-                <p className="mt-4  font-light leading-relaxed text-white/60 max-w-[90%]">
-                  {cat.description}
-                </p>
-                <div className="cat-cta">
-                                        <AnimatedButton label={cat.cta} href={cat.href} className="w-fit" />
-                                      </div>
-               </div>
-
-                
-
-                
-
-               
-                
               </article>
             );
           })}
