@@ -86,13 +86,14 @@ const OurStory = () => {
             <div className="service-list grid gap-y-10 lg:gap-y-30">
               <div className="service-item flex flex-col lg:grid lg:grid-cols-2 gap-x-15 items-start w-full ">
                 <div className="">
-                  <div className="flex flex-col mb-8">
+                  <div className="flex flex-col mb-14 relative w-fit  pb-8">
                     <h1
                       ref={titleRef}
-                      className="uppercase   text-[var(--green)] text-white  text-5xl lg:text-[3.5em] border-b w-fit pb-2 border-[var(--green)]  leading-none font-light  relative"
+                      className="uppercase   text-[var(--green)] text-white  text-5xl lg:text-[3.5em] leading-none font-light  relative"
                     >
                    Quadbreak Studios
                     </h1>
+                    <img src="/images/underline.png" alt="Quadbreak Studios Logo" className="w-full max-w-[80%] left-10 absolute bottom-[-20px] left-0" />
                     {/* <h1  ref={titleRef} className="uppercase max-w-[800px] w-min relative flex flex-col gap-4 text-[var(--green)] text-[3rem] lg:text-[6rem] leading-none mb-1">
           <span className="block w-fit">Quadbreak</span> 
           <span className="block w-fit">Studios</span>
