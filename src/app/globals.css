@@ -1068,7 +1068,7 @@ header{
   width: 90%;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(90.00000000000075deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .15000000596046448) 50%, rgba(255, 255, 255, 0) 100%);
+  background: var(--green);
 
 }
 @media (max-width: 768px) {
