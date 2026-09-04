@@ -84,7 +84,7 @@ const OurStory = () => {
         <div className="stacked-content">
           <div className="content-wrapper pt-30">
             <div className="service-list grid gap-y-10 lg:gap-y-30">
-              <div className="service-item flex flex-col lg:grid lg:grid-cols-2 gap-x-12 items-start w-full ">
+              <div className="service-item flex flex-col lg:grid lg:grid-cols-2 gap-x-15 items-start w-full ">
                 <div className="">
                   <div className="flex flex-col mb-8">
                     <h1
