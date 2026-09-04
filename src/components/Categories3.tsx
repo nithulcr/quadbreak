@@ -105,22 +105,19 @@ export default function Categories3() {
       const mm = gsap.matchMedia();
 
       // Header reveal
-      gsap.from(
-        headerRef.current?.children || [],
-        {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: "power3.out",
-          force3D: true,
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            once: true,
-          },
+      gsap.from(headerRef.current?.children || [], {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: "power3.out",
+        force3D: true,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          once: true,
         },
-      );
+      });
 
       // Desktop — center card sits higher; entrance + GSAP-driven hover lift
       mm.add("(min-width: 1024px)", () => {
@@ -216,23 +213,20 @@ export default function Categories3() {
     >
       <div className="mx-auto max-w-[1400px] px-5">
         {/* Section header */}
-        <div ref={headerRef} className="mb-14 md:mb-20">
-          <p className="cat2-eyebrow mb-4 text-xs uppercase tracking-[0.32em] text-[var(--green)]">
-           What We Do
-          </p>
+        <div ref={headerRef} className="mb-8 md:mb-14">
+          
           <h2 className="cat3-title text-3xl font-light uppercase leading-[1.02] tracking-tight text-white md:text-5xl lg:text-[3.4rem]">
             Three Worlds.
             <br />
             <span className="text-[var(--green)]">One Creative Vision.</span>
           </h2>
-          <p className="mt-6 max-w-[520px] text-sm font-light leading-relaxed text-white/60 md:text-base">
-            QuadBreak brings together game art, immersive simulation and
-            industry-focused education under one creative ecosystem.
-          </p>
         </div>
 
         {/* Cards */}
-        <div ref={cardsRef} className="cat3-cards grid gap-4  md:grid-cols-2 lg:grid-cols-3 ">
+        <div
+          ref={cardsRef}
+          className="cat3-cards grid gap-4  md:grid-cols-2 lg:grid-cols-3 "
+        >
           {categories.map((cat, i) => {
             const isCenter = i === 1;
             return (
@@ -274,29 +268,8 @@ export default function Categories3() {
                     />
                   </Link>
                 </div>
-
-               <div className="cat3-content">
-                 {/* Title */}
-                <h3 className="cat3-card-title text-2xl font-medium uppercase  tracking-tight text-white md:text-2xl">
-                  {cat.title}
-                </h3>
-                <p
-                  className={`mt-2 text-[0.72rem] uppercase tracking-[0.2em] ${
-                    isCenter ? "text-[var(--green)]" : "text-white/40"
-                  }`}
-                >
-                  {cat.subtitle}
-                </p>
-                {/* Description */}
-                <p className="mt-4 text-sm font-light leading-relaxed text-white/60">
-                  {cat.description}
-                </p>
-               </div>
-
-                
-
                 {/* Image */}
-                <div className="cat3-img relative mt-6 aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-[#141414]">
+                <div className="cat3-img relative mb-6 aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-[#141414]">
                   <Image
                     src={cat.image}
                     alt={`${cat.title} — ${cat.subtitle}`}
@@ -309,9 +282,23 @@ export default function Categories3() {
                     aria-hidden="true"
                   />
                 </div>
-
-               
-                
+                <div className="cat3-content">
+                  {/* Title */}
+                  <h3 className="cat3-card-title text-2xl font-medium uppercase  tracking-tight text-white md:text-2xl">
+                    {cat.title}
+                  </h3>
+                  <p
+                    className={`mt-2 text-[0.72rem] uppercase tracking-[0.2em] ${
+                      isCenter ? "text-[var(--green)]" : "text-white/40"
+                    }`}
+                  >
+                    {cat.subtitle}
+                  </p>
+                  {/* Description */}
+                  <p className="mt-4 text-sm font-light leading-relaxed text-white/60">
+                    {cat.description}
+                  </p>
+                </div>
               </article>
             );
           })}

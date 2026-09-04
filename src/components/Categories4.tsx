@@ -12,72 +12,47 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface Category {
   number: string;
-  category: string;
   title: string;
   subtitle: string;
   description: string;
   image: string;
-  services: string[];
   href: string;
-  cta: string;
 }
 
 const categories: Category[] = [
   {
     number: "01",
-    category: "Studio",
+ 
     title: "QuadBreak Studio",
     subtitle: "Game Art & Production",
     description:
-      "QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
+      "QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content. QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
     image: "/images/environments.png",
-    services: [
-      "3D Environment",
-      "3D Characters",
-      "Concept Art & 2D",
-      "Animation & VFX",
-      "Trailers & Cinematics",
-    ],
+  
     href: "/services",
-    cta: "Explore Studio",
   },
   {
     number: "02",
-    category: "Simulations",
+   
     title: "QuadBreak Simulations",
     subtitle: "VR • Training • Simulation",
     description:
-      "QuadBreak Simulations creates immersive digital environments, training experiences and interactive visual solutions for VR, simulation and specialized applications.",
+      "QuadBreak Simulations creates immersive digital environments, training experiences and interactive visual solutions for VR, simulation and specialized applications. QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
     image: "/images/works/2.png",
-    services: [
-      "VR Experiences",
-      "Training Simulation",
-      "Simulator Environments",
-      "Interactive 3D",
-      "Visualization",
-      "Digital Twins",
-    ],
+  
     href: "/services",
-    cta: "Explore Simulations",
+
   },
   {
     number: "03",
-    category: "Academy",
+   
     title: "QuadBreak Academy",
     subtitle: "Learn • Create • Build",
     description:
-      "QuadBreak Academy focuses on practical, production-oriented education designed to help aspiring artists develop real-world 3D and game-art skills.",
+      "QuadBreak Academy focuses on practical, production-oriented education designed to help aspiring artists develop real-world 3D and game-art skills. QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
     image: "/images/works/3.png",
-    services: [
-      "3D Art Training",
-      "Game Art Courses",
-      "Mentorship",
-      "Workshops",
-      "Portfolio Development",
-      "Industry Training",
-    ],
+  
     href: "/services",
-    cta: "Explore Academy",
   },
 ];
 
@@ -229,12 +204,12 @@ export default function Categories4() {
         </div>
 
         {/* Cards */}
-        <div ref={cardsRef} className="max-w-[1400px] mx-auto grid gap-8  ">
+        <div ref={cardsRef} className="max-w-[1400px] mx-auto grid gap-16  categories4-border">
           {categories.map((cat, i) => {
             return (
               <article
                 key={cat.number}
-                className={` group relative grid md:grid-cols-2 overflow-hidden  gap-10 border p-5 md:p-7 border-[var(--green)]/70 `}
+                className={` group relative grid md:grid-cols-2 overflow-hidden  gap-10 pb-16`}
               >
 
                
@@ -261,7 +236,7 @@ export default function Categories4() {
                     <span
                       className={`text-xs uppercase tracking-[0.2em] `}
                     >
-                      {cat.category}
+                      {cat.subtitle}
                     </span>
                   </div>
 
@@ -280,13 +255,9 @@ export default function Categories4() {
                 <h3 className="cat4-card-title text-2xl  uppercase   text-white md:text-2xl">
                   {cat.title}
                 </h3>
-                <p
-                  className={`mt-2 text-xs uppercase tracking-[0.2em] `}
-                >
-                  {cat.subtitle}
-                </p>
+               
                 {/* Description */}
-                <p className="mt-4  font-light leading-relaxed text-white/60">
+                <p className="mt-4  font-light leading-relaxed text-white/60 max-w-[90%]">
                   {cat.description}
                 </p>
                </div>

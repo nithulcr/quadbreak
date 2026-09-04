@@ -133,18 +133,18 @@ const ServiceGrid = () => {
           {services.map((service) => (
             <div
               key={service.id}
-              className="group relative  border border-white/20 aspect-[1/.75] rounded-[8px]"
+              className="group relative  border border-white/20  rounded-[8px]"
             >
-              <div className=" overflow-hidden">
+              <div className="aspect-[1/.6] overflow-hidden">
                 <img
-                src={service.image}
-                alt={service.title}
-                className=" w-full h-full object-cover group-hover:opacity-70 group-hover:scale-105 transition duration-700"
-              />
-                </div>
+                  src={service.image}
+                  alt={service.title}
+                  className=" w-full h-full object-cover group-hover:opacity-70 group-hover:scale-105 transition duration-700"
+                />
+              </div>
 
               {/* <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 transition duration-700" /> */}
-              <div className="p-5 sm:p-8 flex flex-col justify-between gap-2">
+              <div className="p-4 sm:p-6 flex flex-col justify-between gap-2">
                 <div className="flex justify-between items-center gap-3">
                   <h3 className="uppercase md:text-2xl tracking-wide z-10 transition duration-500 group-hover:scale-105">
                     {service.title}
