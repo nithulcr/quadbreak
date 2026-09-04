@@ -23,6 +23,7 @@ export default function AboutPage() {
                <OurStory />
                <Categories4 />
    
+               <TeamSection />
 
 
                <Categories />
@@ -30,7 +31,6 @@ export default function AboutPage() {
                <Categories3 />
 
 
-               <TeamSection />
 
 
 

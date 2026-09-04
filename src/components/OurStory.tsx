@@ -89,9 +89,9 @@ const OurStory = () => {
                   <div className="flex flex-col mb-8">
                     <h2
                       ref={titleRef}
-                      className="uppercase heading w-fit text-white  text-5xl lg:text-[4rem]  leading-none font-light  relative"
+                      className="uppercase heading text-right  text-[var(--green)] w-fit text-white w-min text-5xl lg:text-[5rem]  leading-none font-light  relative"
                     >
-                    Quadbreak Studio
+                    <span className="">Quadbreak</span> Studios
                     </h2>
                   </div>
                   <p
@@ -172,7 +172,7 @@ const OurStory = () => {
                   <div className="flex flex-col mb-8">
                     <h2
                       ref={titleRef}
-                      className="uppercase w-fit text-white  text-5xl lg:text-[5rem]  leading-none font-light  relative"
+                      className="uppercase w-fit text-white  text-5xl lg:text-[4rem]  leading-none font-light  relative"
                     >
                       Our Story
                     </h2>
