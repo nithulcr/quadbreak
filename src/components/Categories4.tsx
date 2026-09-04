@@ -17,6 +17,8 @@ interface Category {
   description: string;
   image: string;
   href: string;
+  cta: string;
+
 }
 
 const categories: Category[] = [
@@ -30,6 +32,7 @@ const categories: Category[] = [
     image: "/images/environments.png",
   
     href: "/services",
+        cta: "Explore Studio",
   },
   {
     number: "02",
@@ -41,6 +44,7 @@ const categories: Category[] = [
     image: "/images/works/2.png",
   
     href: "/services",
+        cta: "Explore Simulations",
 
   },
   {
@@ -53,6 +57,7 @@ const categories: Category[] = [
     image: "/images/works/3.png",
   
     href: "/services",
+        cta: "Explore Academy",
   },
 ];
 
@@ -260,6 +265,9 @@ export default function Categories4() {
                 <p className="mt-4  font-light leading-relaxed text-white/60 max-w-[90%]">
                   {cat.description}
                 </p>
+                <div className="cat-cta">
+                                        <AnimatedButton label={cat.cta} href={cat.href} className="w-fit" />
+                                      </div>
                </div>
 
                 
