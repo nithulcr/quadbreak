@@ -1065,7 +1065,7 @@ header{
   position: absolute;
   bottom:0px;
   height: 1px;
-  width: 90%;
+  width: 60%;
   left: 50%;
   transform: translateX(-50%);
   background: var(--green);
