@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import StatsSection from '@/components/StatsSection';
 import WorksSection from '@/components/WorksSection';
 import CTASection from '@/components/CTASection';
+import Journey from '@/components/Journey';
 
 
 import Services from '@/components/Services';
@@ -29,6 +30,8 @@ export default function HomePage() {
         <Hero />
         <StatsSection />
                <WhoWeAre />
+               <Journey />
+
 
         <Services />
                <WorksSection />

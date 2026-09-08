@@ -78,7 +78,6 @@ export default function Footer() {
           <div className="md:col-span-1 xl:col-span-2">
             <h2 className="text-xl font-medium mb-8 footer-head relative uppercase relative uppercase">Quick Links</h2>
             <ul className="flex flex-col gap-3">
-              <li><Link href="/" className="font-light text-md hover:text-[var(--green)] transition-colors">Home</Link></li>
               <li><Link href="/about" className="font-light text-md hover:text-[var(--green)] transition-colors">About Us</Link></li>
               <li><Link href="/culture" className="font-light text-md hover:text-[var(--green)] transition-colors">Culture</Link></li>
               <li><Link href="" className="font-light text-md hover:text-[var(--green)] transition-colors">Game Art</Link></li>

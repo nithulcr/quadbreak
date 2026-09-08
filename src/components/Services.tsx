@@ -117,18 +117,18 @@ const Services = () => {
       ref={sectionRef}
     >
       <div className="grid gap-x-20 max-w-[1450px] mx-auto px-5 lg:px-10 items-center w-full ">
-        <div className="  gap-y-10 flex flex-col lg:flex-row w-full lg:items-end lg:justify-between  mb-8">
-          <div className="lg:w-[50%]">
+        <div className="  gap-y-10 flex flex-col lg:flex-row w-full lg:items-center lg:justify-center  mb-8">
+          <div className="">
             <h2
               ref={titleRef}
-              className="uppercase w-fit text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative"
+              className="uppercase w-fit text-white heading text-center mx-auto text-5xl lg:text-[6rem]  leading-none font-light  relative"
             >
               Our
-              <br />
+             
               Services
             </h2>
           </div>
-          <div className="lg:w-[50%] ml-auto  max-w-[530px] fade-up lg:mt-[-30px]">
+          {/* <div className="lg:w-[50%] ml-auto  max-w-[530px] fade-up ">
             <p
               ref={text1Ref}
               className="font-[200] lg:text-right text-white text-[14px] lg:text-[18px] leading-snug"
@@ -142,10 +142,10 @@ const Services = () => {
               <AnimatedButton
                 href=""
                 label="View All Services"
-                className="mt-5 w-fit min-w-[160px]"
+                className="w-fit min-w-[160px]"
               />
             </div>
-          </div>
+          </div> */}
         </div>
         <div
           ref={servicesGridRef}
@@ -164,11 +164,8 @@ const Services = () => {
 
               <div className="absolute inset-0  bg-gradient-to-t from-black/90 via-black/60 to-black/30 transition duration-700" />
               <div className="absolute inset-0 p-5 sm:p-8 flex flex-col justify-between gap-5">
-                <div className="flex justify-between items-center gap-3 ">
-                  <h3 className="uppercase md:text-2xl  tracking-wide z-10 transition duration-500 group-hover:scale-105">
-                    {service.title}
-                  </h3>
-                  <span className=" w-10 h-10 p-2 flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green  group-hover:scale-80 transition-all duration-500 ease-in-out z-99">
+                <div className="flex flex-col h-full justify-between gap-3 ">
+                  <span className=" w-10 h-10 p-2 ml-auto flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green  group-hover:scale-80 transition-all duration-500 ease-in-out z-99">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -186,23 +183,27 @@ const Services = () => {
                       ></path>
                     </svg>
                   </span>
+                  <h3 className="uppercase md:text-2xl  tracking-wide z-10 transition duration-500 group-hover:scale-105">
+                    {service.title}
+                  </h3>
+                  
                 </div>
-                <p className="font-[200]  text-white text-[13px] md:text-[16px]  leading-snug">
+                {/* <p className="font-[200]  text-white text-[13px] md:text-[16px]  leading-snug">
                   At Quadbreak Studios, we bring game worlds to life with
                   high-quality 3D art, environments, and assets tailored for
                   AAA, indie, and mobile games.{" "}
-                </p>
+                </p> */}
               </div>
             </div>
           ))}
         </div>
-        <div ref={btnRef} className="w-fit lg:ml-auto md:hidden">
+        {/* <div ref={btnRef} className="w-fit mx-auto mt-10 md:mt-12">
           <AnimatedButton
             href="/about"
             label="View All Services"
             className="mt-5 w-fit min-w-[160px]"
           />
-        </div>
+        </div> */}
       </div>
     </section>
   );
