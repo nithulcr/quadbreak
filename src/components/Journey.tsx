@@ -14,7 +14,7 @@ const JourneyItems = [
 
   },
   {
-    title: "mart Production",
+    title: "Smart Production",
     image: "/images/2.png",
      description:
       "Modern tools help improve efficiency.",
