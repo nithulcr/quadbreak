@@ -121,7 +121,7 @@ const Journey = () => {
           {JourneyItems.map((service, index) => (
             <div
               key={index}
-              className="group relative border overflow-hidden border-white/20 rounded-[8px]"
+              className="group relative border overflow-hidden border-[var(--green)]/30 rounded-[8px]"
             >
               
 
