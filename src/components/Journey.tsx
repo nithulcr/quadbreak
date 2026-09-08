@@ -101,19 +101,18 @@ const Journey = () => {
       ref={sectionRef}
     >
       <div className="grid gap-y-10 max-w-[1450px] mx-auto px-5 lg:px-10 items-center w-full ">
-        <div className="flex flex-col  gap-y-5 text-center w-full  mx-auto  mb-8 relative pb-12">
+        <div className="flex flex-col  gap-y-5 text-center w-full max-w-[800px] mx-auto   relative ">
          
             <h2
               ref={titleRef}
-              className="uppercase w-fit text-white  text-5xl lg:text-[4vw] mx-auto  leading-none font-light  relative"
+              className="uppercase w-fit text-white  text-5xl lg:text-[5rem]   leading-none font-light  relative"
             >
-            Built for <span className="text-[var(--green)]">Modern Game</span> Production
+            Built for Modern <span className="text-[var(--green)]">Game Production</span>
             
             </h2>
-            <img alt="Quadbreak Studios Logo" className="w-full max-w-[60%] mx-auto left-[50%] translate-x-[-50%] absolute bottom-[-20px] left-0" src="/images/underline.png"></img>
-            {/* <p  ref={text2Ref} className="text-[14px] md:text-[16px] max-w-[800px] mx-auto leading-snug font-[200] text-white/80">Game development is evolving. At Quadbreak Studios, we combine experienced artists, proven production workflows, and emerging technologies to build efficient and scalable game art pipelines.</p>
+            <p  ref={text2Ref} className="text-[14px] md:text-[16px]  leading-snug font-[200] text-white/80">Game development is evolving. At Quadbreak Studios, we combine experienced artists, proven production workflows, and emerging technologies to build efficient and scalable game art pipelines.</p>
          
-          */}
+         
         </div>
         <div
           ref={JourneyGridRef}
@@ -124,14 +123,12 @@ const Journey = () => {
               key={index}
               className="group relative border overflow-hidden border-[var(--green)]/20 rounded-[8px]"
             >
-              
-
               <div className="absolute inset-0  bg-gradient-to-t from-black/10 via-black/20 to-black/90 transition duration-700" />
               <div className="p-5 sm:p-7 flex flex-col justify-between gap-5 relative z-9">
                   <img
                 src={service.image}
                 alt={service.title}
-                className="w-18 h-18  object-cover  group-hover:opacity-70 group-hover:scale-95 transition duration-700"
+                className="w-18 h-18  object-contain  group-hover:opacity-70 group-hover:scale-95 transition duration-700"
               />
                  <div className="transition duration-500 group-hover:scale-105">
                   
