@@ -130,11 +130,11 @@ const Journey = () => {
                   <img
                 src={service.image}
                 alt={service.title}
-                className="w-18 h-18  object-cover  group-hover:opacity-70 transition duration-700"
+                className="w-18 h-18  object-cover  group-hover:opacity-70 group-hover:scale-95 transition duration-700"
               />
-                 <div>
+                 <div className="transition duration-500 group-hover:scale-105">
                   
-                  <h3 className="uppercase text-lg md:text-[18px]  tracking-wide z-10 transition duration-500 group-hover:scale-105">
+                  <h3 className="uppercase text-lg md:text-[18px]  tracking-wide z-10 ">
                     {service.title}
                   </h3>
                   
