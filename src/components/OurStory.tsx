@@ -150,7 +150,7 @@ const OurStory = () => {
                   </video>
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-center lg:mt-[-100px]">
+              <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-center lg:mt-[-60px]">
                 {/* Image */}
 
                 <div className="about-fade relative ">
@@ -173,30 +173,24 @@ const OurStory = () => {
 
                 {/* Content */}
 
-               <div className="pt-10">
+               <div className="">
                   <div className="flex flex-col mb-8">
                     <h2
                       ref={titleRef}
                       className="uppercase w-fit text-white  text-5xl lg:text-[4rem]  leading-none font-light  relative"
                     >
-                      Our Story
+                     Evolving With Technology
                     </h2>
                   </div>
                   <p
                     ref={text1Ref}
                     className="about-paragraph text-[16px] md:text-[20px] leading-snug font-[200] text-white/80"
                   >
-                    In 2016, we started from a single desk, driven by a deep
-                    passion for game art. With a strong foundation in the
-                    industry but limited resources, we built everything from
-                    scratch, seizing every opportunity to grow. Over time, we
-                    expanded beyond game art into VR and simulator art,
-                    delivering high-quality visuals across industries. What
-                    began as Wrinit evolved into Quadbreak Studios, carrying
-                    forward the same commitment to creativity, collaboration,
-                    and innovation. Today, we continue to push boundaries,
-                    embracing new challenges and staying true to our core
-                    values.
+                   Technology continues to reshape the way digital worlds are created. At Quadbreak, we actively explore emerging technologies, automation, and AI-assisted workflows to understand how they can improve efficiency and scale across our production.
+<br />
+                   While the tools continue to evolve, our artists remain at the heart of the process — bringing creativity, experience, artistic judgment, and quality control to every project.
+<br />
+                   We believe the future of 3D production will be built through the right balance of human creativity and intelligent technology.
                   </p>
                   
                 </div>

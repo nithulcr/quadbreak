@@ -117,18 +117,18 @@ const Services = () => {
       ref={sectionRef}
     >
       <div className="grid gap-x-20 max-w-[1450px] mx-auto px-5 lg:px-10 items-center w-full ">
-        <div className="  gap-y-10 flex flex-col lg:flex-row w-full lg:items-center   mb-8">
-          <div className="">
+        <div className="  gap-y-10 flex flex-col lg:flex-row w-full lg:items-center lg:justify-between   mb-8">
+          <div className="lg:w-[50%]">
             <h2
               ref={titleRef}
-              className="uppercase w-fit text-white heading text-center mx-auto text-5xl lg:text-[6rem]  leading-none font-light  relative"
+              className="uppercase w-fit text-white heading  text-5xl lg:text-[6rem]  leading-none font-light  relative"
             >
               Our
-             
+             <br />
               Services
             </h2>
           </div>
-          {/* <div className="lg:w-[50%] ml-auto  max-w-[530px] fade-up ">
+          <div className="lg:w-[50%] ml-auto  max-w-[530px] fade-up ">
             <p
               ref={text1Ref}
               className="font-[200] lg:text-right text-white text-[14px] lg:text-[18px] leading-snug"
@@ -138,14 +138,14 @@ const Services = () => {
               indie, and mobile games. At Quadbreak Studios, we bring game
               worlds to life with high-quality 3D art.
             </p>
-            <div ref={btnRef} className="hidden md:flex w-fit lg:ml-auto">
+            {/* <div ref={btnRef} className="hidden md:flex w-fit lg:ml-auto mt-5">
               <AnimatedButton
                 href=""
                 label="View All Services"
                 className="w-fit min-w-[160px]"
               />
-            </div>
-          </div> */}
+            </div> */}
+          </div>
         </div>
         <div
           ref={servicesGridRef}
