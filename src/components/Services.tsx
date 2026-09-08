@@ -117,7 +117,7 @@ const Services = () => {
       ref={sectionRef}
     >
       <div className="grid gap-x-20 max-w-[1450px] mx-auto px-5 lg:px-10 items-center w-full ">
-        <div className="  gap-y-10 flex flex-col lg:flex-row w-full lg:items-center lg:justify-center  mb-8">
+        <div className="  gap-y-10 flex flex-col lg:flex-row w-full lg:items-center   mb-8">
           <div className="">
             <h2
               ref={titleRef}
