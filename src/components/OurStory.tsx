@@ -184,12 +184,12 @@ const OurStory = () => {
                   </div>
                   <p
                     ref={text1Ref}
-                    className="about-paragraph text-[16px] md:text-[20px] leading-snug font-[200] text-white/80"
+                    className="about-paragraph text-[16px] md:text-[20px] leading-snug font-[200] text-white/80 text-justify"
                   >
-                   Technology continues to reshape the way digital worlds are created. At Quadbreak, we actively explore emerging technologies, automation, and AI-assisted workflows to understand how they can improve efficiency and scale across our production.
-<br />
+                   Technology continues to reshape the way digital worlds are created. <span className="text-[var(--green)] italic">At Quadbreak, we actively explore emerging technologies, automation, and AI-assisted workflows to understand how they can improve efficiency and scale across our production.</span>
+
                    While the tools continue to evolve, our artists remain at the heart of the process — bringing creativity, experience, artistic judgment, and quality control to every project.
-<br />
+
                    We believe the future of 3D production will be built through the right balance of human creativity and intelligent technology.
                   </p>
                   
