@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "terrahstrapirailway-production.up.railway.app",
+        hostname: "Quadbreakstrapirailway-production.up.railway.app",
         // no port needed; Railway handles TLS on 443
         pathname: "/uploads/**",
       },

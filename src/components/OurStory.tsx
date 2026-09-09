@@ -94,26 +94,19 @@ const OurStory = () => {
                    Quadbreak Studios
                     </h1>
                     <img src="/images/underline.png" alt="Quadbreak Studios Logo" className="w-full max-w-[80%] left-10 absolute bottom-[-20px] left-0" />
-                    {/* <h1  ref={titleRef} className="uppercase max-w-[800px] w-min relative flex flex-col gap-4 text-[var(--green)] text-[3rem] lg:text-[6rem] leading-none mb-1">
-          <span className="block w-fit">Quadbreak</span> 
-          <span className="block w-fit">Studios</span>
-        </h1> */}
+                 
                   </div>
                   <p
                     ref={text1Ref}
-                    className="about-paragraph text-[16px] md:text-[20px] leading-snug font-[200] text-white/80"
+                    className="about-paragraph text-[16px] md:text-[20px] leading-snug font-[200] text-white/80 text-justify"
                   >
-                    In 2016, we started from a single desk, driven by a deep
-                    passion for game art. With a strong foundation in the
-                    industry but limited resources, we built everything from
-                    scratch, seizing every opportunity to grow. Over time, we
-                    expanded beyond game art into VR and simulator art,
-                    delivering high-quality visuals across industries. What
-                    began as Wrinit evolved into Quadbreak Studios, carrying
-                    forward the same commitment to creativity, collaboration,
-                    and innovation. Today, we continue to push boundaries,
-                    embracing new challenges and staying true to our core
-                    values.
+                   We’re a team of artists, creators, and problem-solvers who love making things that people want to step into.
+
+                   At Quadbreak, we create the 3D art that gives games their identity — from expansive environments and detailed props to vehicles, hard-surface assets, and everything in between.
+
+We love the process. The big ideas, the tiny details, the challenges that seem impossible at first, and that moment when everything finally comes together.
+
+We’re constantly pushing our skills, experimenting with new ideas, and looking for better ways to create. Because for us, game art isn’t just what we do.
                   </p>
                   <StatsSection2 />
                 </div>

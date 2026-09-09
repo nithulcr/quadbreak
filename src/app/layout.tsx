@@ -38,7 +38,7 @@ export default function RootLayout({
           <div className="preloader-center">
             <Image
               src="/images/logo.png"
-              alt="Terrah logo"
+              alt="Quadbreak logo"
               width={300}
               height={80}
               className="brand"
