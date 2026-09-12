@@ -259,9 +259,9 @@ export default function ProjectDetail() {
             </div>
 
             {/* Gallery Images */}
-            <div ref={galleryRef} className="max-w-[1450px] mx-auto px-5 lg:px-10 pb-12 lg:pb-20 grid md:grid-cols-2 lg:grid-cols-2 gap-6 ">
+            <div ref={galleryRef} className="max-w-[1450px] mx-auto px-5 lg:px-10 pb-12 lg:pb-20 grid  gap-6 ">
               {project.image?.url && (
-                <div className="w-full aspect-[1/.8] relative overflow-hidden border border-white/10 rounded-xl">
+                <div className="w-full aspect-[1/.4] bg-[#1a1a1a] relative overflow-hidden border border-white/10 rounded-xl">
                   <Image
                     src={project.image.url}
                     alt={`${project.title} image`}
@@ -271,7 +271,7 @@ export default function ProjectDetail() {
                 </div>
               )}
               {project.projectGallery?.map((galleryItem, index) => (
-                <div key={index} className="w-full aspect-[1/.8] relative overflow-hidden border border-white/10 rounded-xl">
+                <div key={index} className="w-full aspect-[1/.5] bg-[#1a1a1a] relative overflow-hidden border border-white/10 rounded-xl">
                   <Image
                     src={galleryItem.url || "/images/seo.jpg"}
                     alt={`${project.title} gallery ${index + 1}`}

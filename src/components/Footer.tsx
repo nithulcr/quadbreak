@@ -60,9 +60,9 @@ export default function Footer() {
               className="w-[230px] content-center"
             />
             <p className="py-3 font-[200]  opacity-80 max-w-[360px]">
-              We are a game art outsourcing studio delivering high-quality 3D assets for games, simulations and virtual  experiences.
+             Wrinit has evolved into Quadbreak Studios,providing high-quality real-time optimized assets for multiple projects for businesses and individuals to its customers globally at an affordable rate. If you are searching for a professional, well-experienced, and trusted outsourcing studio that believes in quality delivery within timelines
             </p>
-            <p className='text-[var(--green)] font-[200]  pb-2' >Quality, Performance, Artistry</p>
+            {/* <p className='text-[var(--green)] font-[200]  pb-2' >Quality, Performance, Artistry</p> */}
             <ul className="flex gap-4 mt-2">
               {socialLinks.map(({ href, Icon }, index) => (
                 <li key={index} className="font-light flex items-center">
@@ -79,10 +79,12 @@ export default function Footer() {
             <h2 className="text-xl font-medium mb-8 footer-head relative uppercase relative uppercase">Quick Links</h2>
             <ul className="flex flex-col gap-3">
               <li><Link href="/about" className="font-light text-md hover:text-[var(--green)] transition-colors">About Us</Link></li>
-              <li><Link href="/culture" className="font-light text-md hover:text-[var(--green)] transition-colors">Culture</Link></li>
-              <li><Link href="" className="font-light text-md hover:text-[var(--green)] transition-colors">Game Art</Link></li>
-              <li><Link href="" className="font-light text-md hover:text-[var(--green)] transition-colors">Stimulator Art</Link></li>
+              {/* <li><Link href="/culture" className="font-light text-md hover:text-[var(--green)] transition-colors">Culture</Link></li> */}
+             
+              <li><Link href="https://quadbreaksimulations.com/" target="_blank" className="font-light text-md hover:text-[var(--green)] transition-colors">Stimulator Art</Link></li>
+              
               <li><Link href="/projects" className="font-light text-md hover:text-[var(--green)] transition-colors">Projects</Link></li>
+               <li><Link href="/contact" className="font-light text-md hover:text-[var(--green)] transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -92,7 +94,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3">
               <li><Link href="/privacy-policy" className="font-light text-md hover:text-[var(--green)] transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="font-light text-md hover:text-[var(--green)] transition-colors">Terms and Conditions</Link></li>
-              <li><Link href="/contact" className="font-light text-md hover:text-[var(--green)] transition-colors">Contact Us</Link></li>
+             
             </ul>
 
             
@@ -102,9 +104,10 @@ export default function Footer() {
           <div className="md:col-span-1 xl:col-span-2">
             <h2 className="text-xl font-medium mb-8 footer-head relative uppercase relative uppercase">Location</h2>
             <ul className="flex flex-col gap-5">
-              <li className="font-light flex items-center gap-3">
+              <li className="font-light flex gap-3">
                 <span className='flex items-center justify-center border border-[var(--green)] flex-none w-8 h-8 p-1 rounded'><MapPin className="w-6 h-6 p-[3px]  text-[var(--green)] flex-none" strokeWidth={1.5} /></span>
-                <span className="leading-[26px] text-md">Kannur, Kerala, India</span>
+                <span className="leading-[26px] text-md  mt-[-5px]">Quadbreak Studios Pvt Ltd
+2nd Floor, City Center, Iritty, Kannur, Kerala - 670703</span>
               </li>
               <li className="font-light flex items-start gap-3">
                 <span className='flex items-center justify-center border border-[var(--green)] flex-none w-8 h-8 p-1 rounded'><Phone className="w-6 h-6 p-[3px]  text-[var(--green)] flex-none" strokeWidth={1.5} /></span>
@@ -127,7 +130,7 @@ export default function Footer() {
         {/* Bottom Copyright */}
         <div className="bottom pt-4 pb-2 text-center md:px-5 px-4 mt-2">
           <p className="text-md text-white/80">
-            Copyright © 2026 Quadbreak. All Rights Reserved.
+           ©  Copyright 2026 All Rights Reserved by Wrinit Games/Quadbreak studios.
           </p>
         </div>
       </div>
