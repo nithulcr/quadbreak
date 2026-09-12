@@ -12,7 +12,7 @@ interface Project {
   id: number;
   title: string;
   category: string;
-  tech: string;
+  tags: string;
   description?: string;
   slug?: string;
   url?: string;
@@ -24,7 +24,7 @@ const staticProjects: Project[] = [
     id: 1,
     title: "Desert Storm",
     category: "3D Vehicles",
-    tech: "Blender, Substance Painter, Unreal Engine",
+    tags: "Blender, Substance Painter, Unreal Engine",
     description: "High-poly military vehicle modeled and textured for a AAA desert combat game.",
     slug: "desert-storm",
     image: { url: "/images/works/1.png" },
@@ -33,7 +33,7 @@ const staticProjects: Project[] = [
     id: 2,
     title: "Neon Arsenal",
     category: "Weapons",
-    tech: "Maya, ZBrush, Quixel Mixer",
+    tags: "Maya, ZBrush, Quixel Mixer",
     description: "Sci-fi weapon set created for a cyberpunk FPS title.",
     slug: "neon-arsenal",
     image: { url: "/images/works/2.png" },
@@ -42,7 +42,7 @@ const staticProjects: Project[] = [
     id: 3,
     title: "Arctic Outpost",
     category: "3D Environment",
-    tech: "Unreal Engine 5, SpeedTree, Substance",
+    tags: "Unreal Engine 5, SpeedTree, Substance",
     description: "Full environment build for a survival game set in the Arctic.",
     slug: "arctic-outpost",
     image: { url: "/images/works/3.png" },
@@ -51,7 +51,7 @@ const staticProjects: Project[] = [
     id: 4,
     title: "Jungle Canopy",
     category: "Vegetation",
-    tech: "SpeedTree, Blender, UE5",
+    tags: "SpeedTree, Blender, UE5",
     description: "Dense jungle vegetation pack for an open-world adventure game.",
     slug: "jungle-canopy",
     image: { url: "/images/works/4.png" },
@@ -60,7 +60,7 @@ const staticProjects: Project[] = [
     id: 5,
     title: "Rust & Ruin",
     category: "Props",
-    tech: "Blender, Substance Painter",
+    tags: "Blender, Substance Painter",
     description: "Post-apocalyptic prop collection for an indie horror game.",
     slug: "rust-ruin",
     image: { url: "/images/works/5.png" },
@@ -69,7 +69,7 @@ const staticProjects: Project[] = [
     id: 6,
     title: "Fantasy Realm",
     category: "Stylized Art",
-    tech: "Blender, Photoshop, Unity",
+    tags: "Blender, Photoshop, Unity",
     description: "Stylized environment and props for a mobile RPG.",
     slug: "fantasy-realm",
     image: { url: "/images/works/6.jpeg" },
@@ -169,7 +169,7 @@ const Works = ({ limit }: WorksProps) => {
                       <h3 className="text-1xl lg:text-[18px] font-monument">
                         {project.title}
                       </h3>
-                      <div className="text-sm">{project.tech}</div>
+                      <div className="text-sm">{project.tags}</div>
                     </div>
                   </div>
                 );

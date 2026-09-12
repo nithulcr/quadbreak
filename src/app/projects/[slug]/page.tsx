@@ -16,7 +16,7 @@ interface Project {
   id: number;
   title: string;
   category: string;
-  tech: string;
+  tags: string;
   description?: string;
   shortDescription?: string;
 
@@ -32,12 +32,12 @@ const staticProjects: Project[] = [
     id: 1,
     title: "Desert Storm",
     category: "3D Vehicles",
-    tech: "Blender, Substance Painter, Unreal Engine",
+    tags: "Blender, Substance Painter, Unreal Engine",
     shortDescription: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
     description: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
 
     slug: "desert-storm",
-    image: { url: "/images/works/1.png" },
+    image: { url: "/images/works/1.jpg" },
     projectBanner: { url: "/images/3.jpg" },
     projectGallery: [{ url: "/images/works/3.png" }],
   },
@@ -45,7 +45,7 @@ const staticProjects: Project[] = [
     id: 2,
     title: "Neon Arsenal",
     category: "Weapons",
-    tech: "Maya, ZBrush, Quixel Mixer",
+    tags: "Maya, ZBrush, Quixel Mixer",
   shortDescription: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
     description: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
     slug: "neon-arsenal",
@@ -57,7 +57,7 @@ const staticProjects: Project[] = [
     id: 3,
     title: "Arctic Outpost",
     category: "3D Environment",
-    tech: "Unreal Engine 5, SpeedTree, Substance",
+    tags: "Unreal Engine 5, SpeedTree, Substance",
  shortDescription: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
     description: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
     slug: "arctic-outpost",
@@ -69,7 +69,7 @@ const staticProjects: Project[] = [
     id: 4,
     title: "Jungle Canopy",
     category: "Vegetation",
-    tech: "SpeedTree, Blender, UE5",
+    tags: "SpeedTree, Blender, UE5",
  shortDescription: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
     description: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
     slug: "jungle-canopy",
@@ -81,7 +81,7 @@ const staticProjects: Project[] = [
     id: 5,
     title: "Rust & Ruin",
     category: "Props",
-    tech: "Blender, Substance Painter",
+    tags: "Blender, Substance Painter",
  shortDescription: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
     description: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
     slug: "rust-ruin",
@@ -93,7 +93,7 @@ const staticProjects: Project[] = [
     id: 6,
     title: "Fantasy Realm",
     category: "Stylized Art",
-    tech: "Blender, Photoshop, Unity",
+    tags: "Blender, Photoshop, Unity",
  shortDescription: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
     description: "High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering. High-poly military vehicle modeled and textured for a AAA desert combat game. The project involved creating accurate mechanical details, weathering effects, and material definition for realistic in-engine rendering.",
     slug: "fantasy-realm",
@@ -224,7 +224,7 @@ export default function ProjectDetail() {
                   {project.title}
                 </h1>
                 <p className="text-white/80 text-[14px] lg:text-[18px] leading-relaxed font-[200] max-w-[600px]">
-                  {project.shortDescription || `A ${project.title} project built with ${project.tech}.`}
+                  {project.shortDescription || `A ${project.title} project built with ${project.tags}.`}
                 </p>
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function ProjectDetail() {
                   About This Project
                 </h2>
                 <p className="text-white/80 text-[14px] lg:text-[18px] leading-relaxed font-[200] max-w-[800px]">
-                  {project.description || `A ${project.title} project built with ${project.tech}. Showcasing our expertise in ${project.category} for modern games and interactive experiences.`}
+                  {project.description || `A ${project.title} project built with ${project.tags}. Showcasing our expertise in ${project.category} for modern games and interactive experiences.`}
                 </p>
               </div>
 
@@ -247,7 +247,7 @@ export default function ProjectDetail() {
                 </div>
                 <div>
                   <h3 className="text-white/40 text-xs uppercase tracking-[3px] mb-2">Technologies</h3>
-                  <p className="text-white text-lg font-light">{project.tech}</p>
+                  <p className="text-white text-lg font-light">{project.tags}</p>
                 </div>
                 <div className="pt-4 flex flex-col sm:flex-row gap-4">
                   {project.url && (
@@ -259,9 +259,9 @@ export default function ProjectDetail() {
             </div>
 
             {/* Gallery Images */}
-            <div ref={galleryRef} className="max-w-[1450px] mx-auto px-5 lg:px-10 pb-12 lg:pb-20 grid  gap-6 ">
+            <div ref={galleryRef} className="max-w-[1450px] mx-auto px-5 lg:px-10 pb-12 lg:pb-20 grid  gap-10 ">
               {project.image?.url && (
-                <div className="w-full aspect-[1/.4] bg-[#1a1a1a] relative overflow-hidden border border-white/10 rounded-xl">
+                <div className="w-full aspect-[1/.57] bg-[#1a1a1a] relative overflow-hidden border border-white/10">
                   <Image
                     src={project.image.url}
                     alt={`${project.title} image`}
@@ -271,7 +271,7 @@ export default function ProjectDetail() {
                 </div>
               )}
               {project.projectGallery?.map((galleryItem, index) => (
-                <div key={index} className="w-full aspect-[1/.5] bg-[#1a1a1a] relative overflow-hidden border border-white/10 rounded-xl">
+                <div key={index} className="w-full aspect-[1/.57] bg-[#1a1a1a] relative overflow-hidden border border-white/10">
                   <Image
                     src={galleryItem.url || "/images/seo.jpg"}
                     alt={`${project.title} gallery ${index + 1}`}
@@ -316,7 +316,7 @@ export default function ProjectDetail() {
                           {rp.title}
                         </h5>
                         <p className="font-[200] text-[14px] max-w-[260px]">
-                          {rp.tech}
+                          {rp.tags}
                         </p>
                       </div>
                     </div>
