@@ -120,21 +120,19 @@ const CTASection = () => {
                 lg:text-[4.5rem]
               "
             >
-              Bring your
+             The Drive 
               <br />
-              <span className="text-[var(--green)]">vision</span> to life
+              Behind <span className="text-[var(--green)]">the Art.</span> 
             </h2>
 
-            <p className="mt-6 max-w-[420px] text-sm font-light leading-relaxed text-white/60 md:text-base">
-              From characters and environments to vehicles and cinematic assets,
-              we create high-quality 3D art built for games, experiences and
-              digital worlds.
+            <p className="mt-6 max-w-[600px] text-sm font-light leading-relaxed text-white/60 md:text-base">
+              Great art starts with a bold vision and the drive to make it happen. Jesto Jose and Mithun Alexander are at the core of Quadbreak — bringing creative vision, years of industry experience, and a deep passion for the craft, while pushing creative boundaries, challenging the ordinary, and inspiring the team to keep raising the bar. Their passion sets the pace, their experience shapes the vision, and their drive keeps Quadbreak moving forward.
             </p>
 
             <div className="mt-8">
               <AnimatedButton
                 href="/contact"
-                label="Start a Project"
+                label="Meet the Team"
                 className="w-fit"
               />
             </div>
