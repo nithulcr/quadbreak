@@ -1,0 +1,105 @@
+"use client";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import AnimatedButton from "./AnimatedButton";
+
+export default function Header() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+
+    useEffect(() => {
+        document.body.classList.toggle("open", menuOpen);
+        return () => document.body.classList.remove("open");
+    }, [menuOpen]);
+
+    const handleLinkClick = () => {
+        setMenuOpen(false);
+    };
+
+    return (
+        <header className="fixed top-0 inset-x-0 z-50 bg-transparent flex justify-center h-24 lg:px-[4rem] z-999">
+            <div className="w-full grid grid-cols-[minmax(5vw,1fr)_minmax(auto,1450px)_minmax(5vw,1fr)] z-1">
+                <div className="max-w-[1450px] px-5 lg:px-10  flex justify-between gap-x-3 items-center w-full absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+
+                    {/* Logo */}
+                    <Link href="/" className="max-w-[170px]  md:max-w-[240px] ">
+                        <Image src="/images/logo.png" alt="Logo" width={220} height={70} className="object-contain " />
+                    </Link>
+
+                    {/* Desktop Navigation */}
+                    <nav className="hidden lg:flex items-center justify-end gap-6">
+                        <Link href="/" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Home</Link>
+                        <Link href="/about" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">About Us</Link>
+                        {/* <Link href="/culture" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Culture</Link> */}
+                
+                        <Link href="https://quadbreaksimulations.com/" target="_blank" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Stimulator Art</Link>
+
+                        <Link href="/projects" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Portfolio</Link>
+                        <Link href="/contact" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Contact</Link>
+                        <AnimatedButton
+                            href="/contact"
+                            label="Let's Talk"
+                            className="w-fit ml-2"
+                        />
+                    </nav>
+
+
+                    {/* Hamburger Menu */}
+                    <button
+                        className="flex items-center justify-end z-50 w-nav-button p-2 cursor-pointer lg:hidden"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                    >
+                        <span className="uppercase hidden md:block bg-[var(--light-outline)] text-sm py-1 pr-3 pl-2 mr-[-10px] rounded-tl-[8px] rounded-bl-[8px]">Menu</span>
+                        <div className="flex items-center justify-center bg-[var(--light-outline)] w-12 h-12 rounded-full">
+                            {menuOpen ? (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="w-8 h-8 text-white menu-icon"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+
+                            ) : (
+
+                                <div className="menu-icon">
+                                    
+                                    <span></span>
+                                    <span></span>
+                 
+                                </div>
+                            )}
+                        </div>
+                    </button>
+
+
+                </div>
+            </div>
+            <div className="nav-cover"></div>
+
+            {/* Mobile Nav */}
+            <div
+                className={`absolute  w-full transition-all duration-700 mobile-nav-menu menu-set  top-0 ${menuOpen ? "menu-set-open visible" : "invisible"
+                    }`}
+            >
+                <nav className={` min-h-screen flex flex-col justify-center duration-700 relative ${menuOpen ? "opacity-100 " : "opacity-0  scale-50"
+                    }`}>
+                    <Link href="/" className="block py-2 px-6 nav-link uppercase text-center text-[7vh]" onClick={handleLinkClick}>Home</Link>
+                    <Link href="/about" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>About Us</Link>
+                    {/* <Link href="/culture" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Culture</Link> */}
+                    <Link href="https://quadbreaksimulations.com/" target="_blank" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Stimulator Art</Link>
+
+
+                    <Link href="/projects" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Portfolio</Link>
+
+                    <Link href="/contact" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Contact</Link>
+
+                </nav>
+            </div>
+        </header>
+    );
+}
