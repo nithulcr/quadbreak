@@ -1,5 +1,6 @@
 import type { Client } from "@/types/client";
 import type { Project, ProjectImage, ProjectSeo } from "@/types/project";
+import type { RecentWork } from "@/types/recentWork";
 import type { Service } from "@/types/service";
 import type { Testimonial } from "@/types/testimonial";
 
@@ -20,6 +21,9 @@ const CLIENTS_ENDPOINT =
 
 const TESTIMONIALS_ENDPOINT =
   `${WORDPRESS_URL}/wp-json/wp/v2/testimonials`;
+
+const RECENT_WORKS_ENDPOINT =
+  `${WORDPRESS_URL}/wp-json/wp/v2/recent_works`;
 
 const MEDIA_ENDPOINT =
   `${WORDPRESS_URL}/wp-json/wp/v2/media`;
@@ -800,6 +804,77 @@ export async function getTestimonials(): Promise<Testimonial[]> {
   } catch (error) {
     console.error(
       "Failed to fetch WordPress testimonials:",
+      error,
+    );
+
+    return [];
+  }
+}
+
+/* -------------------------------------------------------
+   NORMALIZE RECENT WORK
+------------------------------------------------------- */
+
+export function normalizeWordPressRecentWork(
+  post: WordPressContentPost,
+): RecentWork {
+  const featuredImage = featuredImageUrl(post) || "/images/seo.jpg";
+
+  const recentWork: RecentWork = {
+    id: post.id,
+    title: decodeHtmlEntities(post.title?.rendered || ""),
+    description: toPlainText(post.content?.rendered),
+    image: featuredImage,
+  };
+
+  if (process.env.NODE_ENV === "development") {
+    console.log("[WordPress] Recent Work:", recentWork);
+  }
+
+  return recentWork;
+}
+
+/* -------------------------------------------------------
+   GET ALL RECENT WORKS
+------------------------------------------------------- */
+
+export async function getRecentWorks(): Promise<RecentWork[]> {
+  try {
+    const response = await fetch(
+      `${RECENT_WORKS_ENDPOINT}?_embed&per_page=6&orderby=menu_order&order=asc`,
+      {
+        next: {
+          revalidate: REVALIDATE_SECONDS,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      console.error(
+        `Failed to fetch WordPress recent works: ${response.status}`,
+      );
+
+      return [];
+    }
+
+    const posts =
+      (await response.json()) as WordPressContentPost[];
+
+    if (!Array.isArray(posts)) {
+      return [];
+    }
+
+    if (process.env.NODE_ENV === "development") {
+      console.log(
+        "WordPress recent works received:",
+        posts.length,
+      );
+    }
+
+    return posts.map(normalizeWordPressRecentWork);
+  } catch (error) {
+    console.error(
+      "Failed to fetch WordPress recent works:",
       error,
     );
 

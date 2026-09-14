@@ -85,7 +85,6 @@ const CTASection = () => {
         <div
           className="
             relative
-            overflow-hidden
             grid lg:grid-cols-2 gap-8 
 
           "

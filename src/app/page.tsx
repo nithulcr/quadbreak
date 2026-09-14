@@ -13,15 +13,15 @@ import {
   getServices,
   getClients,
   getTestimonials,
-  getProjects,
+  getRecentWorks,
 } from "@/lib/wordpress";
 
 export default async function HomePage() {
-  const [services, clients, testimonials, projects] = await Promise.all([
+  const [services, clients, testimonials, recentWorks] = await Promise.all([
     getServices(),
     getClients(),
     getTestimonials(),
-    getProjects(),
+    getRecentWorks(),
   ]);
 
   return (
@@ -34,7 +34,7 @@ export default async function HomePage() {
         <Journey />
 
         <Services services={services} />
-        <WorksSection projects={projects} />
+        <WorksSection recentWorks={recentWorks} />
 
         <CTASection />
 

@@ -126,7 +126,7 @@ const WhoWeAre = () => {
                     </div> */}
                   </div>
                   <div className="lg:w-[50%] ml-auto mt-10 lg:mt-[-350px] max-w-[530px] fade-up">
-                    <h2 ref={text2Ref} className="uppercase w-fit text-white/60  text-right italic mb-10 text-[3rem]  leading-none font-light  relative">
+                    <h2 ref={text2Ref} className="lg:ml-auto uppercase w-fit text-white/60  text-right italic mb-10 text-[3rem]  leading-none font-light  relative">
                      Lets Create <br />Magic Together
                     </h2>
                     <video

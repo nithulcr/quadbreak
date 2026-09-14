@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import type { Project } from "@/types/project";
+import type { RecentWork } from "@/types/recentWork";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,14 +13,14 @@ const WorkCard = ({
   card,
   className = "",
 }: {
-  card: Project;
+  card: RecentWork;
   className?: string;
 }) => (
   <div
     className={`about-card group relative top-0 aspect-[1/1.08] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px] ${className}`}
   >
     <img
-      src={card.image?.url || card.projectBanner?.url || "/images/seo.jpg"}
+      src={card.image}
       alt={card.title}
       className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -29,7 +29,7 @@ const WorkCard = ({
     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10" />
     <div className="absolute top-6 left-6 z-20 transition-all duration-500 ease-out group-hover:top-[-100px]">
       <span className="bg-[var(--green)] text-black text-xs font-[600] uppercase tracking-wider px-4 py-2">
-        {card.category || card.title || "Work"}
+        {card.title || "Work"}
       </span>
     </div>
     <div className="absolute bottom-[-200px] group-hover:bottom-0 left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-6">
@@ -37,19 +37,23 @@ const WorkCard = ({
         {card.title}
       </h5>
       <p className="font-[200] text-[14px] max-w-[260px]">
-        {card.category || card.tags || "Recent work"}
+        {card.description || "Recent work"}
       </p>
     </div>
   </div>
 );
 
 interface WorksSectionProps {
-  projects: Project[];
+  recentWorks: RecentWork[];
 }
 
-const WorksSection = ({ projects }: WorksSectionProps) => {
+const WorksSection = ({ recentWorks }: WorksSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const workCards = projects.slice(0, 6);
+  const workCards = Array.isArray(recentWorks) ? recentWorks.slice(0, 6) : [];
+
+  if (process.env.NODE_ENV === "development") {
+    console.log("Recent Works:", recentWorks);
+  }
 
   useEffect(() => {
     const ctx = gsap.context(() => {
