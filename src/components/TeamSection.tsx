@@ -20,19 +20,19 @@ const staticTeam: TeamMember[] = [
     id: 1,
     name: "Alex Carter",
     role: "Founder & Art Director",
-    photoUrl: "/images/cta-art.png",
+    photoUrl: "/images/member1.png",
   },
   {
     id: 2,
     name: "Maya Lopez",
     role: "Lead 3D Character Artist",
-    photoUrl: "/images/cta-art.png",
+    photoUrl: "/images/member2.png",
   },
   {
     id: 3,
     name: "Daniel Kim",
     role: "Environment Artist",
-    photoUrl: "/images/cta-art.png",
+    photoUrl: "/images/member3.png",
   },
   {
     id: 4,

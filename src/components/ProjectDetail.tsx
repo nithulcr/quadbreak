@@ -116,8 +116,8 @@ export default function ProjectDetail({
       <main>
         <section ref={sectionRef}>
           <div>
-            {/* Hero Banner */}
-            <div ref={heroRef} className="relative">
+            
+            {/* <div ref={heroRef} className="relative">
               <div className="w-full h-[60vh] lg:h-[70vh] relative">
                 <Image
                   src={project.projectBanner?.url || project.image?.url || "/images/bg-banner.jpg"}
@@ -138,7 +138,7 @@ export default function ProjectDetail({
               </div>
             </div>
 
-            {/* Project Info */}
+          
             <div ref={infoRef} className="max-w-[1450px] mx-auto px-5 lg:px-10 py-14 lg:py-24 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-20">
               <div className="lg:col-span-2">
                 <h2 className="uppercase text-white text-3xl lg:text-[3rem] leading-none font-light mb-6">
@@ -172,11 +172,11 @@ export default function ProjectDetail({
                   <AnimatedButton href="/projects" label="All Projects" className="w-fit" />
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Gallery Images */}
-            <div ref={galleryRef} className="max-w-[1450px] mx-auto px-5 lg:px-10 pb-12 lg:pb-20 grid  gap-10 ">
-              {project.image?.url && (
+            <div ref={galleryRef} className="max-w-[1450px] mx-auto px-5 lg:px-10 pb-12 lg:pb-20 pt-26 lg:pt-36 grid  gap-10 ">
+              {/* {project.image?.url && (
                 <div className="w-full  bg-[#1a1a1a] relative overflow-hidden border border-white/10">
                   <Image
                     src={project.image.url}
@@ -186,7 +186,7 @@ export default function ProjectDetail({
                     className="h-full w-full object-cover"
                   />
                 </div>
-              )}
+              )} */}
               {project.projectGallery?.map((galleryItem, index) => (
                 <div key={index} className="w-full  bg-[#1a1a1a] relative overflow-hidden border border-white/10">
                   <Image
@@ -202,8 +202,8 @@ export default function ProjectDetail({
           </div>
         </section>
 
-        {/* Related Projects */}
-        {relatedProjects.length > 0 && (
+        
+        {/* {relatedProjects.length > 0 && (
           <section className="py-16 lg:py-24">
             <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
               <div ref={relatedHeaderRef} className="mb-10 lg:mb-16 w-fit">
@@ -243,7 +243,7 @@ export default function ProjectDetail({
               </div>
             </div>
           </section>
-        )}
+        )} */}
       </main>
       <Footer />
     </div>
