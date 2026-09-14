@@ -51,7 +51,7 @@ export default function Footer() {
         <div className="middle grid md:grid-cols-2 xl:grid-cols-9 py-8 gap-[40px] md:gap-[60px] md:pb-14 md:pt-12">
           
           {/* Logo + Legal Disclaimer */}
-          <div className="md:col-span-1 xl:col-span-3 content-center lg:pr-5">
+          <div className="md:col-span-2 xl:col-span-4 content-center lg:pr-5">
             <Image
               src="/images/logo.png"
               alt="Quadbreak Logo"
@@ -59,7 +59,7 @@ export default function Footer() {
               height={50}
               className="w-[230px] content-center"
             />
-            <p className="py-3 font-[200]  opacity-80 max-w-[360px]">
+            <p className="py-3 font-[200]  opacity-80 max-w-[1000px] xl:max-w-[500px] text-justify">
              Wrinit has evolved into Quadbreak Studios,providing high-quality real-time optimized assets for multiple projects for businesses and individuals to its customers globally at an affordable rate. If you are searching for a professional, well-experienced, and trusted outsourcing studio that believes in quality delivery within timelines
             </p>
             {/* <p className='text-[var(--green)] font-[200]  pb-2' >Quality, Performance, Artistry</p> */}
@@ -78,18 +78,20 @@ export default function Footer() {
           <div className="md:col-span-1 xl:col-span-2">
             <h2 className="text-xl font-medium mb-8 footer-head relative uppercase relative uppercase">Quick Links</h2>
             <ul className="flex flex-col gap-3">
+              <li><Link href="/" className="font-light text-md hover:text-[var(--green)] transition-colors">Home</Link></li>
               <li><Link href="/about" className="font-light text-md hover:text-[var(--green)] transition-colors">About Us</Link></li>
+
               {/* <li><Link href="/culture" className="font-light text-md hover:text-[var(--green)] transition-colors">Culture</Link></li> */}
              
               <li><Link href="https://quadbreaksimulations.com/" target="_blank" className="font-light text-md hover:text-[var(--green)] transition-colors">Stimulator Art</Link></li>
               
-              <li><Link href="/projects" className="font-light text-md hover:text-[var(--green)] transition-colors">Projects</Link></li>
+              <li><Link href="/projects" className="font-light text-md hover:text-[var(--green)] transition-colors">Portfolio</Link></li>
                <li><Link href="/contact" className="font-light text-md hover:text-[var(--green)] transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
           {/* Quick Links Column 2 + Social Icons */}
-          <div className="md:col-span-1 xl:col-span-2">
+          {/* <div className="md:col-span-1 xl:col-span-2">
             <h2 className="text-xl font-medium mb-8 footer-head relative uppercase relative uppercase">Legal</h2>
             <ul className="flex flex-col gap-3">
               <li><Link href="/privacy-policy" className="font-light text-md hover:text-[var(--green)] transition-colors">Privacy Policy</Link></li>
@@ -98,7 +100,7 @@ export default function Footer() {
             </ul>
 
             
-          </div>
+          </div> */}
 
           {/* Contact Details */}
           <div className="md:col-span-1 xl:col-span-2">
@@ -128,10 +130,15 @@ export default function Footer() {
         <span className="block underline-span"></span>
 
         {/* Bottom Copyright */}
-        <div className="bottom pt-4 pb-2 text-center md:px-5 px-4 mt-2">
+        <div className="bottom pt-4 pb-2  mt-2 flex flex-wrap gap-5 justify-between">
           <p className="text-md text-white/80">
            ©  Copyright 2026 All Rights Reserved by Wrinit Games/Quadbreak studios.
           </p>
+           <ul className="flex items-center gap-3 ">
+              <li><Link href="/privacy-policy" className="font-light text-md text-white/80 hover:text-[var(--green)] transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="font-light text-md text-white/80 hover:text-[var(--green)] transition-colors">Terms and Conditions</Link></li>
+             
+            </ul>
         </div>
       </div>
     </footer>

@@ -144,8 +144,8 @@ const Services = ({ services }: ServicesProps) => {
 
               <div className="absolute inset-0  bg-gradient-to-t from-black/90 via-black/60 to-black/30 transition duration-700" />
               <div className="absolute inset-0 p-5 sm:p-8 flex flex-col justify-between gap-5">
-                <div className="flex flex-col h-full justify-between gap-3 ">
-                  <span className=" w-10 h-10 p-2 ml-auto flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green  group-hover:scale-80 transition-all duration-500 ease-in-out z-99">
+                <div className="flex flex-col h-full justify-end gap-3 ">
+                  {/* <span className=" w-10 h-10 p-2 ml-auto flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green  group-hover:scale-80 transition-all duration-500 ease-in-out z-99">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -162,7 +162,7 @@ const Services = ({ services }: ServicesProps) => {
                         clipRule="evenodd"
                       ></path>
                     </svg>
-                  </span>
+                  </span> */}
                   <h3 className="uppercase md:text-2xl  tracking-wide z-10 transition duration-500 group-hover:scale-105">
                     {service.title}
                   </h3>
