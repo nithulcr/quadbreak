@@ -158,6 +158,54 @@ function readAcfString(
   return undefined;
 }
 
+/**
+ * Normalizes the ACF "project_category" value into a string[].
+ *
+ * ACF sets the value from the checkbox field, so it arrives as an
+ * array. Legacy projects stored this field as plain text, so the
+ * normalizer also accepts:
+ *
+ * - string      -> "gaming"             -> ["gaming"]
+ * - string[]    -> ["3d-art","vehicles"]-> ["3d-art","vehicles"]
+ * - number      -> 3                    -> ["3"]
+ * - null        -> []; undefined -> []
+ * - ""/[""]     -> []; empty items are dropped
+ */
+function readProjectCategory(post: WordPressProject): string[] {
+  const value = post.acf?.project_category;
+
+  if (Array.isArray(value)) {
+    return value
+      .map((item) =>
+        typeof item === "number"
+          ? String(item)
+          : typeof item === "string"
+            ? item.trim()
+            : "",
+      )
+      .filter((item) => item.length > 0);
+  }
+
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+
+    if (trimmed.length === 0) {
+      return [];
+    }
+
+    return trimmed
+      .split(",")
+      .map((item) => item.trim())
+      .filter((item) => item.length > 0);
+  }
+
+  if (typeof value === "number") {
+    return [String(value)];
+  }
+
+  return [];
+}
+
 /* -------------------------------------------------------
    MEDIA RESOLUTION
 ------------------------------------------------------- */
@@ -463,10 +511,9 @@ export async function normalizeWordPressProject(
 
     // ACF
     category:
-      readAcfString(
+      readProjectCategory(
         post,
-        "project_category",
-      ) || "",
+      ),
 
     tags:
       readAcfString(
@@ -537,7 +584,7 @@ function debugProject(
 
   console.log("Featured Image:", featuredImageUrl(post));
 
-  console.log("Category:", readAcfString(post, "project_category"));
+  console.log("Category:", readProjectCategory(post));
 
   console.log("Tags:", readAcfString(post, "project_tags"));
 

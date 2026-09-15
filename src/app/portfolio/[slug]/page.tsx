@@ -48,7 +48,7 @@ export async function generateMetadata({
           .split(/[,|]/)
           .map((keyword) => keyword.trim())
           .filter(Boolean)
-      : [project.category, project.tags]
+      : [...project.category, project.tags]
           .map((keyword) => (keyword || "").trim())
           .filter(Boolean);
 
@@ -94,11 +94,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   const allProjects = await getProjects();
-  const relatedProjects = allProjects
-    .filter((p) => p.id !== project.id)
-    .slice(0, 3);
+  const currentIndex = allProjects.findIndex(
+    (p) => p.id === project.id,
+  );
+  const hasNeighbors = allProjects.length > 1;
+
+  const prevSlug = hasNeighbors
+    ? (currentIndex > 0
+        ? allProjects[currentIndex - 1]
+        : allProjects[allProjects.length - 1]
+      ).slug
+    : null;
+
+  const nextSlug = hasNeighbors
+    ? (currentIndex < allProjects.length - 1
+        ? allProjects[currentIndex + 1]
+        : allProjects[0]
+      ).slug
+    : null;
 
   return (
-    <ProjectDetail project={project} relatedProjects={relatedProjects} />
+    <ProjectDetail project={project} prevSlug={prevSlug} nextSlug={nextSlug} />
   );
 }

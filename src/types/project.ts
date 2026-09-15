@@ -19,7 +19,7 @@ export interface Project {
   id: number;
   title: string;
   slug: string;
-  category: string;
+  category: string[];
   tags: string;
   shortDescription: string;
   description: string;

@@ -2,250 +2,176 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import AnimatedButton from "@/components/AnimatedButton";
+import { useRouter } from "next/navigation";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { Project } from "@/types/project";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface ProjectDetailProps {
   project: Project | null;
-  relatedProjects: Project[];
+  prevSlug?: string | null;
+  nextSlug?: string | null;
 }
 
 export default function ProjectDetail({
   project,
-  relatedProjects,
+  prevSlug,
+  nextSlug,
 }: ProjectDetailProps) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLDivElement>(null);
-  const infoRef = useRef<HTMLDivElement>(null);
-  const galleryRef = useRef<HTMLDivElement>(null);
-  const relatedHeaderRef = useRef<HTMLDivElement>(null);
-  const relatedGridRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const controlsRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLElement>(null);
+  const isNavigating = useRef(false);
 
   useEffect(() => {
-    if (!project || !sectionRef.current) return;
+    window.scrollTo(0, 0);
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          once: true,
-        },
-      });
-
-      tl.from(heroRef.current, {
+      const tl = gsap.timeline();
+      tl.from(backdropRef.current, {
         opacity: 0,
-        y: 30,
-        duration: 0.7,
+        duration: 0.4,
         ease: "power2.out",
-      }).from(
-        infoRef.current,
-        { opacity: 0, y: 30, duration: 0.7, ease: "power2.out" },
-        "-=0.45",
-      );
-
-      if (galleryRef.current) {
-        gsap.from(galleryRef.current, {
-          opacity: 0,
-          y: 60,
-          scale: 0.96,
-          duration: 0.9,
-          ease: "power3.out",
-          force3D: true,
-          scrollTrigger: {
-            trigger: galleryRef.current,
-            start: "top 80%",
-            once: true,
+      })
+        .from(
+          contentRef.current,
+          {
+            y: "100vh",
+            duration: 0.8,
+            ease: "power3.out",
           },
-        });
-      }
-
-      if (relatedGridRef.current && relatedGridRef.current.children.length > 0) {
-        tl.from(relatedHeaderRef.current, {
-          opacity: 0,
-          y: 30,
-          duration: 0.7,
-          ease: "power2.out",
-        }, "-=0.3");
-
-        gsap.from(relatedGridRef.current.children, {
-          opacity: 0,
-          y: 60,
-          scale: 0.96,
-          duration: 0.9,
-          stagger: { each: 0.12, from: "start" },
-          ease: "power3.out",
-          force3D: true,
-          scrollTrigger: {
-            trigger: relatedGridRef.current,
-            start: "top 80%",
-            once: true,
+          "-=0.15",
+        )
+        .from(
+          controlsRef.current,
+          {
+            opacity: 0,
+            y: -20,
+            duration: 0.5,
+            ease: "power2.out",
           },
-        });
-      }
-    }, sectionRef);
+          "-=0.5",
+        );
+    });
 
     return () => ctx.revert();
   }, [project]);
 
+  const go = (url: string | null) => {
+    if (!url || isNavigating.current) return;
+
+    isNavigating.current = true;
+
+    if (!contentRef.current || !backdropRef.current) {
+      router.push(url);
+      return;
+    }
+
+    gsap.to(contentRef.current, {
+      y: "100vh",
+      opacity: 0,
+      duration: 0.45,
+      ease: "power2.in",
+    });
+    gsap.to(controlsRef.current, {
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.in",
+    });
+    gsap.to(backdropRef.current, {
+      opacity: 0,
+      duration: 0.45,
+      ease: "power2.in",
+      onComplete: () => router.push(url),
+    });
+  };
+
   if (!project) {
     return (
-      <div>
-        <Header />
-        <main className="min-h-screen flex flex-col items-center justify-center gap-6">
-          <h1 className="text-white text-4xl font-light">Project Not Found</h1>
-          <AnimatedButton href="/portfolio" label="Back to Portfolio" className="w-fit" />
-        </main>
-        <Footer />
+      <div className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center gap-6">
+        <h1 className="text-white text-4xl font-light">Project Not Found</h1>
+        <button
+          onClick={() => go("/portfolio")}
+          className="border border-[var(--green)] text-white px-6 py-3 rounded-full hover:bg-[var(--green)] hover:text-black transition-colors cursor-pointer"
+        >
+          Back to Portfolio
+        </button>
       </div>
     );
   }
 
-  const hasButton = Boolean(project.buttonName && project.buttonUrl);
+  const prevHref = prevSlug ? `/portfolio/${prevSlug}` : null;
+  const nextHref = nextSlug ? `/portfolio/${nextSlug}` : null;
+
+  const navButtonClass =
+    "flex items-center  justify-center w-11 h-11 rounded-full border border-white/20 text-white hover:bg-[var(--green)] hover:border-[var(--green)] hover:text-black transition-all cursor-pointer";
 
   return (
-    <div>
-      <Header />
-      <main>
-        <section ref={sectionRef}>
-          <div>
-            
-            {/* <div ref={heroRef} className="relative">
-              <div className="w-full h-[60vh] lg:h-[70vh] relative">
-                <Image
-                  src={project.projectBanner?.url || project.image?.url || "/images/bg-banner.jpg"}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-black/40" />
-              </div>
-              <div className="max-w-[1450px] mx-auto px-5 lg:px-10 w-full absolute bottom-0 left-0 right-0 pb-12 lg:pb-20">
-                <h1 className="uppercase text-white text-4xl lg:text-[5rem] leading-none font-light mb-6">
-                  {project.title}
-                </h1>
-                <p className="text-white/80 text-[14px] lg:text-[18px] leading-relaxed font-[200] max-w-[600px]">
-                  {project.shortDescription || `A ${project.title} project built with ${project.tags}.`}
-                </p>
-              </div>
+    <>
+      {/* Backdrop */}
+      <div
+        ref={backdropRef}
+        className="fixed inset-0 z-[90] bg-[var(--background)]"
+      />
+
+      {/* Fullscreen content (normal flow so window/Lenis scroll works) */}
+      <main
+        ref={contentRef}
+        className="relative z-[100] min-h-screen pt-24 lg:pt-28 pb-20"
+      >
+        <div className="max-w-[1450px] mx-auto px-5 lg:px-10 gap-10 grid">
+          {project.projectGallery?.map((galleryItem, index) => (
+            <div
+              key={index}
+              className="w-full bg-[#1a1a1a] relative overflow-hidden border border-white/10"
+            >
+              <Image
+                src={galleryItem.url || "/images/seo.jpg"}
+                alt={`${project.title} gallery ${index + 1}`}
+                width={1450}
+                height={827}
+                className="h-full w-full object-cover"
+              />
             </div>
-
-          
-            <div ref={infoRef} className="max-w-[1450px] mx-auto px-5 lg:px-10 py-14 lg:py-24 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-20">
-              <div className="lg:col-span-2">
-                <h2 className="uppercase text-white text-3xl lg:text-[3rem] leading-none font-light mb-6">
-                  About This Project
-                </h2>
-                <div
-                  className="text-white/80 text-[14px] lg:text-[18px] leading-relaxed font-[200] max-w-[800px]"
-                  dangerouslySetInnerHTML={{
-                    __html: project.description || `A ${project.title} project built with ${project.tags}. Showcasing our expertise in ${project.category} for modern games and interactive experiences.`,
-                  }}
-                />
-              </div>
-
-              <div className="flex flex-col gap-6">
-                {project.category && (
-                  <div>
-                    <h3 className="text-white/40 text-xs uppercase tracking-[3px] mb-2">Category</h3>
-                    <p className="text-white text-lg font-light">{project.category}</p>
-                  </div>
-                )}
-                {project.tags && (
-                  <div>
-                    <h3 className="text-white/40 text-xs uppercase tracking-[3px] mb-2">Tags</h3>
-                    <p className="text-white text-lg font-light">{project.tags}</p>
-                  </div>
-                )}
-                <div className="pt-4 flex flex-col sm:flex-row gap-4">
-                  {hasButton && (
-                    <AnimatedButton href={project.buttonUrl as string} label={project.buttonName as string} className="w-fit" />
-                  )}
-                  <AnimatedButton href="/portfolio" label="All Projects" className="w-fit" />
-                </div>
-              </div>
-            </div> */}
-
-            {/* Gallery Images */}
-            <div ref={galleryRef} className="max-w-[1450px] mx-auto px-5 lg:px-10 pb-12 lg:pb-20 pt-26 lg:pt-36 grid  gap-10 ">
-              {/* {project.image?.url && (
-                <div className="w-full  bg-[#1a1a1a] relative overflow-hidden border border-white/10">
-                  <Image
-                    src={project.image.url}
-                    alt={`${project.title} image`}
-                    width={1450}
-                    height={827}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              )} */}
-              {project.projectGallery?.map((galleryItem, index) => (
-                <div key={index} className="w-full  bg-[#1a1a1a] relative overflow-hidden border border-white/10">
-                  <Image
-                    src={galleryItem.url || "/images/seo.jpg"}
-                    alt={`${project.title} gallery ${index + 1}`}
-                    width={1450}
-                    height={827}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        
-        {/* {relatedProjects.length > 0 && (
-          <section className="py-16 lg:py-24">
-            <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
-              <div ref={relatedHeaderRef} className="mb-10 lg:mb-16 w-fit">
-                <h2 className="uppercase text-white heading text-5xl lg:text-[5rem] leading-none font-light">
-                  More Works
-                </h2>
-              </div>
-
-              <div ref={relatedGridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {relatedProjects.map((rp, index) => (
-                  <Link
-                    key={rp.id}
-                    href={`/portfolio/${rp.slug}`}
-                    className="text-white block"
-                  >
-                    <div className="about-card group relative border border-white/10 rounded-xl top-0 aspect-[1/1.08] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px]">
-                      <img
-                        src={rp.image?.url || "/images/seo.jpg"}
-                        alt={rp.title}
-                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        loading={index < 3 ? "eager" : "lazy"}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10" />
-                      
-                      <div className="absolute bottom-[0px]  left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-6">
-                        <h5 className="font-light text-xl uppercase tracking-wider relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
-                          {rp.title}
-                        </h5>
-                        <p className="font-[200] text-[14px] max-w-[260px]">
-                          {rp.tags}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )} */}
+          ))}
+        </div>
       </main>
-      <Footer />
-    </div>
+
+      {/* Floating controls */}
+      <div
+        ref={controlsRef}
+        className="fixed top-0 inset-x-0 z-[110] flex items-center justify-between gap-4 px-4 lg:px-8 py-4 bg-black/70 backdrop-blur-sm"
+      >
+        <div className="w-[100px] flex items-center gap-2 lg:gap-3">
+          {prevHref && (
+            <button onClick={() => go(prevHref)} className={navButtonClass}>
+              <ChevronLeft className="w-5 h-5" />
+              {/* <span className="hidden sm:inline">Previous</span> */}
+            </button>
+          )}
+          {nextHref && (
+            <button onClick={() => go(nextHref)} className={navButtonClass}>
+              {/* <span className="hidden sm:inline">Next</span> */}
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          )}
+        </div>
+
+        <h2 className="uppercase text-white text-sm lg:text-lg font-light tracking-widest truncate">
+          {project.title}
+        </h2>
+
+       <div className="w-[100px] ">
+         <button
+          onClick={() => go("/portfolio")}
+          aria-label="Close"
+          className="flex items-center ml-auto justify-center w-11 h-11 rounded-full border border-white/20 text-white hover:bg-[var(--green)] hover:border-[var(--green)] hover:text-black transition-all cursor-pointer"
+        >
+          <X className="w-6 h-6" />
+        </button>
+       </div>
+      </div>
+    </>
   );
 }
