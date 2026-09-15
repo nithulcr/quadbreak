@@ -1,7 +1,14 @@
 export interface ProjectSeo {
   title?: string;
   description?: string;
-  focusKeyword?: string;
+  canonical?: string;
+  keywords?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
 }
 
 export interface ProjectImage {
@@ -22,4 +29,5 @@ export interface Project {
   projectBanner?: ProjectImage;
   projectGallery: ProjectImage[];
   seo?: ProjectSeo;
+  wordpressUrl?: string;
 }

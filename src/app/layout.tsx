@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import ClientLayout from '../components/ClientLayout';
 import LenisProvider from '@/components/LenisProvider';
 import PreloaderControl from '@/components/PreloaderControl';
-import StickySocial from '@/components/StickySocial';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
 
@@ -46,7 +45,7 @@ export default function RootLayout({
           </div>
         </div>
 
-        <StickySocial />
+       
         <PreloaderControl />
 
         <LenisProvider>

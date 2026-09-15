@@ -504,6 +504,9 @@ export async function normalizeWordPressProject(
 
     // ACF gallery 1-10
     projectGallery,
+
+    // Original WordPress permalink (used internally for Rank Math)
+    wordpressUrl: post.link || "",
   };
 
   if (process.env.NODE_ENV === "development") {
@@ -900,136 +903,315 @@ interface RankMathHeadTag {
       };
 }
 
-function parseHeadContent(
-  content: RankMathHeadTag["content"],
-): string {
-  if (typeof content === "string") {
-    return content.trim();
+function readHtmlAttribute(
+  tag: string,
+  attribute: string,
+): string | undefined {
+  const match = tag.match(
+    new RegExp(
+      `\\b${attribute}\\s*=\\s*(["'])(.*?)\\1`,
+      "i",
+    ),
+  );
+
+  return match?.[2];
+}
+
+/**
+ * Serializes any Rank Math head payload into an HTML
+ * string that can be scanned generically.
+ *
+ * Supported shapes:
+ *
+ * 1. String:  "<meta name=\"description\" .../>"
+ * 2. Array of tag objects:
+ *    [{ tag: "title", content: "..." },
+ *     { tag: "meta",  content: { name, content } }]
+ * 3. Array of raw HTML strings
+ */
+function rankMathHeadToString(data: unknown): string {
+  let head: unknown = data;
+
+  /*
+   * Rank Math Headless CMS wraps the output in an
+   * object such as { success: true, head: "..." }.
+   */
+  if (
+    data &&
+    typeof data === "object" &&
+    !Array.isArray(data)
+  ) {
+    const wrapped = data as { head?: unknown };
+
+    if ("head" in wrapped) {
+      head = wrapped.head;
+    }
   }
 
-  if (
-    typeof content === "object" &&
-    content !== null &&
-    typeof content.content === "string"
-  ) {
-    return content.content.trim();
+  if (typeof head === "string") {
+    return head;
+  }
+
+  if (Array.isArray(head)) {
+    return head
+      .map((item) => {
+        if (typeof item === "string") {
+          return item;
+        }
+
+        if (
+          typeof item !== "object" ||
+          item === null
+        ) {
+          return "";
+        }
+
+        const tag =
+          (item as RankMathHeadTag).tag || "meta";
+        const content =
+          (item as RankMathHeadTag).content;
+
+        if (tag === "title") {
+          const value =
+            typeof content === "string"
+              ? content
+              : (content as { content?: string })
+                  ?.content || "";
+
+          return `<title>${value}</title>`;
+        }
+
+        if (typeof content === "string") {
+          return `<meta content="${content.replace(
+            /"/g,
+            "&quot;",
+          )}" />`;
+        }
+
+        if (
+          typeof content === "object" &&
+          content !== null
+        ) {
+          let result = `<${tag}`;
+
+          for (const [key, value] of Object.entries(
+            content,
+          )) {
+            if (typeof value === "string") {
+              result += ` ${key}="${value.replace(
+                /"/g,
+                "&quot;",
+              )}"`;
+            }
+          }
+
+          return `${result} />`;
+        }
+
+        return "";
+      })
+      .join("\n");
   }
 
   return "";
 }
 
-function findHeadMeta(
-  tags: RankMathHeadTag[],
-  matcher: (
-    content: {
-      name?: string;
-      property?: string;
-      content?: string;
-      rel?: string;
-      href?: string;
-    },
-  ) => boolean,
-): string {
-  for (const tag of tags) {
-    if (
-      typeof tag.content !== "object" ||
-      tag.content === null
-    ) {
+/**
+ * Scans an HTML string and returns the values of its
+ * title, <meta> and <link> tags keyed by name / property
+ * / rel.
+ */
+function parseMetaFromHtml(
+  html: string,
+): Record<string, string> {
+  const found: Record<string, string> = {};
+
+  const titleMatch = html.match(
+    /<title[^>]*>([\s\S]*?)<\/title>/i,
+  );
+
+  if (titleMatch?.[1]) {
+    found.title = decodeHtmlEntities(
+      titleMatch[1].trim(),
+    );
+  }
+
+  const tagRegex = /<(?:meta|link)\b[^>]*>/gi;
+  let match: RegExpExecArray | null;
+
+  while ((match = tagRegex.exec(html)) !== null) {
+    const tag = match[0];
+
+    const key =
+      readHtmlAttribute(tag, "name") ||
+      readHtmlAttribute(tag, "property") ||
+      readHtmlAttribute(tag, "rel");
+
+    if (!key) {
       continue;
     }
 
-    if (matcher(tag.content)) {
-      const value =
-        tag.content.content ??
-        tag.content.href;
+    const value =
+      readHtmlAttribute(tag, "content") ||
+      readHtmlAttribute(tag, "href");
 
-      if (
-        typeof value === "string" &&
-        value.trim()
-      ) {
-        return value.trim();
-      }
+    if (value && !(key in found)) {
+      found[key] = decodeHtmlEntities(value.trim());
     }
   }
 
-  return "";
+  return found;
 }
 
 function parseRankMathHead(
   data: unknown,
 ): ProjectSeo {
-  const seo: ProjectSeo = {};
+  const html = rankMathHeadToString(data);
+  const meta = parseMetaFromHtml(html);
 
-  /*
-   * Rank Math normally returns an array of
-   * head tags.
-   */
-  const tags = Array.isArray(data)
-    ? (data as RankMathHeadTag[])
-    : [];
+  const title =
+    meta.title ||
+    meta["og:title"] ||
+    meta["twitter:title"];
 
-  const title = tags.find(
-    (tag) => tag.tag === "title",
+  const description =
+    meta.description ||
+    meta["og:description"] ||
+    meta["twitter:description"];
+
+  const seo: ProjectSeo = {
+    title,
+    description,
+    canonical: meta.canonical,
+    keywords: meta.keywords,
+    ogTitle: meta["og:title"],
+    ogDescription: meta["og:description"],
+    ogImage: meta["og:image"],
+    twitterTitle: meta["twitter:title"],
+    twitterDescription: meta["twitter:description"],
+    twitterImage: meta["twitter:image"],
+  };
+
+  const hasSeoData = Object.values(seo).some(
+    (value) => typeof value === "string" && value,
   );
 
-  if (title) {
-    const value =
-      parseHeadContent(title.content);
+  /*
+   * Avoid consuming the WordPress "page not found"
+   * head when Rank Math could not match the URL.
+   */
+  if (
+    !hasSeoData ||
+    (typeof title === "string" &&
+      /page not found/i.test(title))
+  ) {
+    return {};
+  }
 
-    if (value) {
-      seo.title = value;
+  return seo;
+}
+
+function rankMathSeoFromJson(
+  data: unknown,
+): ProjectSeo | null {
+  const seo = parseRankMathHead(data);
+
+  const hasUsableSeo =
+    seo.title ||
+    seo.description ||
+    seo.canonical ||
+    seo.ogTitle ||
+    seo.ogDescription ||
+    seo.ogImage ||
+    seo.twitterTitle ||
+    seo.twitterDescription ||
+    seo.twitterImage;
+
+  if (!hasUsableSeo) {
+    if (process.env.NODE_ENV === "development") {
+      console.warn(
+        "[Rank Math] No usable SEO data could be parsed.",
+      );
     }
+
+    return null;
   }
 
-  const description = findHeadMeta(
-    tags,
-    (content) =>
-      content.name === "description",
-  );
-
-  if (description) {
-    seo.description = description;
-  }
-
-  /*
-   * Rank Math does not normally expose
-   * Focus Keyword as a standard SEO
-   * <meta name="keywords"> tag.
-   *
-   * Do not pretend this is the focus keyword.
-   */
   return seo;
 }
 
 export async function getRankMathSeo(
-  slug: string,
+  wordpressUrl: string,
 ): Promise<ProjectSeo | null> {
-  const projectUrl =
-    `${WORDPRESS_URL}/projects/${encodeURIComponent(slug)}/`;
-
-  try {
-    const response = await fetch(
-      `${RANK_MATH_HEAD_ENDPOINT}?url=${encodeURIComponent(projectUrl)}`,
-      {
-        cache: "no-store",
-      },
-    );
-
-    if (!response.ok) {
-      console.error(
-        `Rank Math API failed: ${response.status}`,
+  if (!wordpressUrl) {
+    if (process.env.NODE_ENV === "development") {
+      console.warn(
+        "[Rank Math] No WordPress URL provided, skipping.",
       );
-
-      return null;
     }
 
-    const data =
-      (await response.json()) as unknown;
+    return null;
+  }
 
-    return parseRankMathHead(data);
+  /*
+   * Rank Math's getHead route occasionally rejects
+   * certain URL variants (a trailing slash) with a
+   * REST 404 even though the post exists. Try the
+   * original URL first, then the trimmed variant.
+   */
+  const candidates = [wordpressUrl];
+
+  if (wordpressUrl.endsWith("/")) {
+    candidates.push(wordpressUrl.replace(/\/$/, ""));
+  }
+
+  try {
+    for (const url of candidates) {
+      if (process.env.NODE_ENV === "development") {
+        console.log("[Rank Math] URL:", url);
+      }
+
+      const response = await fetch(
+        `${RANK_MATH_HEAD_ENDPOINT}?url=${encodeURIComponent(url)}`,
+        {
+          cache: "no-store",
+        },
+      );
+
+      if (process.env.NODE_ENV === "development") {
+        console.log("[Rank Math] Status:", response.status);
+      }
+
+      if (!response.ok) {
+        continue;
+      }
+
+      const data =
+        (await response.json()) as unknown;
+
+      if (process.env.NODE_ENV === "development") {
+        console.log("[Rank Math] Response:", data);
+      }
+
+      const seo = rankMathSeoFromJson(data);
+
+      if (process.env.NODE_ENV === "development") {
+        console.log("[Rank Math] Parsed SEO:", seo);
+      }
+
+      if (seo) {
+        return seo;
+      }
+    }
+
+    console.error(
+      `Rank Math API failed for ${wordpressUrl}`,
+    );
+
+    return null;
   } catch (error) {
     console.error(
-      `Failed to fetch Rank Math SEO for "${slug}":`,
+      "Failed to fetch Rank Math SEO:",
       error,
     );
 

@@ -1,5 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
 import {
   Instagram,
   Mail,
@@ -8,13 +10,13 @@ import {
   Linkedin,
   Facebook,
   MapPin,
-} from 'lucide-react';
+} from "lucide-react";
 
 const socialLinks = [
-  { href: '#', Icon: Instagram },
-  { href: '#', Icon: MessageCircleMore },
-  { href: '#', Icon: Facebook },
-  { href: '#', Icon: Linkedin },
+  { href: "#", Icon: Instagram, label: "Instagram" },
+  { href: "#", Icon: MessageCircleMore, label: "Community" },
+  { href: "#", Icon: Facebook, label: "Facebook" },
+  { href: "#", Icon: Linkedin, label: "LinkedIn" },
 ];
 
 export default function Footer() {
@@ -34,7 +36,7 @@ export default function Footer() {
                 i % 2 === 0
                   ? "-translate-y-2 md:-translate-y-4 -rotate-3"
                   : "md:translate-y-4 rotate-3"
-              }`} 
+              }`}
             >
               {char}
             </span>
@@ -48,97 +50,251 @@ export default function Footer() {
 
       <div className="max-w-[1450px] mx-auto footer px-5 lg:px-10 md:py-10 py-4">
         {/* Footer Main Grid */}
-        <div className="middle grid md:grid-cols-2 xl:grid-cols-9 py-8 gap-[40px] md:gap-[60px] md:pb-14 md:pt-12">
-          
+        <div className="middle grid md:grid-cols-4 lg:grid-cols-10  py-8 gapY-[40px] md:pb-14 md:pt-12">
           {/* Logo + Legal Disclaimer */}
-          <div className="md:col-span-2 xl:col-span-4 content-center lg:pr-5">
-            <Image
-              src="/images/logo.png"
-              alt="Quadbreak Logo"
-              width={230}
-              height={50}
-              className="w-[230px] content-center"
-            />
-            <p className="py-3 font-[200]  opacity-80 max-w-[1000px] xl:max-w-[500px] text-justify">
-             Wrinit has evolved into Quadbreak Studios,providing high-quality real-time optimized assets for multiple projects for businesses and individuals to its customers globally at an affordable rate. If you are searching for a professional, well-experienced, and trusted outsourcing studio that believes in quality delivery within timelines
+          <div className="md:col-span-1 lg:col-span-3 content-center pr-10 footer-column">
+            <div className="relative text-centerc w-fit">
+              <Image
+                src="/images/logo.png"
+                alt="Quadbreak Logo"
+                width={230}
+                height={50}
+                className="w-[280px] content-center"
+              />
+              <span className="uppercase text-center text-white/50 mx-auto block text-lg pt-1 tracking-[8px]">Studios</span>
+            </div>
+            <p className="py-3 font-[200]  opacity-80 max-w-[1000px] xl:max-w-[500px]">
+              We are create high quality, real-time optimized assets for
+              studios, businesses, and individuals globally. From characters to
+              environments, we bring ideaas to life with precision, creativity
+              and reliability.
             </p>
-            {/* <p className='text-[var(--green)] font-[200]  pb-2' >Quality, Performance, Artistry</p> */}
-            <ul className="flex gap-4 mt-2">
-              {socialLinks.map(({ href, Icon }, index) => (
+          </div>
+
+          {/* Quick Links Column 1 */}
+          <div className="md:col-span-1 lg:col-span-2 px-8 footer-column">
+            <h2 className="text-lg font-[300] mb-10 footer-head relative uppercase fon">
+              Quick Links
+            </h2>
+            <ul className="flex flex-col gap-3">
+
+                <Link
+                  href="/"
+                  className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
+                >
+                  Home
+                              <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                      data-slot="icon"
+                      color="rgb(0, 0, 0)"
+                      text-lg className="w-5 text-[var(--green)] font-medium"
+                     
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                </Link>
+     
+         
+
+                <Link
+                  href="/about"
+                  className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
+                >
+                  About Us
+                     <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                      data-slot="icon"
+                      color="rgb(0, 0, 0)"
+                      text-lg className="w-5 text-[var(--green)] font-medium"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                </Link>
+              
+         
+
+                <Link
+                  href="https://quadbreaksimulations.com/"
+                  target="_blank"
+                  className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
+                >
+                  Stimulator Art
+                       <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                      data-slot="icon"
+                      color="rgb(0, 0, 0)"
+                      text-lg className="w-5 text-[var(--green)] font-medium"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                </Link>
+            
+     
+
+                <Link
+                  href="/projects"
+                  className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
+                >
+                  Portfolio
+                  <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                      data-slot="icon"
+                      color="rgb(0, 0, 0)"
+                      text-lg className="w-5 text-[var(--green)] font-medium"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                </Link>
+                 
+          
+              
+                <Link
+                  href="/contact"
+                  className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
+                >
+                  Contact Us 
+                  <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                      data-slot="icon"
+                      color="rgb(0, 0, 0)"
+                      text-lg className="w-5 text-[var(--green)] font-medium"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                </Link>
+                 
+              
+            </ul>
+          </div>
+
+          <div className="md:col-span-1 lg:col-span-3 px-8 footer-column">
+            <h2 className="text-lg font-[300] mb-12 footer-head relative uppercase">
+              Location
+            </h2>
+            <ul className="flex flex-col gap-5">
+              <li className="font-light flex gap-3">
+                <span className="flex items-center justify-center border border-[var(--green)] flex-none w-9 h-9 p-1 rounded">
+                  <MapPin
+                    className=" p-[2px]  text-[var(--green)] flex-none"
+                    strokeWidth={1.5}
+                  />
+                </span>
+                <span className="leading-[26px] text-md  mt-[-5px]">
+                  Quadbreak Studios Pvt Ltd
+                  <br />
+                 <span className="opacity-80 font-[200]">2nd Floor, City Center, Iritty, Kannur, Kerala - 670703</span>
+                </span>
+              </li>
+              <li className="font-light flex items-center gap-3">
+                <span className="flex items-center justify-center border border-[var(--green)] flex-none w-9 h-9 p-1 rounded">
+                  <Phone
+                    className=" p-[3px] text-[var(--green)]  flex-none"
+                    strokeWidth={1.5}
+                  />
+                </span>
+                <div className="flex flex-col gap-1 text-md">
+                  <span>+91 99 99 9999 99</span>
+                </div>
+              </li>
+              <li className="font-light flex items-center gap-3">
+                <span className="flex items-center justify-center border border-[var(--green)] flex-none w-9 h-9 p-1 rounded">
+                  <Mail
+                    className="p-[3px]   text-[var(--green)] flex-none"
+                    strokeWidth={1.5}
+                  />
+                </span>
+                <span className="text-md">business@quadbreak.com</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-1 lg:col-span-2 pl-10 footer-column">
+            <h2 className="text-lg font-[300] mb-10 footer-head relative uppercase fon">
+              Follow Our Journey
+            </h2>
+            <ul className="flex flex-col gap-4">
+              {socialLinks.map(({ href, Icon, label }, index) => (
                 <li key={index} className="font-light flex items-center">
-                  <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center hover:opacity-40 border border-[var(--green)] p-1 rounded transition-opacity">
-                    <Icon className="w-6 h-6 p-[2px] text-[var(--green)]" strokeWidth={1.5} />
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 "
+                  >
+                    <Icon
+                      className="w-9 h-9 border border-[var(--green)] text-[var(--green)] p-[5px] rounded"
+                      strokeWidth={1.5}
+                    />
+                    <span>{label}</span>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Quick Links Column 1 */}
-          <div className="md:col-span-1 xl:col-span-2">
-            <h2 className="text-xl font-medium mb-8 footer-head relative uppercase relative uppercase">Quick Links</h2>
-            <ul className="flex flex-col gap-3">
-              <li><Link href="/" className="font-light text-md hover:text-[var(--green)] transition-colors">Home</Link></li>
-              <li><Link href="/about" className="font-light text-md hover:text-[var(--green)] transition-colors">About Us</Link></li>
-
-              {/* <li><Link href="/culture" className="font-light text-md hover:text-[var(--green)] transition-colors">Culture</Link></li> */}
-             
-              <li><Link href="https://quadbreaksimulations.com/" target="_blank" className="font-light text-md hover:text-[var(--green)] transition-colors">Stimulator Art</Link></li>
-              
-              <li><Link href="/projects" className="font-light text-md hover:text-[var(--green)] transition-colors">Portfolio</Link></li>
-               <li><Link href="/contact" className="font-light text-md hover:text-[var(--green)] transition-colors">Contact Us</Link></li>
-            </ul>
-          </div>
-
-          {/* Quick Links Column 2 + Social Icons */}
-          {/* <div className="md:col-span-1 xl:col-span-2">
-            <h2 className="text-xl font-medium mb-8 footer-head relative uppercase relative uppercase">Legal</h2>
-            <ul className="flex flex-col gap-3">
-              <li><Link href="/privacy-policy" className="font-light text-md hover:text-[var(--green)] transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="font-light text-md hover:text-[var(--green)] transition-colors">Terms and Conditions</Link></li>
-             
-            </ul>
-
-            
-          </div> */}
-
-          {/* Contact Details */}
-          <div className="md:col-span-1 xl:col-span-2">
-            <h2 className="text-xl font-medium mb-8 footer-head relative uppercase relative uppercase">Location</h2>
-            <ul className="flex flex-col gap-5">
-              <li className="font-light flex gap-3">
-                <span className='flex items-center justify-center border border-[var(--green)] flex-none w-8 h-8 p-1 rounded'><MapPin className="w-6 h-6 p-[3px]  text-[var(--green)] flex-none" strokeWidth={1.5} /></span>
-                <span className="leading-[26px] text-md  mt-[-5px]">Quadbreak Studios Pvt Ltd
-2nd Floor, City Center, Iritty, Kannur, Kerala - 670703</span>
-              </li>
-              <li className="font-light flex items-start gap-3">
-                <span className='flex items-center justify-center border border-[var(--green)] flex-none w-8 h-8 p-1 rounded'><Phone className="w-6 h-6 p-[3px]  text-[var(--green)] flex-none" strokeWidth={1.5} /></span>
-                <div className="flex flex-col gap-1 text-md">
-                  <span>+91 99 99 9999 99</span>
-
-                </div>
-              </li>
-              <li className="font-light flex items-center gap-3">
-                <span className='flex items-center justify-center border border-[var(--green)] flex-none w-8 h-8 p-1 rounded'><Mail className="w-6 h-6 p-[3px]  text-[var(--green)] flex-none" strokeWidth={1.5} /></span>
-                <span className="text-md">quadbreak@gmail.com</span>
-              </li>
-            </ul>
-          </div>
-
         </div>
 
         <span className="block underline-span"></span>
 
         {/* Bottom Copyright */}
         <div className="bottom pt-4 pb-2  mt-2 flex flex-wrap gap-5 justify-between">
-          <p className="text-md text-white/80">
-           ©  Copyright 2026 All Rights Reserved by Wrinit Games/Quadbreak studios.
+          <p className="text-sm text-white/80">
+            © Copyright 2026 All Rights Reserved by Wrinit Games/Quadbreak
+            studios.
           </p>
-           <ul className="flex items-center gap-3 ">
-              <li><Link href="/privacy-policy" className="font-light text-md text-white/80 hover:text-[var(--green)] transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="font-light text-md text-white/80 hover:text-[var(--green)] transition-colors">Terms and Conditions</Link></li>
-             
-            </ul>
+          <ul className="flex items-center gap-4 ">
+            <li>
+              <Link
+                href="/privacy-policy"
+                className="font-light text-sm text-white/80 hover:text-[var(--green)] transition-colors"
+              >
+                Privacy Policy
+              </Link>
+            </li>
+            <span className="opacity-40">|</span>
+            <li>
+              <Link
+                href="/terms"
+                className="font-light text-sm text-white/80 hover:text-[var(--green)] transition-colors"
+              >
+                Terms and Conditions
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>

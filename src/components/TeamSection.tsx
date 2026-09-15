@@ -24,25 +24,25 @@ const staticTeam: TeamMember[] = [
   },
   {
     id: 2,
-   name: "Titto",
+    name: "Titto",
     role: "Business Development Manger",
     photoUrl: "/images/member2.png",
   },
   {
     id: 3,
-     name: "Titto",
+    name: "Titto",
     role: "Business Development Manger",
     photoUrl: "/images/member3.png",
   },
   {
     id: 4,
-   name: "Titto",
+    name: "Titto",
     role: "Business Development Manger",
     photoUrl: "/images/member4.png",
   },
   {
     id: 5,
-     name: "Titto",
+    name: "Titto",
     role: "Business Development Manger",
     photoUrl: "/images/member1.png",
   },
@@ -50,7 +50,7 @@ const staticTeam: TeamMember[] = [
     id: 6,
     name: "Titto",
     role: "Business Development Manger",
-     photoUrl: "/images/member2.png",
+    photoUrl: "/images/member2.png",
   },
 ];
 
@@ -64,14 +64,12 @@ const TeamSection = () => {
       <div className="mx-auto max-w-[1424px] px-5 py-12 md:py-20">
         <div className="mb-6 flex flex-col justify-between gap-8 md:mb-16">
           <div className="flex flex-col text-center mx-auto">
-           
             <h2 className="font-monument text-5xl font-medium leading-none uppercase text-white md:text-7xl">
-              Meet Our 
-             
+              Meet Our
               <span className="text-[var(--green)] pl-4">Team</span>
             </h2>
-             <p className="text-xl  tracking-[0.2em] font-light mt-5">
-             Executeive Leadership
+            <p className="text-xl  tracking-[0.2em] font-light mt-5">
+              Executeive Leadership
             </p>
           </div>
         </div>
@@ -103,7 +101,8 @@ const TeamSection = () => {
           {staticTeam.map((member) => (
             <SwiperSlide key={member.id}>
               <div className="group relative">
-                <div className="relative aspect-[1/1.1] w-full overflow-hidden border-5 border border-[#101010]">
+                {/* Image Container with default filters and hover removal */}
+                <div className="relative aspect-[1/1.1] w-full overflow-hidden border border-[#101010] transition-all duration-500 ease-in-out">
                   <Image
                     src={member.photoUrl}
                     alt={member.name}
@@ -111,7 +110,6 @@ const TeamSection = () => {
                     sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 25vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
                 <div className="text-center px-4 py-3">
                   <h3 className="text-2xl font-[200]">{member.name}</h3>
@@ -121,7 +119,8 @@ const TeamSection = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-{/* 
+
+        {/* 
         <div className="hidden gap-2 md:flex justify-center mt-14">
           <button
             ref={prevRef}

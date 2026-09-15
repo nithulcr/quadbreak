@@ -664,6 +664,20 @@ height: 100%;
   right: 0px;
 }
 
+.footer-column{
+  position: relative;
+}
+/* Apply the ::before only to footer columns that are NOT the first child */
+.footer-column:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: white;
+  top: 0;
+  left: 0;
+  opacity: .1;
+}
 .footer-head::after{
   content: '';
   position: absolute;

@@ -23,35 +23,64 @@ export async function generateMetadata({
     return {};
   }
 
-  const rankMathSeo = await getRankMathSeo(project.slug);
+  const rankMathSeo = project.wordpressUrl
+    ? await getRankMathSeo(project.wordpressUrl)
+    : null;
 
   const seoTitle =
-    rankMathSeo?.title || project.title;
+    rankMathSeo?.title?.trim() || project.title;
+
   const seoDescription =
-    rankMathSeo?.description ||
+    rankMathSeo?.description?.trim() ||
     project.shortDescription ||
     toPlainText(project.description);
 
-  const seoImage = project.projectBanner?.url || project.image?.url || "";
+  const seoImage =
+    rankMathSeo?.ogImage ||
+    rankMathSeo?.twitterImage ||
+    project.projectBanner?.url ||
+    project.image?.url ||
+    "";
+
+  const seoKeywords =
+    rankMathSeo?.keywords
+      ? rankMathSeo.keywords
+          .split(/[,|]/)
+          .map((keyword) => keyword.trim())
+          .filter(Boolean)
+      : [project.category, project.tags]
+          .map((keyword) => (keyword || "").trim())
+          .filter(Boolean);
 
   return {
     title: seoTitle,
     description: seoDescription,
+    keywords: seoKeywords.length ? seoKeywords : undefined,
     alternates: {
       canonical: canonicalUrl(project.slug),
     },
     openGraph: {
-      title: seoTitle,
-      description: seoDescription,
-      images: seoImage ? [seoImage] : [],
+      title: rankMathSeo?.ogTitle || seoTitle,
+      description:
+        rankMathSeo?.ogDescription || seoDescription,
+      images: rankMathSeo?.ogImage
+        ? [rankMathSeo.ogImage]
+        : seoImage
+          ? [seoImage]
+          : [],
       url: canonicalUrl(project.slug),
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: seoTitle,
-      description: seoDescription,
-      images: seoImage ? [seoImage] : [],
+      title: rankMathSeo?.twitterTitle || seoTitle,
+      description:
+        rankMathSeo?.twitterDescription || seoDescription,
+      images: rankMathSeo?.twitterImage
+        ? [rankMathSeo.twitterImage]
+        : seoImage
+          ? [seoImage]
+          : [],
     },
   };
 }
