@@ -1226,7 +1226,7 @@ export async function getRankMathSeo(
 export function canonicalUrl(
   slug: string,
 ): string {
-  const path = `/projects/${slug}`;
+  const path = `/portfolio/${slug}`;
 
   if (!SITE_URL) {
     return path;

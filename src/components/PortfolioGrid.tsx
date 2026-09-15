@@ -74,7 +74,7 @@ const PortfolioGrid = ({ limit, projects = [] }: PortfolioGridProps) => {
           {list.map((project, index) => {
             const imageUrl = project.image?.url || "/images/seo.jpg";
             const slug = project.slug?.trim();
-            const projectLink = slug ? `/projects/${slug}` : null;
+            const projectLink = slug ? `/portfolio/${slug}` : null;
 
             const CardInner = (
               <div className="about-card group relative top-0 aspect-[1/1.08] border border-white/10 rounded-2xl overflow-hidden  duration-500 ease-out">

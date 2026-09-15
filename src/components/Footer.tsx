@@ -61,7 +61,9 @@ export default function Footer() {
                 height={50}
                 className="w-[280px] content-center"
               />
-              <span className="uppercase text-center text-white/50 mx-auto block text-lg pt-1 tracking-[8px]">Studios</span>
+              <span className="uppercase text-center text-white/50 mx-auto block text-lg pt-1 tracking-[8px]">
+                Studios
+              </span>
             </div>
             <p className="py-3 font-[200]  opacity-80 max-w-[1000px] xl:max-w-[500px]">
               We are create high quality, real-time optimized assets for
@@ -77,106 +79,100 @@ export default function Footer() {
               Quick Links
             </h2>
             <ul className="flex flex-col gap-3">
-
-                <Link
-                  href="/"
-                  className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
-                >
-                  Home
-                              <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                      data-slot="icon"
-                      color="rgb(0, 0, 0)"
-                      text-lg className="w-5 text-[var(--green)] font-medium"
-                     
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                </Link>
-     
-         
-
-                <Link
-                  href="/about"
-                  className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
-                >
-                  About Us
-                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                      data-slot="icon"
-                      color="rgb(0, 0, 0)"
-                      text-lg className="w-5 text-[var(--green)] font-medium"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                </Link>
-              
-         
-
-                <Link
-                  href="https://quadbreaksimulations.com/"
-                  target="_blank"
-                  className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
-                >
-                  Stimulator Art
-                       <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                      data-slot="icon"
-                      color="rgb(0, 0, 0)"
-                      text-lg className="w-5 text-[var(--green)] font-medium"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                </Link>
-            
-     
-
-                <Link
-                  href="/projects"
-                  className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
-                >
-                  Portfolio
-                  <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                      data-slot="icon"
-                      color="rgb(0, 0, 0)"
-                      text-lg className="w-5 text-[var(--green)] font-medium"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                </Link>
-                 
+              <Link
+                href="/"
+                className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
+              >
+                Home
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  data-slot="icon"
+                  color="rgb(0, 0, 0)"
           
-              
-                <Link
+                  className="w-5 text-[var(--green)] font-medium"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </Link>
+
+              <Link
+                href="/about"
+                className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
+              >
+                About Us
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  data-slot="icon"
+                  color="rgb(0, 0, 0)"
+          
+                  className="w-5 text-[var(--green)] font-medium"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </Link>
+
+              <Link
+                href="https://quadbreaksimulations.com/"
+                target="_blank"
+                className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
+              >
+                Stimulator Art
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  data-slot="icon"
+                  color="rgb(0, 0, 0)"
+     
+                  className="w-5 text-[var(--green)] font-medium"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </Link>
+
+              <Link
+                href="/portfolio"
+                className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
+              >
+                Portfolio
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  data-slot="icon"
+                  color="rgb(0, 0, 0)"
+         
+                  className="w-5 text-[var(--green)] font-medium"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </Link>
+
+              {/* <Link
                   href="/contact"
                   className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
                 >
@@ -188,7 +184,7 @@ export default function Footer() {
                       aria-hidden="true"
                       data-slot="icon"
                       color="rgb(0, 0, 0)"
-                      text-lg className="w-5 text-[var(--green)] font-medium"
+                     className="w-5 text-[var(--green)] font-medium"
                     >
                       <path
                         fillRule="evenodd"
@@ -196,14 +192,12 @@ export default function Footer() {
                         clipRule="evenodd"
                       ></path>
                     </svg>
-                </Link>
-                 
-              
+                </Link> */}
             </ul>
           </div>
 
           <div className="md:col-span-1 lg:col-span-3 px-8 footer-column">
-            <h2 className="text-lg font-[300] mb-12 footer-head relative uppercase">
+            <h2 className="text-lg font-[300] mb-10 footer-head relative uppercase">
               Location
             </h2>
             <ul className="flex flex-col gap-5">
@@ -217,7 +211,9 @@ export default function Footer() {
                 <span className="leading-[26px] text-md  mt-[-5px]">
                   Quadbreak Studios Pvt Ltd
                   <br />
-                 <span className="opacity-80 font-[200]">2nd Floor, City Center, Iritty, Kannur, Kerala - 670703</span>
+                  <span className="opacity-80 font-[200]">
+                    2nd Floor, City Center, Iritty, Kannur, Kerala - 670703
+                  </span>
                 </span>
               </li>
               <li className="font-light flex items-center gap-3">
@@ -277,6 +273,15 @@ export default function Footer() {
             studios.
           </p>
           <ul className="flex items-center gap-4 ">
+            <li>
+              <Link
+                href="/contact"
+                className="font-light text-sm text-white/80 hover:text-[var(--green)] transition-colors"
+              >
+                Contact Us
+              </Link>
+            </li>
+            <span className="opacity-40">|</span>
             <li>
               <Link
                 href="/privacy-policy"

@@ -101,7 +101,7 @@ export default function ProjectDetail({
         <Header />
         <main className="min-h-screen flex flex-col items-center justify-center gap-6">
           <h1 className="text-white text-4xl font-light">Project Not Found</h1>
-          <AnimatedButton href="/projects" label="Back to Portfolio" className="w-fit" />
+          <AnimatedButton href="/portfolio" label="Back to Portfolio" className="w-fit" />
         </main>
         <Footer />
       </div>
@@ -169,7 +169,7 @@ export default function ProjectDetail({
                   {hasButton && (
                     <AnimatedButton href={project.buttonUrl as string} label={project.buttonName as string} className="w-fit" />
                   )}
-                  <AnimatedButton href="/projects" label="All Projects" className="w-fit" />
+                  <AnimatedButton href="/portfolio" label="All Projects" className="w-fit" />
                 </div>
               </div>
             </div> */}
@@ -216,7 +216,7 @@ export default function ProjectDetail({
                 {relatedProjects.map((rp, index) => (
                   <Link
                     key={rp.id}
-                    href={`/projects/${rp.slug}`}
+                    href={`/portfolio/${rp.slug}`}
                     className="text-white block"
                   >
                     <div className="about-card group relative border border-white/10 rounded-xl top-0 aspect-[1/1.08] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px]">

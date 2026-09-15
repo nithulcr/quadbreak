@@ -87,7 +87,7 @@ const Works = ({ limit, projects = [] }: WorksProps) => {
               {list.map((project) => {
                 const imageUrl = project.image?.url || "/images/seo.jpg";
                 const slug = project.slug?.trim();
-                const projectLink = slug ? `/projects/${slug}` : null;
+                const projectLink = slug ? `/portfolio/${slug}` : null;
 
                 const CardInner = (
                   <div className="relative">
@@ -135,7 +135,7 @@ const Works = ({ limit, projects = [] }: WorksProps) => {
               <AnimatedButton
                 label="View More Projects? "
                 className="w-fit ml-auto mr-auto mt-8 md:mt-16"
-                href="/projects"
+                href="/portfolio"
               />
             )}
           </div>
