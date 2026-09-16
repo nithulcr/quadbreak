@@ -83,7 +83,7 @@ const PortfolioGrid = ({ limit, projects = [] }: PortfolioGridProps) => {
     }`;
 
   return (
-    <div ref={sectionRef} className="py-16 lg:py-30">
+    <div ref={sectionRef} className="py-14 lg:py-24">
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
         <div ref={headerRef} className="pt-30 pb-20  w-full flex flex-wrap justify-between items-center gap-6">
           <h2 className="uppercase w-fit text-white heading text-5xl lg:text-[6rem] leading-none font-light relative">

@@ -35,52 +35,63 @@ export async function generateMetadata({
     project.shortDescription ||
     toPlainText(project.description);
 
-  const seoImage =
-    rankMathSeo?.ogImage ||
-    rankMathSeo?.twitterImage ||
-    project.projectBanner?.url ||
-    project.image?.url ||
-    "";
-
-  const seoKeywords =
-    rankMathSeo?.keywords
-      ? rankMathSeo.keywords
-          .split(/[,|]/)
-          .map((keyword) => keyword.trim())
-          .filter(Boolean)
-      : [...project.category, project.tags]
-          .map((keyword) => (keyword || "").trim())
-          .filter(Boolean);
+  const seoKeywords = rankMathSeo?.keywords
+    ? rankMathSeo.keywords
+        .split(/[,|]/)
+        .map((keyword) => keyword.trim())
+        .filter(Boolean)
+    : undefined;
 
   return {
     title: seoTitle,
     description: seoDescription,
-    keywords: seoKeywords.length ? seoKeywords : undefined,
+    keywords:
+      seoKeywords && seoKeywords.length > 0
+        ? seoKeywords
+        : undefined,
     alternates: {
       canonical: canonicalUrl(project.slug),
     },
     openGraph: {
-      title: rankMathSeo?.ogTitle || seoTitle,
+      title:
+        rankMathSeo?.ogTitle ||
+        rankMathSeo?.title ||
+        project.title,
       description:
-        rankMathSeo?.ogDescription || seoDescription,
+        rankMathSeo?.ogDescription ||
+        rankMathSeo?.description ||
+        project.shortDescription ||
+        toPlainText(project.description),
       images: rankMathSeo?.ogImage
         ? [rankMathSeo.ogImage]
-        : seoImage
-          ? [seoImage]
-          : [],
+        : project.projectBanner?.url
+          ? [project.projectBanner.url]
+          : project.image?.url
+            ? [project.image.url]
+            : [],
       url: canonicalUrl(project.slug),
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: rankMathSeo?.twitterTitle || seoTitle,
+      title:
+        rankMathSeo?.twitterTitle ||
+        rankMathSeo?.title ||
+        project.title,
       description:
-        rankMathSeo?.twitterDescription || seoDescription,
+        rankMathSeo?.twitterDescription ||
+        rankMathSeo?.description ||
+        project.shortDescription ||
+        toPlainText(project.description),
       images: rankMathSeo?.twitterImage
         ? [rankMathSeo.twitterImage]
-        : seoImage
-          ? [seoImage]
-          : [],
+        : rankMathSeo?.ogImage
+          ? [rankMathSeo.ogImage]
+          : project.projectBanner?.url
+            ? [project.projectBanner.url]
+            : project.image?.url
+              ? [project.image.url]
+              : [],
     },
   };
 }

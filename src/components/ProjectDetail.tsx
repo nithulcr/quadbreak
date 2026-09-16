@@ -105,20 +105,20 @@ export default function ProjectDetail({
   const nextHref = nextSlug ? `/portfolio/${nextSlug}` : null;
 
   const navButtonClass =
-    "flex items-center  justify-center w-11 h-11 rounded-full border border-white/20 text-white hover:bg-[var(--green)] hover:border-[var(--green)] hover:text-black transition-all cursor-pointer";
+    "flex items-center  justify-center w-11 h-11 rounded-full  text-black bg-white hover:bg-[var(--green)] hover:border-[var(--green)]  transition-all cursor-pointer";
 
   return (
     <>
       {/* Backdrop */}
       <div
         ref={backdropRef}
-        className="fixed inset-0 z-[90] bg-[var(--background)]"
+        className="fixed inset-0 z-[90]"
       />
 
       {/* Fullscreen content (normal flow so window/Lenis scroll works) */}
       <main
         ref={contentRef}
-        className="relative z-[100] min-h-screen pt-24 lg:pt-28 pb-20"
+        className="relative z-[100] min-h-screen pt-5 pb-20"
       >
         <div className="max-w-[1450px] mx-auto px-5 lg:px-10 gap-10 grid">
           {project.projectGallery?.map((galleryItem, index) => (
@@ -141,9 +141,21 @@ export default function ProjectDetail({
       {/* Floating controls */}
       <div
         ref={controlsRef}
-        className="fixed top-0 inset-x-0 z-[110] flex items-center justify-between gap-4 px-4 lg:px-8 py-4 bg-black/70 backdrop-blur-sm"
+        className="fixed top-0 inset-x-0 z-[110] flex flex-col h-full items-center justify-between gap-4 px-4 lg:px-6 py-4"
       >
-        <div className="w-[100px] flex items-center gap-2 lg:gap-3">
+        <div className="ml-auto">
+         <button
+          onClick={() => go("/portfolio")}
+          aria-label="Close"
+          className="flex items-center  justify-center w-11 h-11 rounded-full  text-black bg-[var(--green)] hover:bg-white   transition-all cursor-pointer"
+        >
+          <X className="w-6 h-6" />
+        </button>
+       </div>
+        {/* <h2 className="uppercase text-white text-sm lg:text-lg font-light tracking-widest truncate">
+          {project.title}
+        </h2> */}
+        <div className="w-full flex items-center justify-between  gap-4">
           {prevHref && (
             <button onClick={() => go(prevHref)} className={navButtonClass}>
               <ChevronLeft className="w-5 h-5" />
@@ -157,20 +169,11 @@ export default function ProjectDetail({
             </button>
           )}
         </div>
+        <span></span>
 
-        <h2 className="uppercase text-white text-sm lg:text-lg font-light tracking-widest truncate">
-          {project.title}
-        </h2>
+       
 
-       <div className="w-[100px] ">
-         <button
-          onClick={() => go("/portfolio")}
-          aria-label="Close"
-          className="flex items-center ml-auto justify-center w-11 h-11 rounded-full border border-white/20 text-white hover:bg-[var(--green)] hover:border-[var(--green)] hover:text-black transition-all cursor-pointer"
-        >
-          <X className="w-6 h-6" />
-        </button>
-       </div>
+       
       </div>
     </>
   );

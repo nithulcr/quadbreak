@@ -104,12 +104,20 @@ function decodeHtmlEntities(input: string): string {
     .replace(/&#x([0-9a-fA-F]+);/g, (_match, code: string) =>
       String.fromCharCode(parseInt(code, 16)),
     )
-    .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
     .replace(/&#039;/g, "'")
-    .replace(/&nbsp;/g, " ");
+    .replace(/&lsquo;/g, "\u2018")
+    .replace(/&rsquo;/g, "\u2019")
+    .replace(/&ldquo;/g, "\u201C")
+    .replace(/&rdquo;/g, "\u201D")
+    .replace(/&ndash;/g, "\u2013")
+    .replace(/&mdash;/g, "\u2014")
+    .replace(/&hellip;/g, "\u2026")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&");
 }
 
 export function toPlainText(html?: string): string {
@@ -936,20 +944,6 @@ export async function getRecentWorks(): Promise<RecentWork[]> {
    RANK MATH
 ------------------------------------------------------- */
 
-interface RankMathHeadTag {
-  tag?: string;
-
-  content?:
-    | string
-    | {
-        name?: string;
-        property?: string;
-        content?: string;
-        rel?: string;
-        href?: string;
-      };
-}
-
 function readHtmlAttribute(
   tag: string,
   attribute: string,
@@ -965,99 +959,40 @@ function readHtmlAttribute(
 }
 
 /**
- * Serializes any Rank Math head payload into an HTML
- * string that can be scanned generically.
+ * Extracts the Rank Math <head> payload as a raw HTML string.
  *
- * Supported shapes:
+ * The Rank Math Headless API returns:
  *
- * 1. String:  "<meta name=\"description\" .../>"
- * 2. Array of tag objects:
- *    [{ tag: "title", content: "..." },
- *     { tag: "meta",  content: { name, content } }]
- * 3. Array of raw HTML strings
+ * {
+ *   success: true,
+ *   head: "<meta name=\"description\" .../><link rel=\"canonical\" .../>"
+ * }
+ *
+ * Legacy shapes (a bare HTML string, or arrays) are also handled.
  */
-function rankMathHeadToString(data: unknown): string {
-  let head: unknown = data;
+function extractRankMathHead(data: unknown): string {
+  if (typeof data === "string") {
+    return data;
+  }
 
-  /*
-   * Rank Math Headless CMS wraps the output in an
-   * object such as { success: true, head: "..." }.
-   */
-  if (
-    data &&
-    typeof data === "object" &&
-    !Array.isArray(data)
-  ) {
+  if (Array.isArray(data)) {
+    return data
+      .filter((item) => typeof item === "string")
+      .join("\n");
+  }
+
+  if (data && typeof data === "object") {
     const wrapped = data as { head?: unknown };
 
-    if ("head" in wrapped) {
-      head = wrapped.head;
+    if (typeof wrapped.head === "string") {
+      return wrapped.head;
     }
-  }
 
-  if (typeof head === "string") {
-    return head;
-  }
-
-  if (Array.isArray(head)) {
-    return head
-      .map((item) => {
-        if (typeof item === "string") {
-          return item;
-        }
-
-        if (
-          typeof item !== "object" ||
-          item === null
-        ) {
-          return "";
-        }
-
-        const tag =
-          (item as RankMathHeadTag).tag || "meta";
-        const content =
-          (item as RankMathHeadTag).content;
-
-        if (tag === "title") {
-          const value =
-            typeof content === "string"
-              ? content
-              : (content as { content?: string })
-                  ?.content || "";
-
-          return `<title>${value}</title>`;
-        }
-
-        if (typeof content === "string") {
-          return `<meta content="${content.replace(
-            /"/g,
-            "&quot;",
-          )}" />`;
-        }
-
-        if (
-          typeof content === "object" &&
-          content !== null
-        ) {
-          let result = `<${tag}`;
-
-          for (const [key, value] of Object.entries(
-            content,
-          )) {
-            if (typeof value === "string") {
-              result += ` ${key}="${value.replace(
-                /"/g,
-                "&quot;",
-              )}"`;
-            }
-          }
-
-          return `${result} />`;
-        }
-
-        return "";
-      })
-      .join("\n");
+    if (Array.isArray(wrapped.head)) {
+      return wrapped.head
+        .filter((item) => typeof item === "string")
+        .join("\n");
+    }
   }
 
   return "";
@@ -1113,23 +1048,35 @@ function parseMetaFromHtml(
 function parseRankMathHead(
   data: unknown,
 ): ProjectSeo {
-  const html = rankMathHeadToString(data);
+  const html = extractRankMathHead(data);
   const meta = parseMetaFromHtml(html);
 
+  /*
+   * Title priority:
+   * <title> -> og:title -> twitter:title
+   */
   const title =
     meta.title ||
     meta["og:title"] ||
     meta["twitter:title"];
 
+  /*
+   * Description priority:
+   * <meta name="description"> -> og:description
+   */
   const description =
     meta.description ||
-    meta["og:description"] ||
-    meta["twitter:description"];
+    meta["og:description"];
 
   const seo: ProjectSeo = {
     title,
     description,
     canonical: meta.canonical,
+    /*
+     * Rank Math getHead does NOT emit a `<meta name="keywords">`
+     * tag, so meta.keywords stays undefined unless Rank Math
+     * actually returns one. Focus keywords are not mapped here.
+     */
     keywords: meta.keywords,
     ogTitle: meta["og:title"],
     ogDescription: meta["og:description"],
