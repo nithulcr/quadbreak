@@ -39,7 +39,7 @@ export default function Header() {
                         <Link href="/contact" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Contact Us</Link>
                         <div className="flex items-center gap-2">
                             <AnimatedButton
-                            href="tel:+91 94007 69978"
+                            href="/portfolio"
                             label="Portfolio"
                             className="w-fit ml-2"
                         />

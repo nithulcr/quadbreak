@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
 
       <body>
-        <div className="preloader">
+        <div className="preloader hidden">
           <div className="preloader-center">
             <Image
               src="/images/logo.png"

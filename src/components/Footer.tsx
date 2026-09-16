@@ -99,7 +99,7 @@ export default function Footer() {
         <div className="absolute opacity-70 right-0 top-0 bottom-0 w-[35%] backdrop-blur-[10px] [mask-image:linear-gradient(to_left,black_20%,transparent_50%)] pointer-events-none z-10" />
       </div>
 
-      <div className="max-w-[1450px] mx-auto footer px-5 lg:px-10 md:py-10 py-4">
+      <div className="max-w-[1450px] mx-auto footer px-5 lg:px-10  py-4">
         {/* Footer Main Grid */}
         <div className="middle grid md:grid-cols-4 lg:grid-cols-13  py-8 gapY-[40px] md:pb-14 md:pt-12">
           {/* Logo + Legal Disclaimer */}
@@ -278,7 +278,7 @@ export default function Footer() {
                   <span>+91 94007 69978</span>
                 </div>
               </a>
-              <li className="font-light flex items-center gap-3">
+              <a href="mailto:business@quadbreak.com" className="font-light flex items-center gap-3">
                 <span className="flex items-center justify-center bg-[var(--green)] flex-none w-8 h-8 rounded">
                   <Mail
                     className="p-[1px]  text-[var(--background)] flex-none"
@@ -286,7 +286,7 @@ export default function Footer() {
                   />
                 </span>
                 <span className="text-md">business@quadbreak.com</span>
-              </li>
+              </a>
             </ul>
           </div>
 
@@ -296,7 +296,7 @@ export default function Footer() {
             </h2>
             <ul className="flex flex-col gap-4">
               {socialLinks.map(({ href, Icon, label }, index) => (
-                <li key={index} className="font-light flex items-center">
+                <li key={index} className="font-light flex items-center relative top-0 hover:top-[-2px] transition-all">
                   <a
                     href={href}
                     target="_blank"
