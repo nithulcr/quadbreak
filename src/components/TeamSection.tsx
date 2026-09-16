@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperClass } from "swiper";
@@ -58,9 +58,10 @@ const TeamSection = () => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   const swiperRef = useRef<SwiperClass | null>(null);
+  const [ready, setReady] = useState(false);
 
   return (
-    <section className="relative overflow-hidden">
+    <section id="meet-the-team" className="relative overflow-hidden">
       <div className="mx-auto max-w-[1424px] px-5 py-12 md:py-20">
         <div className="mb-6 flex flex-col justify-between gap-8 md:mb-16">
           <div className="flex flex-col text-center mx-auto">
@@ -96,7 +97,8 @@ const TeamSection = () => {
             // @ts-expect-error Swiper navigation refs
             swiper.params.navigation.nextEl = nextRef.current;
           }}
-          className="team-swiper cursor-grab"
+          onInit={() => setReady(true)}
+          className={`team-swiper cursor-grab ${ready ? "" : "invisible"} `}
         >
           {staticTeam.map((member) => (
             <SwiperSlide key={member.id}>

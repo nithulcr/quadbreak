@@ -130,7 +130,7 @@ const CTASection = () => {
 
             <div className="mt-8">
               <AnimatedButton
-                href="/contact"
+                href="/about#meet-the-team"
                 label="Meet the Team"
                 className="w-fit"
               />

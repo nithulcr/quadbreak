@@ -196,9 +196,9 @@ export default function Categories4() {
            What We Do
           </p> */}
           <h2 className="text-3xl font-light uppercase leading-[1.02] tracking-tight text-white md:text-5xl lg:text-[3.4rem]">
-            Three Worlds.
+            Three Worlds
             <br />
-            <span className="text-[var(--green)]">One Creative Vision.</span>
+            <span className="text-[var(--green)]">One Creative Vision</span>
           </h2>
         </div>
 

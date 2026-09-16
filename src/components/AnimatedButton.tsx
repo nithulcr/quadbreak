@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Link from "next/link";
 import clsx from "clsx";
 
 type AnimatedButtonProps = {
@@ -51,11 +52,8 @@ export default function AnimatedButton({
     };
   }, []);
 
-  // Determine if link is external
-  const isExternal =
-    href && /^https?:\/\//i.test(href);
+  const isExternal = href && /^https?:\/\//i.test(href);
 
-  // 👉 If "type" is provided, render a <button>
   if (type) {
     return (
       <button
@@ -70,19 +68,44 @@ export default function AnimatedButton({
     );
   }
 
-  // 👉 Otherwise, render as <a>
+  if (isExternal) {
+    return (
+      <a
+        ref={buttonRef as React.RefObject<HTMLAnchorElement>}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={clsx("button", className)}
+      >
+        <div ref={outlineRef} className="button-outline"></div>
+        <div className="button-text">{label}</div>
+      </a>
+    );
+  }
+
+  if (href?.endsWith(".pdf")) {
+    return (
+      <a
+        ref={buttonRef as React.RefObject<HTMLAnchorElement>}
+        href={href}
+        download
+        className={clsx("button", className)}
+      >
+        <div ref={outlineRef} className="button-outline"></div>
+        <div className="button-text">{label}</div>
+      </a>
+    );
+  }
+
   return (
-    <a
+    <Link
       ref={buttonRef as React.RefObject<HTMLAnchorElement>}
       onClick={onClick}
-      href={href}
-      target={isExternal ? "_blank" : undefined}
-      rel={isExternal ? "noopener noreferrer" : undefined}
+      href={href ?? "/"}
       className={clsx("button", className)}
-      download={href?.endsWith(".pdf") ? true : undefined}
     >
       <div ref={outlineRef} className="button-outline"></div>
       <div className="button-text">{label}</div>
-    </a>
+    </Link>
   );
 }

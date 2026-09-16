@@ -33,12 +33,12 @@ const WorkCard = ({
       </span>
     </div>
     <div className="absolute bottom-[-200px] group-hover:bottom-0 left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-6">
-      <h5 className="font-light text-[var(--green)] text-xl md:text-2xl uppercase tracking-wider relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
+      <h5 className="font-light text-[var(--green)] text-xl md:text-2xl uppercase tracking-wider relative ">
         {card.title}
       </h5>
-      <p className="font-[200] text-[14px] max-w-[260px]">
+      {/* <p className="font-[200] text-[14px] max-w-[260px]">
         {card.description || "Recent work"}
-      </p>
+      </p> */}
     </div>
   </div>
 );

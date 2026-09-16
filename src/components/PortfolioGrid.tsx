@@ -135,9 +135,9 @@ const PortfolioGrid = ({ limit, projects = [] }: PortfolioGridProps) => {
                     <h5 className="font-light text-xl lg:text-2xl pb-1 text-[var(--green)] relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
                       {project.title}
                     </h5>
-                    <p className="font-[200] text-[14px] max-w-[260px]">
+                    {/* <p className="font-[200] text-[14px] max-w-[260px]">
                       {project.tags}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               );

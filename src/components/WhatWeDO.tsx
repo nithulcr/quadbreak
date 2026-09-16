@@ -110,7 +110,7 @@ const WhatWeDO = () => {
               className="max-w-[650px] text-5xl font-light uppercase leading-[0.92] tracking-[-0.03em] text-white md:text-6xl lg:text-[5.5rem]"
             >
               A Partner
-              <span className="block text-[var(--green)]">in Art.</span>
+              <span className="block text-[var(--green)]">in Art</span>
             </h2>
              <Image
               src="/images/cartoon.png"
