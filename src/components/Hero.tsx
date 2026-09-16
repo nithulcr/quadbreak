@@ -108,6 +108,8 @@ export default function Hero() {
           loop
           muted
           playsInline
+          preload="auto"
+          poster="/images/qb-poster.jpg"
           className="w-full h-full object-cover"
         >
           <source src="/images/QB.mp4" type="video/mp4" />

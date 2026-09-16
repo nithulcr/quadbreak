@@ -36,7 +36,7 @@ export default function Header() {
                         {/* <Link href="https://quadbreaksimulations.com/" target="_blank" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Stimulator Art</Link> */}
 
                         <Link href="/portfolio" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Portfolio</Link>
-                        <Link href="/contact" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Contact</Link>
+                        <Link href="/contact" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Contact Us</Link>
                         <AnimatedButton
                             href="tel:+91 94007 69978"
                             label="Let's Talk"
@@ -96,7 +96,7 @@ export default function Header() {
 
                     <Link href="/portfolio" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Portfolio</Link>
 
-                    <Link href="/contact" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Contact</Link>
+                    <Link href="/contact" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Contact Us</Link>
 
                 </nav>
             </div>
