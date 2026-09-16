@@ -253,6 +253,7 @@ body.open main {
     text-transform: uppercase;
     min-width: 160px;
 }
+
   .button-outline {
     border: 1px solid var(--green);
     background-color: var(--background);
@@ -263,6 +264,9 @@ body.open main {
     inset: 0%;
     transition: .3s;
   }
+  .button-fill   .button-outline{
+  background: var(--green);
+}
   header .button-outline {
     background-color: rgba(9, 9, 9, 0.47);
     backdrop-filter: blur(20px);
@@ -275,6 +279,9 @@ body.open main {
     z-index: 25;
     position: relative;
     text-align: center;
+  }
+   .button-fill .button-text {
+   color: black;
   }
   .btn-normal{
     background-color: var(--background);

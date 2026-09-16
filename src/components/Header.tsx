@@ -35,13 +35,20 @@ export default function Header() {
                 
                         {/* <Link href="https://quadbreaksimulations.com/" target="_blank" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Stimulator Art</Link> */}
 
-                        <Link href="/portfolio" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Portfolio</Link>
+                        {/* <Link href="/portfolio" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Portfolio</Link> */}
                         <Link href="/contact" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Contact Us</Link>
+                        <div className="flex items-center gap-2">
+                            <AnimatedButton
+                            href="tel:+91 94007 69978"
+                            label="Portfolio"
+                            className="w-fit ml-2"
+                        />
                         <AnimatedButton
                             href="tel:+91 94007 69978"
                             label="Let's Talk"
-                            className="w-fit ml-2"
+                            className="w-fit ml-2 button-fill"
                         />
+                        </div>
                     </nav>
 
 

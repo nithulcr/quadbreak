@@ -17,7 +17,7 @@ const WorkCard = ({
   className?: string;
 }) => (
   <div
-    className={`about-card group relative top-0 aspect-[1/1.08] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px] ${className}`}
+    className={`about-card bg-white/6 group relative top-0 aspect-[1/1.08] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px] ${className}`}
   >
     <img
       src={card.image}
