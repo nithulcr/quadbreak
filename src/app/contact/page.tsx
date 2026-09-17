@@ -93,28 +93,38 @@ function TopContactSection() {
 
   return (
     <section className="pt-16 lg:pt-30 pb-14 lg:pb-24">
-      <div className="max-w-[1450px] mx-auto px-5 lg:px-10 pt-30 w-full">
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10 pt-30 w-full text-center">
         <h1 className="uppercase text-white  text-4xl md:text-[6rem]    mb-6">
             Email Us a<br />
             Digital <span className="text-[var(--green)]">Note</span>
           </h1>
-        <p className="text-white/80 text-[14px] lg:text-[16px] leading-relaxed font-[300] max-w-[420px] mt-6">
+        <p className="text-white/80 text-[16px] lg:text-[16px] leading-relaxed font-[300] max-w-[420px] mt-6 mx-auto">
           Interested in joining our 3D world? Drop us a line and tell us what
           you need and more.
         </p>
+        <ul className="flex  items-center gap-4 mt-2 mx-auto w-fit mt-5">
+              {socialLinks.map(({ href, Icon }, index) => (
+                <li key={index} className="font-light flex items-center relative top-0 hover:top-[-2px] transition-all">
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 "
+                  >
+                    <Icon
+                      className="w-9 h-9 border border-[var(--green)] text-[var(--green)] p-[5px] rounded"
+                    />
+                   
+                  </a>
+                </li>
+              ))}
+            </ul>
       </div>
-      <div className="max-w-[1450px] mx-auto px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20  pt-6">
-        <div className=" flex-1 min-w-0 bg- relative">
-          {/* <h2 className="uppercase text-white  text-4xl md:text-5xl    mb-6">
-            Email Us a<br />
-            Digital <span className="text-[var(--green)]">Note</span>
-          </h2>
-          <p className="text-white/50 text-[14px] lg:text-[16px] leading-relaxed font-[200] max-w-[360px]">
-            Interested in joining our 3D world? Drop us a line and tell us what
-            you need and more.
-          </p> */}
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10  gap-12 lg:gap-20  pt-20">
+        {/* <div className=" flex-1 min-w-0 bg- relative">
+         
           <div className="pb-6">
-            <h4 className="text-[var(--green)] uppercase  uppercase tracking-[3px] mb-2 text-[14px]">
+            <h4 className="text-[var(--green)] uppercase  uppercase tracking-[3px] mb-2 text-[16px]">
               Headquarters
             </h4>
             <p className="text-white font-[200]">
@@ -126,7 +136,7 @@ function TopContactSection() {
           </div>
            <div className="pb-6">
             <p className="text-white font-[200]">
-              <span className="text-[var(--green)] uppercase font-normal  tracking-[2px] block mb-2 text-[14px]">
+              <span className="text-[var(--green)] uppercase font-normal  tracking-[2px] block mb-2 text-[16px]">
                 Operating Studio
               </span>
               2nd Floor, City Center, Iritty, <br />
@@ -135,7 +145,7 @@ function TopContactSection() {
           </div>
           <div className="pb-6">
             <p className="text-white font-[200]">
-              <span className="text-[var(--green)] uppercase font-normal  tracking-[2px] block mb-2 text-[14px]">
+              <span className="text-[var(--green)] uppercase font-normal  tracking-[2px] block mb-2 text-[16px]">
                Email Address
               </span>
             business@quadbreak.com
@@ -143,7 +153,7 @@ function TopContactSection() {
           </div>
           <div className="pb-6">
             <p className="text-white font-[200]">
-              <span className="text-[var(--green)] uppercase font-normal  tracking-[2px] block mb-2 text-[14px]">
+              <span className="text-[var(--green)] uppercase font-normal  tracking-[2px] block mb-2 text-[16px]">
                 Contact Number
               </span>
              +91 94007 69978
@@ -151,9 +161,8 @@ function TopContactSection() {
           </div>
           
           <div>
-            {/* <h4 className="text-white/30 text-xs uppercase tracking-[3px] mb-3">
-              Follow Social Media
-            </h4> */}
+           
+       
             <ul className="flex  items-center gap-4 mt-2">
               {socialLinks.map(({ href, Icon }, index) => (
                 <li key={index} className="font-light flex items-center relative top-0 hover:top-[-2px] transition-all">
@@ -172,16 +181,10 @@ function TopContactSection() {
               ))}
             </ul>
           </div>
-           <Image
-                        src="/images/cartoon.png"
-                        alt="Quadbreak logo"
-                        width={420}
-                        height={420}
-                        className="hidden xl:block absolute right-0 bottom-[-30px]"
-                      />
-        </div>
+          
+        </div> */}
 
-        <div className="flex-[0_0_650px] max-lg:flex-none max-lg:w-full lg:mt-[-100px]">
+        <div className="max-w-[800px] w-full mx-auto">
           <form onSubmit={handleSubmit} className="flex flex-col gap-5 lg:gap-8">
            <div className="flex flex-col gap-3">
                
@@ -189,7 +192,7 @@ function TopContactSection() {
                   type="text"
                   placeholder="Your name"
                   required
-                  className=" border-b border-white/30  py-3 focus:px-5 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
+                  className=" border-b border-white/30  py-3 focus:px-5 text-white text-[16px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
                 />
               </div>
            <div className="flex flex-col gap-3">
@@ -198,7 +201,7 @@ function TopContactSection() {
                   type="email"
                   placeholder="Your email"
                    required
-                  className=" border-b border-white/30  py-3 focus:px-5 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
+                  className=" border-b border-white/30  py-3 focus:px-5 text-white text-[16px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
                 />
               </div>
             <div className="flex flex-col gap-3">
@@ -207,7 +210,7 @@ function TopContactSection() {
                   type="text"
                   placeholder="ph. Number"
                    required
-                  className=" border-b border-white/30  py-3 focus:px-5 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
+                  className=" border-b border-white/30  py-3 focus:px-5 text-white text-[16px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
                 />
               </div>
             <div className="flex flex-col gap-3">
@@ -216,13 +219,13 @@ function TopContactSection() {
                 rows={5}
                 placeholder="Tell us about your project..."
                  required
-                className=" border-b border-white/30  py-3 focus:px-5 text-white text-[14px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200] resize-vertical min-h-[100px]"
+                className=" border-b border-white/30  py-3 focus:px-5 text-white text-[16px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200] resize-vertical min-h-[100px]"
               />
             </div>
             <AnimatedButton
               type="submit"
               label={submitting ? "SENDING..." : "Send a message"}
-              className="md:mt-4 mt-2 w-fit"
+              className="md:mt-4 mt-2 w-fit mx-auto"
             />
             {success && (
               <p className="text-[var(--green)] text-[13px] font-[200] mt-1">
