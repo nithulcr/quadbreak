@@ -534,20 +534,6 @@ textarea:-webkit-autofill {
     }
   }
 
-  /* .testimonials:before, .experience-section:before {
-    content: '';
-    background: url(/images/bg2.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: .2;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-position: center;
-  } */
 
   .menu-set:before{
 content: '';

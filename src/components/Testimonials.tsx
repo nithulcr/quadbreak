@@ -1,102 +1,27 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { CSSProperties } from "react";
 import type { Testimonial } from "@/types/testimonial";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const desktopSpanClasses = [
-  "col-span-3",
-  "col-span-4",
-  "col-span-3",
-  "col-span-4",
-  "col-span-3",
-  "col-span-3",
-  "col-span-3",
-  "col-span-3",
-  "col-span-4",
-];
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 interface TestimonialsProps {
   testimonials: Testimonial[];
 }
 
 const Testimonials = ({ testimonials }: TestimonialsProps) => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const desktopGridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const section = sectionRef.current;
-      if (!section) return;
-
-      // Cards animation — desktop grid only
-      const cards = desktopGridRef.current?.querySelectorAll(".testimonial-card") ?? [];
-      if (cards.length > 0) {
-        gsap.fromTo(cards,
-          {
-            opacity: 0,
-            y: 60,
-            scale: 0.9,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 6,
-            stagger: {
-              each: 0.1,
-              ease: "power2.inOut",
-            },
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: cards[0],
-              start: "top 85%",
-              once: true,
-              invalidateOnRefresh: true,
-            },
-          }
-        );
-
-        // Floating animation — desktop only
-        const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-        if (isDesktop) {
-          cards.forEach((card, index) => {
-            gsap.set(card, {
-              transformOrigin: "center center",
-            });
-
-            const baseDuration = 0.7 + (index % 3) * 0.5;
-            const delay = index * 0.15;
-
-            gsap.to(card, {
-              keyframes: [
-                { x: -80, duration: baseDuration, ease: "sine.inOut" },
-                { x: 0, duration: baseDuration, ease: "sine.inOut" },
-                { x: 80, duration: baseDuration, ease: "sine.inOut" },
-                { x: 0, duration: baseDuration, ease: "sine.inOut" },
-              ],
-              repeat: -1,
-              delay: delay,
-            });
-          });
-        }
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const renderStars = (count: number) => {
     return (
-      <div className="flex gap-1">
+      <div className="flex items-center gap-[3px]">
         {[...Array(5)].map((_, i) => (
           <svg
             key={i}
-            className={`w-4 h-4 ${i < count ? 'text-[#91ff6a]' : 'text-gray-500'}`}
+            className={`w-[14px] h-[14px] ${
+              i < count ? "text-[#91ff6a]" : "text-white/20"
+            }`}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -107,80 +32,155 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
     );
   };
 
-  const renderCard = (testimonial: Testimonial, className: string) => (
-    <div className={`testimonial-card ${className}`}>
-      <div className="flex items-center gap-3">
-        <div className="w-12 h-12 relative rounded-full overflow-hidden">
+  const renderCard = (testimonial: Testimonial) => (
+    <div className="testimonial-card bg-white/5 p-4 rounded-4xl group relative">
+      {/* Speech bubble */}
+      <div
+        className="
+          relative
+          rounded-[26px]
+          bg-[var(--green)]
+          p-4
+          md:p-6
+          min-h-[150px]
+          flex
+          flex-col
+          shadow-[0_15px_50px_rgba(145,255,106,0.08)]
+          transition-transform
+          duration-500
+          group-hover:-translate-y-1
+        "
+      >
+        {/* Quote */}
+        <p className="text-black/90 font-light text-[14px] md:text-[16px] line-clamp-3">
+          "{testimonial.content}"
+        </p>
+         <div className="min-w-0 pt-3 flex justify-between border-t border-black/20 mt-4">
+          <p className="text-black text-[16px] md:text-[18px] leading-tight capitalize">
+            {testimonial.title}
+          </p>
+
+          {testimonial.designation && (
+            <p className="text-black/90 text-[13px] md:text-[14px] font-light mt-1 leading-tight capitalize">
+              {testimonial.designation}
+            </p>
+          )}
+
+         
+        </div>
+
+        {/* Speech bubble tail */}
+        <div
+          className="
+            absolute
+            left-[56px]
+            -bottom-[17px]
+            w-0
+            h-0
+            border-t-[22px]
+            border-t-[#91ff6a]
+            border-r-[24px]
+            border-r-transparent
+          "
+        />
+      </div>
+
+      {/* Client information */}
+      <div className="relative flex items-center gap-4 mt-7 px-3">
+        {/* Profile image */}
+        <div
+          className="
+            relative
+            w-[58px]
+            h-[58px]
+            md:w-[64px]
+            md:h-[64px]
+            shrink-0
+            rounded-full
+            overflow-hidden
+            border-[3px]
+            border-[var(--background)]
+            bg-black
+          "
+        >
           <Image
             src={testimonial.image?.url || "/images/user.png"}
             alt={testimonial.title}
             fill
-            sizes="50px"
+            sizes="64px"
             className="object-cover"
           />
         </div>
-        <div className="font-light">
-          <p className="font-medium text-white">{testimonial.title}</p>
-          <p className="text-sm flex flex-wrap gap-2 pt-[2px]">
-            <span className="text-gray-400">{testimonial.designation || ""}</span>
-          </p>
-          <div className="mt-2">{renderStars(testimonial.rating)}</div>
+
+        {/* Name / designation / rating */}
+        <div className="min-w-0">
+          <img src="/images/logo.png" className="w-30" />
         </div>
-      </div>
-      <div>
-        <p className="text-white/80 text-[14px] font-[200]">
-          {testimonial.content}
-        </p>
       </div>
     </div>
   );
 
   return (
-    <section ref={sectionRef} className="py-6 md:py-24 relative overflow-hidden bg-[var(--background)]">
-      <div className="absolute hero-section-video top-0 left-0 w-full h-full opacity-15">
-        <img
-          src="/images/bg2.png"
-          alt="bg"
-          className="object-cover h-full"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
-      <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
+    <section
+      className="
+        relative
+        overflow-hidden
+        bg-[var(--background)]
+        py-14
+        md:py-24
+      "
+    >
+     
+
+      <div className="relative z-10 ">
         {/* Section Header */}
-        <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-white uppercase text-4xl lg:text-6xl leading-none font-light mb-4">
-            What Our Clients Says
+        <div className="text-center mb-12 md:mb-16 max-w-[1450px] mx-auto px-5 lg:px-10">
+          <h2 className="text-white uppercase text-4xl md:text-6xl lg:text-[6rem] leading-none font-light">
+            What Our <span className="text-[var(--green)]">Clients Say</span>
           </h2>
         </div>
 
         {testimonials.length > 0 && (
-          <>
-            {/* Mobile + Tablet horizontal slider */}
-            <div className="flex lg:hidden gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-5 px-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div
+            className="testimonials-swiper"
+            style={
+              {
+                "--swiper-pagination-color": "var(--green)",
+              } as CSSProperties
+            }
+          >
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              slidesPerView={1.2}
+              spaceBetween={16}
+              loop={true}
+              loopAdditionalSlides={6}
+              grabCursor={true}
+              centeredSlides={true}
+              autoplay={{
+                delay: 3200,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              pagination={{
+                el: ".testimonials-pagination",
+                clickable: true,
+              }}
+              breakpoints={{
+                640: { slidesPerView: 2.4, spaceBetween: 20 },
+                990: { slidesPerView: 2.4, spaceBetween: 20 },
+                1300: { slidesPerView: 3.4, spaceBetween: 24,  },
+              }}
+              className="px-5"
+            >
               {testimonials.map((testimonial) => (
-                <div key={testimonial.id} className="snap-center shrink-0 w-[320px]">
-                  {renderCard(
-                    testimonial,
-                    "rounded-[28px] border border-white/10 bg-black/20 backdrop-blur-md transition-all duration-500 p-6 flex flex-col gap-5",
-                  )}
-                </div>
+                <SwiperSlide key={testimonial.id}>
+                  {renderCard(testimonial)}
+                </SwiperSlide>
               ))}
-            </div>
-
-            {/* Desktop staggered grid */}
-            <div ref={desktopGridRef} className="hidden lg:grid grid-cols-10 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div key={testimonial.id} className={desktopSpanClasses[index % desktopSpanClasses.length]}>
-                  {renderCard(
-                    testimonial,
-                    index === 0
-                      ? "rounded-[28px] border border-white/5 bg-black/20 backdrop-blur-lg transition-all duration-500 p-6 flex flex-col gap-5"
-                      : "rounded-[28px] border border-white/10 bg-black/20 backdrop-blur-md transition-all duration-500 p-6 flex flex-col gap-5",
-                  )}
-                </div>
-              ))}
-            </div>
-          </>
+            </Swiper>
+            <div className="testimonials-pagination mt-10 flex justify-center gap-2" />
+          </div>
         )}
       </div>
     </section>
