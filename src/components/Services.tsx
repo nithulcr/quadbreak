@@ -128,7 +128,7 @@ const Services = ({ services }: ServicesProps) => {
         </div>
         <div
           ref={servicesGridRef}
-          className="grid sm:grid-cols-2 md:grid-cols-3 gap-4  mt-5 lg:mt-16"
+          className="grid sm:grid-cols-2 md:grid-cols-3 gap-4  mt-5 lg:mt-12"
         >
           {services.slice(0, 6).length > 0
             ? services.slice(0, 6).map((service) => (

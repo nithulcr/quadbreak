@@ -99,7 +99,7 @@ export default function Footer() {
         <div className="absolute opacity-70 right-0 top-0 bottom-0 w-[35%] backdrop-blur-[10px] [mask-image:linear-gradient(to_left,black_20%,transparent_50%)] pointer-events-none z-10" />
       </div> */}
 
-      <div className="max-w-[1450px] mx-auto footer px-5 lg:px-10  py-4">
+      <div className="max-w-[1450px] mx-auto footer px-5 lg:px-10 pt-10 md:pt-18 pb-4">
         {/* Footer Main Grid */}
         <div className="middle grid md:grid-cols-3 xl:grid-cols-13  py-8 gap-y-[50px] md:pb-14 md:pt-12">
           {/* Logo + Legal Disclaimer */}

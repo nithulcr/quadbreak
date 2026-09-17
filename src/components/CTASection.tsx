@@ -111,7 +111,7 @@ const CTASection = () => {
             >
               The Drive
               <br />
-              Behind <span className="text-[var(--green)]">the Art.</span>
+              Behind <span className="text-[var(--green)]">the Art</span>
             </h2>
 
             <p className="mt-6 max-w-[600px] text-sm font-light leading-relaxed text-white/60 md:text-base">
