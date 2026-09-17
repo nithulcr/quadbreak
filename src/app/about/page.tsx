@@ -9,8 +9,8 @@ import WhatWeDO from "@/components/WhatWeDO";
 
 
 import TeamSection from '@/components/TeamSection';
-import Categories4 from '@/components/Categories4';
-// import Categories3 from '@/components/Categories3';
+import Categories from '@/components/Categories';
+import Categories3 from '@/components/Categories3';
 
 
 
@@ -29,7 +29,7 @@ export default function AboutPage() {
                <WhatWeDO/>
 
 
-               <Categories4 />
+               <Categories />
 
    
                <TeamSection />

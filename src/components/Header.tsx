@@ -58,7 +58,7 @@ export default function Header() {
                         onClick={() => setMenuOpen(!menuOpen)}
                     >
                         <span className="uppercase hidden md:block bg-[var(--light-outline)] text-sm py-1 pr-3 pl-2 mr-[-10px] rounded-tl-[8px] rounded-bl-[8px]">Menu</span>
-                        <div className="flex items-center justify-center bg-[var(--light-outline)] w-12 h-12 rounded-full">
+                        <div className="flex items-center justify-center bg-[var(--light-outline)] w-8 h-8 rounded-full">
                             {menuOpen ? (
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"

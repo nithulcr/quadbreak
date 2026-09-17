@@ -62,7 +62,7 @@ const TeamSection = () => {
 
   return (
     <section id="meet-the-team" className="relative overflow-hidden">
-      <div className="mx-auto max-w-[1424px] px-5 py-12 md:py-20">
+      <div className="mx-auto max-w-[1424px] px-5 py-12 md:py-20 ">
         <div className="mb-6 flex flex-col justify-between gap-8 md:mb-16">
           <div className="flex flex-col text-center mx-auto">
             <h2 className="font-monument text-5xl font-medium leading-none uppercase text-white md:text-7xl">
@@ -77,18 +77,19 @@ const TeamSection = () => {
 
         <Swiper
           modules={[Navigation]}
-          slidesPerView={1}
-          spaceBetween={20}
+          slidesPerView={1.3}
+          spaceBetween={10}
           loop={true}
+         centeredSlides={true}
           loopAdditionalSlides={6}
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current,
           }}
           breakpoints={{
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 4 },
+            640: { slidesPerView: 2.3,  spaceBetween:20 },
+            1024: { slidesPerView: 3.3,  spaceBetween:20 },
+            1280: { slidesPerView: 4,  spaceBetween:20,  centeredSlides:false },
           }}
           onBeforeInit={(swiper) => {
             swiperRef.current = swiper;
@@ -98,7 +99,7 @@ const TeamSection = () => {
             swiper.params.navigation.nextEl = nextRef.current;
           }}
           onInit={() => setReady(true)}
-          className={`team-swiper cursor-grab ${ready ? "" : "invisible"} `}
+          className={`team-swiper  cursor-grab ${ready ? "" : "invisible"} `}
         >
           {staticTeam.map((member) => (
             <SwiperSlide key={member.id}>
@@ -114,8 +115,8 @@ const TeamSection = () => {
                   />
                 </div>
                 <div className="text-center px-4 py-3">
-                  <h3 className="text-2xl font-[200]">{member.name}</h3>
-                  <p className="mt-1 font-light text-white/50">{member.role}</p>
+                  <h3 className="text-xl md:text-2xl font-[200]">{member.name}</h3>
+                  <p className="mt-1 text-[14px] md:text-[16px] font-light text-white/50">{member.role}</p>
                 </div>
               </div>
             </SwiperSlide>

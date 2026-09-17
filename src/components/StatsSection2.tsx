@@ -81,7 +81,7 @@ const StatsSection2 = () => {
     >
 
       <div className="mx-auto max-w-[1450px]">
-        <div ref={gridRef} className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div ref={gridRef} className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {stats.map((stat, index) => (
             <div
               key={index}

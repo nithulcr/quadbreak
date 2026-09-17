@@ -105,7 +105,7 @@ const Journey = () => {
          
             <h2
               ref={titleRef}
-              className="uppercase w-fit text-white  text-5xl lg:text-[5rem]   leading-none font-light  relative"
+              className="uppercase w-fit text-white  text-4xl lg:text-[5rem]   leading-none font-light  relative"
             >
             Built for Modern <span className="text-[var(--green)]">Game Production</span>
             

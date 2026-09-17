@@ -42,7 +42,7 @@ function TopContactSection() {
   return (
     <section className="pt-16 lg:pt-30 pb-14 lg:pb-24">
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10 pt-30 pb-20  w-full">
-        <h2 className="uppercase w-fit text-white heading text-5xl lg:text-[6rem] leading-none font-light relative">
+        <h2 className="uppercase w-fit text-white heading text-4xl lg:text-6xl leading-none font-light relative">
           Contact Us
         </h2>
         <p className="text-white/80 text-[14px] lg:text-[16px] leading-relaxed font-[300] max-w-[420px] mt-6">

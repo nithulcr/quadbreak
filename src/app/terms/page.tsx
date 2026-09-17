@@ -9,7 +9,7 @@ export default function TermsPage() {
       <Header />
       <main className="min-h-screen">
         <div className="max-w-[900px] mx-auto px-5 lg:px-10 pt-40 pb-20">
-          <h1 className="uppercase text-white  text-5xl lg:text-[6rem] leading-none font-light mb-14">
+          <h1 className="uppercase text-white  text-4xl lg:text-6xl leading-none font-light mb-14">
             Terms and Conditions
           </h1>
 

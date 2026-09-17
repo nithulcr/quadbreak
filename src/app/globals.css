@@ -182,16 +182,16 @@ body.open main {
 .menu-icon{
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 7px;
 }
 .menu-icon span{
-  width: 24px;
+  width: 30px;
   height: .1rem;
   background-color: white;
   max-width: 100%;
 }
 .menu-icon span:nth-child(2){
-  width: 20px;
+  width: 24px;
     margin-left: auto;
   animation: widthGrow 1.5s ease-in-out infinite alternate;
 }
@@ -503,27 +503,7 @@ body.offcanvas-show .offcanvas {
   
 }
 
-.contact-form-offcanvas-container {
-    width: 420px;
-    justify-self: flex-end;
-    height: calc(100vh - 60px);
-    background: #282a2c;
-    padding: 30px;
-    max-width: 100%;
-    margin: 30px;
-    border-radius: 14px;
-    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); */
-    position: relative;
-    overflow: hidden;
-    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
-    transform: scale(0);
-    transform-origin: bottom right;
-}
 
-.contact-form{
-  z-index: 9;
-  position: relative;
-}
 .bg-form {
   position: absolute;
   left: 0;
@@ -537,51 +517,17 @@ body.offcanvas-show .offcanvas {
   filter: blur(10px);
 }
 
-.contact-form h2 {
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  text-align: center;
-}
 
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 0.9rem 0rem;
-  margin-bottom: 1.2rem;
-  font-size: 1rem;
-  /* background: #f9f9f9; */
-  transition: all 0.3s ease;
-  background: initial;
-    border: none;
-    border-bottom: 1px solid #707070;
-  
-}
 input:-webkit-autofill,
 textarea:-webkit-autofill {
   /* background-color: transparent !important; */
   -webkit-box-shadow: 0 0 0px 1000px #282a2c inset !important;
   -webkit-text-fill-color: white !important;
 }
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: #707070;
-  /* background: #fff; */
-  box-shadow:  0 0 0 2px rgb(219 76 44 / 19%);
-  border-bottom: none;
-  padding: 0.9rem 1rem;
-}
 
-.contact-form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
 
-.offcanvas-show .offcanvas .contact-form-offcanvas-container {
-    transform: scale(1);
-    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
 
-}
+
 .absolute-bottom {
     position: absolute;
     bottom: 0;
@@ -850,33 +796,7 @@ header{
 
 
 
-@media screen and (max-width: 480px) {
-  
-    .collection-item {
-        position: sticky;
-        top: 80;
-        background-color: var(--background);
-    }
-    .contact-form-offcanvas-container {
-        width: 100%;
-        margin: 20px;
-        max-width: calc(100vw - 40px);
-        /* max-height: calc(100vh - 120px); */
-    }
 
-
-
-.menu-icon span {
-    width: 24px;
-}
-.menu-icon span:nth-child(1){
-  width: 24px;
-}
-.menu-icon {
-    gap: 5px;
-}
-
-}
 
 /* ============================================================
    Categories2 — alternating zig-zag roadmap
@@ -903,7 +823,7 @@ header{
 
 
 
-.categories4-border > *:not(:last-child)::before {
+.Categories-border > *:not(:last-child)::before {
   content: '';
   position: absolute;
   bottom:0px;
@@ -931,4 +851,17 @@ header{
     transform: scale(1);
     opacity: 1;
   }
+  
+.heading::before, .heading::after{
+
+  width: 60px;
+
+}
+.footer-column:not(:first-child):before{
+  display: none;
+}
+.team-swiper{
+  padding: 0 20px!important;
+    margin: 0 -20px!important;
+}
 }

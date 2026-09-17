@@ -83,17 +83,17 @@ const OurStory = () => {
       <div className="grid-wrapper max-w-[1450px] mx-auto px-5 lg:px-10">
         <div className="stacked-content">
           <div className="content-wrapper pt-30">
-            <div className="service-list grid gap-y-10 lg:gap-y-30">
-              <div className="service-item flex flex-col lg:grid lg:grid-cols-2 gap-x-15 items-start w-full ">
+            <div className=" grid gap-y-10 lg:gap-y-30">
+              <div className="service-item flex flex-col lg:grid lg:grid-cols-2 gap-15 items-start w-full ">
                 <div className="">
-                  <div className="flex flex-col mb-14 relative w-fit  pb-8">
+                  <div className="flex flex-col mb-14 relative w-fit  pb-5 xl:pb-8">
                     <h1
                       ref={titleRef}
-                      className="uppercase   text-[var(--green)] text-white  text-5xl lg:text-[3.5em] leading-none font-light  relative"
+                      className="uppercase  text-[var(--green)] text-white  text-5xl lg:text-[3.5em] leading-none font-light  relative"
                     >
                    Quadbreak Studios
                     </h1>
-                    <img src="/images/underline.png" alt="Quadbreak Studios Logo" className="w-full max-w-[80%] left-10 absolute bottom-[-20px] left-0" />
+                    <img src="/images/underline.png" alt="Quadbreak Studios Logo" className="w-full max-w-[80%] xl:left-10 absolute bottom-[-20px] left-0" />
                  
                   </div>
                   <p
@@ -110,10 +110,10 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                   </p>
                   <StatsSection2 />
                 </div>
-                <div className="ml-auto lg:mt-[200px]  max-w-[530px] fade-up">
+                <div className="ml-auto lg:mt-[200px]  xl:max-w-[530px] fade-up overflow-hidden">
                   <h2
                     ref={text2Ref}
-                    className="uppercase w-fit text-white/60  text-right italic mb-10 text-[3rem]  leading-none font-light  relative"
+                    className="uppercase w-fit text-white/60 max-w-[500px] lg:text-right italic mb-4 lg:mb-10 text-3xl xl:text-[3rem]  leading-none font-light  relative"
                   >
                     Since <span className="text-[var(--green)]">2026</span>{" "}
                     It&apos;s been a{" "}
@@ -143,7 +143,7 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                   </video>
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-center lg:mt-[-60px]">
+              <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-center mt-10 lg:mt-[-60px]">
                 {/* Image */}
 
                 <div className="about-fade relative ">

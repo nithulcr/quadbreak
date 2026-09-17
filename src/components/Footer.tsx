@@ -48,7 +48,7 @@ const WhatsappIcon = ({ className }: SocialIconProps) => (
 <svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 24 24" color="var(--green)" style={{
   userSelect: "none",
   width: "35px",
-  height: "35px",
+  height: "30px",
   display: "inline-block",
   fill: "var(--green)",
   flexShrink: 0,
@@ -78,7 +78,7 @@ export default function Footer() {
       <span className="block underline-span"></span>
 
       {/* Hero Watermark Text with Zigzag & Masks */}
-      <div className="footer-heading relative w-full overflow-hidden  pt-26  flex items-center justify-center">
+      <div className="footer-heading relative w-full overflow-hidden  pt-26 hidden md:flex items-center justify-center ">
         <h2 className=" text-[14vw] xl:text-[14.5rem] leading-none font-semibold opacity-80 tracking-tighter bg-gradient-to-r from-white/5 via-white/10 to-white/5 bg-clip-text  uppercase text-center select-none flex items-center justify-center">
           {text.split("").map((char, i) => (
             <span
@@ -101,9 +101,9 @@ export default function Footer() {
 
       <div className="max-w-[1450px] mx-auto footer px-5 lg:px-10  py-4">
         {/* Footer Main Grid */}
-        <div className="middle grid md:grid-cols-4 lg:grid-cols-13  py-8 gapY-[40px] md:pb-14 md:pt-12">
+        <div className="middle grid md:grid-cols-3 xl:grid-cols-13  py-8 gap-y-[50px] md:pb-14 md:pt-12">
           {/* Logo + Legal Disclaimer */}
-          <div className="md:col-span-1 lg:col-span-4 content-center pr-10 footer-column">
+          <div className="md:col-span-1 xl:col-span-4 content-center xl:pr-10 md:pr-6 footer-column">
             <div className="relative text-centerc w-fit">
               <Image
                 src="/images/logo.png"
@@ -122,11 +122,29 @@ export default function Footer() {
               environments, we bring ideaas to life with precision, creativity
               and reliability.
             </p>
+            <p className="pb-3 xl:pb-0 font-[200] text-[var(--green)]">The Best for your Team.</p>
+            <ul className="flex xl:hidden items-center gap-4 mt-2">
+              {socialLinks.map(({ href, Icon, label }, index) => (
+                <li key={index} className="font-light flex items-center relative top-0 hover:top-[-2px] transition-all">
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 "
+                  >
+                    <Icon
+                      className="w-9 h-9 border border-[var(--green)] text-[var(--green)] p-[5px] rounded"
+                    />
+                   
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Quick Links Column 1 */}
-          <div className="md:col-span-1 lg:col-span-3 px-8 footer-column">
-            <h2 className="text-lg font-[300] mb-10 footer-head relative uppercase fon">
+          <div className="md:col-span-1 xl:col-span-3 xl:px-8 md:px-6 footer-column">
+            <h2 className="text-lg font-[300] mb-6 lg:mb-10 footer-head relative uppercase fon">
               Quick Links
             </h2>
             <ul className="flex flex-col gap-3">
@@ -247,8 +265,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-1 lg:col-span-3 px-8 footer-column">
-            <h2 className="text-lg font-[300] mb-10 footer-head relative uppercase">
+          <div className="md:col-span-1 xl:col-span-3 xl:px-8 md:px-6 footer-column">
+            <h2 className="text-lg font-[300] mb-6 lg:mb-10 footer-head relative uppercase">
               Location
             </h2>
             <ul className="flex flex-col gap-5">
@@ -290,8 +308,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-1 lg:col-span-3 pl-10 footer-column">
-            <h2 className="text-lg font-[300] mb-10 footer-head relative uppercase fon">
+          <div className="hidden xl:block xl:col-span-3 xl:pl-10 md:pl-6 footer-column">
+            <h2 className="text-lg font-[300] mb-6 lg:mb-10 footer-head relative uppercase fon">
               Follow Our Journey
             </h2>
             <ul className="flex flex-col gap-4">

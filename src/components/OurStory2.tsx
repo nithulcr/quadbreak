@@ -82,7 +82,7 @@ const OurStory2 = () => {
       <div className="grid-wrapper max-w-[1450px] mx-auto px-5 lg:px-10">
         <div className="stacked-content">
           <div className="content-wrapper pt-30">
-            <div className="service-list grid gap-y-10 lg:gap-y-30">
+            <div className=" grid gap-y-10 lg:gap-y-30">
               <div className="service-item flex flex-col lg:grid lg:grid-cols-2 gap-x-20 items-start w-full ">
                 <div className="">
                   <div className="flex flex-col mb-8">

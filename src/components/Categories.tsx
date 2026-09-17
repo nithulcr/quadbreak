@@ -59,7 +59,7 @@ const categories: Category[] = [
   },
 ];
 
-export default function Categories4() {
+export default function Categories() {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
@@ -186,8 +186,8 @@ export default function Categories4() {
   return (
     <section
       ref={sectionRef}
-      id="Categories4"
-      className="relative overflow-hidden py-14 md:py-20"
+      id="Categories"
+      className="relative overflow-hidden py-14 md:py-20 "
     >
       <div className="mx-auto max-w-[1400px] px-5">
         {/* Section header */}
@@ -205,16 +205,16 @@ export default function Categories4() {
         {/* Cards */}
         <div
           ref={cardsRef}
-          className="max-w-[1400px] mx-auto grid gap-14  categories4-border"
+          className="max-w-[1400px] mx-auto grid gap-14  Categories-border"
         >
           {categories.map((cat, i) => {
             return (
               <article
                 key={cat.number}
-                className={` group relative grid md:grid-cols-5 overflow-hidden  gap-15 pb-12`}
+                className={` group relative grid grid-cols-1 lg:grid-cols-5 overflow-hidden gap-7  xl:gap-15 pb-12`}
               >
                 {/* Image */}
-                <div className="col-span-2 cat4-img relative  aspect-[16/9] w-full overflow-hidden  bg-[#141414]">
+                <div className="lg:col-span-2 cat4-img relative  aspect-[16/9] w-full overflow-hidden  bg-[#141414]">
                   <Image
                     src={cat.image}
                     alt={`${cat.title} — ${cat.subtitle}`}
@@ -227,7 +227,7 @@ export default function Categories4() {
                     aria-hidden="true"
                   />
                 </div>
-                <div className="col-span-3">
+                <div className="lg:col-span-3">
                   <div className="mb-2 flex items-start justify-between">
                     <div>
                       <h3 className="cat4-card-title text-2xl  uppercase   text-white md:text-3xl">
@@ -238,7 +238,7 @@ export default function Categories4() {
                       </span>
 
                       {/* Description */}
-                      <p className="mt-4  font-light text-medium md:text-lg  max-w-[90%]">
+                      <p className="mt-4  font-light text-[14px] xl:text-lg  xl:max-w-[90%]">
                         {cat.description}
                       </p>
                     </div>
@@ -246,7 +246,7 @@ export default function Categories4() {
                     <Link
                       href={cat.href}
                       aria-label={`Go to ${cat.title}`}
-                      className={`group/arrow inline-flex flex-none h-12 w-12 items-center justify-center rounded-full border transition-all duration-300 `}
+                      className={` group/arrow hidden lg:inline-flex flex-none h-12 w-12 items-center justify-center rounded-full border transition-all duration-300 `}
                     >
                       <ArrowUpRight
                         className="h-8 w-8 transition-transform duration-300 group-hover/arrow:translate-x-[3px] group-hover/arrow:-translate-y-[3px]"
@@ -256,7 +256,7 @@ export default function Categories4() {
                   </div>
                   {/* Title */}
 
-                  <div className="cat-cta">
+                  <div className="cat-cta pt-2">
                     <AnimatedButton
                       label={cat.cta}
                       href={cat.href}

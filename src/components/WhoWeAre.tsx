@@ -15,13 +15,9 @@ const WhoWeAre = () => {
   const text2Ref = useRef<HTMLParagraphElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  const btnRef = useRef<HTMLParagraphElement>(null);
 
 
-  const card1Ref = useRef<HTMLDivElement>(null);
-  const card2Ref = useRef<HTMLDivElement>(null);
-  const card3Ref = useRef<HTMLDivElement>(null);
-  const card4Ref = useRef<HTMLDivElement>(null);
+
  useEffect(() => {
   const section = sectionRef.current;
 
@@ -86,7 +82,7 @@ const WhoWeAre = () => {
       <div className="grid-wrapper max-w-[1450px] mx-auto px-5 lg:px-10">
         <div className="stacked-content">
           <div className="content-wrapper">
-            <div className="service-list grid gap-y-10 lg:gap-y-30">
+            <div className=" grid gap-y-10 lg:gap-y-30">
 
               <div
                 className="service-item flex flex-col lg:grid gap-x-20 items-center w-full "

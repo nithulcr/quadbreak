@@ -85,12 +85,12 @@ const PortfolioGrid = ({ limit, projects = [] }: PortfolioGridProps) => {
   return (
     <div ref={sectionRef} className="py-14 lg:py-24">
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
-        <div ref={headerRef} className="pt-30 pb-20  w-full flex flex-wrap justify-between items-center gap-6">
+        <div ref={headerRef} className="pt-30 pb-14 lg:pb-20  w-full flex flex-wrap justify-between items-center gap-12">
           <h2 className="uppercase w-fit text-white heading text-5xl lg:text-[6rem] leading-none font-light relative">
             Portfolio
           </h2>
           {categories.length > 0 && (
-            <div className="w-fit  flex gap-2 lg:gap-3 overflow-x-auto snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [-webkit-overflow-scrolling:touch]">
+            <div className="w-fit px-5 mx-[-20px] md:px-0 md:mx-0 flex gap-2 lg:gap-3 overflow-x-auto snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [-webkit-overflow-scrolling:touch]">
               <button
                 onClick={() => setActiveCategory("all")}
                 className={filterButtonClass(activeCategory === "all")}

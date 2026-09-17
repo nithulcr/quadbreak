@@ -74,7 +74,7 @@ const WhatWeDO = () => {
     <section
       id="WhatWeDO"
       ref={sectionRef}
-      className="relative  py-20 lg:py-28"
+      className="relative overflow-hidden py-20 lg:py-28"
     >
       <div className="mx-auto grid w-full max-w-[1450px] grid-cols-1 gap-16 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:px-10">
         {/* LEFT */}
@@ -125,7 +125,7 @@ const WhatWeDO = () => {
         {/* RIGHT */}
         <div ref={itemsRef} className="relative">
           {/* Main timeline */}
-          <div className="absolute left-[23px] top-5 bottom-5 w-px bg-white/10 lg:left-[31px]" />
+          <div className="absolute left-[23px] top-5 bottom-5 w-px bg-white/10 lg:left-[30px]" />
 
           <div className="flex flex-col gap-16 lg:gap-20">
             {WhatWeDOItems.map((item, index) => (
@@ -143,7 +143,7 @@ const WhatWeDO = () => {
                 </div>
 
                 {/* Content */}
-                <div className="flex gap-8">
+                <div className="flex flex-col md:flex-row md:gap-8">
                   {/* Number */}
                   <div className="mb-4 ">
                     <span className="text-4xl font-light leading-none text-white/20 transition-colors duration-300 group-hover:text-[var(--green)]/40 lg:text-5xl">
@@ -154,7 +154,7 @@ const WhatWeDO = () => {
                   </div>
 
                   {/* Description */}
-                  <p className="max-w-[680px] text-[15px] font-light leading-[1.8] text-white/70 transition-colors duration-300 group-hover:text-white/90 md:text-[17px]">
+                  <p className="max-w-[680px] text-[14px] md:text-[16px] font-light leading-[1.8] text-white/70 transition-colors duration-300 group-hover:text-white/90 md:text-[17px]">
                     {item.description}
                   </p>
                 </div>

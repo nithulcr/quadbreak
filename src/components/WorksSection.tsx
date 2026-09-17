@@ -100,7 +100,7 @@ const WorksSection = ({ recentWorks }: WorksSectionProps) => {
   return (
     <section ref={sectionRef} id="about" className="py-16 lg:py-16 relative overflow-hidden">
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
-        <h2 className="about-heading uppercase text-center text-white text-3xl lg:text-[4rem] leading-none font-light mb-10 lg:mb-15">
+        <h2 className="about-heading uppercase text-center text-white text-4xl lg:text-6xl leading-none font-light mb-10 lg:mb-15">
           recent works
         </h2>
 

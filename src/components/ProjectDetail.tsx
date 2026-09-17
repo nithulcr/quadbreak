@@ -105,7 +105,7 @@ export default function ProjectDetail({
   const nextHref = nextSlug ? `/portfolio/${nextSlug}` : null;
 
   const navButtonClass =
-    "flex items-center  justify-center w-11 h-11 rounded-full  text-black bg-white hover:bg-[var(--green)] hover:border-[var(--green)]  transition-all cursor-pointer";
+    "flex items-center  justify-center w-9 h-9 md:w-11 md:h-11 rounded-full  text-black bg-white/20 backdrop-blur-xl hover:bg-[var(--green)] hover:border-[var(--green)]  transition-all cursor-pointer";
 
   return (
     <>
@@ -118,7 +118,7 @@ export default function ProjectDetail({
       {/* Fullscreen content (normal flow so window/Lenis scroll works) */}
       <main
         ref={contentRef}
-        className="relative z-[100] min-h-screen pt-5 pb-20"
+        className="relative z-[100] min-h-screen py-20  md:py-6"
       >
         <div className="max-w-[1450px] mx-auto px-5 lg:px-10 gap-10 grid">
           {project.projectGallery?.map((galleryItem, index) => (
@@ -141,21 +141,22 @@ export default function ProjectDetail({
       {/* Floating controls */}
       <div
         ref={controlsRef}
-        className="fixed top-0 inset-x-0 z-[110] flex flex-col h-full items-center justify-between gap-4 px-4 lg:px-6 py-4"
+        className="fixed   top-0 inset-x-0 z-[110] flex flex-col h-full items-center justify-between gap-4  "
       >
-        <div className="ml-auto">
+        <div className="md:ml-auto py-4 px-4 lg:px-6  bg-black md:bg-transparent w-full md:w-fit flex items-center justify-between gap-10">
+          <h2 className="uppercase text-white text-sm lg:text-lg font-light tracking-widest truncate md:hidden">
+          {project.title}
+        </h2>
          <button
           onClick={() => go("/portfolio")}
           aria-label="Close"
-          className="flex items-center  justify-center w-11 h-11 rounded-full  text-black bg-[var(--green)] hover:bg-white   transition-all cursor-pointer"
+          className="flex items-center  justify-center w-9 h-9 md:w-11 md:h-11 rounded-full  text-black bg-[var(--green)] hover:bg-white   transition-all cursor-pointer"
         >
           <X className="w-6 h-6" />
         </button>
        </div>
-        {/* <h2 className="uppercase text-white text-sm lg:text-lg font-light tracking-widest truncate">
-          {project.title}
-        </h2> */}
-        <div className="w-full flex items-center justify-between  gap-4">
+        
+        <div className="w-full flex items-center justify-between  gap-4  px-4 lg:px-6">
           {prevHref && (
             <button onClick={() => go(prevHref)} className={navButtonClass}>
               <ChevronLeft className="w-5 h-5" />

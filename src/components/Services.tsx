@@ -107,7 +107,7 @@ const Services = ({ services }: ServicesProps) => {
               Services
             </h2>
           </div>
-          <div className="lg:w-[50%] ml-auto  max-w-[530px] fade-up ">
+          <div className="lg:w-[50%] lg:ml-auto  max-w-[530px] fade-up ">
             <p
               ref={text1Ref}
               className="font-[200] lg:text-right text-white text-[14px] lg:text-[18px] leading-snug"
@@ -128,7 +128,7 @@ const Services = ({ services }: ServicesProps) => {
         </div>
         <div
           ref={servicesGridRef}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-4  mt-5 md:mt-16"
+          className="grid sm:grid-cols-2 md:grid-cols-3 gap-4  mt-5 lg:mt-16"
         >
           {services.slice(0, 6).length > 0
             ? services.slice(0, 6).map((service) => (

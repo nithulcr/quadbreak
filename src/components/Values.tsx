@@ -115,7 +115,7 @@ const Values = () => {
         </div>
         <div
           ref={ValuesGridRef}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-4  mt-5"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4  mt-5"
         >
           {ValuesItems.map((service, index) => (
             <div

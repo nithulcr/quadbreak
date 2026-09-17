@@ -62,13 +62,10 @@ const CTASection = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative   my-10"
-    >
-          {/* Soft background glow */}
-          <div
-            className="
+    <section ref={sectionRef} className="relative  overflow-hidden my-10">
+      {/* Soft background glow */}
+      <div
+        className="hidden xl:block
               pointer-events-none
               absolute
               right-[10%]
@@ -80,18 +77,15 @@ const CTASection = () => {
               opacity-[0.06]
               blur-[100px]
             "
-          />
+      />
       <div className="mx-auto max-w-[1400px] px-5">
         <div
           className="
             relative
-            grid lg:grid-cols-2 gap-8 
+            flex flex-col-reverse md:grid md:grid-cols-2 gap-8 
 
           "
         >
-
-
-         
           {/* Content */}
           <div
             className="
@@ -99,33 +93,36 @@ const CTASection = () => {
               relative
               z-20
               flex
-              max-w-[600px]
+              max-w-[700px]
               flex-col
               justify-center 
-              pt-14  pb-6 
+              md:pt-14  pb-6 
             "
           >
-          
-
             <h2
               className="
-                text-4xl
                 font-light
                 uppercase
                 leading-[0.95]
                 tracking-tight
                 text-white
-                md:text-5xl
-                lg:text-[4.5rem]
+                text-4xl lg:text-6xl xl:text-[5rem]
               "
             >
-             The Drive 
+              The Drive
               <br />
-              Behind <span className="text-[var(--green)]">the Art.</span> 
+              Behind <span className="text-[var(--green)]">the Art.</span>
             </h2>
 
             <p className="mt-6 max-w-[600px] text-sm font-light leading-relaxed text-white/60 md:text-base">
-              Great art starts with a bold vision and the drive to make it happen. Jesto Jose and Mithun Alexander are at the core of Quadbreak — bringing creative vision, years of industry experience, and a deep passion for the craft, while pushing creative boundaries, challenging the ordinary, and inspiring the team to keep raising the bar. Their passion sets the pace, their experience shapes the vision, and their drive keeps Quadbreak moving forward.
+              Great art starts with a bold vision and the drive to make it
+              happen. Jesto Jose and Mithun Alexander are at the core of
+              Quadbreak — bringing creative vision, years of industry
+              experience, and a deep passion for the craft, while pushing
+              creative boundaries, challenging the ordinary, and inspiring the
+              team to keep raising the bar. Their passion sets the pace, their
+              experience shapes the vision, and their drive keeps Quadbreak
+              moving forward.
             </p>
 
             <div className="mt-8">
@@ -144,8 +141,6 @@ const CTASection = () => {
              relative
             "
           >
-         
-
             {/* Main image */}
             <img
               src="/images/cta-art.png"
@@ -157,7 +152,6 @@ const CTASection = () => {
                 object-contain
               "
             />
-
           </div>
         </div>
       </div>
