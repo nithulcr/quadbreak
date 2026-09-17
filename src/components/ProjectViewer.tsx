@@ -49,6 +49,17 @@ const ENTRANCE_EASE = "power3.out";
 const CLOSE_DURATION = 0.5;
 const CLOSE_EASE = "power2.in";
 
+// Clip a layer to the exact slice currently visible in the viewport. Without
+// this, translating a tall page up reveals its own off-screen content behind
+// the incoming viewport-sized layer (the pre-NEXT leak).
+const getViewportClipPath = (el: HTMLElement) => {
+  const top = Math.max(0, window.scrollY);
+  const viewportHeight = window.innerHeight;
+  const totalHeight = Math.max(viewportHeight, el.offsetHeight);
+  const bottom = Math.max(0, totalHeight - viewportHeight - top);
+  return `inset(${top}px 0 ${bottom}px 0)`;
+};
+
 export default function ProjectViewer({
   children,
 }: {
@@ -115,7 +126,7 @@ export default function ProjectViewer({
         setIncomingProject(null);
         const currentEl = currentLayerRef.current;
         if (currentEl) {
-          gsap.set(currentEl, { clearProps: "transform" });
+          gsap.set(currentEl, { clearProps: "transform,clipPath" });
         }
       }
       releaseTransition();
@@ -226,7 +237,7 @@ export default function ProjectViewer({
       // swap to the new server-rendered page is invisible. Just clean up.
       awaitingRouteChange.current = false;
       setIncomingProject(null);
-      gsap.set(currentLayerRef.current, { clearProps: "transform" });
+      gsap.set(currentLayerRef.current, { clearProps: "transform,clipPath" });
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
       releaseTransition();
       return;
@@ -259,6 +270,10 @@ export default function ProjectViewer({
     const generation = transitionGeneration.current;
 
     killTimeline();
+
+    // Only the on-screen slice of the current page may exit the transition;
+    // otherwise the page's taller-than-viewport content leaks behind B.
+    gsap.set(currentEl, { clipPath: getViewportClipPath(currentEl) });
 
     gsap.set(incomingEl, {
       y: dir === "next" ? "100%" : "-100%",

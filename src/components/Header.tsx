@@ -29,25 +29,28 @@ export default function Header() {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center justify-end gap-6">
-                        <Link href="/" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Home</Link>
-                        <Link href="/about" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">About Us</Link>
+                        <Link href="/" className="nav-link uppercase  font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Home</Link>
+                        <span className="h-5 w-[.05rem] bg-white/30"></span>
+                        <Link href="/about" className="nav-link uppercase  font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">About Us</Link>
                         {/* <Link href="/culture" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Culture</Link> */}
+                        <span className="h-5 w-[.05rem] bg-white/30"></span>
                 
                         {/* <Link href="https://quadbreaksimulations.com/" target="_blank" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Stimulator Art</Link> */}
 
                         {/* <Link href="/portfolio" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Portfolio</Link> */}
                         <Link href="/contact" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Contact Us</Link>
+                        <span className="h-5 w-[.05rem] bg-white/30"></span>
                         <div className="flex items-center gap-2">
                             <AnimatedButton
                             href="/portfolio"
                             label="Portfolio"
-                            className="w-fit ml-2"
-                        />
-                        <AnimatedButton
-                            href="tel:+91 94007 69978"
-                            label="Let's Talk"
                             className="w-fit ml-2 button-fill"
                         />
+                        {/* <AnimatedButton
+                            href="tel:+91 94007 69978"
+                            label="Let's Talk"
+                            className="w-fit ml-2 "
+                        /> */}
                         </div>
                     </nav>
 
@@ -57,7 +60,7 @@ export default function Header() {
                         className="flex items-center justify-end z-50 w-nav-button p-2 cursor-pointer lg:hidden"
                         onClick={() => setMenuOpen(!menuOpen)}
                     >
-                        <span className="uppercase hidden md:block bg-[var(--light-outline)] text-sm py-1 pr-3 pl-2 mr-[-10px] rounded-tl-[8px] rounded-bl-[8px]">Menu</span>
+                        <span className="uppercase hidden md:block bg-[var(--light-outline)] text-sm py-1 pr-3 pl-2 mr-[0px] rounded-tl-[8px] rounded-bl-[8px]">Menu</span>
                         <div className="flex items-center justify-center bg-[var(--light-outline)] w-8 h-8 rounded-full">
                             {menuOpen ? (
                                 <svg

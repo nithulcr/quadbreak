@@ -23,27 +23,12 @@ export default function AboutPage() {
     <div>
       <Header />
       <main>
-        
-               <OurStory />
-               <Values />
-               <WhatWeDO/>
-
-
-               <Categories />
-
-   
-               <TeamSection />
-
-
-              
-      
+        <OurStory />
+        <Values />
+        <WhatWeDO/>
+        <Categories />
+        <TeamSection />
                {/* <Categories3 /> */}
-
-
-
-
-
-
       </main>
       <Footer />
     </div>
