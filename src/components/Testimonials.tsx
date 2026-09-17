@@ -13,25 +13,6 @@ interface TestimonialsProps {
 }
 
 const Testimonials = ({ testimonials }: TestimonialsProps) => {
-  const renderStars = (count: number) => {
-    return (
-      <div className="flex items-center gap-[3px]">
-        {[...Array(5)].map((_, i) => (
-          <svg
-            key={i}
-            className={`w-[14px] h-[14px] ${
-              i < count ? "text-[#91ff6a]" : "text-white/20"
-            }`}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.18 3.637a1 1 0 00.95.69h3.813c.969 0 1.371 1.24.588 1.81l-3.084 2.24a1 1 0 00-.364 1.118l1.18 3.637c.3.921-.755 1.688-1.54 1.118l-3.084-2.24a1 1 0 00-1.176 0l-3.084 2.24c-.784.57-1.838-.197-1.539-1.118l1.18-3.637a1 1 0 00-.364-1.118l-3.084-2.24c-.784-.57-.38-1.81.588-1.81h3.812a1 1 0 00.951-.69l1.18-3.637z" />
-          </svg>
-        ))}
-      </div>
-    );
-  };
-
   const renderCard = (testimonial: Testimonial) => (
     <div className="testimonial-card bg-white/5 p-4 rounded-4xl group relative">
       {/* Speech bubble */}
@@ -52,8 +33,8 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
         "
       >
         {/* Quote */}
-        <p className="text-black/90 font-light text-[14px] md:text-[16px] line-clamp-3">
-          "{testimonial.content}"
+        <p className="text-black/90 font-[400] text-[14px] md:text-[16px] line-clamp-3">
+          &ldquo;{testimonial.content}&rdquo;
         </p>
          <div className="min-w-0 pt-3 flex justify-between border-t border-black/20 mt-4">
           <p className="text-black text-[16px] md:text-[18px] leading-tight capitalize">
@@ -112,9 +93,16 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
           />
         </div>
 
-        {/* Name / designation / rating */}
+        {/* Client logo */}
         <div className="min-w-0">
-          <img src="/images/logo.png" className="w-30" />
+          <div className="relative h-8 w-30 shrink-0">
+            <Image
+              src="/images/logo.png"
+              alt={testimonial.title}
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -167,9 +155,8 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
                 clickable: true,
               }}
               breakpoints={{
-                640: { slidesPerView: 2.4, spaceBetween: 20 },
-                990: { slidesPerView: 2.4, spaceBetween: 20 },
-                1300: { slidesPerView: 3.4, spaceBetween: 24,  },
+                640: { slidesPerView: 2.2, spaceBetween: 20 },
+                990: { slidesPerView: 2.6, spaceBetween: 20 },
               }}
               className="px-5"
             >
