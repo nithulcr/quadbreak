@@ -74,9 +74,9 @@ const WhatWeDO = () => {
     <section
       id="WhatWeDO"
       ref={sectionRef}
-      className="relative overflow-hidden py-20 lg:py-28"
+      className="relative  py-20 lg:py-28"
     >
-      <div className="mx-auto grid w-full max-w-[1450px] grid-cols-1 gap-16 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:px-10">
+      <div className="mx-auto grid w-full max-w-[1450px] grid-cols-1 gap-16 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:px-10 ">
         {/* LEFT */}
         <div className="relative">
           <div className="sticky top-32">
@@ -123,7 +123,7 @@ const WhatWeDO = () => {
         </div>
 
         {/* RIGHT */}
-        <div ref={itemsRef} className="relative">
+        <div ref={itemsRef} className="relative overflow-hidden">
           {/* Main timeline */}
           <div className="absolute left-[23px] top-5 bottom-5 w-px bg-white/10 lg:left-[30px]" />
 

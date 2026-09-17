@@ -119,7 +119,7 @@ const ServiceGrid = () => {
     <section ref={sectionRef} className="py-14 lg:py-24 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-5 lg:px-6 pt-30">
         <div ref={titleRef} className="mb-8">
-          <h2 className="uppercase text-white text-4xl lg:text-6xl leading-none font-light">
+          <h2 className="uppercase text-white text-5xl lg:text-[6rem] leading-none font-light">
             Areas of
             <br />
             Expertise

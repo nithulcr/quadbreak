@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import ProjectDetail from "@/components/ProjectDetail";
+import ProjectGallery from "@/components/ProjectGallery";
+import ProjectRouteInfo from "@/components/ProjectRouteInfo";
 import {
   canonicalUrl,
   getProjectBySlug,
@@ -12,6 +13,13 @@ import {
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
 }
+
+export async function generateStaticParams() {
+  const projects = await getProjects();
+  return projects.map((project) => ({ slug: project.slug }));
+}
+
+export const dynamicParams = true;
 
 export async function generateMetadata({
   params,
@@ -125,6 +133,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     : null;
 
   return (
-    <ProjectDetail project={project} prevSlug={prevSlug} nextSlug={nextSlug} />
+    <main className="min-h-screen py-20 md:py-6">
+      <ProjectGallery project={project} />
+      <ProjectRouteInfo
+        project={project}
+        prevSlug={prevSlug}
+        nextSlug={nextSlug}
+      />
+    </main>
   );
 }

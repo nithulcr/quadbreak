@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import AnimatedButton from "@/components/AnimatedButton";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from 'next/image';
+
 import { useEffect, useRef } from "react";
 import {
   Instagram,
@@ -42,7 +44,7 @@ function TopContactSection() {
   return (
     <section className="pt-16 lg:pt-30 pb-14 lg:pb-24">
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10 pt-30 pb-20  w-full">
-        <h2 className="uppercase w-fit text-white heading text-4xl lg:text-6xl leading-none font-light relative">
+        <h2 className="uppercase w-fit text-white heading text-5xl lg:text-[6rem] leading-none font-light relative">
           Contact Us
         </h2>
         <p className="text-white/80 text-[14px] lg:text-[16px] leading-relaxed font-[300] max-w-[420px] mt-6">
@@ -51,7 +53,7 @@ function TopContactSection() {
         </p>
       </div>
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div className="flex-1 min-w-0 bg-white/3 p-7 lg:p-9 rounded-xl border border-white/10">
+        <div className="flex-1 min-w-0 bg-white/3 p-7 lg:p-9 rounded-xl border border-white/10 relative">
           <h1 className="uppercase text-white  text-4xl md:text-5xl    mb-6">
             Email Us a<br />
             Digital <span className="text-[var(--green)]">Note</span>
@@ -102,11 +104,18 @@ function TopContactSection() {
               ))}
             </ul>
           </div>
+           <Image
+                        src="/images/cartoon.png"
+                        alt="Quadbreak logo"
+                        width={300}
+                        height={80}
+                        className="hidden xl:block absolute right-6 bottom-6"
+                      />
         </div>
 
         <div className="flex-[0_0_650px] max-lg:flex-none max-lg:w-full">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5 lg:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-8">
               <div className="flex flex-col gap-3">
                 <label className="text-white/40 text-xs uppercase tracking-[3px]">
                   Name
@@ -128,7 +137,7 @@ function TopContactSection() {
                 />
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-8">
               <div className="flex flex-col gap-3">
                 <label className="text-white/40 text-xs uppercase tracking-[3px]">
                   Contact Number
@@ -182,7 +191,7 @@ function FreeArtTestHeader() {
   return (
     <section className="">
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10 flex items-end justify-between gap-10">
-        <h2 className="uppercase text-white  text-5xl lg:text-[4rem] ">
+        <h2 className="uppercase text-white  text-4xl lg:text-[4rem] ">
           <span className="block text-white/50 ">
             EXPERIENCE
             <br />
@@ -215,7 +224,7 @@ function FreeArtTestBody() {
   return (
     <section className="pt-12 pb-0">
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-        <form onSubmit={handleSubmit} className="grid lg:grid-cols-2 gap-8">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:grid  lg:grid-cols-2 gap-5 lg:gap-8">
           <div className="flex flex-col gap-3">
             <label className="text-white/40 text-xs uppercase tracking-[3px]">
               Name

@@ -12,8 +12,14 @@ const OurStory = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const title2Ref = useRef<HTMLHeadingElement>(null);
+
   const text1Ref = useRef<HTMLParagraphElement>(null);
   const text2Ref = useRef<HTMLParagraphElement>(null);
+  const text3Ref = useRef<HTMLParagraphElement>(null);
+  const text4Ref = useRef<HTMLParagraphElement>(null);
+
+
   const imgRef = useRef<HTMLImageElement>(null);
   useEffect(() => {
     const section = sectionRef.current;
@@ -37,6 +43,12 @@ const OurStory = () => {
         duration: 0.7,
         ease: "power2.out",
       })
+      tl.from(title2Ref.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.7,
+        ease: "power2.out",
+      })
         .from(
           text1Ref.current,
           {
@@ -49,6 +61,26 @@ const OurStory = () => {
         )
         .from(
           text2Ref.current,
+          {
+            opacity: 0,
+            y: 30,
+            duration: 0.7,
+            ease: "power2.out",
+          },
+          "-=0.45",
+        )
+        .from(
+          text3Ref.current,
+          {
+            opacity: 0,
+            y: 30,
+            duration: 0.7,
+            ease: "power2.out",
+          },
+          "-=0.45",
+        )
+         .from(
+          text4Ref.current,
           {
             opacity: 0,
             y: 30,
@@ -86,9 +118,9 @@ const OurStory = () => {
             <div className=" grid gap-y-10 lg:gap-y-30">
               <div className="service-item flex flex-col lg:grid lg:grid-cols-2 gap-15 items-start w-full ">
                 <div className="">
-                  <div className="flex flex-col mb-14 relative w-fit  pb-5 xl:pb-8">
+                  <div  ref={titleRef} className="flex flex-col mb-14 relative w-fit  pb-5 xl:pb-8">
                     <h1
-                      ref={titleRef}
+                     
                       className="uppercase  text-[var(--green)] text-white  text-5xl lg:text-[3.5em] leading-none font-light  relative"
                     >
                    Quadbreak Studios
@@ -113,9 +145,9 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                 <div className="ml-auto lg:mt-[200px]  xl:max-w-[530px] fade-up overflow-hidden">
                   <h2
                     ref={text2Ref}
-                    className="uppercase w-fit text-white/60 max-w-[500px] lg:text-right italic mb-4 lg:mb-10 text-3xl xl:text-[3rem]  leading-none font-light  relative"
+                    className="uppercase w-fit text-white/60 max-w-[520px] lg:text-right italic mb-4 lg:mb-10 text-3xl xl:text-[3rem]  leading-none font-light  relative"
                   >
-                    Since <span className="text-[var(--green)]">2026</span>{" "}
+                    Since <span className="text-[var(--green)]">2026</span>{" "}<br/>
                     It&apos;s been a{" "}
                     <span className="text-[var(--green)]">cool journey,</span>{" "}
                     and <span className="text-[var(--green)]">we&apos;re</span>{" "}
@@ -123,7 +155,7 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                     <span className="text-[var(--green)]">turning back!</span>
                   </h2>
                   <p
-                    ref={text1Ref}
+                    ref={text3Ref}
                     className="about-paragraph text-[16px] lg:text-right mb-10 md:text-[20px] leading-snug font-[200] text-white/80"
                   >
                     Long-term business success depends, above all, on the
@@ -147,7 +179,7 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                 {/* Image */}
 
                 <div className="about-fade relative ">
-                  <div className="rounded-3xl border relative border-white/10 side-image">
+                  <div className="rounded-xl lg:rounded-3xl border relative border-white/10 side-image">
                     <span className="span1"></span>
                     <span className="span2"></span>
 
@@ -156,7 +188,7 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                       loop
                       muted
                       playsInline
-                      className="w-full md:min-h-[500px] object-cover p-2 rounded-3xl z-9 relative border-white/10 border"
+                      className="w-full md:min-h-[500px] object-cover p-1 lg:p-2 rounded-xl lg:rounded-3xl z-9 relative border-white/10 border"
                     >
                       <source src="/images/video.mp4" />
                       Your browser does not support the video tag.
@@ -167,16 +199,16 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                 {/* Content */}
 
                <div className="">
-                  <div className="flex flex-col mb-8">
+                  <div className="flex flex-col mb-6">
                     <h2
-                      ref={titleRef}
-                      className="uppercase w-fit text-white  text-5xl lg:text-[4rem]  leading-none font-light  relative"
+                      ref={title2Ref}
+                      className="uppercase w-fit text-white  text-4xl lg:text-[4rem]  leading-none font-light  relative"
                     >
                      Evolving With Technology
                     </h2>
                   </div>
                   <p
-                    ref={text1Ref}
+                    ref={text4Ref}
                     className="about-paragraph text-[16px] md:text-[20px] leading-snug font-[200] text-white/80 text-justify"
                   >
                    Technology continues to reshape the way digital worlds are created. <span className="text-[var(--green)] italic">At Quadbreak, we actively explore emerging technologies, automation, and AI-assisted workflows to understand how they can improve efficiency and scale across our production.</span>
