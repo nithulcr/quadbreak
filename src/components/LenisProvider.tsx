@@ -7,23 +7,40 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const DESKTOP_MIN_WIDTH = 990
+
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.6,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    })
+    let lenis: Lenis | null = null
 
-    // Connect Lenis to GSAP ticker
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000)
-    })
+    const raf = (time: number) => {
+      lenis?.raf(time * 1000)
+    }
+
+    const initLenis = () => {
+      if (lenis) return
+      lenis = new Lenis({
+        duration: 1.6,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      })
+      gsap.ticker.add(raf)
+      lenis.on('scroll', ScrollTrigger.update)
+    }
+
+    const destroyLenis = () => {
+      if (!lenis) return
+      gsap.ticker.remove(raf)
+      lenis.destroy()
+      lenis = null
+    }
+
+    // Lenis smooth scroll only on desktop (width > 990px); touch devices keep native scroll.
+    if (window.innerWidth > DESKTOP_MIN_WIDTH) {
+      initLenis()
+    }
 
     // Disable lag smoothing for smoother scroll-linked animations
     gsap.ticker.lagSmoothing(0)
-
-    // Update ScrollTrigger on Lenis scroll
-    lenis.on('scroll', ScrollTrigger.update)
 
     // Comprehensive refresh strategy to ensure ScrollTrigger works on first load
     const refreshScrollTrigger = () => {
@@ -37,10 +54,10 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
     const refreshStrategies = [
       // Refresh on window load (all assets loaded)
       () => window.addEventListener('load', refreshScrollTrigger),
-      
+
       // Refresh after DOM is ready
       () => document.addEventListener('DOMContentLoaded', refreshScrollTrigger),
-      
+
       // Multiple timeouts to catch late layout shifts from images/fonts
       () => timeoutIds.push(setTimeout(refreshScrollTrigger, 100)),
       () => timeoutIds.push(setTimeout(refreshScrollTrigger, 300)),
@@ -53,8 +70,11 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
     // Execute all refresh strategies
     refreshStrategies.forEach(strategy => strategy())
 
-    // Refresh on window resize
+    // Refresh ScrollTrigger and switch Lenis on/off when crossing the desktop breakpoint
     const handleResize = () => {
+      const isDesktop = window.innerWidth > DESKTOP_MIN_WIDTH
+      if (isDesktop && !lenis) initLenis()
+      if (!isDesktop && lenis) destroyLenis()
       ScrollTrigger.refresh()
     }
     window.addEventListener('resize', handleResize)
@@ -65,14 +85,11 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
     })
 
     return () => {
-      lenis.destroy()
-      gsap.ticker.remove((time) => {
-        lenis.raf(time * 1000)
-      })
+      destroyLenis()
       window.removeEventListener('load', refreshScrollTrigger)
       document.removeEventListener('DOMContentLoaded', refreshScrollTrigger)
       window.removeEventListener('resize', handleResize)
-      
+
       // Clear all timeouts
       timeoutIds.forEach(id => clearTimeout(id))
     }

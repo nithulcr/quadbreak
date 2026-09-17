@@ -78,7 +78,7 @@ export default function Footer() {
       <span className="block underline-span"></span>
 
       {/* Hero Watermark Text with Zigzag & Masks */}
-      <div className="footer-heading relative w-full overflow-hidden  pt-26 hidden md:flex items-center justify-center ">
+      {/* <div className="footer-heading relative w-full overflow-hidden  pt-26 hidden md:flex items-center justify-center ">
         <h2 className=" text-[14vw] xl:text-[14.5rem] leading-none font-semibold opacity-80 tracking-tighter bg-gradient-to-r from-white/5 via-white/10 to-white/5 bg-clip-text  uppercase text-center select-none flex items-center justify-center">
           {text.split("").map((char, i) => (
             <span
@@ -94,10 +94,10 @@ export default function Footer() {
           ))}
         </h2>
 
-        {/* Blur Overlays */}
+       
         <div className="absolute opacity-70 left-0 top-0 bottom-0 w-[35%] backdrop-blur-[10px] [mask-image:linear-gradient(to_right,black_20%,transparent_50%)] pointer-events-none z-10" />
         <div className="absolute opacity-70 right-0 top-0 bottom-0 w-[35%] backdrop-blur-[10px] [mask-image:linear-gradient(to_left,black_20%,transparent_50%)] pointer-events-none z-10" />
-      </div>
+      </div> */}
 
       <div className="max-w-[1450px] mx-auto footer px-5 lg:px-10  py-4">
         {/* Footer Main Grid */}

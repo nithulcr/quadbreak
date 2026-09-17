@@ -7,47 +7,93 @@ interface ClientsLogoSliderProps {
   clients: Client[];
 }
 
-const ClientsLogoSlider = ({ clients }: ClientsLogoSliderProps) => {
+const ClientsLogoSlider = ({
+  clients,
+}: ClientsLogoSliderProps) => {
   const withImages = clients.filter(
     (client) => client.image?.url,
   );
-  const marqueeClients = [...withImages, ...withImages];
 
   return (
     <section className="relative overflow-hidden py-14 md:pt-20 md:pb-30">
       {/* Heading */}
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10 mb-14">
-        <h2 className="uppercase py-2 w-fit text-white heading text-4xl lg:text-6xl leading-none font-light relative">
-          Our Clients
+        <h2 className="uppercase py-2 w-fit text-white text-4xl lg:text-[6rem] text-center mx-auto leading-none font-light">
+         Who <span className="text-[var(--green)]">we work</span> with
         </h2>
+
+        <p className="text-[14px] md:text-[16px] text-center mx-auto max-w-[780px] leading-snug font-[200] text-white/80">
+          We work with game studios that need a reliable outsource
+          partner for dedicated production. Our artists embed into
+          your pipeline, learn your standards, and deliver like an
+          extension of your team.
+        </p>
       </div>
 
-      {/* Marquee Track */}
-      {clients.length > 0 && (
-        <div className="relative w-full overflow-hidden">
-        {/* Edge fade gradients */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-[var(--background)] to-transparent z-10" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-[var(--background)] to-transparent z-10" />
-
-        <div
-          className="flex w-max animate-marquee items-center"
-          style={{ animationDuration: "50s" }}
-        >
-          {marqueeClients.map((client, index) => (
+      {/* Logo Grid */}
+      {withImages.length > 0 && (
+        <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5  gap-5">
+            {withImages.map((client) => (
               <div
-                key={`${client.id}-${index}`}
-                className="mt-10 flex items-center justify-center px-10 md:px-14 opacity-60 hover:opacity-100 transition-opacity duration-300"
+                key={client.id}
+                className="
+                  group
+                  relative
+                  h-[120px]
+                  md:h-[145px]
+                  flex
+                  items-center
+                  justify-center
+                  border
+                  border
+                  border-white/10
+                  overflow-hidden
+                  transition-all
+                  duration-500
+                  hover:bg-white/[0.02]
+                "
               >
+                {/* Subtle green glow */}
+                <div
+                  className="client-card
+                    pointer-events-none
+                    absolute
+                    inset-0
+                    opacity-0
+                    opacity-100
+                    transition-opacity
+                    duration-500
+                    bg-[radial-gradient(circle_at_center,rgba(145,255,106,0.08),transparent_65%)]
+                  "
+                />
+
                 <Image
                   src={client.image!.url!}
                   alt={client.title}
-                  width={120}
-                  height={60}
-                  className="h-10 md:h-14 w-auto object-contain grayscale hover:grayscale-0 transition duration-500"
+                  width={180}
+                  height={80}
+                  className="
+                    relative
+                    z-10
+                    max-w-[140px]
+                    md:max-w-[180px]
+                    max-h-[55px]
+                    md:max-h-[65px]
+                    w-auto
+                    h-auto
+                    object-contain
+                    opacity-60
+                    grayscale
+                    transition-all
+                    duration-500
+                    group-hover:opacity-100
+                    group-hover:grayscale-0
+                  "
                 />
               </div>
             ))}
-        </div>
+          </div>
         </div>
       )}
     </section>

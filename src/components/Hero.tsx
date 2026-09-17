@@ -98,7 +98,7 @@ export default function Hero() {
           <span ref={title1Ref} className="block w-fit">Quadbreak</span> 
           <span ref={title2Ref} className="block w-fit">Studios</span>
         </h1>
-        <span ref={subtitleRef} className="text-[1.2rem] uppercase font-light block mt-2">worlds, Vehicles, weapons  — The Best for your Team.</span>
+        <span ref={subtitleRef} className="text-[1.2rem]  font-[200] block mt-2 max-w-[700px]">Quadbreak Studios is a dedicated AAA game art outsourcing studio — environments, vehicles, and props — built to plug into your production pipeline.</span>
       </div>
 
 

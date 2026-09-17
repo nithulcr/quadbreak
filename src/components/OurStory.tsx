@@ -175,11 +175,11 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                   </video>
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-center mt-10 lg:mt-[-60px]">
+              <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-center mt-10 lg:mt-[-40px]">
                 {/* Image */}
 
                 <div className="about-fade relative ">
-                  <div className="rounded-xl lg:rounded-3xl border relative border-white/10 side-image">
+                  <div className="rounded-xl lg:rounded-2xl border relative border-white/10 side-image">
                     <span className="span1"></span>
                     <span className="span2"></span>
 
@@ -188,7 +188,7 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                       loop
                       muted
                       playsInline
-                      className="w-full md:min-h-[500px] object-cover p-1 lg:p-2 rounded-xl lg:rounded-3xl z-9 relative border-white/10 border"
+                      className="w-full md:min-h-[400px] object-cover p-1 lg:p-2 rounded-xl lg:rounded-2xl z-9 relative border-white/10 border"
                     >
                       <source src="/images/video.mp4" />
                       Your browser does not support the video tag.

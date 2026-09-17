@@ -134,7 +134,7 @@ const Services = ({ services }: ServicesProps) => {
             ? services.slice(0, 6).map((service) => (
                 <div
                   key={service.id}
-                  className="service-cards group relative overflow-hidden border border-white/20 aspect-[1/.75] rounded-[8px]"
+                  className="bg-white/5 group relative overflow-hidden border border-white/20 aspect-[1/.75] rounded-[8px]"
                 >
                   <img
                     src={service.image?.url || "/images/seo.jpg"}
@@ -142,7 +142,7 @@ const Services = ({ services }: ServicesProps) => {
                     className="absolute inset-0 w-full h-full object-cover  group-hover:opacity-70 group-hover:scale-105 transition duration-700"
                   />
 
-              <div className="absolute inset-0  bg-gradient-to-t from-black/90 via-black/60 to-black/30 transition duration-700" />
+              <div className="absolute inset-0  bg-gradient-to-t from-black/60 via-black/30 to-black/0 transition duration-700" />
               <div className="absolute inset-0 p-5 sm:p-8 flex flex-col justify-between gap-5">
                 <div className="flex flex-col h-full justify-end gap-3 ">
                   {/* <span className=" w-10 h-10 p-2 ml-auto flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green  group-hover:scale-80 transition-all duration-500 ease-in-out z-99">
