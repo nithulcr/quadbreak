@@ -150,13 +150,14 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
                 swiperRef.current = swiper;
               }}
               slidesPerView={1.2}
-              spaceBetween={16}
+              spaceBetween={0}
               loop={true}
               loopAdditionalSlides={2}
               grabCursor={true}
               centeredSlides={true}
+              speed={1600}
               autoplay={{
-                delay: 3200,
+                delay: 5000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
               }}
@@ -165,8 +166,8 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
                 setActiveIndex(swiper.realIndex % realCount);
               }}
               breakpoints={{
-                640: { slidesPerView: 2.2, spaceBetween: 20 },
-                990: { slidesPerView: 2.6, spaceBetween: 20 },
+                640: { slidesPerView: 2.2, spaceBetween: 0 },
+                990: { slidesPerView: 3, spaceBetween: 0 },
               }}
               className="px-5"
             >
