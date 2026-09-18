@@ -524,9 +524,30 @@ textarea:-webkit-autofill {
 
 span.swiper-pagination-bullet {
     background: white;
+    border-radius: 0;
 }
 .swiper-pagination-bullet-active{
   background: var(--green);
+}
+.testimonials-pagination .swiper-pagination-bullet {
+  width: 20px;
+  height: 4px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: #ffffff;
+  opacity: 0.35;
+  cursor: pointer;
+  transition: width 0.35s ease, opacity 0.35s ease, background-color 0.35s ease;
+}
+.testimonials-pagination .swiper-pagination-bullet-active {
+  width: 40px;
+  opacity: 1;
+  background: var(--green);
+}
+.testimonials-pagination .swiper-pagination-bullet:hover {
+  opacity: 0.8;
 }
   @media screen and (min-width: 1280px) {
 

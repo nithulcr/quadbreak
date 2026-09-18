@@ -1,18 +1,32 @@
 "use client";
 
 import Image from "next/image";
-import type { CSSProperties } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { Testimonial } from "@/types/testimonial";
+import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/pagination";
+
+const MIN_LOOP_SLIDES = 10;
 
 interface TestimonialsProps {
   testimonials: Testimonial[];
 }
 
 const Testimonials = ({ testimonials }: TestimonialsProps) => {
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const realCount = testimonials.length;
+
+  const loopSlides = useMemo(() => {
+    if (realCount === 0) return [];
+    if (realCount >= MIN_LOOP_SLIDES) return testimonials;
+    const copies = Math.ceil(MIN_LOOP_SLIDES / realCount);
+    return Array.from({ length: copies }, () => testimonials).flat();
+  }, [testimonials, realCount]);
+
   const renderCard = (testimonial: Testimonial) => (
     <div className="testimonial-card bg-white/5 p-4 rounded-4xl group relative">
       {/* Speech bubble */}
@@ -33,7 +47,7 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
         "
       >
         {/* Quote */}
-        <p className="text-black/90 font-[400] text-[14px] md:text-[16px] line-clamp-3">
+        <p className="text-black/90 font-[400] text-[14px] md:text-[16px] line-clamp-3 italic">
           &ldquo;{testimonial.content}&rdquo;
         </p>
          <div className="min-w-0 pt-3 flex justify-between border-t border-black/20 mt-4">
@@ -129,20 +143,16 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
         </div>
 
         {testimonials.length > 0 && (
-          <div
-            className="testimonials-swiper"
-            style={
-              {
-                "--swiper-pagination-color": "var(--green)",
-              } as CSSProperties
-            }
-          >
+          <div className="testimonials-swiper">
             <Swiper
-              modules={[Autoplay, Pagination]}
+              modules={[Autoplay]}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
               slidesPerView={1.2}
               spaceBetween={16}
               loop={true}
-              loopAdditionalSlides={6}
+              loopAdditionalSlides={2}
               grabCursor={true}
               centeredSlides={true}
               autoplay={{
@@ -150,9 +160,9 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
               }}
-              pagination={{
-                el: ".testimonials-pagination",
-                clickable: true,
+              onRealIndexChange={(swiper) => {
+                if (realCount === 0) return;
+                setActiveIndex(swiper.realIndex % realCount);
               }}
               breakpoints={{
                 640: { slidesPerView: 2.2, spaceBetween: 20 },
@@ -160,13 +170,26 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
               }}
               className="px-5"
             >
-              {testimonials.map((testimonial) => (
-                <SwiperSlide key={testimonial.id}>
+              {loopSlides.map((testimonial, index) => (
+                <SwiperSlide key={`t-${testimonial.id}-${index}`}>
                   {renderCard(testimonial)}
                 </SwiperSlide>
               ))}
             </Swiper>
-            <div className="testimonials-pagination mt-10 flex justify-center gap-2" />
+            <div className="testimonials-pagination mt-10 flex justify-center gap-2">
+              {testimonials.map((testimonial, index) => (
+                <button
+                  key={testimonial.id}
+                  type="button"
+                  aria-label={`Go to testimonial ${index + 1}`}
+                  aria-current={index === activeIndex}
+                  className={`swiper-pagination-bullet ${
+                    index === activeIndex ? "swiper-pagination-bullet-active" : ""
+                  }`}
+                  onClick={() => swiperRef.current?.slideToLoop(index, 600)}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>

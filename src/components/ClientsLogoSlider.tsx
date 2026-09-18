@@ -78,8 +78,8 @@ const ClientsLogoSlider = ({
                     z-10
                     max-w-[140px]
                     md:max-w-[180px]
-                    max-h-[55px]
-                    md:max-h-[65px]
+                    max-h-[80px]
+                    md:max-h-[100px]
                     w-auto
                     h-auto
                     object-contain
