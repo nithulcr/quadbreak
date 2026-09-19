@@ -116,7 +116,7 @@ export default function Hero() {
           Your browser does not support the video tag.
         </video>
       </div>
-      {/* <div className="absolute bottom-0 z-9 right-0 w-[140px] h-[140px] md:w-[250px] md:h-[250px] ml-auto self-end uppercase">
+      <div className="absolute bottom-0 z-9 right-0 w-[140px] h-[140px] md:w-[250px] md:h-[250px] ml-auto self-end uppercase">
         <SpinningText
           text="Quadbreak • Gaming Art • Stimulator Art  • "
           image="/images/favicon-t.png"
@@ -125,7 +125,7 @@ export default function Hero() {
           duration={15}
 
         />
-      </div> */}
+      </div>
     </section>
   );
 }

@@ -47,10 +47,10 @@ export default function SpinningText({
     >
       {/* Center Logo */}
       <div
-        className="bg-cover bg-center"
+        className="bg-cover bg-center hero-spinn"
         style={{
-          width: currentSize * 0.33,
-          height: currentSize * 0.33,
+          width: currentSize * 0.55,
+          height: currentSize * 0.55,
           backgroundImage: `url(${image})`,
         }}
       />
