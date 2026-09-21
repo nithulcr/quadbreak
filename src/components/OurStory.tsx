@@ -147,7 +147,7 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                     ref={text2Ref}
                     className="uppercase w-fit text-white/60 max-w-[520px] lg:text-right italic mb-4 lg:mb-10 text-3xl xl:text-[3rem]  leading-none font-light  relative"
                   >
-                    Since <span className="text-[var(--green)]">2026</span>{" "}<br/>
+                    Since <span className="text-[var(--green)]">2016</span>{" "}<br/>
                     It&apos;s been a{" "}
                     <span className="text-[var(--green)]">cool journey,</span>{" "}
                     and <span className="text-[var(--green)]">we&apos;re</span>{" "}

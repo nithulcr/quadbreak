@@ -51,7 +51,7 @@ const categories: Category[] = [
     title: "QuadBreak Academy",
     subtitle: "Learn • Create • Build",
     description:
-      "QuadBreak Academy focuses on practical, production-oriented education designed to help aspiring artists develop real-world 3D and game-art skills. QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
+      "Quadbreak runs training programs for young people from Kerala who want to build careers in 3D art and game development. Students learn the same pipeline and quality standards used on real Disney and simulation projects — and the best of them join the studio team. We're not just hiring artists. We're making them.",
     image: "/images/works/3.png",
 
     href: "/services",
@@ -211,10 +211,10 @@ export default function Categories() {
             return (
               <article
                 key={cat.number}
-                className={` group relative grid grid-cols-1 lg:grid-cols-5 overflow-hidden gap-7  xl:gap-15 pb-12`}
+                className={` group relative grid grid-cols-1  gap-7  xl:gap-15 pb-12`}
               >
                 {/* Image */}
-                <div className="lg:col-span-2 cat4-img relative  aspect-[16/9] w-full overflow-hidden  bg-[#141414]">
+                {/* <div className="lg:col-span-2 cat4-img relative  aspect-[16/9] w-full overflow-hidden  bg-[#141414]">
                   <Image
                     src={cat.image}
                     alt={`${cat.title} — ${cat.subtitle}`}
@@ -226,7 +226,7 @@ export default function Categories() {
                     className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/40 via-transparent to-transparent"
                     aria-hidden="true"
                   />
-                </div>
+                </div> */}
                 <div className="lg:col-span-3">
                   <div className="mb-2 flex items-start justify-between">
                     <div>
@@ -238,7 +238,7 @@ export default function Categories() {
                       </span>
 
                       {/* Description */}
-                      <p className="mt-4  font-light text-[14px] xl:text-lg  xl:max-w-[90%]">
+                      <p className="mt-4  font-light text-[14px] xl:text-lg  xl:max-w-[80%]">
                         {cat.description}
                       </p>
                     </div>

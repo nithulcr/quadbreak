@@ -18,15 +18,15 @@ interface TeamMember {
 const staticTeam: TeamMember[] = [
   {
     id: 1,
-    name: "Titto",
-    role: "Business Development Manger",
-    photoUrl: "/images/member1.png",
+    name: "Joshmi Maria",
+    role: "Director of Finance",
+    photoUrl: "/images/member5.png",
   },
   {
     id: 2,
     name: "Titto",
     role: "Business Development Manger",
-    photoUrl: "/images/member2.png",
+    photoUrl: "/images/member1.png",
   },
   {
     id: 3,
@@ -44,14 +44,9 @@ const staticTeam: TeamMember[] = [
     id: 5,
     name: "Titto",
     role: "Business Development Manger",
-    photoUrl: "/images/member1.png",
-  },
-  {
-    id: 6,
-    name: "Titto",
-    role: "Business Development Manger",
     photoUrl: "/images/member2.png",
   },
+
 ];
 
 const TeamSection = () => {

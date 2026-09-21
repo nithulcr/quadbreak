@@ -129,7 +129,7 @@ const CTASection = () => {
                 leading-[0.95]
                 tracking-tight
                 mb-6
-                text-4xl lg:text-6xl xl:text-5xl"
+                text-4xl lg:text-[50px]"
               >
                 Jesto 
                 <br />
@@ -257,24 +257,25 @@ const CTASection = () => {
               />
             </div>
             <div className=" max-w-[600px]">
-              <span className="uppercase text-[var(--green)] font-light w-fit mb-2 block  ml-auto">Creative director</span>
+              <span className="uppercase text-[var(--green)] font-light w-fit mb-2 block  ml-auto">Studio Art director</span>
               <h4
                 className="font-light text-right
                 uppercase
                 leading-[0.95]
                 tracking-tight
                 mb-6
-                text-4xl lg:text-6xl xl:text-5xl"
+                text-4xl lg:text-[50px]"
               >
                 Mithun
                 <br />
               Alexander
               </h4>
               <p className="text-right text-sm md:text-base  font-light leading-relaxed text-white/60">
-                Great art starts with a bold vision and the drive to make it
+                 Great art starts with a bold vision and the drive to make it
                 happen. Jesto Jose and Mithun Alexander are at the core of
                 Quadbreak — bringing creative vision, years of industry
-                experience.
+                experience, and a deep passion for the craft, while pushing
+                creative boundaries.
               </p>
               <div className="mt-4">
           <AnimatedButton

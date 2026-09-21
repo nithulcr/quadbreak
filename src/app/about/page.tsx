@@ -4,6 +4,8 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import OurStory from "@/components/OurStory";
+import Location from "@/components/Location";
+
 import Values from "@/components/Values";
 import WhatWeDO from "@/components/WhatWeDO";
 
@@ -25,6 +27,8 @@ export default function AboutPage() {
       <main>
         <OurStory />
         <Values />
+        <Location />
+
         <WhatWeDO/>
         <Categories />
         <TeamSection />
