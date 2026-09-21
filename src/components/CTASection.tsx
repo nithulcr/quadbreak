@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimatedButton from "./AnimatedButton";
+import Link from "next/link";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,8 +19,10 @@ const CTASection = () => {
 
     const ctx = gsap.context(() => {
       const content = section.querySelector(".cta-content");
+      const content2 = section.querySelector(".cta-content2");
+
       const visual = section.querySelector(".cta-visual");
-      const shape = section.querySelector(".cta-shape");
+      const visual2 = section.querySelector(".cta-visual2");
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -28,15 +32,18 @@ const CTASection = () => {
         },
       });
 
-      tl.from(shape, {
-        opacity: 0,
-        scale: 0.8,
-        rotate: -8,
-        duration: 1.2,
-        ease: "power3.out",
-      })
+      tl.from(
+        content,
+          {
+            opacity: 0,
+            x: -60,
+            duration: 0.9,
+            ease: "power3.out",
+          },
+          "-=0.8",
+        )
         .from(
-          content,
+          content2,
           {
             opacity: 0,
             x: -60,
@@ -47,6 +54,17 @@ const CTASection = () => {
         )
         .from(
           visual,
+          {
+            opacity: 0,
+            x: 80,
+            scale: 0.9,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "-=0.8",
+        )
+         .from(
+          visual2,
           {
             opacity: 0,
             x: 80,
@@ -69,7 +87,7 @@ const CTASection = () => {
       {/* Soft background glow */}
 
       <div className="mx-auto max-w-[1400px] px-5">
-               <span className="uppercase  font-light w-fit mb-2 block  mx-auto tracking-[4px]">Founders</span>
+
         <h2
           className="
                 font-light
@@ -184,7 +202,7 @@ const CTASection = () => {
           <div
             className="
  
-              cta-content
+              cta-content2
               relative
               z-20
              grid grid-cols-2
@@ -195,7 +213,7 @@ const CTASection = () => {
             {/* Visual */}
             <div
               className="
-              cta-visual
+              cta-visual2
     
              relative
 
@@ -269,7 +287,7 @@ const CTASection = () => {
           </div>
 
           <div className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-[80%] bg-gradient-to-b from-[var(--green)]/10 via-[var(--green)] to-[var(--green)]/10 opacity-70"></div>
-          <div
+          <Link href="/about#meet-the-team"
             className="
     absolute
     left-1/2
@@ -309,8 +327,7 @@ const CTASection = () => {
             <span className="relative z-10 text-black  text-center uppercase leading-tight">
               Meet<br/>The Team
             </span>
-          </div>
-        </div>
+        </Link>
         {/* <div className="mt-2">
           <AnimatedButton
             href="/about#meet-the-team"
@@ -318,6 +335,7 @@ const CTASection = () => {
             className="w-fit mx-auto"
           />
         </div> */}
+      </div>
       </div>
     </section>
   );
