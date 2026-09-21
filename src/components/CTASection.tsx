@@ -104,7 +104,7 @@ const CTASection = () => {
             "
           >
             <div className=" max-w-[600px]">
-                     <span className="uppercase text-[var(--green)] font-light w-fit mb-2 block ">Art director</span>
+                     <span className="uppercase text-[var(--green)] font-light w-fit mb-2 block ">Founder and CEO</span>
               <h4
                 className="font-light
                 uppercase
@@ -113,20 +113,24 @@ const CTASection = () => {
                 mb-6
                 text-4xl lg:text-6xl xl:text-5xl"
               >
-                Jesto's
+                Jesto 
                 <br />
-                Experience
+                Jose
               </h4>
               <p className="text-sm md:text-base font-light leading-relaxed text-white/60 ">
                 Great art starts with a bold vision and the drive to make it
                 happen. Jesto Jose and Mithun Alexander are at the core of
                 Quadbreak — bringing creative vision, years of industry
                 experience, and a deep passion for the craft, while pushing
-                creative boundaries, challenging the ordinary, and inspiring the
-                team to keep raising the bar. Their passion sets the pace, their
-                experience shapes the vision, and their drive keeps Quadbreak
-                moving forward.
+                creative boundaries.
               </p>
+              <div className="mt-4">
+          <AnimatedButton
+            href="https://www.linkedin.com/in/jesto-jose/"
+            label="Learn More"
+            className="w-fit"
+          />
+        </div>
             </div>
             {/* Visual */}
             <div
@@ -160,6 +164,18 @@ const CTASection = () => {
                 h-full
                 w-full
                 object-contain
+              "
+              />
+              <img
+                src="/images/jesto-name.png"
+                alt=""
+                className="
+               absolute
+             right-[-50px] bottom-0 
+              w-[120px]
+              z-1
+              object-contain
+
               "
               />
             </div>
@@ -209,6 +225,18 @@ const CTASection = () => {
                 object-contain
               "
               />
+              <img
+                src="/images/mithun-name.png"
+                alt=""
+                className="
+               absolute
+             right-[-50px] bottom-0 
+              w-[120px]
+              z-1
+              object-contain
+
+              "
+              />
             </div>
             <div className=" max-w-[600px]">
               <span className="uppercase text-[var(--green)] font-light w-fit mb-2 block  ml-auto">Creative director</span>
@@ -220,20 +248,23 @@ const CTASection = () => {
                 mb-6
                 text-4xl lg:text-6xl xl:text-5xl"
               >
-                Mithun's
+                Mithun
                 <br />
-                Experience
+              Alexander
               </h4>
               <p className="text-right text-sm md:text-base  font-light leading-relaxed text-white/60">
                 Great art starts with a bold vision and the drive to make it
                 happen. Jesto Jose and Mithun Alexander are at the core of
                 Quadbreak — bringing creative vision, years of industry
-                experience, and a deep passion for the craft, while pushing
-                creative boundaries, challenging the ordinary, and inspiring the
-                team to keep raising the bar. Their passion sets the pace, their
-                experience shapes the vision, and their drive keeps Quadbreak
-                moving forward.
+                experience.
               </p>
+              <div className="mt-4">
+          <AnimatedButton
+            href="https://www.linkedin.com/in/jesto-jose/"
+            label="Learn More"
+            className="w-fit ml-auto"
+          />
+        </div>
             </div>
           </div>
 
@@ -276,7 +307,7 @@ const CTASection = () => {
 
             {/* Static text */}
             <span className="relative z-10 text-black  text-center uppercase leading-tight">
-              Meet The Team
+              Meet<br/>The Team
             </span>
           </div>
         </div>
