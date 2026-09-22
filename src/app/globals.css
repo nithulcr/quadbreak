@@ -240,6 +240,11 @@ body.open main {
     text-transform: uppercase;
     min-width: 160px;
 }
+.button.button-sm, .button.button-sm .button-outline{
+ padding: 12px 20px;
+    min-width: 100px;
+
+}
 
   .button-outline {
     border: 1px solid var(--green);

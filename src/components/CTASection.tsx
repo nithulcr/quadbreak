@@ -6,7 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimatedButton from "./AnimatedButton";
 import Link from "next/link";
 
-
 gsap.registerPlugin(ScrollTrigger);
 
 const CTASection = () => {
@@ -34,14 +33,14 @@ const CTASection = () => {
 
       tl.from(
         content,
-          {
-            opacity: 0,
-            x: -60,
-            duration: 0.9,
-            ease: "power3.out",
-          },
-          "-=0.8",
-        )
+        {
+          opacity: 0,
+          x: -60,
+          duration: 0.9,
+          ease: "power3.out",
+        },
+        "-=0.8",
+      )
         .from(
           content2,
           {
@@ -63,7 +62,7 @@ const CTASection = () => {
           },
           "-=0.8",
         )
-         .from(
+        .from(
           visual2,
           {
             opacity: 0,
@@ -87,7 +86,6 @@ const CTASection = () => {
       {/* Soft background glow */}
 
       <div className="mx-auto max-w-[1400px] px-5">
-
         <h2
           className="
                 font-light
@@ -99,7 +97,9 @@ const CTASection = () => {
                 text-4xl lg:text-6xl xl:text-[5rem]
               "
         >
-          The Drive Behind<br/><span className="text-[var(--green)]  xl:text-[6rem]">the Art</span>
+          The Drive Behind
+          <br />
+          <span className="text-[var(--green)]  xl:text-[6rem]">the Art</span>
         </h2>
         <div
           className="
@@ -122,16 +122,18 @@ const CTASection = () => {
             "
           >
             <div className=" max-w-[600px]">
-                     <span className="uppercase text-[var(--green)] font-light w-fit mb-2 block ">Founder and CEO</span>
+              <span className="uppercase text-[var(--green)] font-light w-fit mb-2 block text-sm">
+                Founder and CEO
+              </span>
               <h4
                 className="font-light
                 uppercase
                 leading-[0.95]
                 tracking-tight
-                mb-6
-                text-4xl lg:text-[50px]"
+                mb-3
+                text-4xl lg:text-[36px]"
               >
-                Jesto 
+                Jesto
                 <br />
                 Jose
               </h4>
@@ -143,12 +145,12 @@ const CTASection = () => {
                 creative boundaries.
               </p>
               <div className="mt-4">
-          <AnimatedButton
-            href="https://www.linkedin.com/in/jesto-jose/"
-            label="Learn More"
-            className="w-fit"
-          />
-        </div>
+                <AnimatedButton
+                  href="https://www.linkedin.com/in/jesto-jose/"
+                  label="Learn More"
+                  className="w-fit button-sm"
+                />
+              </div>
             </div>
             {/* Visual */}
             <div
@@ -189,7 +191,7 @@ const CTASection = () => {
                 alt=""
                 className="
                absolute
-             right-[-50px] bottom-0 
+             left-[-50px] bottom-0 
               w-[120px]
               z-1
               object-contain
@@ -257,38 +259,41 @@ const CTASection = () => {
               />
             </div>
             <div className=" max-w-[600px]">
-              <span className="uppercase text-[var(--green)] font-light w-fit mb-2 block  ml-auto">Studio Art director</span>
+              <span className="uppercase text-[var(--green)] font-light w-fit mb-2 block  ml-auto text-sm">
+                Studio Art director
+              </span>
               <h4
                 className="font-light text-right
                 uppercase
                 leading-[0.95]
                 tracking-tight
-                mb-6
-                text-4xl lg:text-[50px]"
+                mb-3
+                text-4xl lg:text-[36px]"
               >
                 Mithun
                 <br />
-              Alexander
+                Alexander
               </h4>
               <p className="text-right text-sm md:text-base  font-light leading-relaxed text-white/60">
-                 Great art starts with a bold vision and the drive to make it
+                Great art starts with a bold vision and the drive to make it
                 happen. Jesto Jose and Mithun Alexander are at the core of
                 Quadbreak — bringing creative vision, years of industry
                 experience, and a deep passion for the craft, while pushing
                 creative boundaries.
               </p>
               <div className="mt-4">
-          <AnimatedButton
-            href="https://www.linkedin.com/in/jesto-jose/"
-            label="Learn More"
-            className="w-fit ml-auto"
-          />
-        </div>
+                <AnimatedButton
+                  href="https://www.linkedin.com/in/mithun-alexander-spacio/"
+                  label="Learn More"
+                  className="w-fit ml-auto button-sm"
+                />
+              </div>
             </div>
           </div>
 
           <div className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-[80%] bg-gradient-to-b from-[var(--green)]/10 via-[var(--green)] to-[var(--green)]/10 opacity-70"></div>
-          <Link href="/about#meet-the-team"
+          <Link
+            href="/about#meet-the-team"
             className="
     absolute
     left-1/2
@@ -301,12 +306,13 @@ const CTASection = () => {
     flex
     items-center
     justify-center
-      bg-[var(--green)]
+    border border-[var(--green)]/50
+    bg-[var(--background)]
       hover:scale-[0.9] transition-transform duration-300 cursor-pointer
   "
           >
-            {/* Rotating border */}
-            <div
+          
+            {/* <div
               className="
       absolute
     left-1/2
@@ -322,21 +328,23 @@ const CTASection = () => {
       animate-[spin_8s_linear_infinite]
     
     "
-            />
+            /> */}
 
             {/* Static text */}
-            <span className="relative z-10 text-black  text-center uppercase leading-tight">
-              Meet<br/>The Team
+            <span className="relative z-10   text-center uppercase leading-tight">
+              Meet
+              <br />
+              The Team
             </span>
-        </Link>
-        {/* <div className="mt-2">
+          </Link>
+          {/* <div className="mt-2">
           <AnimatedButton
             href="/about#meet-the-team"
             label="Meet the Team"
             className="w-fit mx-auto"
           />
         </div> */}
-      </div>
+        </div>
       </div>
     </section>
   );
