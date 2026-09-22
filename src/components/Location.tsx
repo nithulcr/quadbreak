@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import StatsSection2 from "@/components/StatsSection2";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,15 +65,13 @@ const Location = () => {
   return (
     <section
       id="Location"
-      className="section overflow-hidden py-14  md:py-24"
+      className="section py-14  md:py-24"
       ref={sectionRef}
     >
-      {/* <div className="shape3 z-[-1]"></div>
-      <div className="shape2 z-[-1]"></div> */}
-      <div className="grid-wrapper max-w-[1450px] mx-auto px-5 lg:px-10">
-        <div className="stacked-content">
-          <div className="content-wrapper">
-            <div className=" mb-12 lg:mb-20">
+      
+      <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
+        
+            <div className=" mb-8 lg:mb-14">
               <h2
                 ref={title2Ref}
                 className="uppercase w-fit text-white  text-4xl lg:text-[5rem]  leading-none font-light  relative  mx-auto"
@@ -82,20 +79,21 @@ const Location = () => {
                 Location and Journey
               </h2>
             </div>
-            <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-center mt-10 lg:mt-[-40px]">
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-14  mt-10">
               {/* Image */}
 
-              <div className="sticky top-0">
+              <div className="lg:sticky lg:top-[100px] h-fit">
                 <div className="rounded-xl lg:rounded-2xl border relative border-white/10 side-image">
                   <span className="span1"></span>
                   <span className="span2"></span>
 
                   <img
+                    ref={imgRef}
                     src="/images/map.png"
                     alt="Quadbreak Studios map"
-                    className="w-full max-h-[calc(100vh-140px)] object-cover p-1 lg:p-2 rounded-xl lg:rounded-2xl z-9 relative border-white/10 border"
+                    className="w-full max-h-[calc(100vh-130px)] xl:max-h-[500px] object-cover p-1 lg:p-2 rounded-xl lg:rounded-2xl z-9 relative border-white/10 border"
                   />
-                  <div className="absolute bottom-0 p-8 z-9 flex flex-col gap-3">
+                  <div className="absolute bottom-0 p-5 lg:p-8 z-9 flex flex-col gap-3">
                     <div>
                       <h4 className="text-3xl">IRITTY</h4>
                       <p>Kannur, Kerala</p>
@@ -114,15 +112,15 @@ const Location = () => {
 
               {/* Content */}
 
-              <div className="flex flex-col gap-4">
-                <h3 className="uppercase w-fit text-white  text-4xl lg:text-[3rem]   font-light  relative">
+              <div  ref={text4Ref} className="flex flex-col gap-4">
+                <h3  className="uppercase w-fit text-white  text-4xl lg:text-[3rem]   font-light  relative">
                   We stayed when
                   <br />
                   <span className="text-[var(--green)]">others left.</span>
                 </h3>
                 <p className=" text-[16px] md:text-[18px] leading-snug font-[200] text-white/80 text-justify">
                   Most studios in India are in Bangalore, Hyderabad, or Pune.
-                  That's where the game industry is, people said. That's where
+                  That&apos;s where the game industry is, people said. That&apos;s where
                   you need to be.
                 </p>
                 <p className="pl-4 py-2 border-l-3 border-[var(--green)] text-[16px] md:text-[20px] leading-snug font-[200] text-white text-justify">
@@ -130,10 +128,10 @@ const Location = () => {
                   art doesn’t need a city. It needs the right people.
                 </p>
                 <p
-                  ref={text4Ref}
+                 
                   className=" text-[16px] md:text-[18px] leading-snug font-[200] text-white/80 text-justify"
                 >
-                  Jesto Jose returned to his hometown after years in Bangalore's
+                  Jesto Jose returned to his hometown after years in Bangalore&apos;s
                   game industry — at Blue Papillon and Dhruva Interactive, where
                   the team worked on titles including Forza Horizon, Halo, and
                   Prey. He came back to build something permanent. Something
@@ -143,13 +141,12 @@ const Location = () => {
                   Today, Quadbreak Studios works with game studios and
                   simulation companies across Europe and North America —
                   delivering AAA-quality 3D art from a town most of our clients
-                  can't find on a map. That's the point.
+                  can&apos;t find on a map. That&apos;s the point.
                 </p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+       
     </section>
   );
 };
