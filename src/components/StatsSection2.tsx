@@ -8,22 +8,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   {
-    number: "9",
+    number: "9+",
     label: "Years of Experience",
     description: "Building game art excellence",
   },
   {
-    number: "500",
+    number: "500+",
     label: "Projects Delivered",
     description: "Across games, VR & simulations",
   },
   {
-    number: "50",
+    number: "50+",
     label: "Expert Artists",
     description: "Specialized 3D professionals",
   },
   {
-    number: "500",
+    number: "98&",
     label: "Client Satisfaction",
     description: "Trusted by industry leaders",
   },
@@ -91,7 +91,7 @@ const StatsSection2 = () => {
                 className="stat-number mb-4 text-5xl font-bold text-[var(--green)]"
                 data-target={stat.number}
               >
-                {stat.number}+
+                {stat.number}
               </div>
 
               {/* <span className="underline-span my-4 block"></span> */}

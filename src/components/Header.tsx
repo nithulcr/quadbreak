@@ -35,7 +35,7 @@ export default function Header() {
                         {/* <Link href="/culture" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Culture</Link> */}
                         <span className="h-5 w-[.05rem] bg-white/30"></span>
                 
-                        {/* <Link href="https://quadbreaksimulations.com/" target="_blank" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Stimulator Art</Link> */}
+                        {/* <Link href="https://quadbreaksimulations.com/" target="_blank" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Simulator Art</Link> */}
 
                         {/* <Link href="/portfolio" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Portfolio</Link> */}
                         <Link href="/contact" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Contact Us</Link>
@@ -101,7 +101,7 @@ export default function Header() {
                     <Link href="/" className="block py-2 px-6 nav-link uppercase text-center text-[7vh]" onClick={handleLinkClick}>Home</Link>
                     <Link href="/about" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>About Us</Link>
                     {/* <Link href="/culture" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Culture</Link> */}
-                    {/* <Link href="https://quadbreaksimulations.com/" target="_blank" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Stimulator Art</Link> */}
+                    {/* <Link href="https://quadbreaksimulations.com/" target="_blank" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Simulator Art</Link> */}
 
 
                     <Link href="/portfolio" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" onClick={handleLinkClick}>Portfolio</Link>

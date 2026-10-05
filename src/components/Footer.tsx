@@ -119,7 +119,7 @@ export default function Footer() {
             <p className="py-3 font-[200]  opacity-80 max-w-[1000px] xl:max-w-[500px]">
               We are create high quality, real-time optimized assets for
               studios, businesses, and individuals globally. From characters to
-              environments, we bring ideaas to life with precision, creativity
+              environments, we bring ideas to life with precision, creativity
               and reliability.
             </p>
             <p className="pb-3 xl:pb-0 font-[200] text-[var(--green)]">The Best for your Team.</p>
@@ -199,7 +199,7 @@ export default function Footer() {
                 target="_blank"
                 className="font-light text-md hover:text-[var(--green)] transition-colors border-b w-full block border-white/10 pb-3 flex justify-between"
               >
-                Stimulator Art
+                Simulator Art
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"

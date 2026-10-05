@@ -51,10 +51,6 @@ const WorksSection = ({ recentWorks }: WorksSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const workCards = Array.isArray(recentWorks) ? recentWorks.slice(0, 6) : [];
 
-  if (process.env.NODE_ENV === "development") {
-    console.log("Recent Works:", recentWorks);
-  }
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       const section = sectionRef.current;

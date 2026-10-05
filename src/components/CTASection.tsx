@@ -102,21 +102,21 @@ const CTASection = () => {
           <span className="text-[var(--green)]  xl:text-[6rem]">the Art</span>
         </h2>
         <div
-          className="
-            relative
-            flex flex-col-reverse md:grid md:grid-cols-1 lg:grid-cols-2  mx-auto  lg:gap-[100px]    
+          className=" mt-10 lg:mt-0
+            relative grid
+            grid-cols-1 lg:grid-cols-2  mx-auto gap-10 lg:gap-[100px]    
 
           "
         >
           {/* Content */}
           <div
             className="
- 
+                items-center
               cta-content
               relative
-              z-20
-              grid grid-cols-2
-               gap-6
+              z-20 flex flex-col-reverse
+              md:grid grid-cols-2
+               md:gap-6
         
              
             "
@@ -184,6 +184,7 @@ const CTASection = () => {
                 h-full
                 w-full
                 object-contain
+                max-w-[360px]
               "
               />
               <img
@@ -191,7 +192,7 @@ const CTASection = () => {
                 alt=""
                 className="
                absolute
-             left-[-50px] bottom-0 
+             left-0 md:left-[-50px] bottom-0 
               w-[120px]
               z-1
               object-contain
@@ -203,11 +204,11 @@ const CTASection = () => {
           {/* Content */}
           <div
             className="
- 
+            items-center
               cta-content2
               relative
               z-20
-             grid grid-cols-2
+             grid md:grid-cols-2
              gap-6
            
             "
@@ -243,6 +244,7 @@ const CTASection = () => {
                 h-full
                 w-full
                 object-contain
+                max-w-[360px]
               "
               />
               <img
@@ -250,7 +252,7 @@ const CTASection = () => {
                 alt=""
                 className="
                absolute
-             right-[-50px] bottom-0 
+             right-0 md:right-[-50px] bottom-0 
               w-[120px]
               z-1
               object-contain
@@ -291,7 +293,7 @@ const CTASection = () => {
             </div>
           </div>
 
-          <div className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-[80%] bg-gradient-to-b from-[var(--green)]/10 via-[var(--green)] to-[var(--green)]/10 opacity-70"></div>
+          <div className="absolute hidden lg:flex  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-[80%] bg-gradient-to-b from-[var(--green)]/10 via-[var(--green)] to-[var(--green)]/10 opacity-70"></div>
           <Link
             href="/about#meet-the-team"
             className="
@@ -303,7 +305,7 @@ const CTASection = () => {
     w-28
     h-28
     rounded-full
-    flex
+    hidden lg:flex
     items-center
     justify-center
     border border-[var(--green)]/50
@@ -331,19 +333,13 @@ const CTASection = () => {
             /> */}
 
             {/* Static text */}
-            <span className="relative z-10   text-center uppercase leading-tight">
+            <span className="relative z-10 font-[200]  text-center uppercase leading-tight">
               Meet
               <br />
               The Team
             </span>
           </Link>
-          {/* <div className="mt-2">
-          <AnimatedButton
-            href="/about#meet-the-team"
-            label="Meet the Team"
-            className="w-fit mx-auto"
-          />
-        </div> */}
+         
         </div>
       </div>
     </section>

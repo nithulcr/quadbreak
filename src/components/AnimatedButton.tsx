@@ -10,6 +10,7 @@ type AnimatedButtonProps = {
   onClick?: () => void;
   href?: string;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 };
 
 export default function AnimatedButton({
@@ -18,6 +19,7 @@ export default function AnimatedButton({
   onClick,
   href,
   type,
+  disabled = false,
 }: AnimatedButtonProps) {
   const buttonRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
   const outlineRef = useRef<HTMLDivElement>(null);
@@ -60,7 +62,8 @@ export default function AnimatedButton({
         ref={buttonRef as React.RefObject<HTMLButtonElement>}
         onClick={onClick}
         type={type}
-        className={clsx("button", className)}
+        disabled={disabled}
+        className={clsx("button", className, disabled && "opacity-60 cursor-not-allowed")}
       >
         <div ref={outlineRef} className="button-outline"></div>
         <div className="button-text">{label}</div>

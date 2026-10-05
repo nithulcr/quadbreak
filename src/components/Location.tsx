@@ -51,7 +51,7 @@ const Location = () => {
           imgRef.current,
           {
             opacity: 0,
-            y: 30,
+            y: 20,
             duration: 0.7,
             ease: "power2.out",
           },
@@ -83,12 +83,12 @@ const Location = () => {
               {/* Image */}
 
               <div className="lg:sticky lg:top-[100px] h-fit">
-                <div className="rounded-xl lg:rounded-2xl border relative border-white/10 side-image">
+                <div  ref={imgRef} className="rounded-xl lg:rounded-2xl border relative border-white/10 side-image ">
                   <span className="span1"></span>
                   <span className="span2"></span>
 
                   <img
-                    ref={imgRef}
+                   
                     src="/images/map.png"
                     alt="Quadbreak Studios map"
                     className="w-full max-h-[calc(100vh-130px)] xl:max-h-[500px] object-cover p-1 lg:p-2 rounded-xl lg:rounded-2xl z-9 relative border-white/10 border"

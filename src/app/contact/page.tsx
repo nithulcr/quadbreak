@@ -79,16 +79,44 @@ const socialLinks = [
 function TopContactSection() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    setError("");
+
+    const formData = new FormData(form);
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      message: formData.get("message"),
+    };
+
     setSubmitting(true);
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data?.success) {
+        setError(data?.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      form.reset();
       setSuccess(true);
+      setTimeout(() => setSuccess(false), 5000);
+    } catch {
+      setError("Could not reach the server. Please check your connection.");
+    } finally {
       setSubmitting(false);
-      (e.target as HTMLFormElement).reset();
-      setTimeout(() => setSuccess(false), 3000);
-    }, 500);
+    }
   };
 
   return (
@@ -99,8 +127,7 @@ function TopContactSection() {
             Digital <span className="text-[var(--green)]">Note</span>
           </h1>
         <p className="text-white/80 text-[16px] lg:text-[16px] leading-relaxed font-[300] max-w-[420px] mt-6 mx-auto">
-          Interested in joining our 3D world? Drop us a line and tell us what
-          you need and more.
+          Ready to build something extraordinary together? Tell us about your project and let's turn your vision into an immersive reality.
         </p>
         <ul className="flex  items-center gap-4 mt-2 mx-auto w-fit mt-5">
               {socialLinks.map(({ href, Icon }, index) => (
@@ -190,6 +217,7 @@ function TopContactSection() {
                
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your name"
                   required
                   className=" border-b border-white/30  py-3 focus:px-5 text-white text-[16px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
@@ -199,6 +227,7 @@ function TopContactSection() {
                
                 <input
                   type="email"
+                  name="email"
                   placeholder="Your email"
                    required
                   className=" border-b border-white/30  py-3 focus:px-5 text-white text-[16px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
@@ -208,6 +237,7 @@ function TopContactSection() {
                 
                 <input
                   type="text"
+                  name="phone"
                   placeholder="ph. Number"
                    required
                   className=" border-b border-white/30  py-3 focus:px-5 text-white text-[16px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
@@ -217,6 +247,7 @@ function TopContactSection() {
             
               <textarea
                 rows={5}
+                name="message"
                 placeholder="Tell us about your project..."
                  required
                 className=" border-b border-white/30  py-3 focus:px-5 text-white text-[16px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200] resize-vertical min-h-[100px]"
@@ -224,13 +255,17 @@ function TopContactSection() {
             </div>
             <AnimatedButton
               type="submit"
+              disabled={submitting}
               label={submitting ? "SENDING..." : "Send a message"}
               className="md:mt-4 mt-2 w-fit mx-auto"
             />
             {success && (
-              <p className="text-[var(--green)] text-[13px] font-[200] mt-1">
+              <p className="text-[var(--green)] text-[13px] font-[200] mt-1 text-center">
                 Message sent successfully!
               </p>
+            )}
+            {error && (
+              <p className="text-red-400 text-[13px] font-[200] mt-1 text-center">{error}</p>
             )}
           </form>
         </div>

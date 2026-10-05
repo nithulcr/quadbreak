@@ -375,10 +375,6 @@ export function normalizeWordPressService(
     image,
   };
 
-  if (process.env.NODE_ENV === "development") {
-    console.log("[WordPress] Service:", service);
-  }
-
   return service;
 }
 
@@ -402,10 +398,6 @@ export function normalizeWordPressClient(
     slug: post.slug,
     image,
   };
-
-  if (process.env.NODE_ENV === "development") {
-    console.log("[WordPress] Client:", client);
-  }
 
   return client;
 }
@@ -458,10 +450,6 @@ export function normalizeWordPressTestimonial(
     rating: readRating(post),
     image,
   };
-
-  if (process.env.NODE_ENV === "development") {
-    console.log("[WordPress] Testimonial:", testimonial);
-  }
 
   return testimonial;
 }
@@ -564,64 +552,7 @@ export async function normalizeWordPressProject(
     wordpressUrl: post.link || "",
   };
 
-  if (process.env.NODE_ENV === "development") {
-    debugProject(post, banner, galleryUrls);
-  }
-
   return project;
-}
-
-/* -------------------------------------------------------
-   DEBUG HELPER
-------------------------------------------------------- */
-
-function debugProject(
-  post: WordPressProject,
-  bannerUrl: string | undefined,
-  galleryUrls: Array<string | undefined>,
-) {
-  console.log("======================================");
-  console.log("WORDPRESS PROJECT");
-  console.log("======================================");
-
-  console.log("ID:", post.id);
-  console.log("Slug:", post.slug);
-  console.log("Title:", post.title?.rendered);
-
-  console.log("ACF:", post.acf);
-
-  console.log("Featured Image:", featuredImageUrl(post));
-
-  console.log("Category:", readProjectCategory(post));
-
-  console.log("Tags:", readAcfString(post, "project_tags"));
-
-  console.log(
-    "Short Description:",
-    readAcfString(post, "short_description"),
-  );
-
-  console.log(
-    "Button Name:",
-    readAcfString(post, "button_name"),
-  );
-
-  console.log(
-    "Button URL:",
-    readAcfString(post, "button_url"),
-  );
-
-  console.log("Project Banner URL:", bannerUrl);
-
-  console.log(
-    "Gallery:",
-    GALLERY_FIELDS.map((field, index) => ({
-      field,
-      url: galleryUrls[index],
-    })),
-  );
-
-  console.log("======================================");
 }
 
 /* -------------------------------------------------------
@@ -652,13 +583,6 @@ export async function getProjects(): Promise<Project[]> {
 
     if (!Array.isArray(posts)) {
       return [];
-    }
-
-    if (process.env.NODE_ENV === "development") {
-      console.log(
-        "WordPress projects received:",
-        posts.length,
-      );
     }
 
     const normalizedProjects = await Promise.all(
@@ -755,13 +679,6 @@ export async function getServices(): Promise<Service[]> {
       return [];
     }
 
-    if (process.env.NODE_ENV === "development") {
-      console.log(
-        "WordPress services received:",
-        posts.length,
-      );
-    }
-
     return posts.map(normalizeWordPressService);
   } catch (error) {
     console.error(
@@ -801,13 +718,6 @@ export async function getClients(): Promise<Client[]> {
 
     if (!Array.isArray(posts)) {
       return [];
-    }
-
-    if (process.env.NODE_ENV === "development") {
-      console.log(
-        "WordPress clients received:",
-        posts.length,
-      );
     }
 
     return posts.map(normalizeWordPressClient);
@@ -851,13 +761,6 @@ export async function getTestimonials(): Promise<Testimonial[]> {
       return [];
     }
 
-    if (process.env.NODE_ENV === "development") {
-      console.log(
-        "WordPress testimonials received:",
-        posts.length,
-      );
-    }
-
     return posts.map(normalizeWordPressTestimonial);
   } catch (error) {
     console.error(
@@ -884,10 +787,6 @@ export function normalizeWordPressRecentWork(
     description: toPlainText(post.content?.rendered),
     image: featuredImage,
   };
-
-  if (process.env.NODE_ENV === "development") {
-    console.log("[WordPress] Recent Work:", recentWork);
-  }
 
   return recentWork;
 }
@@ -920,13 +819,6 @@ export async function getRecentWorks(): Promise<RecentWork[]> {
 
     if (!Array.isArray(posts)) {
       return [];
-    }
-
-    if (process.env.NODE_ENV === "development") {
-      console.log(
-        "WordPress recent works received:",
-        posts.length,
-      );
     }
 
     return posts.map(normalizeWordPressRecentWork);
@@ -1161,20 +1053,12 @@ export async function getRankMathSeo(
 
   try {
     for (const url of candidates) {
-      if (process.env.NODE_ENV === "development") {
-        console.log("[Rank Math] URL:", url);
-      }
-
       const response = await fetch(
         `${RANK_MATH_HEAD_ENDPOINT}?url=${encodeURIComponent(url)}`,
         {
           cache: "no-store",
         },
       );
-
-      if (process.env.NODE_ENV === "development") {
-        console.log("[Rank Math] Status:", response.status);
-      }
 
       if (!response.ok) {
         continue;
@@ -1183,15 +1067,7 @@ export async function getRankMathSeo(
       const data =
         (await response.json()) as unknown;
 
-      if (process.env.NODE_ENV === "development") {
-        console.log("[Rank Math] Response:", data);
-      }
-
       const seo = rankMathSeoFromJson(data);
-
-      if (process.env.NODE_ENV === "development") {
-        console.log("[Rank Math] Parsed SEO:", seo);
-      }
 
       if (seo) {
         return seo;

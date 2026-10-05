@@ -64,7 +64,7 @@ const TeamSection = () => {
               Meet Our
               <span className="text-[var(--green)] pl-4">Team</span>
             </h2>
-            <p className="text-xl  tracking-[0.2em] font-light mt-5">
+            <p className="text-xl  tracking-[0.2em] font-[200] mt-5">
               Executeive Leadership
             </p>
           </div>

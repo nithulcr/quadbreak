@@ -118,7 +118,7 @@ export default function Hero() {
       </div>
       <div className="absolute bottom-0 z-9 right-0 w-[140px] h-[140px] md:w-[250px] md:h-[250px] ml-auto self-end uppercase">
         <SpinningText
-          text="Quadbreak • Gaming Art • Stimulator Art  • "
+          text="Quadbreak • Gaming Art • Simulator Art  • "
           image="/images/favicon-t.png"
           size={250}
           mobileSize={140}

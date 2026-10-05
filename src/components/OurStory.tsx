@@ -190,7 +190,7 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                       playsInline
                       className="w-full md:min-h-[400px] object-cover p-1 lg:p-2 rounded-xl lg:rounded-2xl z-9 relative border-white/10 border"
                     >
-                      <source src="/images/video.mp4" />
+                      <source src="/images/video2.mp4" />
                       Your browser does not support the video tag.
                     </video>
                   </div>
