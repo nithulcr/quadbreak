@@ -127,7 +127,7 @@ function TopContactSection() {
             Digital <span className="text-[var(--green)]">Note</span>
           </h1>
         <p className="text-white/80 text-[16px] lg:text-[16px] leading-relaxed font-[300] max-w-[420px] mt-6 mx-auto">
-          Ready to build something extraordinary together? Tell us about your project and let's turn your vision into an immersive reality.
+          Ready to build something extraordinary together? Tell us about your project and let&apos;s turn your vision into an immersive reality.
         </p>
         <ul className="flex  items-center gap-4 mt-2 mx-auto w-fit mt-5">
               {socialLinks.map(({ href, Icon }, index) => (
