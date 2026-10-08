@@ -47,7 +47,7 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
         "
       >
         {/* Quote */}
-        <p className="text-black/90 font-[400] text-[14px] md:text-[16px] line-clamp-3 italic">
+        <p className="text-black/90 font-[400] text-[14px] md:text-[16px] line-clamp-4 italic">
           &ldquo;{testimonial.content}&rdquo;
         </p>
          <div className="min-w-0 pt-3 flex justify-between border-t border-black/20 mt-4">
@@ -109,9 +109,9 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
 
         {/* Client logo */}
         <div className="min-w-0">
-          <div className="relative h-8 w-30 shrink-0">
+          <div className="relative h-10 w-38 shrink-0">
             <Image
-              src="/images/logo.png"
+              src={testimonial.logo?.url || "/images/logo.png"}
               alt={testimonial.title}
               fill
               className="object-contain"

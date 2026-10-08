@@ -10,4 +10,7 @@ export interface Testimonial {
   designation?: string;
   rating: number;
   image?: TestimonialImage;
+  logo?: {
+    url?: string;
+  };
 }

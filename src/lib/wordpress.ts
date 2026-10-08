@@ -430,14 +430,21 @@ function readRating(
   return Math.min(5, Math.max(1, Math.round(parsed)));
 }
 
-export function normalizeWordPressTestimonial(
+export async function normalizeWordPressTestimonial(
   post: WordPressContentPost,
-): Testimonial {
+): Promise<Testimonial> {
   const featuredImage = featuredImageUrl(post);
 
   const image: Testimonial["image"] =
     featuredImage
       ? { url: featuredImage }
+      : undefined;
+
+  const logoUrl = await resolveMediaUrl(post.acf?.logo);
+
+  const logo: Testimonial["logo"] =
+    logoUrl
+      ? { url: logoUrl }
       : undefined;
 
   const testimonial: Testimonial = {
@@ -449,6 +456,7 @@ export function normalizeWordPressTestimonial(
       readAcfString(post, "designation") || "",
     rating: readRating(post),
     image,
+    logo,
   };
 
   return testimonial;
@@ -761,7 +769,9 @@ export async function getTestimonials(): Promise<Testimonial[]> {
       return [];
     }
 
-    return posts.map(normalizeWordPressTestimonial);
+    return Promise.all(
+      posts.map(normalizeWordPressTestimonial),
+    );
   } catch (error) {
     console.error(
       "Failed to fetch WordPress testimonials:",
