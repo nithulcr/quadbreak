@@ -132,7 +132,7 @@ const WhoWeAre = () => {
                       playsInline
                       className="w-full h-full object-cover"
                     >
-                     <source src="/images/video.mp4" />
+                     <source src="/images/home-video.mp4" />
                       Your browser does not support the video tag.
                     </video>
 

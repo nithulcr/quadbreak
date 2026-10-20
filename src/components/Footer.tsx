@@ -361,7 +361,7 @@ export default function Footer() {
             <span className="opacity-40">|</span>
             <li>
               <Link
-                href="/terms"
+                href="/terms-and-conditions"
                 className="font-light text-sm text-white/80 hover:text-[var(--green)] transition-colors"
               >
                 Terms and Conditions

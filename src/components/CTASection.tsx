@@ -138,11 +138,7 @@ const CTASection = () => {
                 Jose
               </h4>
               <p className="text-sm md:text-base font-light leading-relaxed text-white/60 ">
-                Great art starts with a bold vision and the drive to make it
-                happen. Jesto Jose and Mithun Alexander are at the core of
-                Quadbreak — bringing creative vision, years of industry
-                experience, and a deep passion for the craft, while pushing
-                creative boundaries.
+               17 years in real-time 3D production across leading studios worldwide. Builds and leads teams that deliver at AAA level, from scoping and pipeline setup to client relationships and studio growth
               </p>
               <div className="mt-4">
                 <AnimatedButton
@@ -277,11 +273,7 @@ const CTASection = () => {
                 Alexander
               </h4>
               <p className="text-right text-sm md:text-base  font-light leading-relaxed text-white/60">
-                Great art starts with a bold vision and the drive to make it
-                happen. Jesto Jose and Mithun Alexander are at the core of
-                Quadbreak — bringing creative vision, years of industry
-                experience, and a deep passion for the craft, while pushing
-                creative boundaries.
+               17 years delivering across AAA titles at leading studios. Owns production quality at Quadbreak, setting the technical bar, directing the art team, and making sure every deliverable meets the standard before it ships.
               </p>
               <div className="mt-4">
                 <AnimatedButton

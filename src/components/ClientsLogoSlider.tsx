@@ -38,7 +38,7 @@ const ClientsLogoSlider = ({
               <div
                 key={client.id}
                 className="
-                  group
+                
                   relative
                   h-[120px]
                   md:h-[145px]
@@ -49,9 +49,6 @@ const ClientsLogoSlider = ({
                   border
                   border-white/10
                   overflow-hidden
-                  transition-all
-                  duration-500
-                  hover:bg-white/[0.02]
                 "
               >
                 {/* Subtle green glow */}
@@ -76,6 +73,8 @@ const ClientsLogoSlider = ({
                   className="
                     relative
                     z-10
+                    min-w-[120px]
+                    min-h-[80px]
                     max-w-[140px]
                     md:max-w-[180px]
                     max-h-[80px]
@@ -83,12 +82,8 @@ const ClientsLogoSlider = ({
                     w-auto
                     h-auto
                     object-contain
-                    opacity-60
-                    grayscale
-                    transition-all
-                    duration-500
-                    group-hover:opacity-100
-                    group-hover:grayscale-0
+                 
+                   
                   "
                 />
               </div>
