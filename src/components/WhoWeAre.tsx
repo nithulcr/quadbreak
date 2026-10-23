@@ -1,11 +1,363 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import AnimatedButton from "./AnimatedButton";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const SLIDE_INTERVAL = 3600;
+
+const SLIDES = [
+  {
+    src: "/images/works/1.png",
+    alt: "Quadbreak Studios 3D artwork — environment and asset showcase",
+  },
+
+  {
+    src: "/images/works/3.png",
+    alt: "Quadbreak Academy game art project showcase",
+  },
+  {
+    src: "/images/works/4.png",
+    alt: "Quadbreak Studios game environment artwork",
+  },
+  {
+    src: "/images/works/5.png",
+    alt: "Quadbreak Studios vehicle and hard-surface art showcase",
+  },
+
+];
+
+type SlideTransition = {
+  from: gsap.TweenVars;
+  to: gsap.TweenVars;
+  duration: number;
+  ease: string;
+};
+
+const SLIDE_TRANSITIONS: SlideTransition[] = [
+  {
+    from: { autoAlpha: 0, y: 40, scale: 1 },
+    to: { autoAlpha: 1, y: 0, scale: .9 },
+    duration: .8,
+    ease: "power3.out",
+  },
+  {
+    from: {
+      autoAlpha: 1,
+      xPercent: 8,
+      clipPath: "inset(0% 0% 0% 100%)",
+    },
+    to: { autoAlpha: 1, xPercent: 0, clipPath: "inset(0% 0% 0% 0%)" },
+    duration: .8,
+    ease: "power4.inOut",
+  },
+  {
+    from: { autoAlpha: 0, scale: 1 },
+    to: { autoAlpha: 1, scale: .9 },
+    duration: .8,
+    ease: "power3.out",
+  },
+  {
+    from: {
+      autoAlpha: 1,
+      yPercent: 8,
+      clipPath: "inset(100% 0% 0% 0%)",
+    },
+    to: { autoAlpha: 1, yPercent: 0, clipPath: "inset(0% 0% 0% 0%)" },
+    duration: .8,
+    ease: "power4.inOut",
+  },
+  {
+    from: {
+      autoAlpha: 1,
+      scale: 1,
+      clipPath: "inset(0% 100% 0% 0%)",
+    },
+    to: { autoAlpha: 1, scale: .9, clipPath: "inset(0% 0% 0% 0%)" },
+    duration: .8,
+    ease: "power4.inOut",
+  },
+  {
+    from: { autoAlpha: 0, xPercent: -5, yPercent: -3, scale: 1 },
+    to: { autoAlpha: 1, xPercent: 0, yPercent: 0, scale: .9 },
+    duration: .8,
+    ease: "power3.out",
+  },
+];
+
+const ArtworkSlider = () => {
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const goToRef = useRef<(index: number) => void>(() => {});
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const slides = slideRefs.current.filter(
+      (slide): slide is HTMLDivElement => slide !== null
+    );
+    if (slides.length === 0) return;
+
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const reducedMotion = { current: motionQuery.matches };
+    const activeIndexRef = { current: 0 };
+    const isAnimating = { current: false };
+    const loadedImages = imageRefs.current.filter(
+      (image): image is HTMLDivElement => image !== null
+    );
+
+    let autoplayTimer: number | undefined;
+    let inView = false;
+    let timeline: gsap.core.Timeline | null = null;
+
+    const clearAutoplay = () => {
+      if (autoplayTimer !== undefined) {
+        window.clearTimeout(autoplayTimer);
+        autoplayTimer = undefined;
+      }
+    };
+
+    const startKenBurns = (index: number) => {
+      const image = imageRefs.current[index];
+      if (!image || reducedMotion.current) return;
+
+      gsap.killTweensOf(loadedImages);
+      gsap.fromTo(
+        image,
+        { scale: 1.045 },
+        { scale: 1.12, duration: 7, ease: "none", overwrite: true }
+      );
+    };
+
+    let scheduleNext = () => {};
+
+    const goTo = (nextIndex: number) => {
+      if (isAnimating.current || nextIndex === activeIndexRef.current) return;
+
+      const current = slides[activeIndexRef.current];
+      const incoming = slides[nextIndex];
+      if (!current || !incoming) return;
+
+      clearAutoplay();
+      isAnimating.current = true;
+
+      const transition = SLIDE_TRANSITIONS[nextIndex % SLIDE_TRANSITIONS.length];
+      const duration = reducedMotion.current ? 0.01 : transition.duration;
+
+      gsap.set(incoming, {
+        zIndex: 3,
+        autoAlpha: 1,
+        x: 0,
+        y: 0,
+        xPercent: 0,
+        yPercent: 0,
+        scale: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+      });
+      gsap.set(incoming, transition.from);
+
+      const incomingImage = imageRefs.current[nextIndex];
+      if (incomingImage) {
+        gsap.set(incomingImage, { scale: reducedMotion.current ? 1 : 1.045 });
+      }
+
+      timeline?.kill();
+      timeline = gsap.timeline({
+        defaults: { overwrite: "auto" },
+        onComplete: () => {
+          gsap.set(current, {
+            autoAlpha: 0,
+            zIndex: 0,
+            scale: 1,
+            clipPath: "inset(0% 0% 0% 0%)",
+          });
+          gsap.set(incoming, { zIndex: 2 });
+          isAnimating.current = false;
+          startKenBurns(nextIndex);
+          scheduleNext();
+        },
+      });
+
+      timeline.to(
+        current,
+        {
+          autoAlpha: 0,
+          scale: 1.01,
+          duration: reducedMotion.current ? 0.01 : 0.8,
+          ease: "power2.inOut",
+        },
+        0
+      );
+
+      timeline.to(
+        incoming,
+        {
+          ...transition.to,
+          autoAlpha: 1,
+          x: 0,
+          y: 0,
+          xPercent: 0,
+          yPercent: 0,
+          scale: 1,
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration,
+          ease: transition.ease,
+        },
+        0
+      );
+
+      activeIndexRef.current = nextIndex;
+      setActiveIndex(nextIndex);
+    };
+
+    goToRef.current = goTo;
+
+    scheduleNext = () => {
+      clearAutoplay();
+      if (!inView || reducedMotion.current || isAnimating.current) return;
+
+      autoplayTimer = window.setTimeout(() => {
+        goTo((activeIndexRef.current + 1) % slides.length);
+      }, SLIDE_INTERVAL);
+    };
+
+    const ctx = gsap.context(() => {
+      gsap.set(slides, {
+        autoAlpha: 0,
+        zIndex: 0,
+        x: 0,
+        y: 0,
+        xPercent: 0,
+        yPercent: 0,
+        scale: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+      });
+      gsap.set(slides[0], { autoAlpha: 1, zIndex: 2 });
+      startKenBurns(0);
+    }, slider);
+
+    const handleMotionChange = (event: MediaQueryListEvent) => {
+      reducedMotion.current = event.matches;
+
+      if (event.matches) {
+        clearAutoplay();
+      } else if (inView && !isAnimating.current) {
+        scheduleNext();
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+
+        if (inView) {
+          scheduleNext();
+        } else {
+          clearAutoplay();
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(slider);
+    motionQuery.addEventListener("change", handleMotionChange);
+
+    return () => {
+      clearAutoplay();
+      observer.disconnect();
+      motionQuery.removeEventListener("change", handleMotionChange);
+      timeline?.kill();
+      gsap.killTweensOf(loadedImages);
+      ctx.revert();
+      goToRef.current = () => {};
+    };
+  }, []);
+
+  return (
+    <div
+      ref={sliderRef}
+      className="relative aspect-[16/10] w-full overflow-hidden"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Quadbreak 3D artwork showcase"
+    >
+      <div className="absolute inset-0">
+        {SLIDES.map((slide, index) => (
+          <div
+            key={slide.src}
+            ref={(el) => {
+              slideRefs.current[index] = el;
+            }}
+            className="absolute inset-0 overflow-hidden opacity-0 [will-change:transform,opacity,clip-path] [&:first-child]:opacity-100"
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${index + 1} of ${SLIDES.length}`}
+            aria-hidden={index !== activeIndex}
+          >
+            <div
+              ref={(el) => {
+                imageRefs.current[index] = el;
+              }}
+              className="absolute inset-0 [will-change:transform]"
+            >
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                sizes="(max-width: 1023px) 100vw, 530px"
+                quality={85}
+                priority={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
+                draggable={false}
+                className="object-cover"
+              />
+            </div>
+
+            
+          </div>
+        ))}
+      </div>
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 px-3 pb-3 sm:px-4 sm:pb-4">
+        <div className="pointer-events-auto flex items-center gap-1">
+          {SLIDES.map((slide, index) => (
+            <button
+              key={slide.src}
+              type="button"
+              onClick={() => goToRef.current(index)}
+              aria-label={`Show slide ${index + 1}: ${slide.alt}`}
+              aria-current={index === activeIndex ? "true" : undefined}
+              className="group flex h-7 w-5 items-center justify-center"
+            >
+              <span
+                className={`block h-[2px] transition-all duration-300 ${
+                  index === activeIndex
+                    ? "w-5 bg-[var(--green)]"
+                    : "w-2.5 bg-white/40 group-hover:bg-white/75"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+
+        <span className="pointer-events-none select-none font-mono text-[10px] tracking-[0.22em] text-white/60 sm:text-[11px]">
+          <span className="text-[var(--green)]">
+            {String(activeIndex + 1).padStart(2, "0")}
+          </span>
+          <span className="px-1 text-white/30">/</span>
+          {String(SLIDES.length).padStart(2, "0")}
+        </span>
+      </div>
+    </div>
+  );
+};
 
 const WhoWeAre = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -125,7 +477,7 @@ const WhoWeAre = () => {
                     <h2 ref={text2Ref} className="lg:ml-auto uppercase w-fit text-white/60  text-right italic mb-10 text-[3rem]  leading-none font-light  relative">
                      Lets Create <br />Magic Together
                     </h2>
-                    <video
+                    {/* <video
                       autoPlay
                       loop
                       muted
@@ -134,16 +486,13 @@ const WhoWeAre = () => {
                     >
                      <source src="/images/home-video.mp4" />
                       Your browser does not support the video tag.
-                    </video>
-
+                    </video> */}
+                    <div className="image-slider">
+                      <ArtworkSlider />
+                    </div>
                   </div>
-
                 </div>
-                
-
-
               </div>
-
             </div>
           </div>
         </div>
