@@ -32,22 +32,7 @@ const SLIDES = [
     src: "/images/slides/6.png",
 
   },
-  {
-    src: "/images/slides/7.png",
 
-  },
-  {
-    src: "/images/slides/8.png",
-
-  },
-  {
-    src: "/images/slides/9.png",
-
-  },
-  {
-    src: "/images/slides/10.png",
-
-  },
 
 
 ];
