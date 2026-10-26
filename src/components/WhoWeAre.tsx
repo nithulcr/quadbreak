@@ -16,7 +16,10 @@ const SLIDES = [
    
   },
 
+  {
+    src: "/images/slides/2.png",
 
+  },
    {
     src: "/images/slides/3.png",
    
@@ -29,10 +32,7 @@ const SLIDES = [
     src: "/images/slides/5.png",
 
   },
-  {
-    src: "/images/slides/6.png",
 
-  },
 
 
 
