@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SLIDE_INTERVAL = 3600;
+const SLIDE_INTERVAL = 2000;
 
 const SLIDES = [
   {
@@ -16,9 +16,10 @@ const SLIDES = [
    
   },
 
-  {
-    src: "/images/slides/3.png",
 
+   {
+    src: "/images/slides/3.png",
+   
   },
   {
     src: "/images/slides/4.png",
