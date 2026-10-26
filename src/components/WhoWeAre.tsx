@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SLIDE_INTERVAL = 2000;
+const SLIDE_INTERVAL = 2500;
 
 const SLIDES = [
   {
@@ -45,56 +45,14 @@ type SlideTransition = {
   ease: string;
 };
 
-const SLIDE_TRANSITIONS: SlideTransition[] = [
-  {
-    from: { autoAlpha: 0, y: 40, scale: 1 },
-    to: { autoAlpha: 1, y: 0, scale: .9 },
-    duration: .8,
-    ease: "power3.out",
-  },
-  {
-    from: {
-      autoAlpha: 1,
-      xPercent: 8,
-      clipPath: "inset(0% 0% 0% 100%)",
-    },
-    to: { autoAlpha: 1, xPercent: 0, clipPath: "inset(0% 0% 0% 0%)" },
-    duration: .8,
-    ease: "power4.inOut",
-  },
-  {
-    from: { autoAlpha: 0, scale: 1 },
-    to: { autoAlpha: 1, scale: .9 },
-    duration: .8,
-    ease: "power3.out",
-  },
-  {
-    from: {
-      autoAlpha: 1,
-      yPercent: 8,
-      clipPath: "inset(100% 0% 0% 0%)",
-    },
-    to: { autoAlpha: 1, yPercent: 0, clipPath: "inset(0% 0% 0% 0%)" },
-    duration: .8,
-    ease: "power4.inOut",
-  },
-  {
-    from: {
-      autoAlpha: 1,
-      scale: 1,
-      clipPath: "inset(0% 100% 0% 0%)",
-    },
-    to: { autoAlpha: 1, scale: .9, clipPath: "inset(0% 0% 0% 0%)" },
-    duration: .8,
-    ease: "power4.inOut",
-  },
-  {
-    from: { autoAlpha: 0, xPercent: -5, yPercent: -3, scale: 1 },
-    to: { autoAlpha: 1, xPercent: 0, yPercent: 0, scale: .9 },
-    duration: .8,
-    ease: "power3.out",
-  },
-];
+const FADE_TRANSITION: SlideTransition = {
+  from: { autoAlpha: 0, scale: 1 },
+  to: { autoAlpha: 1, scale: .9 },
+  duration: .9,
+  ease: "power3.out",
+};
+
+const SLIDE_TRANSITIONS: SlideTransition[] = SLIDES.map(() => FADE_TRANSITION);
 
 const ArtworkSlider = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -208,12 +166,6 @@ const ArtworkSlider = () => {
         {
           ...transition.to,
           autoAlpha: 1,
-          x: 0,
-          y: 0,
-          xPercent: 0,
-          yPercent: 0,
-          scale: 1,
-          clipPath: "inset(0% 0% 0% 0%)",
           duration,
           ease: transition.ease,
         },
