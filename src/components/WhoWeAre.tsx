@@ -12,22 +12,43 @@ const SLIDE_INTERVAL = 3600;
 
 const SLIDES = [
   {
-    src: "/images/works/1.png",
-    alt: "Quadbreak Studios 3D artwork — environment and asset showcase",
+    src: "/images/slides/1.png",
+   
   },
 
   {
-    src: "/images/works/3.png",
-    alt: "Quadbreak Academy game art project showcase",
+    src: "/images/slides/3.png",
+
   },
   {
-    src: "/images/works/4.png",
-    alt: "Quadbreak Studios game environment artwork",
+    src: "/images/slides/4.png",
+
   },
   {
-    src: "/images/works/5.png",
-    alt: "Quadbreak Studios vehicle and hard-surface art showcase",
+    src: "/images/slides/5.png",
+
   },
+  {
+    src: "/images/slides/6.png",
+
+  },
+  {
+    src: "/images/slides/7.png",
+
+  },
+  {
+    src: "/images/slides/8.png",
+
+  },
+  {
+    src: "/images/slides/9.png",
+
+  },
+  {
+    src: "/images/slides/10.png",
+
+  },
+
 
 ];
 
@@ -309,7 +330,7 @@ const ArtworkSlider = () => {
             >
               <Image
                 src={slide.src}
-                alt={slide.alt}
+                alt="Quadbreak Studios 3D artwork"
                 fill
                 sizes="(max-width: 1023px) 100vw, 530px"
                 quality={85}
@@ -325,14 +346,14 @@ const ArtworkSlider = () => {
         ))}
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 px-3 pb-3 sm:px-4 sm:pb-4">
+      {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 px-3 pb-3 sm:px-4 sm:pb-4">
         <div className="pointer-events-auto flex items-center gap-1">
           {SLIDES.map((slide, index) => (
             <button
               key={slide.src}
               type="button"
               onClick={() => goToRef.current(index)}
-              aria-label={`Show slide ${index + 1}: ${slide.alt}`}
+              aria-label={`Show slide ${index + 1} of ${SLIDES.length}`}
               aria-current={index === activeIndex ? "true" : undefined}
               className="group flex h-7 w-5 items-center justify-center"
             >
@@ -354,7 +375,7 @@ const ArtworkSlider = () => {
           <span className="px-1 text-white/30">/</span>
           {String(SLIDES.length).padStart(2, "0")}
         </span>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -170,7 +170,7 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                     playsInline
                     className="w-full h-full object-cover"
                   >
-                    <source src="/images/video.mp4" />
+                    <source src="/images/teams.mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
