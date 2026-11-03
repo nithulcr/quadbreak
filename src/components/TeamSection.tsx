@@ -20,13 +20,13 @@ const staticTeam: TeamMember[] = [
     id: 1,
     name: "Joshmi Maria",
     role: "Director of Finance",
-    photoUrl: "/images/member5.png",
+    photoUrl: "/images/member1.png",
   },
   {
     id: 2,
     name: "Titto",
     role: "Business Development Manger",
-    photoUrl: "/images/member1.png",
+    photoUrl: "/images/member2.png",
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ const staticTeam: TeamMember[] = [
     id: 5,
     name: "Titto",
     role: "Business Development Manger",
-    photoUrl: "/images/member2.png",
+    photoUrl: "/images/member5.png",
   },
 
 ];
@@ -100,13 +100,13 @@ const TeamSection = () => {
             <SwiperSlide key={member.id}>
               <div className="group relative">
                 {/* Image Container with default filters and hover removal */}
-                <div className="relative aspect-[1/1.1] w-full overflow-hidden border border-[#101010] transition-all duration-500 ease-in-out">
+                <div className="relative aspect-[1/1.4] w-full overflow-hidden border border-[#101010] transition-all duration-500 ease-in-out">
                   <Image
                     src={member.photoUrl}
                     alt={member.name}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="text-center px-4 py-3">

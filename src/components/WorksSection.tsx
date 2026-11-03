@@ -6,6 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import type { RecentWork } from "@/types/recentWork";
+import Link from "next/link";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +18,8 @@ const WorkCard = ({
   card: RecentWork;
   className?: string;
 }) => (
-  <div
+  <Link
+    href="/portfolio"
     className={`about-card bg-white/4 group relative top-0 aspect-[1/1.08] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px] ${className}`}
   >
     <img
@@ -40,7 +43,7 @@ const WorkCard = ({
         {card.description || "Recent work"}
       </p> */}
     </div>
-  </div>
+  </Link>
 );
 
 interface WorksSectionProps {
