@@ -2,11 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import type { Swiper as SwiperClass } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
+
 
 interface TeamMember {
   id: number;
@@ -46,13 +42,23 @@ const staticTeam: TeamMember[] = [
     role: "Business Development Manger",
     photoUrl: "/images/member5.png",
   },
+   {
+    id: 6,
+    name: "Titto",
+    role: "Business Development Manger",
+    photoUrl: "/images/member6.png",
+  },
+   {
+    id: 7,
+    name: "Titto",
+    role: "Business Development Manger",
+    photoUrl: "/images/member7.png",
+  },
 
 ];
 
 const TeamSection = () => {
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
-  const swiperRef = useRef<SwiperClass | null>(null);
+ 
   const [ready, setReady] = useState(false);
 
   return (
@@ -70,34 +76,9 @@ const TeamSection = () => {
           </div>
         </div>
 
-        <Swiper
-          modules={[Navigation]}
-          slidesPerView={1.3}
-          spaceBetween={10}
-          loop={true}
-         centeredSlides={true}
-          loopAdditionalSlides={6}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
-          breakpoints={{
-            640: { slidesPerView: 2.3,  spaceBetween:20 },
-            1024: { slidesPerView: 3.3,  spaceBetween:20 },
-            1280: { slidesPerView: 4,  spaceBetween:20,  centeredSlides:false },
-          }}
-          onBeforeInit={(swiper) => {
-            swiperRef.current = swiper;
-            // @ts-expect-error Swiper navigation refs
-            swiper.params.navigation.prevEl = prevRef.current;
-            // @ts-expect-error Swiper navigation refs
-            swiper.params.navigation.nextEl = nextRef.current;
-          }}
-          onInit={() => setReady(true)}
-          className={`team-swiper  cursor-grab ${ready ? "" : "invisible"} `}
-        >
+       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
           {staticTeam.map((member) => (
-            <SwiperSlide key={member.id}>
+            <div  key={member.id}>
               <div className="group relative">
                 {/* Image Container with default filters and hover removal */}
                 <div className="relative aspect-[1/1.4] w-full overflow-hidden border border-[#101010] transition-all duration-500 ease-in-out">
@@ -110,31 +91,14 @@ const TeamSection = () => {
                   />
                 </div>
                 <div className="text-center px-4 py-3">
-                  <h3 className="text-xl md:text-2xl font-[200]">{member.name}</h3>
-                  <p className="mt-1 text-[14px] md:text-[16px] font-light text-white/50">{member.role}</p>
+                  <h3 className="text-lg md:text-2xl font-[200]">{member.name}</h3>
+                  <p className="mt-1 text-[12px] md:text-[16px] font-light text-white/50">{member.role}</p>
                 </div>
               </div>
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
-
-        {/* 
-        <div className="hidden gap-2 md:flex justify-center mt-14">
-          <button
-            ref={prevRef}
-            aria-label="Previous team members"
-            className="cursor-pointer rounded-lg border border-white/15 px-4 py-2 text-[24px] leading-none text-[var(--white)] transition-colors hover:border-[var(--green)] hover:text-[var(--green)]"
-          >
-            ←
-          </button>
-          <button
-            ref={nextRef}
-            aria-label="Next team members"
-            className="cursor-pointer rounded-lg border border-white/15 px-4 py-2 text-[24px] leading-none text-[var(--white)] transition-colors hover:border-[var(--green)] hover:text-[var(--green)]"
-          >
-            →
-          </button>
-        </div> */}
+          </div>
+      
       </div>
     </section>
   );

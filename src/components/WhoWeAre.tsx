@@ -13,9 +13,15 @@ const SLIDE_INTERVAL = 2500;
 const SLIDES = [
   { src: "/images/slides/1.png" },
   { src: "/images/slides/2.png" },
+  { src: "/images/slides/9.png" },
+
   { src: "/images/slides/3.png" },
   { src: "/images/slides/4.png" },
   { src: "/images/slides/5.png" },
+  { src: "/images/slides/6.png" },
+  { src: "/images/slides/7.png" },
+  { src: "/images/slides/8.png" },
+
 ];
 
 type SlideTransition = {
@@ -329,7 +335,7 @@ const ArtworkSlider = () => {
                 priority={index === 0}
                 loading={index === 0 ? "eager" : "lazy"}
                 draggable={false}
-                className="object-cover"
+                className="object-contain object-center w-full h-full select-none pointer-events-none"
               />
             </div>
           </div>

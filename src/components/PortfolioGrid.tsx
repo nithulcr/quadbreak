@@ -121,7 +121,7 @@ const PortfolioGrid = ({ limit, projects = [] }: PortfolioGridProps) => {
               const projectLink = slug ? `/portfolio/${slug}` : null;
 
               const CardInner = (
-                <div className="about-card group relative top-0 aspect-[1/1.08] border border-white/10 rounded-2xl overflow-hidden  duration-500 ease-out">
+                <div className="about-card group relative top-0 aspect-[1/1.04] border border-white/10 rounded-2xl overflow-hidden  duration-500 ease-out">
                   <img
                     src={imageUrl}
                     alt={project.title}
