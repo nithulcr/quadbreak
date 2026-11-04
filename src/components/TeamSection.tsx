@@ -54,6 +54,12 @@ const staticTeam: TeamMember[] = [
     role: "Business Development Manger",
     photoUrl: "/images/member7.png",
   },
+  {
+    id: 8,
+    name: "Titto",
+    role: "Business Development Manger",
+    photoUrl: "/images/member8.png",
+  },
 
 ];
 

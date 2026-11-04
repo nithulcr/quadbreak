@@ -33,6 +33,15 @@ const RANK_MATH_HEAD_ENDPOINT =
 
 const REVALIDATE_SECONDS = 60;
 
+const MENU_ORDER_QUERY = "orderby=menu_order&order=asc";
+
+function menuOrderedUrl(
+  endpoint: string,
+  params: string[] = [],
+): string {
+  return `${endpoint}?${[...params, MENU_ORDER_QUERY].join("&")}`;
+}
+
 const GALLERY_FIELDS = [
   "gallery_image_1",
   "gallery_image_2",
@@ -570,7 +579,7 @@ export async function normalizeWordPressProject(
 export async function getProjects(): Promise<Project[]> {
   try {
     const response = await fetch(
-      `${PROJECTS_ENDPOINT}?_embed&per_page=100`,
+      menuOrderedUrl(PROJECTS_ENDPOINT, ["_embed", "per_page=100"]),
       {
         next: {
           revalidate: REVALIDATE_SECONDS,
@@ -664,7 +673,7 @@ export async function getProjectBySlug(
 export async function getServices(): Promise<Service[]> {
   try {
     const response = await fetch(
-      `${SERVICES_ENDPOINT}?_embed&per_page=100`,
+      menuOrderedUrl(SERVICES_ENDPOINT, ["_embed", "per_page=100"]),
       {
         next: {
           revalidate: REVALIDATE_SECONDS,
@@ -705,7 +714,7 @@ export async function getServices(): Promise<Service[]> {
 export async function getClients(): Promise<Client[]> {
   try {
     const response = await fetch(
-      `${CLIENTS_ENDPOINT}?_embed&per_page=100`,
+      menuOrderedUrl(CLIENTS_ENDPOINT, ["_embed", "per_page=100"]),
       {
         next: {
           revalidate: REVALIDATE_SECONDS,
@@ -746,7 +755,7 @@ export async function getClients(): Promise<Client[]> {
 export async function getTestimonials(): Promise<Testimonial[]> {
   try {
     const response = await fetch(
-      `${TESTIMONIALS_ENDPOINT}?_embed&per_page=100`,
+      menuOrderedUrl(TESTIMONIALS_ENDPOINT, ["_embed", "per_page=100"]),
       {
         next: {
           revalidate: REVALIDATE_SECONDS,
@@ -808,7 +817,7 @@ export function normalizeWordPressRecentWork(
 export async function getRecentWorks(): Promise<RecentWork[]> {
   try {
     const response = await fetch(
-      `${RECENT_WORKS_ENDPOINT}?_embed&per_page=6&orderby=menu_order&order=asc`,
+      menuOrderedUrl(RECENT_WORKS_ENDPOINT, ["_embed", "per_page=6"]),
       {
         next: {
           revalidate: REVALIDATE_SECONDS,
