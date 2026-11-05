@@ -33,7 +33,7 @@ const staticTeam: TeamMember[] = [
   {
     id: 4,
     name: "Sagar Savale",
-    role: "Lead Game Artist",
+    role: "Lead  Artist",
     photoUrl: "/images/member4.webp",
   },
   {

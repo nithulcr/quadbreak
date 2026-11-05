@@ -26,11 +26,11 @@ export default function ProjectGallery({ project }: { project: Project }) {
           {project.title}
         </h1>
 
-        {description && (
+        {/* {description && (
           <p className="mt-6 max-w-3xl text-sm lg:text-base font-light leading-relaxed text-white/70">
             {description}
           </p>
-        )}
+        )} */}
 
         {(project.category.length > 0 || tags.length > 0) && (
           <ul className="mt-6 flex flex-wrap gap-2" aria-label="Project details">
