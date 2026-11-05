@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import type { RecentWork } from "@/types/recentWork";
 import Link from "next/link";
+import { prefersReducedMotion } from "@/lib/motion";
+import { defaultOgImage } from "@/lib/site";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -22,12 +25,12 @@ const WorkCard = ({
     href="/portfolio"
     className={`about-card bg-white/4 group relative top-0 aspect-[1/1.04] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px] ${className}`}
   >
-    <img
-      src={card.image}
-      alt={card.title}
-      className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.08]"
+    <Image
+      src={card.image || defaultOgImage}
+      alt={`${card.title || "Recent work"} – 3D game art by Quadbreak Studios`}
+      fill
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      loading="lazy"
+      className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.08]"
     />
     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10" />
     <div className="absolute top-6 left-6 z-20 transition-all duration-500 ease-out group-hover:top-[-100px]">
@@ -55,6 +58,8 @@ const WorksSection = ({ recentWorks }: WorksSectionProps) => {
   const workCards = Array.isArray(recentWorks) ? recentWorks.slice(0, 6) : [];
 
   useEffect(() => {
+    if (prefersReducedMotion()) return;
+
     const ctx = gsap.context(() => {
       const section = sectionRef.current;
       if (!section) return;

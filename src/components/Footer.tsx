@@ -107,7 +107,7 @@ export default function Footer() {
             <div className="relative text-centerc w-fit">
               <Image
                 src="/images/logo.png"
-                alt="Quadbreak Logo"
+                alt="Quadbreak Studios"
                 width={230}
                 height={50}
                 className="w-[280px] content-center"
@@ -117,10 +117,10 @@ export default function Footer() {
               </span>
             </div>
             <p className="py-3 font-[200]  opacity-80 max-w-[1000px] xl:max-w-[500px]">
-              We are create high quality, real-time optimized assets for
-              studios, businesses, and individuals globally. From characters to
-              environments, we bring ideas to life with precision, creativity
-              and reliability.
+              We create high-quality, real-time optimized 3D assets for game
+              studios, businesses, and individuals worldwide. From vehicles and
+              weapons to environments and props, we bring ideas to life with
+              precision, creativity, and reliability.
             </p>
             <p className="pb-3 xl:pb-0 font-[200] text-[var(--green)]">The Best for your Team.</p>
             <ul className="flex xl:hidden items-center gap-4 mt-2">
@@ -130,6 +130,7 @@ export default function Footer() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Quadbreak Studios on ${label}`}
                     className="flex items-center gap-3 "
                   >
                     <Icon
@@ -285,7 +286,7 @@ export default function Footer() {
                   </span>
                 </span>
               </li>
-              <a href="tel:+91 94007 69978" className="font-light flex items-center gap-3">
+              <a href="tel:+919400769978" className="font-light flex items-center gap-3">
                 <span className="flex items-center justify-center bg-[var(--green)] flex-none w-8 h-8 rounded">
                   <Phone
                     className=" p-[1px] text-[var(--background)]  flex-none"
@@ -319,6 +320,7 @@ export default function Footer() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Quadbreak Studios on ${label}`}
                     className="flex items-center gap-3 "
                   >
                     <Icon

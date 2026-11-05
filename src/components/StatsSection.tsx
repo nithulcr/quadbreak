@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +24,7 @@ const stats = [
     description: "Specialized 3D professionals",
   },
   {
-    number: "98",
+    number: "98%",
     label: "Client Satisfaction",
     description: "Trusted by industry leaders",
   },
@@ -36,19 +37,9 @@ const StatsSection = () => {
   useEffect(() => {
     const section = sectionRef.current;
 
-    if (!section) return;
+    if (!section || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top 75%",
-          once: true,
-        },
-      });
-
-
-
       gsap.from(
         gridRef.current?.children || [],
         {
@@ -81,6 +72,8 @@ const StatsSection = () => {
     >
 
       <div className="mx-auto max-w-[1450px] px-5">
+        <h2 className="sr-only">Quadbreak Studios in numbers</h2>
+
         <div ref={gridRef} className="grid  gap-4 md:gap-8 grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div
@@ -99,6 +92,10 @@ const StatsSection = () => {
               <h3 className="mb-2 md:text-lg font-light uppercase tracking-wider text-white">
                 {stat.label}
               </h3>
+
+              <p className="text-sm font-light text-white/60">
+                {stat.description}
+              </p>
 
               <div className="absolute left-0 top-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[var(--green)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             </div>

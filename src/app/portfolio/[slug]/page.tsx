@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ProjectGallery from "@/components/ProjectGallery";
 import ProjectRouteInfo from "@/components/ProjectRouteInfo";
+import JsonLd from "@/components/JsonLd";
 import {
-  canonicalUrl,
   getProjectBySlug,
   getProjects,
   getRankMathSeo,
   toPlainText,
 } from "@/lib/wordpress";
+import { getCategoryLabel } from "@/lib/categories";
+import { truncateDescription } from "@/lib/seo";
+import { absoluteUrl, defaultOgImage, siteName } from "@/lib/site";
+import { projectSchema } from "@/lib/schema";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -20,6 +24,16 @@ export async function generateStaticParams() {
 }
 
 export const dynamicParams = true;
+
+function resolveImageUrl(image?: string): string | undefined {
+  if (!image) return undefined;
+
+  if (/^https?:\/\//i.test(image)) {
+    return image;
+  }
+
+  return absoluteUrl(image);
+}
 
 export async function generateMetadata({
   params,
@@ -35,71 +49,104 @@ export async function generateMetadata({
     ? await getRankMathSeo(project.wordpressUrl)
     : null;
 
-  const seoTitle =
-    rankMathSeo?.title?.trim() || project.title;
-
-  const seoDescription =
-    rankMathSeo?.description?.trim() ||
+  const plainDescription = toPlainText(project.description);
+  const fallbackDescription =
     project.shortDescription ||
-    toPlainText(project.description);
+    plainDescription ||
+    `Explore ${project.title}, a game-ready 3D asset project by ${siteName} for real-time games and simulation.`;
 
-  const seoKeywords = rankMathSeo?.keywords
+  const rawRankMathTitle = rankMathSeo?.title?.trim();
+  const rankMathTitle =
+    rawRankMathTitle && !/quadbreak\s*cms/i.test(rawRankMathTitle)
+      ? rawRankMathTitle
+      : undefined;
+
+  const seoTitle =
+    rankMathTitle ||
+    `${project.title} – 3D Game Art Project | ${siteName}`;
+
+  const seoDescription = truncateDescription(
+    rankMathSeo?.description?.trim() || fallbackDescription,
+  );
+
+  const categoryLabels = project.category.map(getCategoryLabel);
+  const tagKeywords = project.tags
+    .split(/[,|]/)
+    .map((keyword) => keyword.trim())
+    .filter(Boolean);
+
+  const rankMathKeywords = rankMathSeo?.keywords
     ? rankMathSeo.keywords
         .split(/[,|]/)
         .map((keyword) => keyword.trim())
         .filter(Boolean)
-    : undefined;
+    : [];
+
+  const keywords = Array.from(
+    new Set([
+      ...rankMathKeywords,
+      ...categoryLabels,
+      ...tagKeywords,
+      project.title,
+    ]),
+  );
+
+  const image =
+    resolveImageUrl(rankMathSeo?.ogImage) ||
+    resolveImageUrl(project.projectBanner?.url) ||
+    resolveImageUrl(project.image?.url) ||
+    absoluteUrl(defaultOgImage);
+
+  const canonical = absoluteUrl(`/portfolio/${project.slug}`);
+
+  const rawOgTitle = rankMathSeo?.ogTitle?.trim();
+  const ogTitle =
+    rawOgTitle && !/quadbreak\s*cms/i.test(rawOgTitle)
+      ? rawOgTitle
+      : rankMathTitle || project.title;
 
   return {
     title: seoTitle,
     description: seoDescription,
-    keywords:
-      seoKeywords && seoKeywords.length > 0
-        ? seoKeywords
-        : undefined,
+    keywords: keywords.length > 0 ? keywords : undefined,
     alternates: {
-      canonical: canonicalUrl(project.slug),
+      canonical,
     },
     openGraph: {
-      title:
-        rankMathSeo?.ogTitle ||
-        rankMathSeo?.title ||
-        project.title,
+      type: "article",
+      title: ogTitle,
       description:
         rankMathSeo?.ogDescription ||
-        rankMathSeo?.description ||
-        project.shortDescription ||
-        toPlainText(project.description),
-      images: rankMathSeo?.ogImage
-        ? [rankMathSeo.ogImage]
-        : project.projectBanner?.url
-          ? [project.projectBanner.url]
-          : project.image?.url
-            ? [project.image.url]
-            : [],
-      url: canonicalUrl(project.slug),
-      type: "website",
+        seoDescription,
+      images: [
+        {
+          url: image,
+          alt: `${project.title} – 3D game art by ${siteName}`,
+        },
+      ],
+      url: canonical,
+      siteName,
     },
     twitter: {
       card: "summary_large_image",
       title:
         rankMathSeo?.twitterTitle ||
-        rankMathSeo?.title ||
-        project.title,
+        ogTitle,
       description:
         rankMathSeo?.twitterDescription ||
-        rankMathSeo?.description ||
-        project.shortDescription ||
-        toPlainText(project.description),
-      images: rankMathSeo?.twitterImage
-        ? [rankMathSeo.twitterImage]
-        : rankMathSeo?.ogImage
-          ? [rankMathSeo.ogImage]
-          : project.projectBanner?.url
-            ? [project.projectBanner.url]
-            : project.image?.url
-              ? [project.image.url]
-              : [],
+        seoDescription,
+      images: [image],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
     },
   };
 }
@@ -132,8 +179,32 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       ).slug
     : null;
 
+  const description =
+    project.shortDescription ||
+    toPlainText(project.description) ||
+    `A game-ready 3D asset project by ${siteName} for real-time games and simulation.`;
+
+  const images = [
+    project.projectBanner?.url,
+    project.image?.url,
+    ...project.projectGallery.map((image) => image.url),
+  ]
+    .filter((url): url is string => Boolean(url))
+    .map((url) => resolveImageUrl(url))
+    .filter((url): url is string => Boolean(url));
+
   return (
     <main className="min-h-screen py-20 md:py-6">
+      <JsonLd
+        data={projectSchema({
+          title: project.title,
+          description,
+          slug: project.slug,
+          images,
+          categories: project.category.map(getCategoryLabel),
+          tags: project.tags,
+        })}
+      />
       <ProjectGallery project={project} />
       <ProjectRouteInfo
         project={project}

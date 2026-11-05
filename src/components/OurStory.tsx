@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import StatsSection2 from "@/components/StatsSection2";
+import { prefersReducedMotion } from "@/lib/motion";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,11 +22,11 @@ const OurStory = () => {
   const text4Ref = useRef<HTMLParagraphElement>(null);
 
 
-  const imgRef = useRef<HTMLImageElement>(null);
+  const imgRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const section = sectionRef.current;
 
-    if (!section) return;
+    if (!section || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -125,7 +127,9 @@ const OurStory = () => {
                     >
                    Quadbreak Studios
                     </h1>
-                    <img src="/images/underline.png" alt="Quadbreak Studios Logo" className="w-full max-w-[80%] xl:left-10 absolute bottom-[-20px] left-0" />
+                    <div ref={imgRef} aria-hidden="true" className="w-full max-w-[80%] xl:left-10 absolute bottom-[-20px] left-0">
+                      <Image src="/images/underline.png" alt="" width={2071} height={128} className="w-full" />
+                    </div>
                  
                   </div>
                   <p

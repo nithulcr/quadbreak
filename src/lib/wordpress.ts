@@ -3,12 +3,20 @@ import type { Project, ProjectImage, ProjectSeo } from "@/types/project";
 import type { RecentWork } from "@/types/recentWork";
 import type { Service } from "@/types/service";
 import type { Testimonial } from "@/types/testimonial";
+import { siteUrl } from "@/lib/site";
 
 const WORDPRESS_URL =
   process.env.NEXT_PUBLIC_WORDPRESS_URL ||
   "https://hotpink-hamster-901951.hostingersite.com";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "";
+const FALLBACK_IMAGE = "/images/qb-poster.jpg";
+
+const PREFERRED_MEDIA_SIZES = [
+  "1536x1536",
+  "2048x2048",
+  "large",
+  "medium_large",
+];
 
 const PROJECTS_ENDPOINT =
   `${WORDPRESS_URL}/wp-json/wp/v2/projects`;
@@ -227,52 +235,227 @@ function readProjectCategory(post: WordPressProject): string[] {
    MEDIA RESOLUTION
 ------------------------------------------------------- */
 
+const MEDIA_REQUEST_CONCURRENCY = 4;
+
+let activeMediaRequests = 0;
+const mediaWaiters: Array<() => void> = [];
+const mediaUrlCache = new Map<string, Promise<string | undefined>>();
+
+const waitForMediaSlot = () => {
+  if (activeMediaRequests < MEDIA_REQUEST_CONCURRENCY) {
+    activeMediaRequests += 1;
+    return Promise.resolve();
+  }
+
+  return new Promise<void>((resolve) => {
+    mediaWaiters.push(() => {
+      activeMediaRequests += 1;
+      resolve();
+    });
+  });
+};
+
+const releaseMediaSlot = () => {
+  activeMediaRequests = Math.max(0, activeMediaRequests - 1);
+  const next = mediaWaiters.shift();
+  next?.();
+};
+
+const delay = (ms: number) =>
+  new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+interface WordPressMedia {
+  id?: unknown;
+  source_url?: unknown;
+  media_details?: {
+    sizes?: Record<string, { source_url?: unknown }>;
+  };
+}
+
+function readMediaUrl(data: WordPressMedia): string | undefined {
+  for (const size of PREFERRED_MEDIA_SIZES) {
+    const sizedUrl =
+      data.media_details?.sizes?.[size]?.source_url;
+
+    if (
+      typeof sizedUrl === "string" &&
+      sizedUrl.trim().length > 0
+    ) {
+      return sizedUrl.trim();
+    }
+  }
+
+  if (
+    typeof data.source_url === "string" &&
+    data.source_url.trim().length > 0
+  ) {
+    return data.source_url.trim();
+  }
+
+  return undefined;
+}
+
+function readAttachmentId(value: unknown): string | undefined {
+  if (typeof value === "number") {
+    return Number.isFinite(value) && value > 0
+      ? String(value)
+      : undefined;
+  }
+
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    return /^\d+$/.test(trimmed) ? trimmed : undefined;
+  }
+
+  return undefined;
+}
+
+/**
+ * Fetches media IDs in batches through the WordPress media endpoint.
+ * A single request replaces dozens of individual attachment lookups
+ * during static generation, which keeps builds fast and resilient.
+ */
+async function primeMediaCache(ids: string[]): Promise<void> {
+  const missing = Array.from(
+    new Set(ids.filter((id) => !mediaUrlCache.has(id))),
+  );
+
+  for (let index = 0; index < missing.length; index += 100) {
+    const chunk = missing.slice(index, index + 100);
+    const url =
+      `${MEDIA_ENDPOINT}?include=${chunk.join(",")}` +
+      `&per_page=${chunk.length}&_fields=id,source_url,media_details`;
+
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      try {
+        const response = await fetch(url, {
+          next: {
+            revalidate: REVALIDATE_SECONDS,
+          },
+          signal: AbortSignal.timeout(20000),
+        });
+
+        if (!response.ok) {
+          if (response.status >= 500 && attempt === 0) {
+            await delay(300);
+            continue;
+          }
+
+          console.warn(
+            `[WordPress] Failed to batch resolve media: ${response.status}`,
+          );
+
+          break;
+        }
+
+        const data = (await response.json()) as WordPressMedia[];
+
+        if (!Array.isArray(data)) {
+          break;
+        }
+
+        for (const item of data) {
+          const id = readAttachmentId(item.id);
+          const mediaUrl = readMediaUrl(item);
+
+          if (id && mediaUrl) {
+            mediaUrlCache.set(id, Promise.resolve(mediaUrl));
+          }
+        }
+
+        break;
+      } catch (error) {
+        if (attempt === 0) {
+          await delay(300);
+          continue;
+        }
+
+        console.warn(
+          "[WordPress] Failed to batch resolve media:",
+          error,
+        );
+      }
+    }
+  }
+}
+
+function collectMediaIds(
+  posts: Array<WordPressProject | WordPressContentPost>,
+  fields: readonly string[],
+): string[] {
+  const ids = new Set<string>();
+
+  for (const post of posts) {
+    for (const field of fields) {
+      const id = readAttachmentId(post.acf?.[field]);
+
+      if (id) {
+        ids.add(id);
+      }
+    }
+  }
+
+  return Array.from(ids);
+}
+
 /**
  * Fetches the source_url of an attachment through the standard
- * WordPress media REST endpoint.
+ * WordPress media REST endpoint. Requests are cached and throttled
+ * so a full static build does not overwhelm the WordPress host.
  */
 async function fetchMediaSourceUrl(
   attachmentId: string,
 ): Promise<string | undefined> {
-  try {
-    const response = await fetch(
-      `${MEDIA_ENDPOINT}/${attachmentId}?_fields=source_url`,
-      {
-        next: {
-          revalidate: REVALIDATE_SECONDS,
-        },
-      },
-    );
+  const cached = mediaUrlCache.get(attachmentId);
+  if (cached) return cached;
 
-    if (!response.ok) {
+  const request = (async () => {
+    await waitForMediaSlot();
+
+    try {
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        const response = await fetch(
+          `${MEDIA_ENDPOINT}/${attachmentId}?_fields=source_url,media_details`,
+          {
+            next: {
+              revalidate: REVALIDATE_SECONDS,
+            },
+            signal: AbortSignal.timeout(15000),
+          },
+        );
+
+        if (!response.ok) {
+          if (response.status >= 500 && attempt === 0) {
+            await delay(300);
+            continue;
+          }
+
+          console.warn(
+            `[WordPress] Failed to resolve media ID ${attachmentId}: ${response.status}`,
+          );
+
+          return undefined;
+        }
+
+        return readMediaUrl((await response.json()) as WordPressMedia);
+      }
+
+      return undefined;
+    } catch (error) {
       console.warn(
-        `[WordPress] Failed to resolve media ID ${attachmentId}: ${response.status}`,
+        `[WordPress] Failed to resolve media ID ${attachmentId}:`,
+        error,
       );
 
       return undefined;
+    } finally {
+      releaseMediaSlot();
     }
+  })();
 
-    const data =
-      (await response.json()) as {
-        source_url?: unknown;
-      };
+  mediaUrlCache.set(attachmentId, request);
 
-    if (
-      typeof data.source_url === "string" &&
-      data.source_url.trim().length > 0
-    ) {
-      return data.source_url.trim();
-    }
-
-    return undefined;
-  } catch (error) {
-    console.warn(
-      `[WordPress] Failed to resolve media ID ${attachmentId}:`,
-      error,
-    );
-
-    return undefined;
-  }
+  return request;
 }
 
 /**
@@ -293,7 +476,23 @@ async function resolveMediaUrl(
     const image = value as {
       url?: unknown;
       source_url?: unknown;
+      sizes?: Record<
+        string,
+        { url?: unknown; source_url?: unknown }
+      >;
     };
+
+    for (const size of PREFERRED_MEDIA_SIZES) {
+      const sizedImage = image.sizes?.[size];
+      const sizedUrl = sizedImage?.url || sizedImage?.source_url;
+
+      if (
+        typeof sizedUrl === "string" &&
+        sizedUrl.trim().length > 0
+      ) {
+        return resolveMediaUrl(sizedUrl.trim());
+      }
+    }
 
     if (
       typeof image.url === "string" &&
@@ -584,6 +783,7 @@ export async function getProjects(): Promise<Project[]> {
         next: {
           revalidate: REVALIDATE_SECONDS,
         },
+        signal: AbortSignal.timeout(15000),
       },
     );
 
@@ -601,6 +801,13 @@ export async function getProjects(): Promise<Project[]> {
     if (!Array.isArray(posts)) {
       return [];
     }
+
+    await primeMediaCache(
+      collectMediaIds(posts, [
+        "project_banner",
+        ...GALLERY_FIELDS,
+      ]),
+    );
 
     const normalizedProjects = await Promise.all(
       posts.map(normalizeWordPressProject),
@@ -634,6 +841,7 @@ export async function getProjectBySlug(
         next: {
           revalidate: REVALIDATE_SECONDS,
         },
+        signal: AbortSignal.timeout(15000),
       },
     );
 
@@ -654,6 +862,13 @@ export async function getProjectBySlug(
     ) {
       return null;
     }
+
+    await primeMediaCache(
+      collectMediaIds(posts, [
+        "project_banner",
+        ...GALLERY_FIELDS,
+      ]),
+    );
 
     return await normalizeWordPressProject(posts[0]);
   } catch (error) {
@@ -678,6 +893,7 @@ export async function getServices(): Promise<Service[]> {
         next: {
           revalidate: REVALIDATE_SECONDS,
         },
+        signal: AbortSignal.timeout(15000),
       },
     );
 
@@ -719,6 +935,7 @@ export async function getClients(): Promise<Client[]> {
         next: {
           revalidate: REVALIDATE_SECONDS,
         },
+        signal: AbortSignal.timeout(15000),
       },
     );
 
@@ -760,6 +977,7 @@ export async function getTestimonials(): Promise<Testimonial[]> {
         next: {
           revalidate: REVALIDATE_SECONDS,
         },
+        signal: AbortSignal.timeout(15000),
       },
     );
 
@@ -777,6 +995,8 @@ export async function getTestimonials(): Promise<Testimonial[]> {
     if (!Array.isArray(posts)) {
       return [];
     }
+
+    await primeMediaCache(collectMediaIds(posts, ["logo"]));
 
     return Promise.all(
       posts.map(normalizeWordPressTestimonial),
@@ -798,7 +1018,7 @@ export async function getTestimonials(): Promise<Testimonial[]> {
 export function normalizeWordPressRecentWork(
   post: WordPressContentPost,
 ): RecentWork {
-  const featuredImage = featuredImageUrl(post) || "/images/seo.jpg";
+  const featuredImage = featuredImageUrl(post) || FALLBACK_IMAGE;
 
   const recentWork: RecentWork = {
     id: post.id,
@@ -822,6 +1042,7 @@ export async function getRecentWorks(): Promise<RecentWork[]> {
         next: {
           revalidate: REVALIDATE_SECONDS,
         },
+        signal: AbortSignal.timeout(15000),
       },
     );
 
@@ -1075,7 +1296,10 @@ export async function getRankMathSeo(
       const response = await fetch(
         `${RANK_MATH_HEAD_ENDPOINT}?url=${encodeURIComponent(url)}`,
         {
-          cache: "no-store",
+          next: {
+            revalidate: REVALIDATE_SECONDS,
+          },
+          signal: AbortSignal.timeout(15000),
         },
       );
 
@@ -1115,11 +1339,5 @@ export async function getRankMathSeo(
 export function canonicalUrl(
   slug: string,
 ): string {
-  const path = `/portfolio/${slug}`;
-
-  if (!SITE_URL) {
-    return path;
-  }
-
-  return `${SITE_URL.replace(/\/$/, "")}${path}`;
+  return `${siteUrl}/portfolio/${slug}`;
 }

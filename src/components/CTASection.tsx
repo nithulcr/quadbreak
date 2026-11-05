@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimatedButton from "./AnimatedButton";
 import Link from "next/link";
+import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +16,7 @@ const CTASection = () => {
   useEffect(() => {
     const section = sectionRef.current;
 
-    if (!section) return;
+    if (!section || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const content = section.querySelector(".cta-content");
@@ -125,7 +127,7 @@ const CTASection = () => {
               <span className="uppercase text-[var(--green)] font-light w-fit mb-2 block text-sm">
                 Founder and CEO
               </span>
-              <h4
+              <h3
                 className="font-light
                 uppercase
                 leading-[0.95]
@@ -136,7 +138,7 @@ const CTASection = () => {
                 Jesto
                 <br />
                 Jose
-              </h4>
+              </h3>
               <p className="text-sm md:text-base font-light leading-relaxed text-white/60 ">
                17 years in real-time 3D production across leading studios worldwide. Builds and leads teams that deliver at AAA level, from scoping and pipeline setup to client relationships and studio growth
               </p>
@@ -171,9 +173,12 @@ const CTASection = () => {
             "
               />
               {/* Main image */}
-              <img
+              <Image
                 src="/images/jesto.png"
-                alt=""
+                alt="Jesto Jose, Founder and CEO of Quadbreak Studios"
+                width={526}
+                height={670}
+                sizes="(max-width: 768px) 80vw, 360px"
                 className="
                 relative
                 z-1
@@ -183,9 +188,12 @@ const CTASection = () => {
                 max-w-[360px]
               "
               />
-              <img
+              <Image
                 src="/images/jesto-name.png"
                 alt=""
+                aria-hidden="true"
+                width={300}
+                height={178}
                 className="
                absolute
              left-0 md:left-[-50px] bottom-0 
@@ -232,9 +240,12 @@ const CTASection = () => {
             "
               />
               {/* Main image */}
-              <img
+              <Image
                 src="/images/mithun.png"
-                alt=""
+                alt="Mithun Alexander, Studio Art Director at Quadbreak Studios"
+                width={800}
+                height={1073}
+                sizes="(max-width: 768px) 80vw, 360px"
                 className="
                relative z-1
                 h-full
@@ -243,9 +254,12 @@ const CTASection = () => {
                 max-w-[360px]
               "
               />
-              <img
+              <Image
                 src="/images/mithun-name.png"
                 alt=""
+                aria-hidden="true"
+                width={300}
+                height={135}
                 className="
                absolute
              right-0 md:right-[-50px] bottom-0 
@@ -260,7 +274,7 @@ const CTASection = () => {
               <span className="uppercase text-[var(--green)] font-light w-fit mb-2 block  ml-auto text-sm">
                 Studio Art director
               </span>
-              <h4
+              <h3
                 className="font-light text-right
                 uppercase
                 leading-[0.95]
@@ -271,7 +285,7 @@ const CTASection = () => {
                 Mithun
                 <br />
                 Alexander
-              </h4>
+              </h3>
               <p className="text-right text-sm md:text-base  font-light leading-relaxed text-white/60">
                17 years delivering across AAA titles at leading studios. Owns production quality at Quadbreak, setting the technical bar, directing the art team, and making sure every deliverable meets the standard before it ships.
               </p>

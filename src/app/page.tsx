@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import StatsSection from '@/components/StatsSection';
@@ -15,6 +16,16 @@ import {
   getTestimonials,
   getRecentWorks,
 } from "@/lib/wordpress";
+import { buildMetadata } from "@/lib/seo";
+import { primaryKeywords, secondaryKeywords } from "@/lib/site";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Quadbreak Studios – 3D Game Art & Asset Production",
+  description:
+    "Quadbreak Studios creates high-quality 3D game assets, vehicles, weapons and environments for immersive gaming experiences.",
+  path: "/",
+  keywords: [...primaryKeywords, ...secondaryKeywords],
+});
 
 export default async function HomePage() {
   const [services, clients, testimonials, recentWorks] = await Promise.all([

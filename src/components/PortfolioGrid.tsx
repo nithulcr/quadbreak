@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/types/project";
 import { getCategoryLabel } from "@/lib/categories";
+import { prefersReducedMotion } from "@/lib/motion";
+import { defaultOgImage } from "@/lib/site";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -38,7 +41,7 @@ const PortfolioGrid = ({ limit, projects = [] }: PortfolioGridProps) => {
   const list = limit ? filteredProjects.slice(0, limit) : filteredProjects;
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -85,22 +88,30 @@ const PortfolioGrid = ({ limit, projects = [] }: PortfolioGridProps) => {
   return (
     <div ref={sectionRef} className="py-14 lg:py-24">
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
-        <div ref={headerRef} className="pt-30 pb-14 lg:pb-20  w-full flex flex-wrap justify-between items-center gap-12">
-          <h2 className="uppercase w-fit text-white heading text-5xl lg:text-[6rem] leading-none font-light relative">
+        <div ref={headerRef} className="pt-30 pb-8 lg:pb-10  w-full flex flex-wrap justify-between items-center gap-12">
+          <h1 className="uppercase w-fit text-white heading text-5xl lg:text-[6rem] leading-none font-light relative">
             Portfolio
-          </h2>
+          </h1>
           {categories.length > 0 && (
-            <div className="w-fit px-5 mx-[-20px] md:px-0 md:mx-0 flex gap-2 lg:gap-3 overflow-x-auto snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [-webkit-overflow-scrolling:touch]">
+            <div
+              role="group"
+              aria-label="Filter projects by category"
+              className="w-fit px-5 mx-[-20px] md:px-0 md:mx-0 flex gap-2 lg:gap-3 overflow-x-auto snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [-webkit-overflow-scrolling:touch]"
+            >
               <button
+                type="button"
                 onClick={() => setActiveCategory("all")}
+                aria-pressed={activeCategory === "all"}
                 className={filterButtonClass(activeCategory === "all")}
               >
                 All
               </button>
               {categories.map((category) => (
                 <button
+                  type="button"
                   key={category}
                   onClick={() => setActiveCategory(category)}
+                  aria-pressed={activeCategory === category}
                   className={filterButtonClass(activeCategory === category)}
                 >
                   {getCategoryLabel(category)}
@@ -110,31 +121,42 @@ const PortfolioGrid = ({ limit, projects = [] }: PortfolioGridProps) => {
           )}
         </div>
 
+        <p className="max-w-3xl pb-12 lg:pb-16 text-sm lg:text-base font-light leading-relaxed text-white/65">
+          Explore a selection of game-ready 3D vehicles, weapons, props, and
+          environment art produced by Quadbreak Studios for games, VR, and
+          simulation projects. Each project is built for real-time pipelines
+          with clean topology, efficient UVs, and production-ready materials.
+        </p>
+
         {list.length > 0 ? (
           <div
             ref={gridRef}
             className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10"
           >
             {list.map((project, index) => {
-              const imageUrl = project.image?.url || "/images/seo.jpg";
+              const imageUrl =
+                project.projectBanner?.url ||
+                project.image?.url ||
+                defaultOgImage;
               const slug = project.slug?.trim();
               const projectLink = slug ? `/portfolio/${slug}` : null;
 
               const CardInner = (
                 <div className="about-card group relative top-0 aspect-[1/1.04] border border-white/10 rounded-2xl overflow-hidden  duration-500 ease-out">
-                  <img
+                  <Image
                     src={imageUrl}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.1] group-hover:rotate-2"
+                    alt={`${project.title} – 3D game art project by Quadbreak Studios`}
+                    fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    loading={index < 3 ? "eager" : "lazy"}
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.1] group-hover:rotate-2"
+                    priority={index === 0}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
 
                   <div className="absolute bottom-[0px]  left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-8">
-                    <h5 className="font-light text-xl lg:text-2xl pb-1 text-[var(--green)] relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
+                    <h2 className="font-light text-xl lg:text-2xl pb-1 text-[var(--green)] relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
                       {project.title}
-                    </h5>
+                    </h2>
                     {/* <p className="font-[200] text-[14px] max-w-[260px]">
                       {project.tags}
                     </p> */}

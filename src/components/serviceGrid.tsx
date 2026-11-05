@@ -1,70 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { GAME_ART_SERVICES } from "@/lib/services";
+import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
-
-interface ServiceItem {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-}
-
-const services: ServiceItem[] = [
-  {
-    id: 1,
-    title: "Custom Website Development",
-    description:
-      "Fully responsive and interactive websites built with modern technologies (HTML5, CSS3, JavaScript, React/Next.js, Shopify, Wordpress).",
-    image: "/images/1.jpg",
-  },
-  {
-    id: 2,
-    title: "Landing Page Design",
-    description:
-      "High-converting, fast-loading landing pages tailored for marketing, product launches, or campaigns.",
- image: "/images/2.jpg",
-  },
-  {
-    id: 3,
-    title: "UI/UX Implementation",
-    description:
-      "Bring Figma/Adobe XD/Sketch designs to life with pixel-perfect accuracy and smooth animations.",
-   image: "/images/3.jpg",
-  },
-  {
-    id: 4,
-    title: "Website Optimization",
-    description:
-      "Speed, SEO, and performance optimization (Lighthouse audit fixes, lazy loading, code minification, etc.)",
-   image: "/images/1.jpg",
-  },
-  {
-    id: 5,
-    title: "Portfolio Websites",
-    description:
-      "Build personal or agency portfolios with creative animations and responsive layouts.",
-   image: "/images/2.jpg",
-  },
-  {
-    id: 6,
-    title: "E-commerce Frontend",
-    description:
-      "Custom storefronts, Shopify/WooCommerce themes, and frontend integration for e-commerce platforms.",
-   image: "/images/3.jpg",
-  },
-  {
-    id: 7,
-    title: "CMS Integration",
-    description:
-      "Frontend development for CMS platforms like Strapi, Sanity, WordPress REST API, or Contentful.",
-   image: "/images/1.jpg",
-  },
- 
-];
 
 const ServiceGrid = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -72,7 +16,7 @@ const ServiceGrid = () => {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -90,26 +34,23 @@ const ServiceGrid = () => {
         ease: "power2.out",
       });
 
-      gsap.from(
-        cardsRef.current?.children || [],
-        {
-          opacity: 0,
-          y: 60,
-          scale: 0.96,
-          duration: 0.9,
-          stagger: {
-            each: 0.12,
-            from: "start",
-          },
-          ease: "power3.out",
-          force3D: true,
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: "top 80%",
-            once: true,
-          },
-        }
-      );
+      gsap.from(cardsRef.current?.children || [], {
+        opacity: 0,
+        y: 60,
+        scale: 0.96,
+        duration: 0.9,
+        stagger: {
+          each: 0.12,
+          from: "start",
+        },
+        ease: "power3.out",
+        force3D: true,
+        scrollTrigger: {
+          trigger: cardsRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -118,61 +59,62 @@ const ServiceGrid = () => {
   return (
     <section ref={sectionRef} className="py-14 lg:py-24 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-5 lg:px-6 pt-30">
-        <div ref={titleRef} className="mb-8">
-          <h2 className="uppercase text-white text-5xl lg:text-[6rem] leading-none font-light">
-            Areas of
+        <div ref={titleRef} className="mb-8 lg:mb-12">
+          <h1 className="uppercase text-white text-5xl lg:text-[6rem] leading-none font-light">
+            3D Game Art
             <br />
-            Expertise
-          </h2>
+            Services
+          </h1>
+          <p className="mt-6 max-w-3xl text-sm lg:text-base font-light leading-relaxed text-white/65">
+            Quadbreak Studios produces game-ready 3D vehicles, weapons,
+            environments, and hard-surface props for AAA, indie, mobile, VR, and
+            simulation projects. Every asset is built for real-time performance
+            and delivered to your pipeline standards.
+          </p>
         </div>
 
         <div
           ref={cardsRef}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 md:mt-16"
         >
-          {services.map((service) => (
-            <div
+          {GAME_ART_SERVICES.map((service, index) => (
+            <article
               key={service.id}
-              className="group relative  border border-white/20  rounded-[8px]"
+              className="group relative  border border-white/20  rounded-[8px] overflow-hidden"
             >
-              <div className="aspect-[1/.6] overflow-hidden">
-                <img
+              <div className="relative aspect-[1/.6] overflow-hidden">
+                <Image
                   src={service.image}
-                  alt={service.title}
-                  className=" w-full h-full object-cover group-hover:opacity-70 group-hover:scale-105 transition duration-700"
+                  alt={service.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover group-hover:opacity-70 group-hover:scale-105 transition duration-700"
+                  priority={index < 2}
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
               </div>
 
-              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 transition duration-700" /> */}
               <div className="p-4 sm:p-6 flex flex-col justify-between gap-2">
                 <div className="flex justify-between items-center gap-3">
-                  <h3 className="uppercase md:text-2xl tracking-wide z-10 transition duration-500 group-hover:scale-105">
+                  <h2 className="uppercase md:text-2xl tracking-wide z-10 transition duration-500 group-hover:scale-105">
                     {service.title}
-                  </h3>
-                  <span className="absolute top-[20px] right-[20px] w-10 h-10 p-2 flex items-center justify-center rounded-full bg-[var(--green)] group-hover:bg-green group-hover:scale-80 transition-all duration-500 ease-in-out z-99 shrink-0">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                      color="rgb(0, 0, 0)"
-                      className="rotate-[-45deg]"
-                      style={{ width: "100%", height: "100%" }}
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </span>
+                  </h2>
                 </div>
-                <p className="font-[200] text-white text-[14px] leading-snug">
+                <p className="font-[200] text-white/75 text-[14px] leading-snug">
                   {service.description}
                 </p>
               </div>
-            </div>
+            </article>
           ))}
+        </div>
+
+        <div className="mt-12 lg:mt-16">
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center rounded-full bg-[var(--green)] px-7 py-3 text-sm font-medium uppercase tracking-[0.15em] text-black transition-colors hover:bg-white"
+          >
+            Discuss your project
+          </Link>
         </div>
       </div>
     </section>

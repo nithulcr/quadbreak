@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 const JourneyItems = [
@@ -45,7 +47,7 @@ const Journey = () => {
 
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -125,9 +127,12 @@ const Journey = () => {
             >
               <div className="absolute inset-0  bg-gradient-to-t from-black/10 via-black/20 to-black/90 transition duration-700" />
               <div className="p-5 sm:p-7 flex flex-col justify-between gap-5 relative z-9">
-                  <img
+                  <Image
                 src={service.image}
-                alt={service.title}
+                alt=""
+                aria-hidden="true"
+                width={72}
+                height={72}
                 className="w-18 h-18  object-contain  group-hover:opacity-70 group-hover:scale-95 transition duration-700"
               />
                  <div className="transition duration-500 group-hover:scale-105">

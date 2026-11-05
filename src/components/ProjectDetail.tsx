@@ -41,7 +41,7 @@ export default function ProjectDetail({
           className="w-full bg-[#1a1a1a] relative overflow-hidden border border-white/10"
         >
           <Image
-            src={galleryItem.url || "/images/seo.jpg"}
+            src={galleryItem.url || "/images/qb-poster.jpg"}
             alt={`${p.title} gallery ${index + 1}`}
             width={1400}
             height={827}

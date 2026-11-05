@@ -5,9 +5,11 @@ import { useEffect } from "react";
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     let lastScrollTop = 0;
+    let ticking = false;
 
-    const handleScroll = () => {
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    const updateScrollDirection = () => {
+      const currentScroll =
+        window.scrollY || document.documentElement.scrollTop;
 
       if (currentScroll > lastScrollTop) {
         document.body.classList.add("scroll-down");
@@ -16,9 +18,16 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       }
 
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+      ticking = false;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateScrollDirection);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

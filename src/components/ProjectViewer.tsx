@@ -15,6 +15,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { Project } from "@/types/project";
 import { getProjectBySlug } from "@/lib/wordpress";
 import ProjectGallery from "./ProjectGallery";
+import { prefersReducedMotion } from "@/lib/motion";
 import gsap from "gsap";
 
 type ProjectRouteInfo = {
@@ -40,7 +41,7 @@ export function useProjectViewer() {
 }
 
 const NAV_BUTTON_CLASS =
-  "flex items-center justify-center w-9 h-9 md:w-11 md:h-11 rounded-full text-black bg-white/20 backdrop-blur-xl hover:bg-white hover:border-white transition-all cursor-pointer";
+  "flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full text-black bg-white/20 backdrop-blur-xl hover:bg-white hover:border-white transition-all cursor-pointer";
 
 const SLIDE_DURATION = 0.7;
 const SLIDE_EASE = "power3.inOut";
@@ -142,6 +143,11 @@ export default function ProjectViewer({
       const targetSlug = dir === "next" ? info?.nextSlug : info?.prevSlug;
       if (!targetSlug || targetSlug === info?.slug) return;
 
+      if (prefersReducedMotion()) {
+        router.push(`/portfolio/${targetSlug}`);
+        return;
+      }
+
       isTransitioning.current = true;
       pendingDir.current = dir;
       const generation = transitionGeneration.current;
@@ -164,11 +170,16 @@ export default function ProjectViewer({
           }
         });
     },
-    [],
+    [router],
   );
 
   const handleClose = useCallback(() => {
     if (isClosing.current) return;
+
+    if (prefersReducedMotion()) {
+      router.push("/portfolio");
+      return;
+    }
 
     isClosing.current = true;
     transitionGeneration.current += 1;
@@ -206,7 +217,7 @@ export default function ProjectViewer({
 
   const playEntrance = useCallback(() => {
     const el = currentLayerRef.current;
-    if (!el) return;
+    if (!el || prefersReducedMotion()) return;
     const tl = gsap.fromTo(
       el,
       { y: "100vh" },
@@ -344,13 +355,14 @@ export default function ProjectViewer({
           className="fixed top-0 inset-x-0 z-[120] flex flex-col h-full items-center justify-between gap-4 pointer-events-none"
         >
           <div className="md:ml-auto py-4 px-4 lg:px-6 bg-black md:bg-transparent w-full md:w-fit flex items-center justify-between gap-10 pointer-events-auto">
-            <h2 className="uppercase text-white text-sm lg:text-lg font-light tracking-widest truncate md:hidden">
+            <p className="uppercase text-white text-sm lg:text-lg font-light tracking-widest truncate md:hidden">
               {title}
-            </h2>
+            </p>
             <button
+              type="button"
               onClick={handleClose}
-              aria-label="Close"
-              className="flex items-center justify-center w-9 h-9 md:w-11 md:h-11 rounded-full text-black bg-[var(--green)] hover:bg-white transition-all cursor-pointer"
+              aria-label="Close project and return to portfolio"
+              className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full text-black bg-[var(--green)] hover:bg-white transition-all cursor-pointer"
             >
               <X className="w-6 h-6" />
             </button>
@@ -359,18 +371,22 @@ export default function ProjectViewer({
           <div className="w-full flex items-center justify-between gap-4 px-4 lg:px-6 pointer-events-auto">
             {routeInfo?.prevSlug && (
               <button
+                type="button"
                 onClick={() => startSlide("prev")}
+                aria-label="Previous project"
                 className={NAV_BUTTON_CLASS}
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-6 h-6 md:w-7 md:h-7" />
               </button>
             )}
             {routeInfo?.nextSlug && (
               <button
+                type="button"
                 onClick={() => startSlide("next")}
+                aria-label="Next project"
                 className={NAV_BUTTON_CLASS}
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-6 h-6 md:w-7 md:h-7" />
               </button>
             )}
           </div>

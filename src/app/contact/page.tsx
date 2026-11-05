@@ -6,9 +6,9 @@ import Footer from "@/components/Footer";
 import AnimatedButton from "@/components/AnimatedButton";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from 'next/image';
 
 import { useEffect, useRef } from "react";
+import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -130,12 +130,13 @@ function TopContactSection() {
           Ready to build something extraordinary together?<br />Tell us about your project and let&apos;s turn your vision into an immersive reality.
         </p>
         <ul className="flex  items-center gap-4 mt-2 mx-auto w-fit mt-5">
-              {socialLinks.map(({ href, Icon }, index) => (
+              {socialLinks.map(({ href, Icon, label }, index) => (
                 <li key={index} className="font-light flex items-center relative top-0 hover:top-[-2px] transition-all">
                   <a
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Quadbreak Studios on ${label}`}
                     className="flex items-center gap-3 "
                   >
                     <Icon
@@ -146,6 +147,24 @@ function TopContactSection() {
                 </li>
               ))}
             </ul>
+
+            <address className="mt-8 flex flex-col items-center gap-2 text-sm font-light not-italic text-white/70">
+              <a
+                href="mailto:business@quadbreak.com"
+                className="transition-colors hover:text-[var(--green)]"
+              >
+                business@quadbreak.com
+              </a>
+              <a
+                href="tel:+919400769978"
+                className="transition-colors hover:text-[var(--green)]"
+              >
+                +91 94007 69978
+              </a>
+              <span>
+                2nd Floor, City Center, Iritty, Kannur, Kerala 670703, India
+              </span>
+            </address>
       </div>
       <div className="max-w-[1450px] mx-auto px-5 lg:px-10  gap-12 lg:gap-20  pt-20">
         {/* <div className=" flex-1 min-w-0 bg- relative">
@@ -212,40 +231,59 @@ function TopContactSection() {
         </div> */}
 
         <div className="max-w-[800px] w-full mx-auto">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5 lg:gap-8">
+          <form
+            onSubmit={handleSubmit}
+            aria-busy={submitting}
+            className="flex flex-col gap-5 lg:gap-8"
+          >
            <div className="flex flex-col gap-3">
-               
+                <label htmlFor="contact-name" className="sr-only">
+                  Your name
+                </label>
                 <input
+                  id="contact-name"
                   type="text"
                   name="name"
+                  autoComplete="name"
                   placeholder="Your name"
                   required
                   className=" border-b border-white/30  py-3 focus:px-5 text-white text-[16px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
                 />
               </div>
            <div className="flex flex-col gap-3">
-               
+                <label htmlFor="contact-email" className="sr-only">
+                  Your email
+                </label>
                 <input
+                  id="contact-email"
                   type="email"
                   name="email"
+                  autoComplete="email"
                   placeholder="Your email"
                    required
                   className=" border-b border-white/30  py-3 focus:px-5 text-white text-[16px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
                 />
               </div>
             <div className="flex flex-col gap-3">
-                
+                <label htmlFor="contact-phone" className="sr-only">
+                  Phone number
+                </label>
                 <input
-                  type="text"
+                  id="contact-phone"
+                  type="tel"
                   name="phone"
-                  placeholder="ph. Number"
+                  autoComplete="tel"
+                  placeholder="Phone number"
                    required
                   className=" border-b border-white/30  py-3 focus:px-5 text-white text-[16px] font-[200] outline-none transition-all focus:border-[var(--green)]/30 focus:shadow-[0_0_0_2px_rgba(145,255,106,.08)] placeholder:text-white/30 placeholder:font-[200]"
                 />
               </div>
             <div className="flex flex-col gap-3">
-            
+              <label htmlFor="contact-message" className="sr-only">
+                Tell us about your project
+              </label>
               <textarea
+                id="contact-message"
                 rows={5}
                 name="message"
                 placeholder="Tell us about your project..."
@@ -259,14 +297,16 @@ function TopContactSection() {
               label={submitting ? "SENDING..." : "Send a message"}
               className="md:mt-4 mt-2 w-fit mx-auto"
             />
-            {success && (
-              <p className="text-[var(--green)] text-[13px] font-[200] mt-1 text-center">
-                Message sent successfully!
-              </p>
-            )}
-            {error && (
-              <p className="text-red-400 text-[13px] font-[200] mt-1 text-center">{error}</p>
-            )}
+            <div aria-live="polite" aria-atomic="true">
+              {success && (
+                <p role="status" className="text-[var(--green)] text-[13px] font-[200] mt-1 text-center">
+                  Message sent successfully!
+                </p>
+              )}
+              {error && (
+                <p role="alert" className="text-red-400 text-[13px] font-[200] mt-1 text-center">{error}</p>
+              )}
+            </div>
           </form>
         </div>
       </div>
@@ -281,7 +321,7 @@ export default function ContactPage() {
   const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!pageRef.current) return;
+    if (!pageRef.current || prefersReducedMotion()) return;
     const ctx = gsap.context(() => {
       const els = pageRef.current!.querySelectorAll(".reveal-section");
       els.forEach((el) => {

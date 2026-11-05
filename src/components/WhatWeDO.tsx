@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from 'next/image';
+import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,7 +37,7 @@ const WhatWeDO = () => {
   const itemsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       // Title animation

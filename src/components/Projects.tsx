@@ -85,7 +85,7 @@ const Works = ({ limit, projects = [] }: WorksProps) => {
               className={`grid gap-x-8 gap-y-14 sm:grid-cols-3 md:grid-cols-4 w-full ${limit ? "pb-10" : ""}`}
             >
               {list.map((project) => {
-                const imageUrl = project.image?.url || "/images/seo.jpg";
+                const imageUrl = project.image?.url || "/images/qb-poster.jpg";
                 const slug = project.slug?.trim();
                 const projectLink = slug ? `/portfolio/${slug}` : null;
 

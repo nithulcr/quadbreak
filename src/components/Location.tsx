@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,11 +15,11 @@ const Location = () => {
 
   const text4Ref = useRef<HTMLParagraphElement>(null);
 
-  const imgRef = useRef<HTMLImageElement>(null);
+  const imgRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const section = sectionRef.current;
 
-    if (!section) return;
+    if (!section || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -87,15 +89,17 @@ const Location = () => {
                   <span className="span1"></span>
                   <span className="span2"></span>
 
-                  <img
-                   
+                  <Image
                     src="/images/map.png"
-                    alt="Quadbreak Studios map"
+                    alt="Map showing Quadbreak Studios in Iritty, Kannur, Kerala"
+                    width={1095}
+                    height={1436}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="w-full max-h-[calc(100vh-130px)] xl:max-h-[500px] object-cover p-1 lg:p-2 rounded-xl lg:rounded-2xl z-9 relative border-white/10 border"
                   />
                   <div className="absolute bottom-0 p-5 lg:p-8 z-9 flex flex-col gap-3">
                     <div>
-                      <h4 className="text-3xl">IRITTY</h4>
+                      <p className="text-3xl">IRITTY</p>
                       <p>Kannur, Kerala</p>
                     </div>
                     <div className="font-light">

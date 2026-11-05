@@ -5,10 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SLIDE_INTERVAL = 2500;
+const SLIDE_INTERVAL = 1500;
 
 const SLIDES = [
   { src: "/images/slides/1.png" },
@@ -34,7 +35,7 @@ type SlideTransition = {
 const FADE_TRANSITION: SlideTransition = {
   from: { autoAlpha: 0, scale: 1 },
   to: { autoAlpha: 1, scale: 0.9 },
-  duration: 0.9,
+  duration: 1,
   ease: "power3.out",
 };
 
@@ -391,7 +392,7 @@ const WhoWeAre = () => {
   useEffect(() => {
     const section = sectionRef.current;
 
-    if (!section) return;
+    if (!section || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -548,7 +549,7 @@ const WhoWeAre = () => {
                       playsInline
                       className="h-full w-full object-cover"
                     >
-                      <source src="/images/home-video.mp4" />
+                      <source src="/images/video2.mp4" />
                       Your browser does not support the video tag.
                     </video>
                     */}

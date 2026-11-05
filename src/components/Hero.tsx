@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SpinningText from "./spinningText";
+import { prefersReducedMotion } from "@/lib/motion";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -17,7 +18,7 @@ export default function Hero() {
 
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section) return;
+    if (!section || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       // Scroll-linked scale animation for hero banner
@@ -98,7 +99,7 @@ export default function Hero() {
           <span ref={title1Ref} className="block w-fit">Quadbreak</span> 
           <span ref={title2Ref} className="block w-fit">Studios</span>
         </h1>
-        <span ref={subtitleRef} className="text-[1.2rem]  font-[200] block mt-2 max-w-[700px]">Quadbreak Studios is a dedicated AAA game art outsourcing studio — environments, vehicles, and props — built to plug into your production pipeline.</span>
+        <span ref={subtitleRef} className="text-[1.2rem]  font-[200] block mt-2 max-w-[700px]">Quadbreak Studios is a dedicated AAA game art outsourcing studio — game-ready environments, vehicles, weapons, and hard-surface props — built to plug into your production pipeline.</span>
       </div>
 
 
@@ -108,15 +109,17 @@ export default function Hero() {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           poster="/images/qb-poster.jpg"
+          aria-hidden="true"
+          tabIndex={-1}
           className="w-full h-full object-cover"
         >
           <source src="/images/QB.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
-      <div className="absolute bottom-0 z-9 right-0 w-[140px] h-[140px] md:w-[250px] md:h-[250px] ml-auto self-end uppercase">
+      <div aria-hidden="true" className="absolute bottom-0 z-9 right-0 w-[140px] h-[140px] md:w-[250px] md:h-[250px] ml-auto self-end uppercase">
         <SpinningText
           text="Quadbreak • Gaming Art • Simulator Art  • "
           image="/images/favicon-t.png"

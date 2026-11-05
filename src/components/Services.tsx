@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import AnimatedButton from "./AnimatedButton";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { Service } from "@/types/service";
+import { prefersReducedMotion } from "@/lib/motion";
+import { defaultOgImage } from "@/lib/site";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +23,7 @@ const Services = ({ services }: ServicesProps) => {
   const btnRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -113,9 +115,8 @@ const Services = ({ services }: ServicesProps) => {
               className="font-[200] lg:text-right text-white text-[14px] lg:text-[18px] leading-snug"
             >
               At Quadbreak Studios, we bring game worlds to life with
-              high-quality 3D art, environments, and assets tailored for AAA,
-              indie, and mobile games. At Quadbreak Studios, we bring game
-              worlds to life with high-quality 3D art.
+              high-quality 3D art, environments, and game-ready assets tailored
+              for AAA, indie, mobile, VR, and simulation projects.
             </p>
             {/* <div ref={btnRef} className="hidden md:flex w-fit lg:ml-auto mt-5">
               <AnimatedButton
@@ -136,10 +137,12 @@ const Services = ({ services }: ServicesProps) => {
                   key={service.id}
                   className="bg-white/5 group relative overflow-hidden border border-white/20 aspect-[1/.75] rounded-[8px]"
                 >
-                  <img
-                    src={service.image?.url || "/images/seo.jpg"}
-                    alt={service.title}
-                    className="absolute inset-0 w-full h-full object-cover"
+                  <Image
+                    src={service.image?.url || defaultOgImage}
+                    alt={`${service.title} – 3D game art service by Quadbreak Studios`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
                   />
 
               <div className="absolute inset-0  bg-gradient-to-t from-black/60 via-black/30 to-black/0 " />
@@ -166,13 +169,12 @@ const Services = ({ services }: ServicesProps) => {
                   <h3 className="uppercase md:text-2xl  tracking-wide z-10 ">
                     {service.title}
                   </h3>
-                  
+                  {service.description && (
+                    <p className="font-[200] text-white/80 text-[13px] md:text-[15px] leading-snug">
+                      {service.description}
+                    </p>
+                  )}
                 </div>
-                {/* <p className="font-[200]  text-white text-[13px] md:text-[16px]  leading-snug">
-                  At Quadbreak Studios, we bring game worlds to life with
-                  high-quality 3D art, environments, and assets tailored for
-                  AAA, indie, and mobile games.{" "}
-                </p> */}
               </div>
             </div>
               ))
