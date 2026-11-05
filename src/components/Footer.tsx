@@ -286,7 +286,7 @@ export default function Footer() {
                   </span>
                 </span>
               </li>
-              <a href="tel:+919400769978" className="font-light flex items-center gap-3">
+              {/* <a href="tel:+919400769978" className="font-light flex items-center gap-3">
                 <span className="flex items-center justify-center bg-[var(--green)] flex-none w-8 h-8 rounded">
                   <Phone
                     className=" p-[1px] text-[var(--background)]  flex-none"
@@ -296,7 +296,7 @@ export default function Footer() {
                 <div className="flex flex-col gap-1 text-md">
                   <span>+91 94007 69978</span>
                 </div>
-              </a>
+              </a> */}
               <a href="mailto:business@quadbreak.com" className="font-light flex items-center gap-3">
                 <span className="flex items-center justify-center bg-[var(--green)] flex-none w-8 h-8 rounded">
                   <Mail
