@@ -90,7 +90,7 @@ const Location = () => {
                   <span className="span2"></span>
 
                   <Image
-                    src="/images/map.png"
+                    src="/images/map.webp"
                     alt="Map showing Quadbreak Studios in Iritty, Kannur, Kerala"
                     width={1095}
                     height={1436}

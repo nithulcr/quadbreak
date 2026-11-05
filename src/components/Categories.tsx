@@ -15,7 +15,7 @@ interface Category {
   title: string;
   subtitle: string;
   description: string;
-  image: string;
+
   href: string;
   cta: string;
 }
@@ -28,7 +28,7 @@ const categories: Category[] = [
     subtitle: "Game Art & Production",
     description:
       "QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content. QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
-    image: "/images/environments.png",
+
 
     href: "/services",
     cta: "Explore Studio",
@@ -40,7 +40,7 @@ const categories: Category[] = [
     subtitle: "VR • Training • Simulation",
     description:
       "QuadBreak Simulations creates immersive digital environments, training experiences and interactive visual solutions for VR, simulation and specialized applications. QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
-    image: "/images/works/2.png",
+
 
     href: "/services",
     cta: "Explore Simulations",
@@ -52,7 +52,7 @@ const categories: Category[] = [
     subtitle: "Learn • Create • Build",
     description:
       "Quadbreak runs training programs for young people from Kerala who want to build careers in 3D art and game development. Students learn the same pipeline and quality standards used on real Disney and simulation projects — and the best of them join the studio team. We're not just hiring artists. We're making them.",
-    image: "/images/works/3.png",
+  
 
     href: "/services",
     cta: "Explore Academy",
@@ -213,20 +213,7 @@ export default function Categories() {
                 key={cat.number}
                 className={` group relative grid grid-cols-1  gap-7  xl:gap-15 pb-12`}
               >
-                {/* Image */}
-                {/* <div className="lg:col-span-2 cat4-img relative  aspect-[16/9] w-full overflow-hidden  bg-[#141414]">
-                  <Image
-                    src={cat.image}
-                    alt={`${cat.title} — ${cat.subtitle}`}
-                    fill
-                    sizes="(max-width: 640px) 92vw, (max-width: 1023px) 50vw, (min-width: 1024px) 40vw"
-                    className="object-cover transition-transform duration-[0.8s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
-                  />
-                  <div
-                    className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/40 via-transparent to-transparent"
-                    aria-hidden="true"
-                  />
-                </div> */}
+             
                 <div className="lg:col-span-3">
                   <div className="mb-2 flex items-start justify-between">
                     <div>

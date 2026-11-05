@@ -169,11 +169,11 @@ const Services = ({ services }: ServicesProps) => {
                   <h3 className="uppercase md:text-2xl  tracking-wide z-10 ">
                     {service.title}
                   </h3>
-                  {service.description && (
+                  {/* {service.description && (
                     <p className="font-[200] text-white/80 text-[13px] md:text-[15px] leading-snug">
                       {service.description}
                     </p>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>

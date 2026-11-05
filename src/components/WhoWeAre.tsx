@@ -12,16 +12,16 @@ gsap.registerPlugin(ScrollTrigger);
 const SLIDE_INTERVAL = 1500;
 
 const SLIDES = [
-  { src: "/images/slides/1.png" },
-  { src: "/images/slides/2.png" },
-  { src: "/images/slides/9.png" },
+  { src: "/images/slides/1.webp" },
+  { src: "/images/slides/2.webp" },
+  { src: "/images/slides/9.webp" },
 
-  { src: "/images/slides/3.png" },
-  { src: "/images/slides/4.png" },
-  { src: "/images/slides/5.png" },
-  { src: "/images/slides/6.png" },
-  { src: "/images/slides/7.png" },
-  { src: "/images/slides/8.png" },
+  { src: "/images/slides/3.webp" },
+  { src: "/images/slides/4.webp" },
+  { src: "/images/slides/5.webp" },
+  { src: "/images/slides/6.webp" },
+  { src: "/images/slides/7.webp" },
+  { src: "/images/slides/8.webp" },
 
 ];
 
@@ -449,7 +449,7 @@ const WhoWeAre = () => {
   return (
     <section
       id="WhoWeAre"
-      className="section overflow-hidden py-14 md:py-20"
+      className="section overflow-hidden py-14 md:pt-20 md:pb-14"
       ref={sectionRef}
     >
       {/*

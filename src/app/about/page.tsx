@@ -12,7 +12,7 @@ import WhatWeDO from "@/components/WhatWeDO";
 
 import TeamSection from '@/components/TeamSection';
 import Categories from '@/components/Categories';
-import Categories3 from '@/components/Categories3';
+
 
 
 
@@ -32,7 +32,7 @@ export default function AboutPage() {
         <WhatWeDO/>
         <Categories />
         <TeamSection />
-               {/* <Categories3 /> */}
+
       </main>
       <Footer />
     </div>

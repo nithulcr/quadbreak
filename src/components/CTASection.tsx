@@ -174,7 +174,7 @@ const CTASection = () => {
               />
               {/* Main image */}
               <Image
-                src="/images/jesto.png"
+                src="/images/jesto.webp"
                 alt="Jesto Jose, Founder and CEO of Quadbreak Studios"
                 width={526}
                 height={670}
@@ -241,7 +241,7 @@ const CTASection = () => {
               />
               {/* Main image */}
               <Image
-                src="/images/mithun.png"
+                src="/images/mithun.webp"
                 alt="Mithun Alexander, Studio Art Director at Quadbreak Studios"
                 width={800}
                 height={1073}

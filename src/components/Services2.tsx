@@ -21,7 +21,7 @@ const services = [
   },
   {
     title: "3D CHARACTERS",
-    image: "/images/environments.png",
+    image: "/images/environments.webp",
   },
   {
     title: "ANIMATION & VFX",
