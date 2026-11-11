@@ -531,7 +531,7 @@ const WhoWeAre = () => {
                     */}
                   </div>
 
-                  <div className="fade-up ml-auto mt-10 max-w-[530px] lg:mt-[-350px] lg:w-[50%]">
+                  <div className="fade-up ml-auto mt-10 max-w-[660px] lg:mt-[-350px] lg:w-[50%]">
                     <h2
                       ref={text2Ref}
                       className="relative mb-10 w-fit text-right text-[3rem] font-light italic leading-none text-white/60 uppercase lg:ml-auto"

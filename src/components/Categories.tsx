@@ -242,10 +242,10 @@ export default function Categories() {
                     <Link
                       href={cat.href}
                       aria-label={`Go to ${cat.title}`}
-                      className={` group/arrow hidden lg:inline-flex flex-none h-12 w-12 items-center justify-center rounded-full border transition-all duration-300 `}
+                      className={` group/arrow hidden lg:inline-flex flex-none h-12 w-12 items-center justify-center rounded-full border border-[var(--green)] transition-all duration-300 `}
                     >
                       <ArrowUpRight
-                        className="h-8 w-8 transition-transform duration-300 group-hover/arrow:translate-x-[3px] group-hover/arrow:-translate-y-[3px]"
+                        className="h-8 w-8 text-[var(--green)] transition-transform duration-300 group-hover/arrow:translate-x-[3px] group-hover/arrow:-translate-y-[3px]"
                         strokeWidth={1}
                       />
                     </Link>

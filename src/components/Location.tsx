@@ -128,7 +128,7 @@ const Location = () => {
                   you need to be.
                 </p>
                 <p className="pl-4 py-2 border-l-3 border-[var(--green)] text-[16px] md:text-[20px] leading-snug font-[200] text-white text-justify">
-                  We built Quadbreak in Iritty because we believed world-class
+                  We built Quadbreak in Kerala because we believed world-class
                   art doesn’t need a city. It needs the right people.
                 </p>
                 <p
@@ -136,7 +136,7 @@ const Location = () => {
                   className=" text-[16px] md:text-[18px] leading-snug font-[200] text-white/80 text-justify"
                 >
                   Jesto Jose returned to his hometown after years in Bangalore&apos;s
-                  game industry — at Blue Papillon and Dhruva Interactive, where
+                  game industry — at Blue Papillions and Dhruva Interactive, where
                   the team worked on titles including Forza Horizon, Halo, and
                   Prey. He came back to build something permanent. Something
                   that would give other talented people from Kerala a reason to

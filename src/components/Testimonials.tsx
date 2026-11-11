@@ -83,7 +83,7 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
       {/* Client information */}
       <div className="relative flex items-center gap-4 mt-7 px-3">
         {/* Profile image */}
-        <div
+        {/* <div
           className="
             relative
             w-[58px]
@@ -105,11 +105,11 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
             sizes="64px"
             className="object-cover"
           />
-        </div>
+        </div> */}
 
         {/* Client logo */}
         <div className="min-w-0">
-          <div className="relative h-10 w-38 shrink-0">
+          <div className="relative h-14 w-42 shrink-0">
             <Image
               src={testimonial.logo?.url || "/images/logo.png"}
               alt={testimonial.title}

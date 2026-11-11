@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import StatsSection2 from "@/components/StatsSection2";
 import { prefersReducedMotion } from "@/lib/motion";
 
-
 gsap.registerPlugin(ScrollTrigger);
 
 const OurStory = () => {
@@ -20,7 +19,6 @@ const OurStory = () => {
   const text2Ref = useRef<HTMLParagraphElement>(null);
   const text3Ref = useRef<HTMLParagraphElement>(null);
   const text4Ref = useRef<HTMLParagraphElement>(null);
-
 
   const imgRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -44,7 +42,7 @@ const OurStory = () => {
         y: 30,
         duration: 0.7,
         ease: "power2.out",
-      })
+      });
       tl.from(title2Ref.current, {
         opacity: 0,
         y: 30,
@@ -81,7 +79,7 @@ const OurStory = () => {
           },
           "-=0.45",
         )
-         .from(
+        .from(
           text4Ref.current,
           {
             opacity: 0,
@@ -120,67 +118,93 @@ const OurStory = () => {
             <div className=" grid gap-y-10 lg:gap-y-30">
               <div className="service-item flex flex-col lg:grid lg:grid-cols-2 gap-15 items-start w-full ">
                 <div className="">
-                  <div  ref={titleRef} className="flex flex-col mb-14 relative w-fit  pb-5 xl:pb-8">
-                    <h1
-                     
-                      className="uppercase  text-[var(--green)] text-white  text-5xl lg:text-[3.5em] leading-none font-light  relative"
-                    >
-                   Quadbreak Studios
+                  <div
+                    ref={titleRef}
+                    className="flex flex-col mb-14 relative w-fit  pb-5 xl:pb-8"
+                  >
+                    <h1 className="uppercase  text-[var(--green)] text-white  text-5xl lg:text-[3.5em] leading-none font-light  relative">
+                      Quadbreak Studios
                     </h1>
-                    <div ref={imgRef} aria-hidden="true" className="w-full max-w-[80%] xl:left-10 absolute bottom-[-20px] left-0">
-                      <Image src="/images/underline.png" alt="" width={2071} height={128} className="w-full" />
+                    <div
+                      ref={imgRef}
+                      aria-hidden="true"
+                      className="w-full max-w-[80%] xl:left-10 absolute bottom-[-20px] left-0"
+                    >
+                      <Image
+                        src="/images/underline.png"
+                        alt=""
+                        width={2071}
+                        height={128}
+                        className="w-full"
+                      />
                     </div>
-                 
                   </div>
                   <p
                     ref={text1Ref}
                     className="about-paragraph text-[16px] md:text-[20px] leading-snug font-[200] text-white/80 text-justify"
                   >
-                   We’re a team of artists, creators, and problem-solvers who love making things that people want to step into.
-
-                   At Quadbreak, we create the 3D art that gives games their identity — from expansive environments and detailed props to vehicles, hard-surface assets, and everything in between.
-
-We love the process. The big ideas, the tiny details, the challenges that seem impossible at first, and that moment when everything finally comes together.
-
-We’re constantly pushing our skills, experimenting with new ideas, and looking for better ways to create. Because for us, game art isn’t just what we do.
+                    We’re a team of artists, creators, and problem-solvers who
+                    love making things that people want to step into. At
+                    Quadbreak, we create the 3D art that gives games their
+                    identity — from expansive environments and detailed props to
+                    vehicles, hard-surface assets, and everything in between. We
+                    love the process. The big ideas, the tiny details, the
+                    challenges that seem impossible at first, and that moment
+                    when everything finally comes together. We’re constantly
+                    pushing our skills, experimenting with new ideas, and
+                    looking for better ways to create. Because for us, game art
+                    isn’t just what we do.
                   </p>
                   <StatsSection2 />
                 </div>
-                <div className="ml-auto lg:mt-[200px]  xl:max-w-[530px] fade-up overflow-hidden">
-                  <h2
-                    ref={text2Ref}
-                    className="uppercase w-fit text-white/60 max-w-[520px] lg:text-right italic mb-4 lg:mb-10 text-3xl xl:text-[3rem]  leading-none font-light  relative"
-                  >
-                    Since <span className="text-[var(--green)]">2016</span>{" "}<br/>
-                    It&apos;s been a{" "}
-                    <span className="text-[var(--green)]">cool journey,</span>{" "}
-                    and <span className="text-[var(--green)]">we&apos;re</span>{" "}
-                    not{" "}
-                    <span className="text-[var(--green)]">turning back!</span>
-                  </h2>
-                  <p
-                    ref={text3Ref}
-                    className="about-paragraph text-[16px] lg:text-right mb-10 md:text-[20px] leading-snug font-[200] text-white/80"
-                  >
-                    Long-term business success depends, above all, on the
-                    quality of the team providing the leadership, direction, and
-                    vision. We are one such. All of us have a solid foundation
-                    and a strong passion for realizing projects.
-                  </p>
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover"
-                  >
-                    <source src="/images/teams.mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                <div className="lg:mt-[200px] xl:max-w-[620px] ml-auto fade-up overflow-hidden">
+                  <div className="xl:max-w-[530px] ml-auto ">
+                    <h2
+                      ref={text2Ref}
+                      className="uppercase w-fit text-white/60 max-w-[520px] lg:text-right italic mb-4 lg:mb-10 text-3xl xl:text-[3rem]  leading-none font-light  relative"
+                    >
+                      Since <span className="text-[var(--green)]">2016</span>{" "}
+                      <br />
+                      It&apos;s been a{" "}
+                      <span className="text-[var(--green)]">
+                        cool journey,
+                      </span>{" "}
+                      and{" "}
+                      <span className="text-[var(--green)]">we&apos;re</span>{" "}
+                      not{" "}
+                      <span className="text-[var(--green)]">turning back!</span>
+                    </h2>
+                    <p
+                      ref={text3Ref}
+                      className="about-paragraph text-[16px] lg:text-right mb-10 md:text-[20px] leading-snug font-[200] text-white/80"
+                    >
+                      Long-term business success depends, above all, on the
+                      quality of the team providing the leadership, direction,
+                      and vision. We are one such. All of us have a solid
+                      foundation and a strong passion for realizing projects.
+                    </p>
+                  </div>
+                  <div className="about-fade relative w-full">
+                    <div className="rounded-xl lg:rounded-2xl border relative border-white/10 side-image">
+                      <span className="span1"></span>
+                      <span className="span2"></span>
+
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full md:min-h-[300px] object-cover p-1 lg:p-2 rounded-xl lg:rounded-2xl z-9 relative border-white/10 border"
+                      >
+                        <source src="/images/teams.mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-center mt-10 lg:mt-[-40px]">
-                {/* Image */}
+              {/* <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-center mt-10 lg:mt-[-40px]">
+             
 
                 <div className="about-fade relative ">
                   <div className="rounded-xl lg:rounded-2xl border relative border-white/10 side-image">
@@ -200,7 +224,7 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                   </div>
                 </div>
 
-                {/* Content */}
+            
 
                <div className="">
                   <div className="flex flex-col mb-6">
@@ -223,7 +247,7 @@ We’re constantly pushing our skills, experimenting with new ideas, and looking
                   </p>
                   
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

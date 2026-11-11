@@ -118,7 +118,7 @@ export default function Footer() {
             </div>
             <p className="py-3 font-[200]  opacity-80 max-w-[1000px] xl:max-w-[500px]">
               We create high-quality, real-time optimized 3D assets for game
-              studios, businesses, and individuals worldwide. From vehicles and
+              studios across the world. From vehicles and
               weapons to environments and props, we bring ideas to life with
               precision, creativity, and reliability.
             </p>
@@ -348,7 +348,7 @@ export default function Footer() {
         {/* Bottom Copyright */}
         <div className="bottom pt-4 pb-2  mt-2 flex flex-wrap gap-5 justify-between">
           <p className="text-sm text-white/80">
-            © Copyright 2026 All Rights Reserved by Wrinit Games/Quadbreak
+            © Copyright 2026 All Rights Reserved by Quadbreak
             studios.
           </p>
           <ul className="flex items-center gap-4 ">

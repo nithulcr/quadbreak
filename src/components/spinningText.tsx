@@ -73,7 +73,7 @@ export default function SpinningText({
                 (360 / characters.length) * index
               }deg) translateY(-${textRadius}px)`,
               transformOrigin: "0 0",
-              fontSize: `${currentSize / 16}px`,
+              fontSize: `${currentSize / 15}px`,
             }}
           >
             {char}

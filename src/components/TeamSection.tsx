@@ -24,11 +24,11 @@ const staticTeam: TeamMember[] = [
     role: "Business Development Manager",
     photoUrl: "/images/member2.webp",
   },
-  {
+   {
     id: 3,
-    name: "Mohammed Shaz",
-    role: "Lead Artist",
-    photoUrl: "/images/member3.webp",
+    name: "Anju Hareendran",
+    role: "Project manager",
+    photoUrl: "/images/member6.webp",
   },
   {
     id: 4,
@@ -42,12 +42,13 @@ const staticTeam: TeamMember[] = [
     role: "Talent Acquisition Manager",
     photoUrl: "/images/member5.webp",
   },
-   {
+    {
     id: 6,
-    name: "Anju Hareendran",
-    role: "Project manager",
-    photoUrl: "/images/member6.webp",
+    name: "Mohammed Shaz",
+    role: "Lead Artist",
+    photoUrl: "/images/member3.webp",
   },
+
    {
     id: 7,
     name: "Meenakshi",

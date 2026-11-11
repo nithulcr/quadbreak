@@ -4,6 +4,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SpinningText from "./spinningText";
 import { prefersReducedMotion } from "@/lib/motion";
+import AnimatedButton from "./AnimatedButton";
+
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,6 +17,7 @@ export default function Hero() {
   const title1Ref = useRef<HTMLSpanElement>(null);
   const title2Ref = useRef<HTMLSpanElement>(null);
   const subtitleRef = useRef<HTMLSpanElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null); 
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -84,7 +87,18 @@ export default function Hero() {
             ease: "power2.out",
           },
           "-=0.45"
+        )
+        .from(
+          buttonRef.current,
+          {
+            opacity: 0,
+            y: 30,
+            duration: 0.7,
+            ease: "power2.out",
+          },
+          "-=0.45"
         );
+        
     }, section);
 
     return () => ctx.revert();
@@ -94,12 +108,19 @@ export default function Hero() {
     <section ref={sectionRef} className="hero-section relative flex flex-col justify-center overflow-hidden main-hero px-5 lg:px-[4rem] pb-6 pt-15 lg:py-20 min-h-screen">
 
       <div ref={bannerRef} className="hero-banner max-w-[1450px] mx-auto z-9 flex flex-col justify-center md:pt-20 px-5 w-full gap-2 lg:gap-5">
-        <span ref={welcomeRef} className="text-[2rem] md:text-[3rem] block font-[200] uppercase">Welcome to</span>
+        <span ref={welcomeRef} className="text-[2rem] md:text-[2.5rem] block font-[200] uppercase">Welcome to</span>
         <h1 className="uppercase max-w-[800px] w-min relative flex flex-col gap-4 text-[var(--green)] text-[3rem] lg:text-[6rem] leading-none mb-1">
           <span ref={title1Ref} className="block w-fit">Quadbreak</span> 
           <span ref={title2Ref} className="block w-fit">Studios</span>
         </h1>
         <span ref={subtitleRef} className="text-[1.2rem]  font-[200] block mt-2 max-w-[700px]">Quadbreak Studios is a dedicated AAA game art outsourcing studio — game-ready environments, vehicles, weapons, and hard-surface props — built to plug into your production pipeline.</span>
+        <div ref={buttonRef}>
+                <AnimatedButton
+                  href="/contact"
+                  label="Get in Touch"
+                  className="w-fit "
+                />
+              </div>
       </div>
 
 
@@ -121,7 +142,7 @@ export default function Hero() {
       </div>
       <div aria-hidden="true" className="absolute bottom-0 z-9 right-0 w-[140px] h-[140px] md:w-[250px] md:h-[250px] ml-auto self-end uppercase">
         <SpinningText
-          text="Quadbreak • Gaming Art • Simulator Art  • "
+          text="VISION  • IMAGINATION • INNOVATION  • "
           image="/images/favicon-t.png"
           size={250}
           mobileSize={140}

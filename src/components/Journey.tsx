@@ -12,7 +12,7 @@ const JourneyItems = [
     title: "Experienced Artists",
     image: "/images/1.png",
     description:
-      "Creative decisions remain human-led.",
+      "Creative minds. Skilled hands. Exceptional art.",
 
   },
   {
@@ -24,10 +24,10 @@ const JourneyItems = [
   },
 
   {
-    title: "AI-Assisted Workflows",
+    title: "SEAMLESS INTEGRATION",
     image: "/images/3.png",
      description:
-      "We explore new technologies to support artists and production.", 
+      "We fit naturally into your team's workflow and production pipeline.", 
 
   },
   {
