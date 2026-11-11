@@ -37,7 +37,7 @@ export default function Header() {
                     <nav className="hidden lg:flex items-center justify-end gap-6" aria-label="Primary navigation">
                         <Link href="/" className="nav-link uppercase  font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Home</Link>
                         <span className="h-5 w-[.05rem] bg-white/30"></span>
-                        <Link href="/about" className="nav-link uppercase  font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">About Us</Link>
+                        <Link href="/studio" className="nav-link uppercase  font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Studio</Link>
                         {/* <Link href="/culture" className="nav-link uppercase text-sm font-light tracking-wider hover:text-[var(--green)] relative hover:top-[-4px] top-0 transition-all duration-300 ease-in-out">Culture</Link> */}
                         <span className="h-5 w-[.05rem] bg-white/30"></span>
                 
@@ -111,7 +111,7 @@ export default function Header() {
                 <nav aria-label="Mobile navigation" className={` min-h-screen flex flex-col justify-center duration-700 relative ${menuOpen ? "opacity-100 " : "opacity-0  scale-50"
                     }`}>
                     <Link href="/" className="block py-2 px-6 nav-link uppercase text-center text-[7vh]" tabIndex={menuOpen ? 0 : -1} onClick={handleLinkClick}>Home</Link>
-                    <Link href="/about" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" tabIndex={menuOpen ? 0 : -1} onClick={handleLinkClick}>About Us</Link>
+                    <Link href="/studio" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" tabIndex={menuOpen ? 0 : -1} onClick={handleLinkClick}>Studio</Link>
                     {/* <Link href="/culture" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" tabIndex={menuOpen ? 0 : -1} onClick={handleLinkClick}>Culture</Link> */}
                     {/* <Link href="https://quadbreaksimulations.com/" target="_blank" className="block  py-2 px-6 nav-link uppercase text-center text-[6vh]" tabIndex={menuOpen ? 0 : -1} onClick={handleLinkClick}>Simulator Art</Link> */}
 

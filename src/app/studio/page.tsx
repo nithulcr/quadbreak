@@ -1,4 +1,4 @@
-// src/app/about/page.tsx
+// src/app/studio/page.tsx
 'use client';
 
 import Header from '@/components/Header';

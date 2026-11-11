@@ -21,7 +21,7 @@ const staticTeam: TeamMember[] = [
   {
     id: 2,
     name: "Titto",
-    role: "Business Development Manger",
+    role: "Business Development Manager",
     photoUrl: "/images/member2.webp",
   },
   {
@@ -39,7 +39,7 @@ const staticTeam: TeamMember[] = [
   {
     id: 5,
     name: "Benitto Babu",
-    role: "Talant Acquisition Manager",
+    role: "Talent Acquisition Manager",
     photoUrl: "/images/member5.webp",
   },
    {

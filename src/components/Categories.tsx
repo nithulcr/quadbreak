@@ -15,7 +15,7 @@ interface Category {
   title: string;
   subtitle: string;
   description: string;
-
+  img: string;
   href: string;
   cta: string;
 }
@@ -24,13 +24,14 @@ const categories: Category[] = [
   {
     number: "01",
 
-    title: "QuadBreak Studio",
+    title: "QuadBreak Studios",
     subtitle: "Game Art & Production",
+    img: "/images/logo.png",
+
     description:
-      "QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content. QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
+      "Quadbreak Studios is a 3D game art production and outsourcing studio that partners with game developers to create high-quality, production-ready 3D content. Our expertise spans environments, props, vehicles, hard-surface assets, and complete game-ready scenes.",
 
-
-    href: "/services",
+    href: "/portfolio",
     cta: "Explore Studio",
   },
   {
@@ -38,11 +39,11 @@ const categories: Category[] = [
 
     title: "QuadBreak Simulations",
     subtitle: "VR • Training • Simulation",
+    img: "/images/quadbreak_simulations.png",
     description:
-      "QuadBreak Simulations creates immersive digital environments, training experiences and interactive visual solutions for VR, simulation and specialized applications. QuadBreak Studio brings game worlds to life through high-quality 3D assets, environments, characters, animation, VFX and cinematic content.",
+      "Quadbreak Simulations is a dedicated 3D art team built exclusively for the simulation industry. We are partnering with simulation companies around the world, adding production capacity and delivering real-time 3D content that fits their pipelines and performance targets.",
 
-
-    href: "/services",
+    href: "https://quadbreaksimulations.com/",
     cta: "Explore Simulations",
   },
   {
@@ -50,11 +51,12 @@ const categories: Category[] = [
 
     title: "QuadBreak Academy",
     subtitle: "Learn • Create • Build",
+    img: "/images/quadbreak_academy.png",
+
     description:
       "Quadbreak runs training programs for young people from Kerala who want to build careers in 3D art and game development. Students learn the same pipeline and quality standards used on real Disney and simulation projects — and the best of them join the studio team. We're not just hiring artists. We're making them.",
-  
 
-    href: "/services",
+    href: "/",
     cta: "Explore Academy",
   },
 ];
@@ -195,7 +197,7 @@ export default function Categories() {
           {/* <p className="cat2-eyebrow mb-4 text-xs uppercase tracking-[0.32em] text-[var(--green)]">
            What We Do
           </p> */}
-          <h2 className="text-3xl font-light uppercase leading-[1.02] tracking-tight text-white md:text-5xl lg:text-[3.4rem]">
+          <h2 className="text-3xl font-light uppercase leading-[1.02] tracking-tight text-white md:text-5xl lg:text-[5rem]">
             Three Worlds
             <br />
             <span className="text-[var(--green)]">One Creative Vision</span>
@@ -211,16 +213,17 @@ export default function Categories() {
             return (
               <article
                 key={cat.number}
-                className={` group relative grid grid-cols-1  gap-7  xl:gap-15 pb-12`}
+                className={` group relative grid grid-cols-1  gap-7   pb-12`}
               >
-             
                 <div className="lg:col-span-3">
                   <div className="mb-2 flex items-start justify-between">
                     <div>
                       <h3 className="cat4-card-title text-2xl  uppercase   text-white md:text-3xl">
                         {cat.title}
                       </h3>
-                      <span className={`text-xs uppercase tracking-[0.2em] mt-2 font-[200] block`}>
+                      <span
+                        className={`text-xs uppercase tracking-[0.2em] mt-2 font-[200] block`}
+                      >
                         {cat.subtitle}
                       </span>
 
@@ -228,8 +231,14 @@ export default function Categories() {
                       <p className="mt-4  font-light text-[14px] xl:text-lg  xl:max-w-[80%]">
                         {cat.description}
                       </p>
+                      <Image
+                        src={cat.img}
+                        alt={cat.title}
+                        width={250}
+                        height={100}
+                        className="mt-6 w-full max-w-[250px] object-cover"
+                      />
                     </div>
-
                     <Link
                       href={cat.href}
                       aria-label={`Go to ${cat.title}`}
@@ -241,8 +250,9 @@ export default function Categories() {
                       />
                     </Link>
                   </div>
-                  {/* Title */}
+                </div>
 
+                <div>
                   <div className="cat-cta pt-2">
                     <AnimatedButton
                       label={cat.cta}

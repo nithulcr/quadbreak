@@ -155,6 +155,12 @@ function TopContactSection() {
               >
                 business@quadbreak.com
               </a>
+              <a
+                href="mailto:contact@quadbreak.com"
+                className="transition-colors hover:text-[var(--green)]"
+              >
+                contact@quadbreak.com
+              </a>
               {/* <a
                 href="tel:+919400769978"
                 className="transition-colors hover:text-[var(--green)]"
@@ -162,7 +168,7 @@ function TopContactSection() {
                 +91 94007 69978
               </a> */}
               <span>
-                2nd Floor, City Center, Iritty, Kannur, Kerala 670703, India
+               Iritty, Kannur, Kerala
               </span>
             </address>
       </div>

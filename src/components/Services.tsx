@@ -182,7 +182,7 @@ const Services = ({ services }: ServicesProps) => {
         </div>
         {/* <div ref={btnRef} className="w-fit mx-auto mt-10 md:mt-12">
           <AnimatedButton
-            href="/about"
+            href="/studio"
             label="View All Services"
             className="mt-5 w-fit min-w-[160px]"
           />

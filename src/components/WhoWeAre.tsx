@@ -523,7 +523,7 @@ const WhoWeAre = () => {
                     {/*
                     <div ref={btnRef}>
                       <AnimatedButton
-                        href="/about"
+                        href="/studio"
                         label="Learn More"
                         className="mt-10 w-fit min-w-[160px]"
                       />

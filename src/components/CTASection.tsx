@@ -301,7 +301,7 @@ const CTASection = () => {
 
           <div className="absolute hidden lg:flex  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-[80%] bg-gradient-to-b from-[var(--green)]/10 via-[var(--green)] to-[var(--green)]/10 opacity-70"></div>
           <Link
-            href="/about#meet-the-team"
+            href="/studio#meet-the-team"
             className="
     absolute
     left-1/2

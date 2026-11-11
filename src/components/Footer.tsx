@@ -173,10 +173,10 @@ export default function Footer() {
               </Link>
 
               <Link
-                href="/about"
+                href="/studio"
                 className="font-light text-md hover:text-[var(--green)] relative top-0 hover:top-[-2px] transition-all border-b w-full block border-white/10 pb-3 flex justify-between"
               >
-                About Us
+                Studio
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -282,7 +282,7 @@ export default function Footer() {
                   Quadbreak Studios Pvt Ltd
                   <br />
                   <span className="opacity-80 font-[200]">
-                    2nd Floor, City Center, Iritty, Kannur, Kerala - 670703
+                  Iritty, Kannur, Kerala
                   </span>
                 </span>
               </li>
@@ -305,6 +305,15 @@ export default function Footer() {
                   />
                 </span>
                 <span className="text-md">business@quadbreak.com</span>
+              </a>
+              <a href="mailto:contact@quadbreak.com" className="font-light flex items-center gap-3">
+                <span className="flex items-center justify-center bg-[var(--green)] flex-none w-8 h-8 rounded">
+                  <Mail
+                    className="p-[1px]  text-[var(--background)] flex-none"
+                    strokeWidth={1.5}
+                  />
+                </span>
+                <span className="text-md">contact@quadbreak.com</span>
               </a>
             </ul>
           </div>
