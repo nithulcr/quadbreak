@@ -23,7 +23,7 @@ const WorkCard = ({
 }) => (
   <Link
     href="/portfolio"
-    className={`about-card bg-white/4 group relative top-0 aspect-[1/1.04] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px] ${className}`}
+    className={`about-card bg-gradient-to-t from-[#090909]  via-[#131313] to-[#141414] group relative top-0 aspect-[1/1.04] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px] ${className}`}
   >
     <Image
       src={card.image || defaultOgImage}
@@ -32,7 +32,7 @@ const WorkCard = ({
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.08]"
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10" />
+   
     <div className="absolute top-6 left-6 z-20 transition-all duration-500 ease-out group-hover:top-[-100px]">
       <span className="bg-[var(--green)] text-black text-xs font-[600] uppercase tracking-wider px-4 py-2">
         {card.title || "Work"}

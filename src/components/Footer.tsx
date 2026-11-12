@@ -349,7 +349,7 @@ export default function Footer() {
         <div className="bottom pt-4 pb-2  mt-2 flex flex-wrap gap-5 justify-between">
           <p className="text-sm text-white/80">
             © Copyright 2026 All Rights Reserved by Quadbreak
-            studios.
+            Studios.
           </p>
           <ul className="flex items-center gap-4 ">
             {/* <li>

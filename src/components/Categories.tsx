@@ -55,7 +55,7 @@ const categories: Category[] = [
     description:
       "Quadbreak runs training programs for young people from Kerala who want to build careers in 3D art and game development. Students learn the same pipeline and quality standards used on real Disney and simulation projects — and the best of them join the studio team. We're not just hiring artists. We're making them.",
 
-    href: "/",
+    href: "https://www.instagram.com/quadbreakacademy",
     cta: "Explore Academy",
   },
 ];
