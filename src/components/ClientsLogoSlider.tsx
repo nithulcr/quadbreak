@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 import type { Client } from "@/types/client";
 
 interface ClientsLogoSliderProps {
@@ -30,65 +33,80 @@ const ClientsLogoSlider = ({
         </p>
       </div>
 
-      {/* Logo Grid */}
+      {/* Logo Slider */}
       {withImages.length > 0 && (
         <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5  gap-5">
+          <Swiper
+            modules={[Autoplay]}
+            slidesPerView={2}
+            spaceBetween={20}
+            loop={withImages.length >= 3}
+            watchOverflow
+            grabCursor
+            speed={800}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            breakpoints={{
+              640: { slidesPerView: 3, spaceBetween: 20 },
+              1024: { slidesPerView: 5, spaceBetween: 20 },
+            }}
+          >
             {withImages.map((client) => (
-              <div
-                key={client.id}
-                className="
-                
-                  relative
-                  h-[120px]
-                  md:h-[145px]
-                  flex
-                  items-center
-                  justify-center
-                  border
-                  border
-                  border-white/10
-                  overflow-hidden
-                "
-              >
-                {/* Subtle green glow */}
+              <SwiperSlide key={client.id}>
                 <div
-                  className="client-card
-                    pointer-events-none
-                    absolute
-                    inset-0
-                    opacity-0
-                    opacity-100
-                    transition-opacity
-                    duration-500
-                    bg-[radial-gradient(circle_at_center,rgba(145,255,106,0.08),transparent_65%)]
-                  "
-                />
-
-                <Image
-                  src={client.image!.url!}
-                  alt={client.title}
-                  width={180}
-                  height={80}
                   className="
+                  
                     relative
-                    z-10
-                    min-w-[120px]
-                    min-h-[80px]
-                    max-w-[140px]
-                    md:max-w-[180px]
-                    max-h-[80px]
-                    md:max-h-[100px]
-                    w-auto
-                    h-auto
-                    object-contain
-                 
-                   
+                    h-[120px]
+                    md:h-[145px]
+                    flex
+                    items-center
+                    justify-center
+                    border
+                    border-white/10
+                    overflow-hidden
                   "
-                />
-              </div>
+                >
+                  {/* Subtle green glow */}
+                  <div
+                    className="client-card
+                      pointer-events-none
+                      absolute
+                      inset-0
+                      opacity-0
+                      opacity-100
+                      transition-opacity
+                      duration-500
+                      bg-[radial-gradient(circle_at_center,rgba(145,255,106,0.08),transparent_65%)]
+                    "
+                  />
+
+                  <Image
+                    src={client.image!.url!}
+                    alt={client.title}
+                    width={180}
+                    height={80}
+                    className="
+                      relative
+                      z-10
+                      min-w-[120px]
+                      min-h-[80px]
+                      max-w-[140px]
+                      md:max-w-[180px]
+                      max-h-[80px]
+                      md:max-h-[100px]
+                      w-auto
+                      h-auto
+                      object-contain
+                    "
+                  />
+                </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       )}
     </section>

@@ -96,7 +96,7 @@ const CTASection = () => {
                 leading-[0.95]
                 tracking-tight
                 text-white
-                text-4xl lg:text-6xl xl:text-[5rem]
+                text-5xl lg:text-6xl xl:text-[5rem]
               "
         >
           The Drive Behind
@@ -154,7 +154,7 @@ const CTASection = () => {
             <div
               className="
               cta-visual
-
+              w-full mb-4
              relative
 
             "

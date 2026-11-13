@@ -11,7 +11,6 @@ import Link from "next/link";
 import { prefersReducedMotion } from "@/lib/motion";
 import { defaultOgImage } from "@/lib/site";
 
-
 gsap.registerPlugin(ScrollTrigger);
 
 const WorkCard = ({
@@ -23,7 +22,7 @@ const WorkCard = ({
 }) => (
   <Link
     href="/portfolio"
-    className={`about-card bg-gradient-to-t from-[#090909]  via-[#131313] to-[#141414] group relative top-0 aspect-[1/1.04] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px] ${className}`}
+    className={`about-card bg-gradient-to-t from-[#090909] block  via-[#131313] to-[#141414] group relative top-0 aspect-[1/1.04] overflow-hidden transition-[top,box-shadow] duration-500 ease-out hover:top-[-10px] ${className}`}
   >
     <Image
       src={card.image || defaultOgImage}
@@ -32,7 +31,7 @@ const WorkCard = ({
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.08]"
     />
-   
+
     <div className="absolute top-6 left-6 z-20 transition-all duration-500 ease-out group-hover:top-[-100px]">
       <span className="bg-[var(--green)] text-black text-xs font-[600] uppercase tracking-wider px-4 py-2">
         {card.title || "Work"}
@@ -102,40 +101,49 @@ const WorksSection = ({ recentWorks }: WorksSectionProps) => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-16 lg:py-16 relative overflow-hidden">
-      <div className="max-w-[1450px] mx-auto px-5 lg:px-10">
-        <h2 className="about-heading uppercase text-center text-white text-4xl lg:text-6xl leading-none font-light mb-10 lg:mb-15">
-          recent works
-        </h2>
+   <section
+  ref={sectionRef}
+  id="about"
+  className="relative overflow-hidden py-16 lg:py-16"
+>
+  <div className="mx-auto max-w-[1450px] px-5 lg:px-10">
 
-        {/* Desktop grid — hidden on tablet & mobile */}
-        <div className="hidden lg:grid grid-cols-3 gap-8 ">
+    <h2 className="about-heading mb-10 text-center text-4xl font-light uppercase leading-none text-white lg:mb-15 lg:text-6xl">
+      recent works
+    </h2>
+
+    {/* Desktop */}
+    <div className="hidden grid-cols-3 gap-8 lg:grid">
+      {workCards.map((card, i) => (
+        <WorkCard key={card.id ?? i} card={card} />
+      ))}
+    </div>
+
+    {/* Mobile + Tablet */}
+    <div className="block w-full  lg:hidden">
+      {workCards.length > 0 && (
+        <Swiper
+          className="w-full"
+          slidesPerView={1.3}
+          spaceBetween={16}
+          loop={workCards.length >= 3}
+          watchOverflow
+          breakpoints={{
+            480: { slidesPerView: 1.5 },
+            640: { slidesPerView: 2.2 },
+          }}
+        >
           {workCards.map((card, i) => (
-            <WorkCard key={i} card={card} />
+            <SwiperSlide key={card.id ?? i}>
+              <WorkCard card={card} />
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
+      )}
+    </div>
 
-        
-      </div>
-      {/* Tablet + Mobile slider — hidden on desktop */}
-        <div className="block lg:hidden">
-          <Swiper
-            slidesPerView={1.3}
-            spaceBetween={16}
-            loop={true}
-            loopAdditionalSlides={6}
-            breakpoints={{
-              640: { slidesPerView: 2.2 },
-            }}
-          >
-            {workCards.map((card, i) => (
-              <SwiperSlide key={i}>
-                <WorkCard card={card} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-    </section>
+  </div>
+</section>
   );
 };
 

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -34,8 +35,9 @@ export default function SpinningText({
     return () => media.removeEventListener("change", updateSize);
   }, [size, mobileSize]);
 
-  const textRadius = currentSize * 0.38;
-  const characters = text.split("");
+  const center = currentSize / 2;
+  const radius = currentSize * 0.32;
+  const circumference = 2 * Math.PI * radius;
 
   return (
     <div
@@ -47,7 +49,7 @@ export default function SpinningText({
     >
       {/* Center Logo */}
       <div
-        className="bg-cover bg-center hero-spinn"
+        className="hero-spinn bg-cover bg-center"
         style={{
           width: currentSize * 0.55,
           height: currentSize * 0.55,
@@ -55,31 +57,47 @@ export default function SpinningText({
         }}
       />
 
-      {/* Rotating Text */}
-      <div
-        className="absolute inset-0 animate-spin"
+      {/* Circular Text */}
+      <svg
+        className="absolute inset-0 animate-spin overflow-visible"
+        viewBox={`0 0 ${currentSize} ${currentSize}`}
         style={{
+          width: currentSize,
+          height: currentSize,
           animationDuration: `${duration}s`,
           animationTimingFunction: "linear",
           animationIterationCount: "infinite",
         }}
       >
-        {characters.map((char, index) => (
-          <span
-            key={index}
-            className="absolute left-1/2 top-1/2 text-white font-medium whitespace-pre"
-            style={{
-              transform: `rotate(${
-                (360 / characters.length) * index
-              }deg) translateY(-${textRadius}px)`,
-              transformOrigin: "0 0",
-              fontSize: `${currentSize / 15}px`,
-            }}
+        <defs>
+          <path
+            id="circularTextPath"
+            d={`
+              M ${center} ${center - radius}
+              A ${radius} ${radius} 0 1 1
+              ${center - 0.01} ${center - radius}
+            `}
+          />
+        </defs>
+
+        <text
+          fill="white"
+          fontSize={currentSize / 14.5}
+          fontWeight="500"
+          fontFamily="Arial, sans-serif"
+          letterSpacing={currentSize * 0.004}
+          textAnchor="start"
+          textLength={circumference * 0.98}
+          lengthAdjust="spacing"
+        >
+          <textPath
+            href="#circularTextPath"
+            startOffset="0%"
           >
-            {char}
-          </span>
-        ))}
-      </div>
+            {text}
+          </textPath>
+        </text>
+      </svg>
     </div>
   );
 }
