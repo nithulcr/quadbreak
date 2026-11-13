@@ -153,14 +153,14 @@ const PortfolioGrid = ({ limit, projects = [] }: PortfolioGridProps) => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
 
-                  <div className="absolute bottom-[0px]  left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-8">
+                  {/* <div className="absolute bottom-[0px]  left-0 z-20 transition-all duration-500 ease-out bg-gradient-to-t from-black/80 via-black/40 w-full p-8">
                     <h2 className="font-light text-xl lg:text-2xl pb-1 text-[var(--green)] relative top-0 group-hover:top-[-20px] transition-all duration-500 ease-out">
                       {project.title}
                     </h2>
-                    {/* <p className="font-[200] text-[14px] max-w-[260px]">
+                    <p className="font-[200] text-[14px] max-w-[260px]">
                       {project.tags}
-                    </p> */}
-                  </div>
+                    </p>
+                  </div> */}
                 </div>
               );
 
