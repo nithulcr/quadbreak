@@ -129,7 +129,7 @@ const WhatWeDO = () => {
           <div className="absolute left-[23px] top-5 bottom-5 w-px bg-white/10 lg:left-[30px]" />
 
           <div className="flex flex-col gap-16 lg:gap-20">
-            {WhatWeDOItems.map((item, index) => (
+            {WhatWeDOItems.map((item) => (
               <div
                 key={item.number}
                 className="group relative grid grid-cols-[48px_1fr] gap-5 lg:grid-cols-[64px_1fr] lg:gap-8"

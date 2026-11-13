@@ -27,11 +27,12 @@ export default function AboutPage() {
       <main>
         <OurStory />
         <Values />
+        <TeamSection />
+
         <Location />
 
         <WhatWeDO/>
         <Categories />
-        <TeamSection />
 
       </main>
       <Footer />

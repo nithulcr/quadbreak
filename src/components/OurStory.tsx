@@ -13,12 +13,10 @@ const OurStory = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const title2Ref = useRef<HTMLHeadingElement>(null);
 
   const text1Ref = useRef<HTMLParagraphElement>(null);
   const text2Ref = useRef<HTMLParagraphElement>(null);
   const text3Ref = useRef<HTMLParagraphElement>(null);
-  const text4Ref = useRef<HTMLParagraphElement>(null);
 
   const imgRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -43,12 +41,7 @@ const OurStory = () => {
         duration: 0.7,
         ease: "power2.out",
       });
-      tl.from(title2Ref.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.7,
-        ease: "power2.out",
-      })
+      tl.from({}, { duration: 0.7 })
         .from(
           text1Ref.current,
           {
@@ -79,16 +72,7 @@ const OurStory = () => {
           },
           "-=0.45",
         )
-        .from(
-          text4Ref.current,
-          {
-            opacity: 0,
-            y: 30,
-            duration: 0.7,
-            ease: "power2.out",
-          },
-          "-=0.45",
-        )
+        .from({}, { duration: 0.7 }, "-=0.45")
         .from(
           imgRef.current,
           {

@@ -9,24 +9,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   {
-    number: "9+",
-    label: "Years of Experience",
-    description: "Building game art excellence",
+    number: "10",
+    label: "Years of Creativity",
+    description: "Building 3D art since 2016.",
   },
   {
-    number: "500+",
-    label: "Projects Delivered",
-    description: "Across games, VR & simulations",
+    number: "30+",
+    label: "Creative Minds",
+    description: "One Team. Diverse Skills. In-House.",
   },
   {
-    number: "50+",
-    label: "Expert Artists",
-    description: "Specialized 3D professionals",
+    number: "100+",
+    label: "Happy Partnership",
+    description: "Studios, teams and creators worldwide.",
   },
   {
-    number: "98%",
-    label: "Client Satisfaction",
-    description: "Trusted by industry leaders",
+    number: "15+",
+    label: "Countries Reached",
+    description: "Clients across the globe",
   },
 ];
 

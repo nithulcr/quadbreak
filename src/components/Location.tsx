@@ -90,14 +90,14 @@ const Location = () => {
                   <span className="span2"></span>
 
                   <Image
-                    src="/images/map.webp"
+                    src="/images/location.webp"
                     alt="Map showing Quadbreak Studios in Iritty, Kannur, Kerala"
                     width={1095}
                     height={1436}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="w-full max-h-[calc(100vh-130px)] xl:max-h-[500px] object-cover p-1 lg:p-2 rounded-xl lg:rounded-2xl z-9 relative border-white/10 border"
                   />
-                  <div className="absolute bottom-0 p-5 lg:p-8 z-9 flex flex-col gap-3">
+                  {/* <div className="absolute bottom-0 p-5 lg:p-8 z-9 flex flex-col gap-3">
                     <div>
                       <p className="text-3xl">IRITTY</p>
                       <p>Kannur, Kerala</p>
@@ -110,7 +110,7 @@ const Location = () => {
                       </p>
                       <p>11.2588° N, 75.9729° E</p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 

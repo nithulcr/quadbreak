@@ -114,6 +114,7 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
               src={testimonial.logo?.url || "/images/logo.png"}
               alt={testimonial.title}
               fill
+              sizes="(min-width: 768px) 168px, 140px"
               className="object-contain object-left"
             />
           </div>

@@ -208,7 +208,7 @@ export default function Categories() {
           ref={cardsRef}
           className="max-w-[1400px] mx-auto grid gap-14  Categories-border"
         >
-          {categories.map((cat, i) => {
+          {categories.map((cat) => {
             return (
               <article
                 key={cat.number}

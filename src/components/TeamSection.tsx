@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
 
 
 interface TeamMember {
@@ -15,7 +14,7 @@ const staticTeam: TeamMember[] = [
   {
     id: 1,
     name: "Joshmi Maria",
-    role: "Director of Finance",
+    role: "Director of Finance & HR",
     photoUrl: "/images/member1.webp",
   },
   {
@@ -36,12 +35,13 @@ const staticTeam: TeamMember[] = [
     role: "Lead  Artist",
     photoUrl: "/images/member4.webp",
   },
-  {
+    {
     id: 5,
-    name: "Benitto Babu",
-    role: "Talent Acquisition Manager",
-    photoUrl: "/images/member5.webp",
+    name: "Neethu. M",
+    role: "Account Manager",
+    photoUrl: "/images/member8.webp",
   },
+
     {
     id: 6,
     name: "Mohammed Shaz",
@@ -55,21 +55,19 @@ const staticTeam: TeamMember[] = [
     role: "Project Manager",
     photoUrl: "/images/member7.webp",
   },
-  {
+    {
     id: 8,
-    name: "Neethu. M",
-    role: "HR Manager",
-    photoUrl: "/images/member8.webp",
+    name: "Benitto Babu",
+    role: "Talent Acquisition Manager",
+    photoUrl: "/images/member5.webp",
   },
+
 
 ];
 
 const TeamSection = () => {
- 
-  const [ready, setReady] = useState(false);
-
   return (
-    <section id="meet-the-team" className="relative overflow-hidden">
+    <section id="meet-the-team" className="relative scroll-mt-24 overflow-hidden">
       <div className="mx-auto max-w-[1424px] px-5 py-12 md:py-20 ">
         <div className="mb-6 flex flex-col justify-between gap-8 md:mb-16">
           <div className="flex flex-col text-center mx-auto">

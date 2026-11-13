@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Mail,
-  Phone,
   MapPin,
 } from "lucide-react";
 
@@ -71,8 +70,6 @@ const socialLinks = [
 ];
 
 export default function Footer() {
-  const text = "QUADBREAK";
-
   return (
     <footer className="relative font-light">
       <span className="block underline-span"></span>

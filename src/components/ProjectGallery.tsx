@@ -5,7 +5,6 @@ import { getCategoryLabel } from "@/lib/categories";
 import { defaultOgImage } from "@/lib/site";
 
 export default function ProjectGallery({ project }: { project: Project }) {
-  const description = project.shortDescription || project.description;
   const tags = project.tags
     .split(/[,|]/)
     .map((tag) => tag.trim())
