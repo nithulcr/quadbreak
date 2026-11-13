@@ -113,13 +113,10 @@ export default function Footer() {
                 Studios
               </span>
             </div>
-            <p className="py-3 font-[200]  opacity-80 max-w-[1000px] xl:max-w-[500px]">
-              We create high-quality, real-time optimized 3D assets for game
-              studios across the world. From vehicles and
-              weapons to environments and props, we bring ideas to life with
-              precision, creativity, and reliability.
+            <p className="py-3 font-[200]  opacity-80 max-w-[1000px] xl:max-w-[500px] text-[14.8px] text-justify">
+             Quadbreak Studios partners with game developers worldwide to create high-quality, production-ready 3D art. From immersive environments and detailed vehicles to weapons and props, we combine artistic excellence, technical precision, and reliable production to help bring ambitious game worlds to life.
             </p>
-            <p className="pb-3 xl:pb-0 font-[200] text-[var(--green)]">The Best for your Team.</p>
+            <p className="pb-3 xl:pb-0 font-[200] text-[var(--green)]">Your art team, extended..</p>
             <ul className="flex xl:hidden items-center gap-4 mt-2">
               {socialLinks.map(({ href, Icon, label }, index) => (
                 <li key={index} className="font-light flex items-center relative top-0 hover:top-[-2px] transition-all">

@@ -53,7 +53,7 @@ const categories: Category[] = [
     subtitle: "Learn • Create • Build",
     img: "/images/quadbreak_academy.png",
     description:
-      "Quadbreak runs training programs for young people from Kerala who want to build careers in 3D art and game development. Students learn the same pipeline and quality standards used on real Disney and simulation projects — and the best of them join the studio team. We're not just hiring artists. We're making them.",
+      "We train aspiring artists from Kerala to build careers in 3D art and game development. Our students learn industry-standard workflows and quality benchmarks drawn from real-world game art and simulation projects. The most promising graduates get the opportunity to join our studio team and work alongside experienced artists.",
 
     href: "https://www.instagram.com/quadbreakacademy",
     cta: "Explore Academy",

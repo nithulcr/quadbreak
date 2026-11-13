@@ -51,7 +51,7 @@ const ClientsLogoSlider = ({
             }}
             breakpoints={{
               640: { slidesPerView: 3, spaceBetween: 20 },
-              1024: { slidesPerView: 5, spaceBetween: 20 },
+              1024: { slidesPerView: 4, spaceBetween: 20 },
             }}
           >
             {withImages.map((client) => (

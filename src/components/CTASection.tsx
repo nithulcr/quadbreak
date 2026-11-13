@@ -140,7 +140,10 @@ const CTASection = () => {
                 Jose
               </h3>
               <p className="text-sm md:text-base font-light leading-relaxed text-white/60 ">
-               17 years in real-time 3D production across leading studios worldwide. Builds and leads teams that deliver at AAA level, from scoping and pipeline setup to client relationships and studio growth
+                17 years in real-time 3D production across leading studios
+                worldwide. Builds and leads teams that deliver at AAA level,
+                from scoping and pipeline setup to client relationships and
+                studio growth
               </p>
               <div className="mt-4">
                 <AnimatedButton
@@ -287,7 +290,10 @@ const CTASection = () => {
                 Alexander
               </h3>
               <p className="text-right text-sm md:text-base  font-light leading-relaxed text-white/60">
-               17 years delivering across AAA titles at leading studios. Owns production quality at Quadbreak, setting the technical bar, directing the art team, and making sure every deliverable meets the standard before it ships.
+                17 years delivering across AAA titles at leading studios. Owns
+                production quality at Quadbreak, setting the technical bar,
+                directing the art team, and making sure every deliverable meets
+                the standard before it ships.
               </p>
               <div className="mt-4">
                 <AnimatedButton
@@ -319,7 +325,6 @@ const CTASection = () => {
       hover:scale-[0.9] transition-transform duration-300 cursor-pointer
   "
           >
-          
             {/* <div
               className="
       absolute
@@ -345,7 +350,6 @@ const CTASection = () => {
               The Team
             </span>
           </Link>
-         
         </div>
       </div>
     </section>

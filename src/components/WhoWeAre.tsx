@@ -508,7 +508,7 @@ const WhoWeAre = () => {
                       logic, and wear patterns all show up the moment
                       they&apos;re in-engine. It&apos;s a specific skill
                       set, and it&apos;s the one we&apos;ve built our
-                      pipeline around for nine years.
+                      pipeline around for 10 years.
                     </p>
 
                     <Image
